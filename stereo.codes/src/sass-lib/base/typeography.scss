@@ -1,0 +1,39 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700);
+
+$robo: 'Roboto', sans-serif;
+$playfair: 'Playfair Display', serif;
+
+body{
+  font-family: $robo;
+  font-size: 1.4rem;
+}
+
+h1{
+  font-family: $playfair;
+  font-size: 5.0rem;
+  letter-spacing: 2px;
+}
+
+h2{
+  font-family: $playfair;
+  font-size: 3.0rem;
+  letter-spacing: 2px;
+}
+
+h3{
+  font-family: $playfair;
+  font-size: 2.0rem;
+}
+
+h6{
+  font-family: $robo;
+  font-size: 1.4rem;
+}
+
+p{
+  font-family: $robo;
+  font-size: 1.2rem;
+  strong{
+    font-weight: 600;
+  }
+}

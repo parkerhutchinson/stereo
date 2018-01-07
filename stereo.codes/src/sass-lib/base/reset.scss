@@ -5,3 +5,25 @@
   border: none;
   box-sizing: border-box;
 }
+html, body{
+  font-size: 62.5%;
+}
+body{
+  overflow-x: hidden;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.grid{
+  grid-template-columns: repeat(24, 1fr);
+  @media screen and (max-width: 768px){
+    grid-template-columns: repeat(18, 1fr);
+  }
+}
+
+@for $i from 1 through 24{
+  .grid-col-#{$i}{
+    grid-column: span #{$i}
+  }
+}
