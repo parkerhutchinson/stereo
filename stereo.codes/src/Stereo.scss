@@ -1,0 +1,14 @@
+.grid-overlay{
+  display: none;
+  grid-template-columns: repeat(24, 1fr): 
+  pointer-events: none;
+  position: absolute;
+  z-index: 9999999999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  &.active{
+    display: grid;
+  }
+}

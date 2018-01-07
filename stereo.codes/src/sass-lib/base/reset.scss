@@ -5,9 +5,11 @@
   border: none;
   box-sizing: border-box;
 }
+
 html, body{
   font-size: 62.5%;
 }
+
 body{
   overflow-x: hidden;
   font-smoothing: antialiased;
@@ -15,10 +17,17 @@ body{
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.grid{
+.site-grid{
+  display: grid;
   grid-template-columns: repeat(24, 1fr);
   @media screen and (max-width: 768px){
     grid-template-columns: repeat(18, 1fr);
+  }
+}
+
+@for $i from 2 through 20{
+  .grid-#{$i}{
+    grid-template-columns: repeat(#{$i}, 1fr);
   }
 }
 
