@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from './components/01_atoms/Button';
 import GridOverlay from './components/02_molecules/GridOverlay';
+import './Stereo.scss';
 
 class Stereo extends Component {
   render() {

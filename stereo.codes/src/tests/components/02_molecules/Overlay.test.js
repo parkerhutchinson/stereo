@@ -10,19 +10,25 @@ describe('<GridOverlay />', () => {
   });
 
   it('should be deactivated on mount', () => {
-    const overlay = mount(<GridOverlay />)
+    const overlay = mount(<GridOverlay />);
     expect(overlay.state().isActive).toEqual(false);
   });
 
   it('should toggle active when clicked', () => {
-    const overlay = shallow(<GridOverlay />)
+    const wrapper = shallow(<GridOverlay />);
 
     // toggle on
-    overlay.find('button').simulate('click');
-    expect(overlay.state().isActive).toEqual(true);
+    wrapper.find('button').simulate('click');
+    expect(wrapper.state().isActive).toEqual(true);
 
     // toggle off
-    overlay.find('button').simulate('click');
-    expect(overlay.state().isActive).toEqual(false);
+    wrapper.find('button').simulate('click');
+    expect(wrapper.state().isActive).toEqual(false);
+  });
+
+  it('should set the body class to overlay', () => {
+    const wrapper = shallow(<GridOverlay />);
+    wrapper.find('button').simulate('click');
+    expect(document.body.classList.contains('overlay')).toEqual(true);
   });
 });

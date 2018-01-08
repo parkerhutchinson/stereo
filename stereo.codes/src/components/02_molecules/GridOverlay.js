@@ -1,20 +1,26 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom';
+import './GridOverlay.scss';
 
 export default class GridOverlay extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isActive: false };
+  componentWillMount() {
+    this.setState({ isActive: false });
   }
-
-  toggleButton(e) {
-    this.setState({ isActive:  !this.state.isActive});
-    return false;
+  toggleButton() {
+    const shouldActive = !this.state.isActive ? true : false;
+    this.setState({ isActive: shouldActive }, () => {
+      document.body.classList.add('overlay');
+      if (!this.state.isActive) {
+        document.body.classList.remove('overlay');
+      }
+    });
   }
 
   render() {
+    const active = this.state.isActive ? 'active' : '';
     return (
-      <div className="grid-overlay">
-        <button onClick={(e) => this.toggleButton(e)}>toggle</button>
+      <div className={`${active} grid-overlay-ui`}>
+        <button onClick={this.toggleButton.bind(this)}>toggle grid</button>
       </div>
     )
   }
