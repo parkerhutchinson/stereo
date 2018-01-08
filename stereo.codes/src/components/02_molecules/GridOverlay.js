@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
 import './GridOverlay.scss';
-import {VelocityComponent, VelocityTransitionGroup} from 'velocity-react';
+import {VelocityComponent} from 'velocity-react';
 
 export default class GridOverlay extends Component {
   componentWillMount() {

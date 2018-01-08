@@ -14,7 +14,7 @@ describe('<GridOverlay />', () => {
     expect(overlay.state().isActive).toEqual(false);
   });
 
-  it('should toggle active when clicked', () => {
+  it('toggles active when clicked', () => {
     const wrapper = shallow(<GridOverlay />);
 
     // toggle on
@@ -26,9 +26,9 @@ describe('<GridOverlay />', () => {
     expect(wrapper.state().isActive).toEqual(false);
   });
 
-  it('should set the body class to overlay', () => {
+  it('sets the body class to "overlay"', () => {
     const wrapper = shallow(<GridOverlay />);
     wrapper.find('button').simulate('click');
-    expect(document.body.classList.contains('overlay')).toEqual(true);
+    expect(document.body.classList).toContain('overlay');
   });
 });
