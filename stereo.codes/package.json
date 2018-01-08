@@ -26,6 +26,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "jest-enzyme": "^4.0.2",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -48,18 +49,26 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.6",
+    "@types/enzyme-adapter-react-15": "^1.0.1",
+    "@types/enzyme-adapter-react-16": "^1.0.1",
+    "@types/react-test-renderer": "^16.0.0",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-15": "^1.0.5",
     "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-react-16-adapter-setup": "^0.1.0",
     "node-sass": "^4.7.2",
     "react-test-renderer": "^16.2.0",
     "sass-loader": "^6.0.6"
   },
   "jest": {
+    "verbose": true,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "enzyme-react-16-adapter-setup"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
