@@ -1,0 +1,14 @@
+.navigation{
+  grid-column: 4 / span 18;
+  h1{
+    font-size: 3.0rem;
+  }
+  ul,li{
+    padding: 0;
+  }
+  ul{
+    li{
+      margin-right: 30px;
+    }
+  }
+}

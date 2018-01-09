@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Logo = () => (
-    <h1 className="grid-col-3">
+const Logo = (props) => (
+    <h1 className={`${props.classes} grid-col-3`}>
       <a href="#top">Stereo</a>
     </h1>
 )
+
+Logo.propTypes = {
+  classes: PropTypes.string,
+}
 
 export default Logo;

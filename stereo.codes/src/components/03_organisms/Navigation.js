@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Logo from '../01_atoms/Logo';
+import NavLink from '../01_atoms/NavLink';
 import './Navigation.scss';
 
 export default class Navigation extends Component {
@@ -16,11 +17,13 @@ export default class Navigation extends Component {
     let elems = [];
     Object.entries(this.navConfig).forEach(([key, value]) => {
       elems.push(
-        <li key={key}>{key}</li>
+        <li key={key}>
+          <NavLink url={value} title={key} />
+        </li>
       );
     });
     return (
-      <ul>
+      <ul className="grid-col-4">
         {elems}
       </ul>
     );
@@ -28,8 +31,8 @@ export default class Navigation extends Component {
 
   render() {
     return (
-      <div className="grid-col-3 grid-18 navigation">
-        <Logo className="grid-col-1"/>
+      <div className="grid-col-18 grid-18 navigation">
+        <Logo classes="grid-col-10" />
         { this.createMainNav() }
       </div>
     )

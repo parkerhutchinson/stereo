@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from './components/01_atoms/Button';
 import GridOverlay from './components/02_molecules/GridOverlay';
 import Navigation from './components/03_organisms/Navigation';
 import './Stereo.scss';
