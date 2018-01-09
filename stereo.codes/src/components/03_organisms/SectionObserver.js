@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 // have to use this otherwise it wont work in testing or other browsers
 const IntersectionObserver = require('intersection-observer-polyfill/dist/IntersectionObserver');
@@ -19,8 +18,12 @@ export default class SectionObserver extends Component {
       })
     }, config);
   }
+
   componentDidMount() {
     this.observer.observe(this.refs.sectionObserver);
+  }
+  componentWillUnMount() {
+    this.observer.unobserve(this.refs.sectionObserver);
   }
   render() {
     return (
