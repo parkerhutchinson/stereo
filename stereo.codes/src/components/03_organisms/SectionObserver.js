@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
+import PropTypes from 'prop-types';
+// have to use this otherwise it wont work in testing or other browsers
+const IntersectionObserver = require('intersection-observer-polyfill/dist/IntersectionObserver');
 
 export default class SectionObserver extends Component {
   componentWillMount() {
@@ -18,13 +20,23 @@ export default class SectionObserver extends Component {
     }, config);
   }
   componentDidMount() {
-    console.log(this.observer.observe(this.refs.sectionObserver));
+    this.observer.observe(this.refs.sectionObserver);
   }
   render() {
     return (
-      <section className="observer" ref="sectionObserver">
-        hello world
+      <section className={`${this.props.classes} observer`} ref="sectionObserver">
+        { this.children }
       </section>
     );
   }
+}
+
+SectionObserver.propTypes = {
+  children: PropTypes.element,
+  classes: PropTypes.string,
+}
+
+SectionObserver.defaultProps = {
+  classes: '',
+  children: null,
 }
