@@ -23,7 +23,7 @@ export default class Navigation extends Component {
       );
     });
     return (
-      <ul className="grid-col-4">
+      <ul className="grid-col-8">
         {elems}
       </ul>
     );

@@ -1,13 +1,13 @@
 @import '../../sass-lib/base/colors';
 .logo{
   position: relative;
-  padding-left: 80px;
-  margin-top: 20px;
+  padding-left: 90px;
+  min-height: 50px;
   &:after,&:before{
     content: '';
     display: block;
-    width: 40px;
-    height: 40px;
+    width: 47px;
+    height: 47px;
     overflow: hidden;
     border-radius: 50%;
     position: absolute;

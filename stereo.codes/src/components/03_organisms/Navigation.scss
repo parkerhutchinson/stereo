@@ -1,5 +1,7 @@
 .navigation{
   grid-column: 4 / span 18;
+  align-items: center;
+  height: 90px;
   h1{
     font-size: 3.0rem;
   }
@@ -8,7 +10,20 @@
   }
   ul{
     li{
-      margin-right: 30px;
+      display: inline-block;
+      margin-right: 40px;
+      text-transform: uppercase;
+      &:last-child{
+        margin-right: 0;
+      }
+      a{
+        opacity: .8;
+        transition: all .4s;
+        letter-spacing: 1px;
+        &:hover,&.active{
+          opacity: 1;
+        }
+      }
     }
   }
 }
