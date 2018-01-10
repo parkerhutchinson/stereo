@@ -27,6 +27,7 @@
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "jest-enzyme": "^4.0.2",
+    "node-sass-chokidar": "^0.0.3",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -44,8 +45,10 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "build:sass": "node-sass -r --output-style compressed src/index.scss -o build/static/css/",
+    "watch:sass": "npm run build:sass && npm run build:sass -- -w",
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js && npm run build:sass",
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
@@ -57,7 +60,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-react-16-adapter-setup": "^0.1.0",
     "intersection-observer-polyfill": "^0.1.0",
-    "node-sass": "^4.7.2",
+    "node-sass": "4.5.3",
     "react-test-renderer": "^16.2.0",
     "sass-loader": "^6.0.6",
     "velocity-react": "^1.3.3"

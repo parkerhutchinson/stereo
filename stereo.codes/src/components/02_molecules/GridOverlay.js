@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './GridOverlay.scss';
 import {VelocityComponent} from 'velocity-react';
 
 export default class GridOverlay extends Component {

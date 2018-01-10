@@ -1,13 +1,14 @@
-@import '../../sass-lib/base/colors';
 .logo{
   position: relative;
-  padding-left: 90px;
+  padding-left: 110px;
   min-height: 50px;
+  margin-left: 30px;
+  line-height: 1.6;
   &:after,&:before{
     content: '';
     display: block;
-    width: 47px;
-    height: 47px;
+    width: 53px;
+    height: 53px;
     overflow: hidden;
     border-radius: 50%;
     position: absolute;
@@ -18,8 +19,8 @@
     left: 0;
   }
   &:after{
-    left: 20px;
-    background: repeating-linear-gradient(-45deg,
+    left: 30px;
+    background: repeating-linear-gradient(25deg,
       transparent,
       transparent 2px,
       $milesdavis 2px,
