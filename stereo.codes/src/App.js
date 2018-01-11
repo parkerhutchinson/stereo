@@ -3,10 +3,10 @@ import GridOverlay from './components/02_molecules/GridOverlay';
 import Navigation from './components/03_organisms/Navigation';
 import SectionObserver from './components/03_organisms/SectionObserver';
 
-class Stereo extends Component {
+class App extends Component {
   render() {
     return (
-      <div className="stereo site-grid">
+      <div className="app-stereo site-grid">
         <Navigation />
         <GridOverlay />
         <SectionObserver />
@@ -15,4 +15,4 @@ class Stereo extends Component {
   }
 }
 
-export default Stereo;
+export default App;

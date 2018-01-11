@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Stereo from '../Stereo';
+import App from '../App';
 
 it('should mount', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Stereo />, div);
+  ReactDOM.render(<App />, div);
 });
