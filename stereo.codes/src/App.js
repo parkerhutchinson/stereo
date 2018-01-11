@@ -10,6 +10,8 @@ class App extends Component {
         <Navigation />
         <GridOverlay />
         <SectionObserver />
+        <div className="scrollTestNew"></div>
+        <div className="scrollTest"></div>
       </div>
     );
   }

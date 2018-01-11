@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+const Velocity = require('velocity-animate');
 
 export default class NavLink extends Component {
   constructor(props){
@@ -7,8 +8,10 @@ export default class NavLink extends Component {
     this.handleScrollTo.bind(this);
   }
   handleScrollTo(evt,url) {
-    console.log('worked');
-    
+    const scrollToElem = document.querySelector(url);
+
+    Velocity(scrollToElem, "scroll", { duration: 1200, easing: "easeInOutCirc" });
+
     evt.preventDefault();
     return false;
   }

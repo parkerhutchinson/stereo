@@ -6,9 +6,9 @@ export default class Navigation extends Component {
   constructor() {
     super();
     this.navConfig = {
-      work: '#work',
-      about: '#about',
-      contact: '#contact',
+      work: '.scrollTest',
+      about: '.about',
+      contact: '.contact',
     }
   }
 
