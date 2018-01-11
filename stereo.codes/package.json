@@ -45,10 +45,10 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "build:sass": "node-sass -r --output-style compressed src/index.scss -o build/static/css/",
+    "build:sass": "node-sass -r --output-style compressed src/index.scss -o src/",
     "watch:sass": "npm run build:sass && npm run build:sass -- -w",
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js && npm run build:sass",
+    "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
