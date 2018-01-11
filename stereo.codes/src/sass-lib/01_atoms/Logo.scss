@@ -4,6 +4,7 @@
   min-height: 50px;
   margin-left: 30px;
   line-height: 1.6;
+  font-size: 3.0rem;
   &:after,&:before{
     content: '';
     display: block;
@@ -26,5 +27,17 @@
       $milesdavis 2px,
       $milesdavis 4px
     )
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 1.6rem;
+    padding-left: 0;
+    margin-left: 0;
+    &:after,&:before{
+      width: 25px;
+      height: 25px;
+    }
+    &:after{
+      left: 10px;
+    }
   }
 }

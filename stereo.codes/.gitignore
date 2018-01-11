@@ -7,7 +7,7 @@
 
 # production
 /build
-index.css
+*.css
 
 # misc
 .DS_Store

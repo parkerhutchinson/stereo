@@ -10,8 +10,11 @@ export default class Navigation extends Component {
       about: '.about',
       contact: '.contact',
     }
+    this.openHamburger.bind(this);
   }
-
+  componentWillMount() {
+    this.setState({ openNav: false });
+  }
   createMainNav() {
     let elems = [];
     Object.entries(this.navConfig).forEach(([key, value]) => {
@@ -27,12 +30,26 @@ export default class Navigation extends Component {
       </ul>
     );
   }
+  openHamburger(evt) {
+    const openNav = this.state.openNav ? false : true;
 
+    this.setState({ openNav: openNav });
+
+    evt.preventDefault();
+    return false;
+  }
   render() {
+    const show = this.state.openNav ? 'active' : '';
     return (
-      <div className="grid-col-18 grid-18 navigation">
-        <Logo classes="grid-col-10" />
-        { this.createMainNav() }
+      <div className="navigation">
+        <div className="grid-col-18 grid-18">
+          <Logo classes="grid-col-10" />
+          { this.createMainNav() }
+          <a href="#" onClick={(evt) => this.openHamburger(evt)}>hamburger</a>
+        </div>
+        <div className={`${show} hamburger`}>
+          { this.createMainNav() }
+        </div>
       </div>
     )
   }
