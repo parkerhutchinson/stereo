@@ -12,6 +12,6 @@ describe('<Navigation />', () => {
   it('renders all nav links', () => {
     const wrapper = shallow(<Navigation />);
     expect(wrapper.find('Logo').length).toEqual(1);
-    expect(wrapper.find('ul NavLink').length).toEqual(3);
+    expect(wrapper.find('ul NavLink').length).toEqual(6);
   });
 });

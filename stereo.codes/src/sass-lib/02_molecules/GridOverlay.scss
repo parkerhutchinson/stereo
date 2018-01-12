@@ -24,7 +24,7 @@
   grid-template-columns: repeat(24, 1fr);
   @media screen and (max-width: 768px) {grid-template-columns: repeat(18, 1fr);}
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   z-index: 9999999999;
   top: 0;
   left: 0;
