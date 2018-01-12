@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Logo from '../01_atoms/Logo';
 import NavLink from '../01_atoms/NavLink';
-import ReactDOM from 'react-dom';
 const Velocity = require('velocity-animate');
 
 export default class Navigation extends Component {
