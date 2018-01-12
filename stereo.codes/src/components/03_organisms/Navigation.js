@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import Logo from '../01_atoms/Logo';
 import NavLink from '../01_atoms/NavLink';
+import { connect } from 'react-redux';
+import { showNav } from '../../actions/navigation-actions';
+import { PropTypes } from 'prop-types';
 const Velocity = require('velocity-animate');
 
-export default class Navigation extends Component {
+class Navigation extends Component {
   constructor() {
     super();
     this.navConfig = {
@@ -12,10 +15,6 @@ export default class Navigation extends Component {
       contact: '.contact',
     }
     this.openHamburger.bind(this);
-  }
-
-  componentWillMount() {
-    this.setState({ openNav: false });
   }
 
   createMainNav() {
@@ -36,12 +35,15 @@ export default class Navigation extends Component {
   }
 
   openHamburger(evt) {
-    const openNav = this.state.openNav ? false : true;
+    if (!this.props.showNavState) {
+      this.props.showNav(true);
+      this.transitionOpen(true);
+    } else {
+      this.props.showNav(false);
+      this.transitionOpen(false);
+    }
 
-    this.setState({ openNav: openNav });
-    this.transitionOpen(openNav);
-
-    evt.preventDefault();
+    // evt.preventDefault();
     return false;
   }
 
@@ -108,9 +110,14 @@ export default class Navigation extends Component {
       );
     });
   }
-
+  componentWillReceiveProps(next) {
+    if(!next.showNavState) {
+      console.log(next);
+      this.transitionOpen(false);
+    }
+  }
   render() {
-    const show = this.state.openNav ? 'active' : '';
+    const show = this.props.showNavState ? 'active' : '';
     return (
       <nav className={`${show} navigation`}>
         <div className="grid-col-18 grid-18">
@@ -126,3 +133,24 @@ export default class Navigation extends Component {
     )
   }
 }
+
+Navigation.propTypes = {
+  showNavState: PropTypes.bool,
+}
+
+const mapStateToProps = (state) => {
+  return {
+    showNavState: state.hamburgNavigation.show,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  showNav: (show) => {
+    dispatch(showNav(show))
+  },
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navigation);
