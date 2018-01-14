@@ -2,21 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount, shallow } from 'enzyme';
 import NavLink from '../../../components/01_atoms/NavLink';
+import { MockProvider } from '../../../scripts-lib/MockProvider';
 
 describe('<NavLink />', () => {
   const props = {
     url: '#test',
     title: 'hello world',
   };
-  const wrapper = shallow(<NavLink url={props.url} title={props.title} />);
+
+  const wrapper = mount(
+    <MockProvider>
+      <NavLink url={props.url} title={props.title} />
+    </MockProvider>
+  );
+
   it('should mount', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<NavLink url={props.url} title={props.title}/>, div);
-  })
-  it('displays a title', () => {
-    expect(wrapper.text()).toMatch("hello world");
+    expect(wrapper.find(NavLink)).toHaveLength(1);
   });
+
+  it('displays a title', () => {
+    expect(wrapper.find(NavLink).text()).toEqual("hello world");
+  });
+
   it('has a href attribute value', () => {
-    expect(wrapper.prop('href')).toMatch("#test");
+    expect(wrapper.find(NavLink).find('a').prop('href')).toEqual("#test");
   });
 });

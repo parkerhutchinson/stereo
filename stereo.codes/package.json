@@ -36,6 +36,8 @@
     "react": "^16.2.0",
     "react-dev-utils": "^4.2.1",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
@@ -45,7 +47,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "build:sass": "node-sass -r --output-style compressed src/index.scss -o src/",
+    "build:sass": "node-sass --include-path scss --output-style compressed src/index.scss src/index.css",
     "watch:sass": "npm run build:sass && npm run build:sass -- -w",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
