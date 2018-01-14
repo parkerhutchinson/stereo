@@ -2,25 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {shallow,mount} from 'enzyme';
 import Navigation from '../../../components/03_organisms/Navigation';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import stereoApp from '../../../reducers/stereo-reducers';
-
-const stereoStore = createStore(stereoApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import { MockProvider } from '../../../scripts-lib/MockProvider';
+import Logo from '../../../components/01_atoms/Logo';
+import NavLink from '../../../components/01_atoms/NavLink';
 
 describe('<Navigation />', () => {
-  // it('should mount', () => {
-  //   const div = document.createElement('div');
-  //   ReactDOM.render(<Navigation />, div);
-  // });
+  const wrapper = mount(
+    <MockProvider>
+      <Navigation />
+    </MockProvider>
+  );
+  it('should mount', () => {
+    expect(wrapper.find(Navigation)).toHaveLength(1);
+  });
 
   it('renders all nav links', () => {
-    const wrapper = shallow(
-      <Provider store={stereoStore}>
-        <Navigation />
-      </Provider>
-    ).dive();
-    expect(wrapper.find('Logo').length).toEqual(1);
-    expect(wrapper.find('ul NavLink').length).toEqual(6);
+    expect(wrapper.find(Logo)).toHaveLength(1);
+    expect(wrapper.find('ul li').length).toEqual(6);
   });
 });

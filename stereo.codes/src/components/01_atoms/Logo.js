@@ -14,8 +14,8 @@ class Logo extends Component {
   }
   render() {
     return(
-      <h1 className={`${this.props.classes} grid-col-3 logo`}>
-        <a href="#top" onClick={(evt) => this.handleClick(evt)}>Stereo</a>
+      <h1 className={`${this.props.classes} grid-col-3 logo`} onClick={(evt) => this.handleClick(evt)}>
+        <a href="#top">Stereo</a>
       </h1>
     );
   }
