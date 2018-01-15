@@ -1,0 +1,7 @@
+.intro{
+  margin-top: 125px;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  height: calc(100vh - 125px);
+  align-items: start;
+}

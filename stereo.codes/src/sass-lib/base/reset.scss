@@ -50,30 +50,12 @@ ul,li{
     grid-column: span #{$i}
   }
 }
-.scrollTest{
-  display: block;
-  height: 400px;
-  width: 100%;
-  background: red;
-  position: relative;
-  top: 3000px;
-  margin-bottom: 200px;
-}
-.scrollTestNew{
-  display: block;
-  height: 400px;
-  width: 100%;
-  background: red;
-  position: relative;
-  top: 2000px;
-  margin-bottom: 200px;
-}
+
 .observer{
   background: red;
   opacity: 0;
   transition: all 2s;
   position: relative;
-  top: 1000px;
   &.inview{
     background: green;
     opacity: 1;
