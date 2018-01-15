@@ -11,6 +11,6 @@ describe('<Logo />', () => {
         <Logo />
       </MockProvider>
     );
-    expect(wrapper).toHaveLength(1);
+    expect(wrapper.find(Logo)).toHaveLength(1);
   });
 });

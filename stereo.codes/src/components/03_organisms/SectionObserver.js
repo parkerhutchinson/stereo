@@ -28,18 +28,16 @@ export default class SectionObserver extends Component {
   render() {
     return (
       <section className={`${this.props.classes} observer`} ref="sectionObserver">
-        { this.children }
+        { this.props.children }
       </section>
     );
   }
 }
 
 SectionObserver.propTypes = {
-  children: PropTypes.element,
   classes: PropTypes.string,
 }
 
 SectionObserver.defaultProps = {
   classes: '',
-  children: null,
 }

@@ -6,7 +6,8 @@ export default class Copy extends Component {
   render() {
     return (
       <section className="copy">
-        <CopyHeader title={ this.props.title } />
+        <CopyHeader title={ this.props.title } subTitle={ this.props.subTitle }/>
+        {this.props.children}
       </section>
     )
   }
@@ -14,6 +15,7 @@ export default class Copy extends Component {
 
 Copy.propTypes = {
   title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
 }
 
 Copy.defaultProps = {

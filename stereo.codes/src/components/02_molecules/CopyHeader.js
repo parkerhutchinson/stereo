@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 
 export default class CopyHeader extends Component {
   getSubHeader() {
-    const markup = this.props.subTitle ? `<h3>${this.props.subTitle}</h3>` : null;
+    const markup = this.props.subTitle ? (<h3>{this.props.subTitle}</h3>) : null;
     return markup;
   }
   render() {
