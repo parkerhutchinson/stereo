@@ -1,5 +1,5 @@
 .vertical-text{
-  top: 200px;
+  top: 150px;
   white-space: nowrap;
   position: relative;
   display: inline-block;
@@ -13,13 +13,13 @@
   }
   *{
     display: inline-block;
-    margin-right: 30px;
     text-transform: uppercase;
   }
   h4{
     letter-spacing: 8px;
     font-size: 2.0rem;
-    opacity: .8;
+    opacity: .6;
+    margin-right: 90px;
   }
   p{
     position: relative;
