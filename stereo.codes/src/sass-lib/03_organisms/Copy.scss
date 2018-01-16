@@ -1,9 +1,93 @@
+$copyWrapPadding: 60px;
+$buttonPadding: 23px;
 .copy{
   position: relative;
   align-items: start;
+  justify-items: center;
+  display: grid;
+  grid-column-start: 11;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  transform: translateZ(0);
   p{
     font-size: 1.2rem;
     line-height: 2.2;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    strong{font-weight: bold;}
+  }
+  .copy-wrap{
+    grid-row: 1;
+    grid-column-start: 1;
+    z-index: 1;
+    padding: $copyWrapPadding 0 $copyWrapPadding 0;
+  }
+  .bg{
+    background: $stormy;
+    grid-column-start: 3;
+    grid-row: 1 / span 1;
+    min-height: 100%;
+    align-self: center;
+    justify-self: stretch;
+    z-index: 0;
+  }
+  a{
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    font-size: 1.2rem;
+    span{
+      padding: $buttonPadding $buttonPadding $buttonPadding 0;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      transition: all .4s;
+      // vertical borders
+      &:before,&:after{
+        content: '';
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 1px;
+        background: $radish;
+        z-index: 1;
+      }
+      &:before{
+        left: 0;
+        bottom: 0;
+        height: 0;
+        transition: all .4s;
+      }
+      &:after{
+        right: 0;
+        bottom: 0;
+      }
+    }
+    // horizontal borders
+    &:before,&:after{
+      content: '';
+      display: block;
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      background: $radish;
+      z-index: 1;
+    }
+    &:before{
+      top: 0;
+      right: 0;
+      width: 50%;
+      transition: all .4s;
+    }
+    &:after{
+      bottom: 0;
+      right: 0;
+    }
+    &:hover{
+      span{
+        padding-left: $buttonPadding;
+        &:before{height: 100%;}
+      }
+      &:before{width: 100%;}
+    }
   }
 }

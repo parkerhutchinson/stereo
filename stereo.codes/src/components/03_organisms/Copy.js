@@ -6,16 +6,19 @@ export default class Copy extends Component {
   render() {
     return (
       <section className={`${this.props.classes} copy grid-${this.props.grid} grid-col-${this.props.grid}`}>
-        <CopyHeader
-          title={ this.props.title }
-          subTitle={ this.props.subTitle }
-          className={`${this.props.classes}`}
-          grid={this.props.grid}
-        />
-        <span className="grid-col-1"></span>
-        <div className={`grid-col-${this.props.grid - 1}`}>
-          {this.props.children}
+        <div className={`grid-col-${this.props.grid - 1} grid-${this.props.grid - 1} copy-wrap`}>
+          <CopyHeader
+            title={ this.props.title }
+            subTitle={ this.props.subTitle }
+            className={`${this.props.classes}`}
+            grid={this.props.grid - 1}
+          />
+          <span className="grid-col-1"></span>
+          <div className={`grid-col-${this.props.grid - 2}`}>
+            {this.props.children}
+          </div>
         </div>
+        <span className={`grid-col-${this.props.grid - 2} bg`}></span>
       </section>
     )
   }

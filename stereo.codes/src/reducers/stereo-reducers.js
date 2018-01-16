@@ -6,7 +6,6 @@ function hamburgNavigation(state = { show: false }, action) {
 
   switch(action.type) {
     case SHOW_HAMBURGER:
-      console.log(action.show);
       return { show: action.show };
     default:
       return state

@@ -22,7 +22,7 @@ class NavLink extends Component {
       <a
         href={this.props.url}
         onClick={(evt) => this.handleScrollTo(evt, this.props.url)}
-      >{ this.props.title }</a>
+      ><span>{ this.props.title }</span></a>
     )
   }
 }
