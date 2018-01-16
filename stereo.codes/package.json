@@ -72,7 +72,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/config/jest/test.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/config/jest/timestamp.js",
     "setupFiles": [
       "<rootDir>/config/polyfills.js",
       "enzyme-react-16-adapter-setup"

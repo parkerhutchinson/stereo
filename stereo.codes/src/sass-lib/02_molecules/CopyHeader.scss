@@ -1,4 +1,25 @@
 .copy-header{
   display: grid;
-  align-items: start;
+  align-items: stretch;
+  margin-bottom: 30px;
+  h2{
+    font-size: 5.0rem;
+    text-transform: capitalize;
+  }
+  h3{
+    font-size: 2.0rem;
+    text-transform: capitalize;
+  }
+  span{
+    &:before{
+      content: '';
+      display: block;
+      position: relative;
+      width: 70%;
+      height: 1px;
+      background: $radish;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
 }

@@ -52,12 +52,10 @@ ul,li{
 }
 
 .observer{
-  background: red;
   opacity: 0;
-  transition: all 2s;
+  transition: all 5s;
   position: relative;
   &.inview{
-    background: green;
     opacity: 1;
   }
 }

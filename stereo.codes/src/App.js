@@ -11,8 +11,6 @@ class App extends Component {
         <Intro />
         <Intro />
         <GridOverlay />
-        <div className="scrollTest"></div>
-
       </div>
     );
   }
