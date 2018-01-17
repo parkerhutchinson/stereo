@@ -3,8 +3,13 @@ import SectionObserver from '../03_organisms/SectionObserver';
 import Copy from '../03_organisms/Copy';
 import NavLink from '../01_atoms/NavLink';
 import VerticalText from '../01_atoms/VerticalText';
+import introSVG from '../../scripts-lib/computer-svg';
 
 export default class Intro extends Component {
+  componentDidMount() {
+    // load in the svg animation
+    introSVG(this.refs.svg);
+  }
   render() {
     return (
       <SectionObserver classes='grid-col-24 grid-24 intro'>
@@ -12,6 +17,9 @@ export default class Intro extends Component {
           <h4>1999 - 2018</h4>
           <p>Developer / Designer / Strategy</p>
         </VerticalText>
+        <div className="svg grid-col-7">
+          <div id="svg" ref="svg"></div>
+        </div>
         <Copy
           title="Hack The Planet"
           subTitle="Crash n' Burn"

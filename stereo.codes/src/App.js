@@ -9,7 +9,6 @@ class App extends Component {
       <div className="app-stereo site-grid">
         <Navigation />
         <Intro />
-        <Intro />
         <GridOverlay />
       </div>
     );

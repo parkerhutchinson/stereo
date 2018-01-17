@@ -53,10 +53,16 @@ ul,li{
 
   }
 }
-
+.svg{
+  grid-column-start: 4;
+  img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
 .observer{
-  opacity: 0;
-  transition: all 5s;
+  opacity: 1;
   position: relative;
   &.inview{
     opacity: 1;
