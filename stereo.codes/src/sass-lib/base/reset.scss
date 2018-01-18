@@ -12,6 +12,7 @@ html, body{
 
 body{
   overflow-x: hidden;
+  text-rendering: geometricPrecision;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

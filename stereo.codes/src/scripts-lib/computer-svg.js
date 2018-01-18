@@ -10,12 +10,11 @@ const config = {
   color: {
     stormy: '#2c2e47',
     snow: 'white',
-  }
+  },
+  image: 'https://media.giphy.com/media/MGaacoiAlAti0/giphy.gif',
 }
 
 const introSVG = (elem) => {
-  const dw = 500;
-  const dh = 500;
   const domElem = document.createElement('div');
   const draw = SVG(domElem).size(config.width, config.height);
 
@@ -55,6 +54,7 @@ const circleLinesSVG = (draw) => {
     this.size('200%','200%').move(0, 0);
     return true;
   });
+
   // diagonal lines
   for(let i = 0; i < config.lineCount; i++) {
       const pos = {
@@ -89,7 +89,28 @@ const circleLinesSVG = (draw) => {
 const computerSVG = (draw) => {
   const computer = draw.group();
   const maskComputer = draw.mask();
+  const maskImage = draw.mask();
   const maskComputerG = draw.group();
+  const image = draw.image(config.image, 390, 590).center(config.width / 2, 150);
+
+  const computerScreenBevelBG = draw
+  .gradient('linear', (stop) => {
+    stop.at(0, '#A4A28D')
+    stop.at(1, '#D4D2C5')
+  })
+  .from(0, 0).to(1, 1);
+
+  const computerScreenGloss = draw
+  .gradient('linear', (stop) => {
+    stop.at({ offset: 0, color: '#000', opacity: .8})
+    stop.at({ offset: 1, color: '#555', opacity: .1})
+  })
+  .from(0, 0).to(1, 1);
+  const imageM = draw
+  .rect(250, 180)
+  .attr({fill: config.color.snow})
+  .radius(15)
+  .center(config.width / 2, 150);
 
   const circleMiniM = draw
   .circle(config.width - 100)
@@ -98,23 +119,42 @@ const computerSVG = (draw) => {
 
   const computerBG = draw
   .rect(config.width - 150, config.height)
-  .radius(20)
+  .radius(15)
   .attr({ fill: '#CAC8BB' })
   .center(config.width / 2, config.height / 2);
+
+  const computerScreen = draw
+  .rect(261, 193)
+  .radius(15)
+  .attr({fill: 'black'})
+  .center(config.width / 2, 149)
+
+  const computerScreenBevel = draw
+  .rect(286, 218)
+  .radius(15)
+  .attr({fill: computerScreenBevelBG})
+  .center(config.width / 2, 148)
 
   const computerCartridge = draw
   .rect(150, 10)
   .attr({ fill: '#363636' })
-  .move(250, 300);
+  .move(230, 330);
 
   const rectM = draw
   .rect(config.width - 150, config.height - 200)
-  .radius(20)
+  .radius(15)
   .attr({ fill: 'white' })
   .center(config.width / 2, config.height / 2 - 100);
 
+  maskImage.add(imageM);
+  image.maskWith(maskImage);
+
   computer.add(computerBG);
   computer.add(computerCartridge);
+  computer.add(computerScreenBevel);
+  computer.add(computerScreen);
+  computer.add(image);
+  computer.add(computerScreen.clone().attr({fill: computerScreenGloss}));
 
   maskComputerG.add(circleMiniM);
   maskComputerG.add(rectM);
