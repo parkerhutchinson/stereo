@@ -17,7 +17,7 @@ export default class Intro extends Component {
           <h4>1999 - 2018</h4>
           <p>Developer / Designer / Strategy</p>
         </VerticalText>
-        <div className="svg grid-col-7">
+        <div className="svg grid-col-8">
           <div id="svg" ref="svg"></div>
         </div>
         <Copy

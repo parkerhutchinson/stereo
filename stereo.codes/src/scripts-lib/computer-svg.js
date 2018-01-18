@@ -16,8 +16,9 @@ const config = {
 
 const introSVG = (elem) => {
   const domElem = document.createElement('div');
-  const draw = SVG(domElem).size(config.width, config.height);
+  const draw = SVG(domElem);
 
+  draw.viewbox(0, 0, config.width, config.height);
   // construct scene
   circleLinesSVG(draw);
   computerSVG(draw);
@@ -68,13 +69,18 @@ const circleLinesSVG = (draw) => {
       line.stroke({ color: config.color.stormy, width: 1, linecap: 'round' });
 
       // experimental animation
-      // let lineAttr = line.attr();
-      // line.attr({x1: lineAttr.x1, y1: lineAttr.y1, x2: 0, y2: 0});
-      // line.animate({delay: i * 50}).attr({x1: lineAttr.x1, y1: lineAttr.y1, x2: lineAttr.x2, y2: lineAttr.y2});
+      let lineAttr = line.attr();
+      line.attr({opacity: 0});
+      line.animate({delay: i * 20}).attr({opacity: 1});
 
       circleG.add(line);
   }
+  circleMini.radius(0);
+  circleMini.animate({ease: 'expoOut'}).radius(config.width - 300);
 
+  circleMiniShadow.radius(0);
+  circleMiniShadow.animate({ease: 'expoOut'}).radius(config.width - 300);
+  
   // add circle and circle shadow to line group
   circleG.add(circleMiniShadow);
   circleG.add(circleMini);
@@ -88,6 +94,7 @@ const circleLinesSVG = (draw) => {
 
 const computerSVG = (draw) => {
   const computer = draw.group();
+  const computerG = draw.group();
   const maskComputer = draw.mask();
   const maskImage = draw.mask();
   const maskComputerG = draw.group();
@@ -117,10 +124,18 @@ const computerSVG = (draw) => {
   .attr({fill: config.color.snow})
   .center(config.width / 2, config.height /2);
 
+  const computerBGGradient = draw
+  .gradient('linear', (stop) => {
+    stop.at(0, '#D4D2C5')
+    stop.at(.5, '#D4D2C5')
+    stop.at(1, '#A4A28D')
+  })
+  .from(0,0).to(0,1);
+
   const computerBG = draw
   .rect(config.width - 150, config.height)
   .radius(15)
-  .attr({ fill: '#CAC8BB' })
+  .attr({ fill: computerBGGradient })
   .center(config.width / 2, config.height / 2);
 
   const computerScreen = draw
@@ -149,16 +164,20 @@ const computerSVG = (draw) => {
   maskImage.add(imageM);
   image.maskWith(maskImage);
 
-  computer.add(computerBG);
-  computer.add(computerCartridge);
-  computer.add(computerScreenBevel);
-  computer.add(computerScreen);
-  computer.add(image);
-  computer.add(computerScreen.clone().attr({fill: computerScreenGloss}));
+  computerG.add(computerBG);
+  computerG.add(computerCartridge);
+  computerG.add(computerScreenBevel);
+  computerG.add(computerScreen);
+  computerG.add(image);
+  computerG.add(computerScreen.clone().attr({fill: computerScreenGloss}));
+  computerG.move(0, 500);
+  computerG.animate({duration: '1s', ease: 'expoOut', delay: '.5s'}).move(0,0);
+  computer.add(computerG);
 
   maskComputerG.add(circleMiniM);
   maskComputerG.add(rectM);
   maskComputer.add(maskComputerG);
+
   computer.maskWith(maskComputer);
 
   return computer;
