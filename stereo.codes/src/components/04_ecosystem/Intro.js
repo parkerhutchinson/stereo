@@ -3,11 +3,12 @@ import SectionObserver from '../03_organisms/SectionObserver';
 import Copy from '../03_organisms/Copy';
 import NavLink from '../01_atoms/NavLink';
 import VerticalText from '../01_atoms/VerticalText';
+/* istanbul ignore next */
 import introSVG from '../../scripts-lib/computer-svg';
 
 export default class Intro extends Component {
   componentDidMount() {
-    // load in the svg animation
+    /* istanbul ignore next */
     introSVG(this.refs.svg);
   }
   render() {

@@ -6,7 +6,7 @@ require('svg.filter.js');
 const config = {
   width: 500,
   height: 500,
-  lineCount: 120,
+  lineCount: 100,
   color: {
     stormy: '#2c2e47',
     snow: 'white',
@@ -66,12 +66,12 @@ const circleLinesSVG = (draw) => {
       .line(0, 0, config.width, config.height )
       .move(pos.xd, 0);
 
-      line.stroke({ color: config.color.stormy, width: 1, linecap: 'round' });
+      line.stroke({ color: config.color.stormy, width: 2, linecap: 'round' });
 
       // experimental animation
-      let lineAttr = line.attr();
+      // let lineAttr = line.attr();
       line.attr({opacity: 0});
-      line.animate({delay: i * 20}).attr({opacity: 1});
+      line.animate({duration: '.2s', delay: i * 1}).attr({opacity: 1});
 
       circleG.add(line);
   }
@@ -80,7 +80,7 @@ const circleLinesSVG = (draw) => {
 
   circleMiniShadow.radius(0);
   circleMiniShadow.animate({ease: 'expoOut'}).radius(config.width - 300);
-  
+
   // add circle and circle shadow to line group
   circleG.add(circleMiniShadow);
   circleG.add(circleMini);
