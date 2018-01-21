@@ -1,7 +1,11 @@
 import ReactDOM from 'react-dom';
 const SVG = require('svg.js');
-require('svg.easing.js');
-require('svg.filter.js');
+try {
+  require('svg.easing.js');
+  require('svg.filter.js');
+} catch(error) {
+
+}
 
 const config = {
   width: 500,
