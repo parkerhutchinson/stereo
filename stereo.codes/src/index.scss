@@ -6,10 +6,13 @@
 //ATOMS
 @import './sass-lib/01_atoms/Logo';
 @import './sass-lib/01_atoms/VerticalText';
+@import './sass-lib/01_atoms/NavLink';
+
 //MOLECULES
 @import './sass-lib/02_molecules/GridOverlay';
 @import './sass-lib/02_molecules/IntroGraphic';
 @import './sass-lib/02_molecules/CopyHeader';
+
 // ORGANISMS
 @import './sass-lib/03_organisms/Navigation';
 @import './sass-lib/03_organisms/Copy';

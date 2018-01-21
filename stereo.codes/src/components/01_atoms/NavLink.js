@@ -22,7 +22,11 @@ class NavLink extends Component {
       <a
         href={this.props.url}
         onClick={(evt) => this.handleScrollTo(evt, this.props.url)}
-      ><span>{ this.props.title }</span></a>
+        className={`${this.props.classes}`}
+      >
+        <span className="button-text">{ this.props.title }</span>
+        { this.props.children }
+      </a>
     )
   }
 }
@@ -30,11 +34,13 @@ class NavLink extends Component {
 NavLink.defaultProps = {
   url: '',
   title: '',
+  classes: '',
 }
 
 NavLink.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  classes: PropTypes.string,
 }
 
 const mapDispatchToProps = (dispatch) => ({

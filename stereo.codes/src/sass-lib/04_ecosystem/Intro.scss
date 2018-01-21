@@ -5,4 +5,11 @@
   height: calc(100vh - 125px);
   max-height: 700px;
   align-items: center;
+  .svg{
+    grid-column-start: 4;
+    svg{
+      width: 100% !important;
+      max-width: 800px;
+    }
+  }
 }
