@@ -18,7 +18,8 @@
   }
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(18, 1fr);
-    margin-top: 60px;
+    margin-top: 80px;
+    height: auto;
     .copy.grid-col-10{
       grid-column-start: 1;
       grid-column-end: span 17;
