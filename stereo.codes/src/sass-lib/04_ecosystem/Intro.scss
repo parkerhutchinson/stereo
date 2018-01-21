@@ -8,9 +8,20 @@
   .svg{
     grid-column-start: 4;
     padding-top: 40px;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
     svg{
       width: 100% !important;
       max-width: 800px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(18, 1fr);
+    margin-top: 60px;
+    .copy.grid-col-10{
+      grid-column-start: 1;
+      grid-column-end: span 17;
     }
   }
 }

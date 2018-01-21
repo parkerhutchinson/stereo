@@ -43,13 +43,13 @@ export default class Intro extends Component {
             subTitle="Crash n' Burn"
             grid={10}
           >
-            <p>Lorem ipsum <strong>dolor sit amet</strong>, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-            sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>This is our world now. The world of the electron and the
+            switch; the beauty of the baud. We exist without nationality,
+            skin color, or religious bias. You wage wars, murder, cheat,
+            lie to us and try to make us believe it's for our own good,
+            yet we're the criminals. Yes, I am a criminal. My crime is
+            that of curiosity. <strong>I am a hacker</strong>,
+            and this is my manifesto.</p>
             <NavLink title="LEARN MORE" url=".about" classes="button">
               <span className="button-arrow">
                 <span className="button-arrow-head"></span>

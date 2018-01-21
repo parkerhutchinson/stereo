@@ -1,4 +1,5 @@
 $copyWrapPadding: 60px;
+$copyWrapPaddingMobile: 22px;
 .copy{
   position: relative;
   align-items: start;
@@ -19,6 +20,9 @@ $copyWrapPadding: 60px;
     grid-column-start: 1;
     z-index: 1;
     padding: $copyWrapPadding 0 $copyWrapPadding 0;
+    @media screen and (max-width: 768px) {
+      padding: $copyWrapPaddingMobile 0 $copyWrapPaddingMobile 0;
+    }
   }
   .bg{
     background: $stormy;

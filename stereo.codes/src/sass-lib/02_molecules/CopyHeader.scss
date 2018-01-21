@@ -2,14 +2,7 @@
   display: grid;
   align-items: stretch;
   margin-bottom: 40px;
-  h2{
-    font-size: 5.0rem;
-    text-transform: capitalize;
-  }
-  h3{
-    font-size: 2.0rem;
-    text-transform: capitalize;
-  }
+
   span{
     &:before{
       content: '';

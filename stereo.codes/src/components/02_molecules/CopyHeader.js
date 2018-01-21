@@ -19,7 +19,7 @@ export default class CopyHeader extends Component {
       >
         <span className="grid-col-1"></span>
         <div className={`grid-col-${this.state.gridSpan}`} >
-          <h2>{ this.props.title }</h2>
+          <h1>{ this.props.title }</h1>
           { this.getSubHeader() }
         </div>
       </header>
