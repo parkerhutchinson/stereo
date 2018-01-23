@@ -9,7 +9,7 @@ $buttonPadding: 23px;
   justify-content: space-around;
   padding-right: $buttonPadding;
   .button-text{
-    padding: $buttonPadding $buttonPadding $buttonPadding 0;
+    padding: $buttonPadding;
     display: inline-block;
     position: relative;
     z-index: 2;
@@ -38,6 +38,7 @@ $buttonPadding: 23px;
     width: 20px;
     height: 20px;
     transition: all .4s;
+    transform: scale(.8);
     &:before{
       content: '';
       display: inline-block;

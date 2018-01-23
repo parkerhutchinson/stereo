@@ -13,7 +13,11 @@ $copyWrapPaddingMobile: 35px;
     font-size: 1.2rem;
     line-height: 2.2;
     margin-bottom: 50px;
-    strong{font-weight: bold;}
+    strong{
+      font-weight: bold;
+      display: inline-block;
+      min-width: 73px;
+    }
   }
   .copy-wrap{
     grid-row: 1;

@@ -15,8 +15,8 @@ describe('<CopyHeader />', () => {
   });
 
   it('accepts custom classes', () => {
-    expect(wrapper.find('section').hasClass('hello')).toEqual(true);
-    expect(wrapper.find('section').hasClass('world')).toEqual(true);
+    expect(wrapper.find('article').hasClass('hello')).toEqual(true);
+    expect(wrapper.find('article').hasClass('world')).toEqual(true);
   });
 
   it('creates grid classes based on props', () => {
