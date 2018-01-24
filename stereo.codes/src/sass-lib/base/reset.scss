@@ -39,7 +39,7 @@ ul,li{
   display: subgrid;
 }
 
-@for $i from 2 through 20{
+@for $i from 2 through 24{
   .grid-#{$i}{
     display: grid;
     grid-template-rows: 1fr;

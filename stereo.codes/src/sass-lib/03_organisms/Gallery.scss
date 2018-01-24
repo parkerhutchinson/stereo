@@ -1,0 +1,57 @@
+.gallery{
+  position: relative;
+  display: block;
+  align-items: stretch;
+  background: white;
+  width: 400px;
+  height: 500px;
+  padding: 20px;
+  .slide{
+    position: absolute;
+    top: 0;
+    left: -15%;
+    height: 100%;
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: all .4s;
+    z-index: 4;
+    pointer-events: none;
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      height: 100%;
+      width: 100%;
+      opacity: 1;
+      background: white;
+      transition: all .4s;
+    }
+    &.out{
+      left: 0%;
+      opacity: 0;
+      z-index: 0;
+    }
+    &.current{
+      left: 0;
+      z-index: 3;
+      &:after{ opacity: 0; }
+    }
+    &.next{
+      left: 10%;
+      &:after{ opacity: .3; }
+      transform: scale(.9);
+      z-index: 2;
+    }
+    &.last{
+      left: 20%;
+      transform: scale(.8);
+      z-index: 1;
+      &:after{ opacity: .6; }
+    }
+  }
+}

@@ -3,8 +3,10 @@
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   height: calc(100vh - 125px);
+  min-height: 550px;
   max-height: 700px;
   align-items: center;
+  margin-bottom: 100px;
   .svg{
     grid-column-start: 4;
     padding-top: 40px;

@@ -6,6 +6,10 @@
   line-height: 1.6;
   font-size: 3.0rem;
   text-transform: uppercase;
+  letter-spacing: 2px;
+
+  a{letter-spacing: 6px;}
+
   &:after,&:before{
     content: '';
     display: block;
