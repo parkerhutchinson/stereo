@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import ReactDOM from 'react-dom';
 
 export default class GallerySlide extends Component {
   getClasses(index) {
     switch(index) {
-      case 0:
-        return 'current';
       case 1:
-        return 'next';
+        return 'current';
       case 2:
+        return 'next';
+      case 3:
         return 'last';
+      case 4:
+        return 'out';
       default:
         return '';
+    }
+  }
+  componentDidUpdate(nextprops) {
+    if (nextprops !== this.props && nextprops.currentIndex === 4) {
+      // console.log(this.refs);
+      setTimeout(() => {
+
+        ReactDOM.findDOMNode(this.refs.slide).classList.remove('out');
+      }, 200);
     }
   }
   render() {
@@ -23,6 +35,7 @@ export default class GallerySlide extends Component {
       <div
         className={`slide ${this.getClasses(currentIndex)}`}
         style={styles}
+        ref="slide"
       ></div>
     )
   }

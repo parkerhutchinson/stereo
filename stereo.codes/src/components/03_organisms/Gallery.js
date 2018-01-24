@@ -10,30 +10,61 @@ class Gallery extends Component {
     slide: 0,
   }
   componentDidMount() {
-    const timer = setInterval(() => this.nextSlide(), 1500);
+    const timer = setInterval(() => this.nextSlide(), 2500);
     this.setState(
       {
         timer,
+        slide: 0,
       }
     );
   }
   nextSlide() {
     const { images } = this.props;
     const { slide } = this.state;
-    const newSlideIndex = slide + 1 >= images.length ? 0 : slide + 1;
+    const newSlideIndex = slide + 1 > images.length - 1 ? 0 : slide + 1;
+    setTimeout(() => {
+      document.querySelector('.out').classList.remove('out');
+    }, 700);
     this.setState(
       {
         slide: newSlideIndex,
       }
     );
   }
-  getSlides(thisIndex) {
-    return this.props.images.map((item, i) => {
-        if (i == 1 || i == 2 || i == 3) {
-          return (<GallerySlide image={item.image} currentIndex={i} key={i}/>)
+  getSlides(slide) {
+    const { images } = this.props;
+    const slideNext = (slide) => {
+      if (slide + 1 > images.length - 1) {
+        if (slide + 1 > images.length) {
+          return 1;
         }
+        return 0;
+      } else {
+        return slide + 1;
+      }
+    }
+    const slideLast = (slide) => {
+      if (slide + 2 > images.length - 1) {
+        if (slide + 2 > images.length) {
+          return 1;
+        }
+        return 0;
 
-        return (<GallerySlide image={item.image} currentIndex={0} key={i}/>)
+      } else {
+        return slide + 2;
+      }
+    }
+    return images.map((item, i) => {
+        if (i === slide) {
+          return (<GallerySlide image={item.image} currentIndex={1} key={i}/>)
+        }
+        if (i === slideNext(slide)) {
+          return (<GallerySlide image={item.image} currentIndex={2} key={i}/>)
+        }
+        if (i === slideLast(slide)) {
+          return (<GallerySlide image={item.image} currentIndex={3} key={i}/>)
+        }
+        return (<GallerySlide image={item.image} currentIndex={4} key={i}/>)
 
       }
     )
@@ -43,7 +74,7 @@ class Gallery extends Component {
       classes,
     } = this.props;
     return (
-      <aside className={`${classes} gallery`}>
+      <aside className={`${classes} gallery`} ref="gallery">
         <h2 style={{position: 'relative', zIndex: 100}}>{this.state.slide}</h2>
         {this.getSlides(this.state.slide)}
       </aside>
