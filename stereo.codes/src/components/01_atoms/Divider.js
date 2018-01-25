@@ -9,7 +9,7 @@ const Divider = (props) => (
 )
 
 Divider.propTypes = {
-  label: PropTypes.string.required,
+  label: PropTypes.string.isRequired,
 }
 
 Divider.defaultProps = {
