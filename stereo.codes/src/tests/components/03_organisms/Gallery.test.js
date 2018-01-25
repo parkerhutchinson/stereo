@@ -12,5 +12,4 @@ describe('<Gallery />', () => {
   it('should render', () => {
     expect(wrapper.find(Gallery).exists()).toBe(true);
   });
-  
 });
