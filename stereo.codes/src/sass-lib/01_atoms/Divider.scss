@@ -1,0 +1,28 @@
+.divider{
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  grid-column: 1 / span 24;
+  position: relative;
+  padding: 140px 0 40px;
+  &:before{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background: $radish;
+    z-index: 0;
+  }
+  h5{
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    background: $blueberry;
+    z-index: 1;
+    padding: 10px 0;
+  }
+}

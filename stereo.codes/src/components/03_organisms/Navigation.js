@@ -10,8 +10,8 @@ class Navigation extends Component {
   constructor() {
     super();
     this.navConfig = {
-      work: '.scrollTest',
-      about: '.grid-overlay-ui',
+      work: '.work',
+      about: '.about',
       contact: '.contact',
     }
     this.openHamburger.bind(this);

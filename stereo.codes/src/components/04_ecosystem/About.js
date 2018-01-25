@@ -12,7 +12,7 @@ export default class About extends Component {
           <h4>STEREO</h4>
         </VerticalText>
         <div className="grid-col-18 grid-18 about-content">
-          <Copy title="Hackerman" subTitle="Parker Hutchinson" grid={10}>
+          <Copy title="Hackerman" subTitle="Half Unicorn" grid={10}>
             <p>This is our world now. The world of the electron and the
               switch; the beauty of the baud. We exist without nationality,
               skin color, or religious bias. You wage wars, murder, cheat,
@@ -20,6 +20,8 @@ export default class About extends Component {
               yet we're the criminals. Yes, I am a criminal. My crime is
               that of curiosity. <strong>I am a hacker</strong>,
               and this is my manifesto.</p>
+            <h3>Parker Hutchinson</h3>
+            <h4>Full Stack Javascript Developer</h4>
           </Copy>
           <Gallery />
         </div>

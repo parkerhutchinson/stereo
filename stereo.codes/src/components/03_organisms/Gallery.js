@@ -72,7 +72,7 @@ class Gallery extends Component {
       classes,
     } = this.props;
     return (
-      <aside className={`${classes} gallery grid-col-7`} ref="gallery">
+      <aside className={`${classes} gallery grid-col-6`} ref="gallery">
         {this.getSlides(this.state.slide)}
       </aside>
     )
