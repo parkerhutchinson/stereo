@@ -1,9 +1,16 @@
 .about{
   align-items: center;
   .vertical-text h4{margin: 0;}
-  .grid-col-20{
-    padding: 20px;
+  .about-content{
+    grid-column-start: 4;
+    padding: 40px 0;
     background: white;
     box-shadow: 10px 10px 40px $stormy;
   }
+  .copy{
+    grid-column-start: 2;
+    .bg{display: none;}
+    color: $stormy;
+  }
+  margin-bottom: 100px;
 }

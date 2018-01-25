@@ -4,21 +4,23 @@ import CopyHeader from '../02_molecules/CopyHeader';
 
 export default class Copy extends Component {
   render() {
+    const { grid, classes, subTitle, title } = this.props;
+    const gridPad = grid - 1;
+    const gridContent = grid - 2;
     return (
-      <article className={`${this.props.classes} copy grid-${this.props.grid} grid-col-${this.props.grid}`}>
-        <div className={`grid-col-${this.props.grid - 1} grid-${this.props.grid - 1} copy-wrap`}>
+      <article className={`${classes} grid-col-${grid} copy`}>
+        <div className={`grid-col-${grid} copy-wrap`}>
           <CopyHeader
-            title={ this.props.title }
-            subTitle={ this.props.subTitle }
-            className={`${this.props.classes}`}
-            grid={this.props.grid - 1}
+            title={ title }
+            subTitle={ subTitle }
+            className={`${classes}`}
+            grid={grid}
           />
-          <span className="grid-col-1"></span>
-          <div className={`grid-col-${this.props.grid - 2}`}>
+          <div className="copy-content">
             {this.props.children}
           </div>
         </div>
-        <span className={`grid-col-${this.props.grid - 2} bg`}></span>
+        <span className={`grid-col-${gridContent} bg`}></span>
       </article>
     )
   }
@@ -28,11 +30,11 @@ Copy.propTypes = {
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
   grid: PropTypes.number,
-  classes: PropTypes.string
+  classes: PropTypes.string,
 }
 
 Copy.defaultProps = {
   title: '',
   classes: '',
-  grid: 8
+  grid: 8,
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { PropTypes } from 'prop-types';
 import GallerySlide from '../01_atoms/GallerySlide';
 import { connect } from 'react-redux';
@@ -10,7 +9,7 @@ class Gallery extends Component {
     slide: 0,
   }
   componentDidMount() {
-    const timer = setInterval(() => this.nextSlide(), 2500);
+    const timer = setInterval(() => this.nextSlide(), 3500);
     this.setState(
       {
         timer,
@@ -22,22 +21,20 @@ class Gallery extends Component {
     const { images } = this.props;
     const { slide } = this.state;
     const newSlideIndex = slide + 1 > images.length - 1 ? 0 : slide + 1;
-    setTimeout(() => {
-      document.querySelector('.out').classList.remove('out');
-    }, 700);
-    this.setState(
-      {
-        slide: newSlideIndex,
+    // update slides and setup default slides after
+    const timer = setTimeout(() => {
+      if (document.querySelector('.out')) {
+        document.querySelector('.out').classList.remove('out');
       }
-    );
+
+      clearTimeout(timer);
+    }, 700);
+    this.setState({ slide: newSlideIndex, });
   }
   getSlides(slide) {
     const { images } = this.props;
     const slideNext = (slide) => {
       if (slide + 1 > images.length - 1) {
-        if (slide + 1 > images.length) {
-          return 1;
-        }
         return 0;
       } else {
         return slide + 1;
@@ -49,12 +46,14 @@ class Gallery extends Component {
           return 1;
         }
         return 0;
-
       } else {
         return slide + 2;
       }
     }
+
+    // set image props based on slide index
     return images.map((item, i) => {
+        // set current slide
         if (i === slide) {
           return (<GallerySlide image={item.image} currentIndex={1} key={i}/>)
         }
@@ -65,7 +64,6 @@ class Gallery extends Component {
           return (<GallerySlide image={item.image} currentIndex={3} key={i}/>)
         }
         return (<GallerySlide image={item.image} currentIndex={4} key={i}/>)
-
       }
     )
   }
@@ -74,8 +72,7 @@ class Gallery extends Component {
       classes,
     } = this.props;
     return (
-      <aside className={`${classes} gallery`} ref="gallery">
-        <h2 style={{position: 'relative', zIndex: 100}}>{this.state.slide}</h2>
+      <aside className={`${classes} gallery grid-col-7`} ref="gallery">
         {this.getSlides(this.state.slide)}
       </aside>
     )

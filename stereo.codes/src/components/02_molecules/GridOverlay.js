@@ -19,7 +19,7 @@ export default class GridOverlay extends Component {
     const active = this.state.isActive ? 'active' : '';
     return (
       <VelocityComponent animation={{ scale: [this.state.isActive ? 1.2 : 1, 'easeInCirc'] }} duration={500}>
-        <div className={`${active} grid-overlay-ui about`}>
+        <div className={`${active} grid-overlay-ui about-button`}>
           <button onClick={this.toggleButton.bind(this)}>toggle grid</button>
         </div>
       </VelocityComponent>

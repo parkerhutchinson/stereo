@@ -8,6 +8,7 @@ $buttonPadding: 23px;
   align-items: center;
   justify-content: space-around;
   padding-right: $buttonPadding;
+  transform: translate3d(0,0,0);
   .button-text{
     padding: $buttonPadding;
     display: inline-block;

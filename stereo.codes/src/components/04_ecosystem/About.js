@@ -11,10 +11,19 @@ export default class About extends Component {
         <VerticalText>
           <h4>STEREO</h4>
         </VerticalText>
-        <div className="grid-col-20">
+        <div className="grid-col-18 grid-18 about-content">
+          <Copy title="Hackerman" subTitle="Parker Hutchinson" grid={10}>
+            <p>This is our world now. The world of the electron and the
+              switch; the beauty of the baud. We exist without nationality,
+              skin color, or religious bias. You wage wars, murder, cheat,
+              lie to us and try to make us believe it's for our own good,
+              yet we're the criminals. Yes, I am a criminal. My crime is
+              that of curiosity. <strong>I am a hacker</strong>,
+              and this is my manifesto.</p>
+          </Copy>
           <Gallery />
-          <h1>hello world</h1>
         </div>
+        <div className="grid-col-1 spacer"></div>
         <VerticalText>
           <h4>CODES</h4>
         </VerticalText>

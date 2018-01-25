@@ -3,12 +3,6 @@ $copyWrapPaddingMobile: 35px;
 .copy{
   position: relative;
   align-items: start;
-  justify-items: center;
-  display: grid;
-  grid-column-start: 13;
-  grid-template-rows: 1fr;
-  overflow: hidden;
-  transform: translateZ(0);
   p{
     font-size: 1.2rem;
     line-height: 2.2;
@@ -20,20 +14,23 @@ $copyWrapPaddingMobile: 35px;
     }
   }
   .copy-wrap{
-    grid-row: 1;
-    grid-column-start: 1;
-    z-index: 1;
+    position: relative;
+    z-index: 2;
     padding: $copyWrapPadding 0 $copyWrapPadding 0;
+    .copy-content{
+      padding: 0 10% 5px;
+    }
     @media screen and (max-width: 768px) {
       padding: $copyWrapPaddingMobile 0 $copyWrapPaddingMobile 0;
     }
   }
   .bg{
     background: $stormy;
-    grid-column-start: 3;
-    grid-row: 1 / span 1;
-    align-self: stretch;
-    justify-self: stretch;
-    z-index: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 79.89%;
+    height: 100%;
+    z-index: 1;
   }
 }

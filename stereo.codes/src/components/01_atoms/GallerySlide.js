@@ -3,6 +3,14 @@ import { PropTypes } from 'prop-types';
 import ReactDOM from 'react-dom';
 
 export default class GallerySlide extends Component {
+  componentDidMount(nextprops) {
+    if (this.props.currentIndex === 4) {
+      setTimeout(() => {
+        ReactDOM.findDOMNode(this.refs.slide).classList.remove('out');
+      }, 200);
+    }
+  }
+
   getClasses(index) {
     switch(index) {
       case 1:
@@ -17,15 +25,7 @@ export default class GallerySlide extends Component {
         return '';
     }
   }
-  componentDidUpdate(nextprops) {
-    if (nextprops !== this.props && nextprops.currentIndex === 4) {
-      // console.log(this.refs);
-      setTimeout(() => {
 
-        ReactDOM.findDOMNode(this.refs.slide).classList.remove('out');
-      }, 200);
-    }
-  }
   render() {
     const { image, currentIndex } = this.props;
     const styles = {
