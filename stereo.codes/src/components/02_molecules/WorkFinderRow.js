@@ -2,26 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const WorkFinderRow = (props) => (
-  <dl className="row" onMouseOver={() => props.selected(props.name, props.id)}>
-    <dd className="row-name">
-      <dl>
-        <dt>{props.date}</dt>
-        <dd>{props.name}</dd>
-      </dl>
-    </dd>
-    <dd className="row-stack">
-      <dl>
-        <dd>{props.stack}</dd>
-      </dl>
-    </dd>
-    <dd className="row-position">
-      <dl>
-        <dd>{props.position}</dd>
-      </dl>
-    </dd>
-  </dl>
-)
+const WorkFinderRow = (props) => {
+  return (
+    <dl className="workfinder-row grid-col-14" onMouseOver={() => props.selected(props)}>
+      <dd className="workfinder-row-name">
+        <dl>
+          <dt>{`${props.date} -`}</dt>
+          <dd>{props.name}</dd>
+        </dl>
+      </dd>
+      <dd className="workfinder-row-stack">
+        <dl>
+          <dd>{props.stack}</dd>
+        </dl>
+      </dd>
+      <dd className="workfinder-row-position">
+        <dl>
+          <dd>{props.position}</dd>
+        </dl>
+      </dd>
+    </dl>
+  )
+}
 
 WorkFinderRow.propTypes = {
   id: PropTypes.number,

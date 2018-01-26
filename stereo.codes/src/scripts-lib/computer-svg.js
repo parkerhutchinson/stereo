@@ -120,14 +120,14 @@ const computerSVG = (draw) => {
 
   const computerScreenGloss = draw
   .gradient('linear', (stop) => {
-    stop.at({ offset: 0, color: '#000', opacity: .8})
-    stop.at({ offset: 1, color: '#555', opacity: .1})
+    stop.at({ offset: .1, color: '#ccc', opacity: .3})
+    stop.at({ offset: 1, color: '#ccc', opacity: .1})
   })
   .from(0, 0).to(1, 1);
   const imageM = draw
   .rect(250, 180)
   .attr({fill: config.color.snow})
-  .radius(15)
+  .radius(10)
   .center(config.width / 2, 150);
 
   const circleMiniM = draw
@@ -135,18 +135,18 @@ const computerSVG = (draw) => {
   .attr({fill: config.color.snow})
   .center(config.width / 2, config.height /2);
 
-  const computerBGGradient = draw
-  .gradient('linear', (stop) => {
-    stop.at({ offset: 0, color: '#666', opacity: .2})
-    stop.at({ offset: .5, color: '#666', opacity: .2})
-    stop.at({ offset: 1, color: '#000', opacity: .4})
-  })
-  .from(0,0).to(0,1);
+  // const computerBGGradient = draw
+  // .gradient('linear', (stop) => {
+  //   stop.at({ offset: 0, color: '#666', opacity: .2})
+  //   stop.at({ offset: .5, color: '#666', opacity: .2})
+  //   stop.at({ offset: 1, color: '#000', opacity: .4})
+  // })
+  // .from(0,0).to(0,1);
 
   const computerBG = draw
   .rect(config.width - 150, config.height)
   .radius(15)
-  .attr({ fill: computerBGGradient })
+  .attr({ fill: '#fff' })
   .center(config.width / 2, config.height / 2);
 
   const computerScreen = draw

@@ -1,0 +1,21 @@
+.workfinder{
+  background: white;
+  grid-column-start: 5;
+  padding: 40px 0;
+  box-shadow: 10px 10px 30px $stormy;
+  header{
+    grid-column-start: 2;
+    display: flex;
+    align-items: content;
+    margin-bottom: 30px;
+    h2{
+      display: block;
+      color: $stormy;
+      text-transform: capitalize;
+      font-weight: normal;
+    }
+    a{
+      color: $radish;
+    }
+  }
+}

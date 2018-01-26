@@ -4,22 +4,30 @@ import { connect } from 'react-redux';
 import WorkFinderRow from '../02_molecules/WorkFinderRow';
 
 class WorkFinder extends Component {
-  doHover() {
-    console.log(this);
+  componentWillMount() {
+    this.setState({ activeProject: 'test' });
+  }
+  doHover(row) {
+    this.setState({ activeProject: row.name });
   }
   getWork() {
     const staticRows = 20;
     const rows = [];
     for(let i = 0; i < staticRows; i++) {
       rows.push([
-        <WorkFinderRow selected={(evt) => this.doHover(evt)} key={i}/>
+        <WorkFinderRow selected={(props) => this.doHover(props)} key={i} name={`draftboard-${i}`}/>
       ])
     }
     return rows;
   }
   render() {
     return (
-      <div className="workfinder">
+      <div className="workfinder grid-col-16 grid-16">
+        <header className="grid-col-12">
+          <h2>{ this.state.activeProject }</h2>
+          <a href="#nope">arrow</a>
+        </header>
+
         { this.getWork() }
       </div>
     )
