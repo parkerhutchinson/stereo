@@ -5,7 +5,6 @@ import CopyHeader from '../02_molecules/CopyHeader';
 export default class Copy extends Component {
   render() {
     const { grid, classes, subTitle, title } = this.props;
-    const gridPad = grid - 1;
     const gridContent = grid - 2;
     return (
       <article className={`${classes} grid-col-${grid} copy`}>

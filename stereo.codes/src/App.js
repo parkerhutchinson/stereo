@@ -4,6 +4,7 @@ import Navigation from './components/03_organisms/Navigation';
 import Intro from './components/04_ecosystem/Intro';
 import About from './components/04_ecosystem/About';
 import Divider from './components/01_atoms/Divider';
+import Work from './components/04_ecosystem/Work';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         <Divider label="about"/>
         <About />
         <Divider label="work"/>
+        <Work />
         <GridOverlay />
       </div>
     );
