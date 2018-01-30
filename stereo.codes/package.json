@@ -39,6 +39,7 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "style-loader": "0.19.0",
+    "styled-components": "^3.1.4",
     "svg.easing.js": "^2.0.0",
     "svg.filter.js": "^2.0.2",
     "svg.js": "^2.6.3",
