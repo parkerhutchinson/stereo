@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { SHOW_HAMBURGER } from '../actions/navigation-actions';
-
+import { SHOW_WORK } from '../actions/work-actions';
 
 function hamburgNavigation(state = { show: false }, action) {
 
@@ -22,7 +22,17 @@ function gallery() {
   return galleryImages;
 }
 
+function workModal(state = { show: false }, action) {
+  switch(action.type) {
+    case SHOW_WORK:
+      return { show: action.show }
+    default:
+      return state;
+  }
+}
+
 const stereoApp = combineReducers({
+  workModal,
   gallery,
   hamburgNavigation,
 });

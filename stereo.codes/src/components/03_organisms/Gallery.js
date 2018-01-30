@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { PropTypes } from 'prop-types';
 import GallerySlide from '../01_atoms/GallerySlide';
 import { connect } from 'react-redux';
@@ -8,6 +9,7 @@ class Gallery extends Component {
     play: false,
     slide: 0,
   }
+
   componentDidMount() {
     const timer = setInterval(() => this.nextSlide(), 3500);
     this.setState(
@@ -17,31 +19,35 @@ class Gallery extends Component {
       }
     );
   }
+
   nextSlide() {
     const { images } = this.props;
     const { slide } = this.state;
     const newSlideIndex = slide + 1 > images.length - 1 ? 0 : slide + 1;
     // update slides and setup default slides after
     const timer = setTimeout(() => {
-      if (document.querySelector('.out')) {
-        document.querySelector('.out').classList.remove('out');
+      if (ReactDOM.findDOMNode(this.refs.gallery).querySelector('.out')) {
+        ReactDOM.findDOMNode(this.refs.gallery).querySelector('.out').classList.remove('out');
       }
-
       clearTimeout(timer);
     }, 700);
     this.setState({ slide: newSlideIndex, });
   }
+
   getSlides(slide) {
     const { images } = this.props;
+    const imagesLength = images.length - 1;
+
     const slideNext = (slide) => {
-      if (slide + 1 > images.length - 1) {
+      if (slide + 1 > imagesLength) {
         return 0;
       } else {
         return slide + 1;
       }
     }
+
     const slideLast = (slide) => {
-      if (slide + 2 > images.length - 1) {
+      if (slide + 2 > imagesLength) {
         if (slide + 2 > images.length) {
           return 1;
         }
@@ -50,37 +56,37 @@ class Gallery extends Component {
         return slide + 2;
       }
     }
-
     // set image props based on slide index
-    return images.map((item, i) => {
-        // set current slide
+    const markup = images.map((item, i) => {
         if (i === slide) {
-          return (<GallerySlide image={item.image} currentIndex={1} key={i}/>)
+          return (<GallerySlide image={item.image} slideState={1} key={i}/>);
         }
         if (i === slideNext(slide)) {
-          return (<GallerySlide image={item.image} currentIndex={2} key={i}/>)
+          return (<GallerySlide image={item.image} slideState={2} key={i}/>);
         }
         if (i === slideLast(slide)) {
-          return (<GallerySlide image={item.image} currentIndex={3} key={i}/>)
+          return (<GallerySlide image={item.image} slideState={3} key={i}/>);
         }
-        return (<GallerySlide image={item.image} currentIndex={4} key={i}/>)
+        return (<GallerySlide image={item.image} slideState={4} key={i}/>);
       }
-    )
+    );
+
+    return markup;
   }
+
   render() {
-    const {
-      classes,
-    } = this.props;
+    const { classes } = this.props;
     return (
       <aside className={`${classes} gallery grid-col-6`} ref="gallery">
-        {this.getSlides(this.state.slide)}
+        { this.getSlides(this.state.slide) }
       </aside>
-    )
+    );
   }
 }
 
 Gallery.propTypes = {
-  classes: PropTypes.string
+  classes: PropTypes.string,
+  images: PropTypes.array,
 }
 
 Gallery.defaultProps = {

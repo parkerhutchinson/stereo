@@ -18,6 +18,9 @@
       max-width: 600px;
     }
   }
+  .copy{
+    grid-column-start: 13;
+  }
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(18, 1fr);
     margin-top: 80px;
@@ -46,5 +49,21 @@
         }
       }
     }
+  }
+}
+
+// computer screen effect
+@keyframes shake-vhs {
+  30% {
+    margin-left: 0;
+  }
+  60% {
+    margin-left: .4vh;
+  }
+}
+
+@keyframes scroll {
+  30% {
+    background-position: top;
   }
 }

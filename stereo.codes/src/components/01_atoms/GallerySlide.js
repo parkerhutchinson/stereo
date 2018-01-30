@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 export default class GallerySlide extends Component {
   componentDidMount(nextprops) {
-    if (this.props.currentIndex === 4) {
+    if (this.props.slideState === 4) {
       setTimeout(() => {
         ReactDOM.findDOMNode(this.refs.slide).classList.remove('out');
       }, 200);
@@ -27,13 +27,13 @@ export default class GallerySlide extends Component {
   }
 
   render() {
-    const { image, currentIndex } = this.props;
+    const { image, slideState } = this.props;
     const styles = {
       backgroundImage: `url(${image})`,
     };
     return(
       <div
-        className={`slide ${this.getClasses(currentIndex)}`}
+        className={`slide ${this.getClasses(slideState)}`}
         style={styles}
         ref="slide"
       ></div>
@@ -42,6 +42,6 @@ export default class GallerySlide extends Component {
 }
 
 GallerySlide.propTypes = {
-  currentIndex: PropTypes.number,
+  slideState: PropTypes.number,
   image: PropTypes.string
 }

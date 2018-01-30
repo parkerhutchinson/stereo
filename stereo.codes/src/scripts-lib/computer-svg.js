@@ -16,7 +16,7 @@ const config = {
     snow: '#fff',
     woz: '#eee',
   },
-  image: 'https://media.giphy.com/media/MGaacoiAlAti0/giphy.gif',
+  image: 'https://thumbs.gfycat.com/RingedDistantIcefish-size_restricted.gif',
 }
 // bootstrap
 const introSVG = (elem) => {

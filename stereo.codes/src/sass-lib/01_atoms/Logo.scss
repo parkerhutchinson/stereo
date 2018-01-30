@@ -1,38 +1,13 @@
 .logo{
   position: relative;
-  padding-left: 110px;
   min-height: 50px;
-  margin-left: 30px;
   line-height: 1.6;
   font-size: 3.0rem;
   text-transform: uppercase;
   letter-spacing: 2px;
 
   a{letter-spacing: 6px;}
-
-  &:after,&:before{
-    content: '';
-    display: block;
-    width: 53px;
-    height: 53px;
-    overflow: hidden;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-  }
-  &:before{
-    background: $stormy;
-    left: 0;
-  }
-  &:after{
-    left: 30px;
-    background: repeating-linear-gradient(25deg,
-      transparent,
-      transparent 3px,
-      $milesdavis 3px,
-      $milesdavis 5px
-    )
-  }
+  grid-column-start: 2;
   @media screen and (max-width: 768px) {
     font-size: 1.6rem;
     padding-left: 0;

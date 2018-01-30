@@ -10,8 +10,8 @@ class Navigation extends Component {
   constructor() {
     super();
     this.navConfig = {
-      work: '.work',
       about: '.about',
+      work: '.work',
       contact: '.contact',
     }
     this.openHamburger.bind(this);
@@ -28,7 +28,7 @@ class Navigation extends Component {
       );
     });
     return (
-      <ul className="grid-col-8" ref="menuItems">
+      <ul className="grid-col-6" ref="menuItems">
         {elems}
       </ul>
     );
@@ -121,7 +121,7 @@ class Navigation extends Component {
     return (
       <nav className={`${show} navigation`}>
         <div className="grid-col-18 grid-18">
-          <Logo classes="grid-col-10" />
+          <Logo classes="grid-col-9" />
           { this.createMainNav() }
           <a className="hamburger-btn" href="#hamburger" onClick={(evt) => this.openHamburger(evt)}>hamburger</a>
         </div>

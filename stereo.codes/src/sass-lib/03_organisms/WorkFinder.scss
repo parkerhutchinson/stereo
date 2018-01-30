@@ -3,6 +3,9 @@
   grid-column-start: 5;
   padding: 40px 0;
   box-shadow: 10px 10px 30px $stormy;
+  height: calc(100vh - 15%);
+  overflow-y: scroll;
+  overflow-x: hidden;
   header{
     grid-column-start: 2;
     display: flex;
