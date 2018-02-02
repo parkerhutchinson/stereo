@@ -24,14 +24,6 @@
       &:last-child{
         margin-right: 0;
       }
-      a{
-        opacity: .8;
-        transition: all .4s;
-        letter-spacing: 1px;
-        &:hover,&.active{
-          opacity: 1;
-        }
-      }
     }
   }
   .hamburger-btn{

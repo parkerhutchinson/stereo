@@ -2,7 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { showNav } from '../../actions/navigation-actions';
+import styled from 'styled-components';
 const Velocity = require('velocity-animate');
+
+const LinkStyled = styled.a`
+  opacity: .8;
+  transition: all .4s;
+  letter-spacing: 1px;
+  &:hover,&.active{
+    opacity: 1;
+  }
+`;
+
 
 class NavLink extends Component {
   constructor(props){
@@ -12,7 +23,7 @@ class NavLink extends Component {
   handleScrollTo(evt,url) {
     const scrollToElem = document.querySelector(url);
     this.props.showNav(false);
-    Velocity(scrollToElem, "scroll", { duration: 1500, offset: -150, easing: "easeOutCirc" });
+    Velocity(scrollToElem, "scroll",  { duration: 1500, queue: false, offset: -150, easing: "easeOutCirc" });
 
     evt.preventDefault();
     return false;
