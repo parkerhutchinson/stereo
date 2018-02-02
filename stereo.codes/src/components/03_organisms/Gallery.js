@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { PropTypes } from 'prop-types';
+import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 import GallerySlide from '../01_atoms/GallerySlide';
 import { connect } from 'react-redux';
+
+const StyledGallery = styled.aside`
+  position: relative;
+  display: block;
+  align-items: stretch;
+  background: white;
+  height: 400px;
+  padding: 20px;
+`;
 
 class Gallery extends Component {
   state = {
@@ -77,9 +87,9 @@ class Gallery extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <aside className={`${classes} gallery grid-col-6`} ref="gallery">
+      <StyledGallery className={`${classes} gallery grid-col-6`} ref="gallery">
         { this.getSlides(this.state.slide) }
-      </aside>
+      </StyledGallery>
     );
   }
 }

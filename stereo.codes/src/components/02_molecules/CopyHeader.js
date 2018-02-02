@@ -1,5 +1,25 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import ReactDOM from 'react-dom';
+import styled from 'styled-components';
+
+const StyledCopyHeader = styled.header`
+  display: grid;
+  align-items: stretch;
+  margin-bottom: 40px;
+  span{
+    &:before{
+      content: '';
+      display: block;
+      position: relative;
+      width: 70%;
+      height: 1px;
+      background: var(--radish);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+`;
 
 export default class CopyHeader extends Component {
   componentWillMount() {
@@ -14,7 +34,7 @@ export default class CopyHeader extends Component {
   }
   render() {
     return (
-      <header
+      <StyledCopyHeader
         className={`${this.props.classes} grid-${this.props.grid} copy-header grid-col-${this.props.grid}`}
       >
         <span className="grid-col-1"></span>
@@ -22,7 +42,7 @@ export default class CopyHeader extends Component {
           <h1>{ this.props.title }</h1>
           { this.getSubHeader() }
         </div>
-      </header>
+      </StyledCopyHeader>
     )
   }
 }
