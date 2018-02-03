@@ -1,11 +1,8 @@
 // base
 @import './sass-lib/base/colors.scss';
-@import './sass-lib/base/reset';
-@import './sass-lib/base/typeography';
 
 //ATOMS
 @import './sass-lib/01_atoms/NavLink';
-@import './sass-lib/01_atoms/Divider';
 
 //MOLECULES
 @import './sass-lib/02_molecules/GridOverlay';

@@ -1,6 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
+const VerticalText = (props) => (
+  <VerticalTextStyled className="vertical-text grid-col-2">
+    <VerticalTextWrapStyled className="vertical-text-wrap">
+      { props.children }
+    </VerticalTextWrapStyled>
+  </VerticalTextStyled>
+)
+
 const VerticalTextStyled = styled.aside`
   white-space: nowrap;
   position: relative;
@@ -33,13 +42,5 @@ const VerticalTextWrapStyled = styled.div`
   left: 50%;
   transform: translateX(-50%) translateY(-50%) rotate(90deg);
 `;
-
-const VerticalText = (props) => (
-  <VerticalTextStyled className="vertical-text grid-col-2">
-    <VerticalTextWrapStyled className="vertical-text-wrap">
-      { props.children }
-    </VerticalTextWrapStyled>
-  </VerticalTextStyled>
-)
 
 export default VerticalText;

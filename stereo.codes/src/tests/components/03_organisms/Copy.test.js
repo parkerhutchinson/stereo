@@ -21,7 +21,7 @@ describe('<CopyHeader />', () => {
 
   it('creates grid classes based on props', () => {
     expect(wrapper.props().grid).toBe(8);
-    expect(wrapper.find('.copy').hasClass('grid-col-8')).toEqual(true);
+    expect(wrapper.find('article.copy').hasClass('grid-col-8')).toEqual(true);
   });
 
   it('accepts optional sub title', () => {

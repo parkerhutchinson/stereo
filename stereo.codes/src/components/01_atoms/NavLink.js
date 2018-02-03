@@ -5,15 +5,6 @@ import { showNav } from '../../actions/navigation-actions';
 import styled from 'styled-components';
 const Velocity = require('velocity-animate');
 
-const LinkStyled = styled.a`
-  opacity: .8;
-  transition: all .4s;
-  letter-spacing: 1px;
-  &:hover,&.active{
-    opacity: 1;
-  }
-`;
-
 
 class NavLink extends Component {
   constructor(props){
@@ -59,6 +50,15 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(showNav(show))
   }
 })
+
+const LinkStyled = styled.a`
+  opacity: .8;
+  transition: all .4s;
+  letter-spacing: 1px;
+  &:hover,&.active{
+    opacity: 1;
+  }
+`;
 
 export default connect(
   null,

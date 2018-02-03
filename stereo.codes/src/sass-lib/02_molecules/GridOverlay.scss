@@ -1,25 +1,3 @@
-.grid-overlay-ui{
-  display: inline-block;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  button{
-    display: inline-block;
-    background: $radish;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    text-transform: uppercase;
-  }
-  &.active{
-    button{
-      background: green;
-    }
-  }
-}
-
 .grid-overlay{
   display: none;
   grid-template-columns: repeat(24, 1fr);

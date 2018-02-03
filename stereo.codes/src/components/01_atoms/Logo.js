@@ -5,23 +5,6 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 const Velocity = require('velocity-animate');
 
-const StyledLogo = styled.h1`
-  position: relative;
-  min-height: 50px;
-  line-height: 1.6;
-  font-size: 3.0rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  grid-column-start: 2;
-  a {
-    letter-spacing: 6px;
-  }
-  @media screen and (max-width: 768px) {
-    font-size: 1.6rem;
-    padding-left: 0;
-    margin-left: 0;
-  }
-`;
 
 class Logo extends Component {
   handleClick(evt) {
@@ -48,6 +31,24 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(showNav(show))
   }
 })
+
+const StyledLogo = styled.h1`
+  position: relative;
+  min-height: 50px;
+  line-height: 1.6;
+  font-size: 3.0rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  grid-column-start: 2;
+  a {
+    letter-spacing: 6px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 1.6rem;
+    padding-left: 0;
+    margin-left: 0;
+  }
+`;
 
 export default connect(
   null,
