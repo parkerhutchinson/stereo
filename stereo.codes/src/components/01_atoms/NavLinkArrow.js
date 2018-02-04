@@ -21,14 +21,14 @@ class NavLink extends Component {
   }
   render() {
     return (
-      <a
+      <LinkStyled
         href={this.props.url}
         onClick={(evt) => this.handleScrollTo(evt, this.props.url)}
         className={`${this.props.classes}`}
       >
         <span className="button-text">{ this.props.title }</span>
         { this.props.children }
-      </a>
+      </LinkStyled>
     )
   }
 }
@@ -50,7 +50,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(showNav(show))
   }
 })
-const buttonPadding = 23;
+const buttonPadding = '23px';
 const LinkStyled = styled.a`
   display: inline-flex;
   position: relative;

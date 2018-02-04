@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SectionObserver from '../03_organisms/SectionObserver';
 import Copy from '../03_organisms/Copy';
-import NavLink from '../01_atoms/NavLink';
+import NavLinkArrow from '../01_atoms/NavLinkArrow';
 import VerticalText from '../01_atoms/VerticalText';
 /* istanbul ignore next */
 import introSVG from '../../scripts-lib/computer-svg';
@@ -50,11 +50,11 @@ export default class Intro extends Component {
             yet we're the criminals. Yes, I am a criminal. My crime is
             that of curiosity. <strong>I am a hacker</strong>,
             and this is my manifesto.</p>
-            <NavLink title="LEARN MORE" url=".about" classes="button">
+            <NavLinkArrow title="LEARN MORE" url=".about" classes="button">
               <span className="button-arrow">
                 <span className="button-arrow-head"></span>
               </span>
-            </NavLink>
+            </NavLinkArrow>
           </Copy>
         </SectionObserver>
       )
