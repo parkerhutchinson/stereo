@@ -41,6 +41,7 @@ class Gallery extends Component {
       }
       clearTimeout(timer);
     }, 700);
+
     this.setState({ slide: newSlideIndex, });
   }
 
@@ -66,6 +67,7 @@ class Gallery extends Component {
         return slide + 2;
       }
     }
+    // TODO: this sucks up performance so much
     // set image props based on slide index
     const markup = images.map((item, i) => {
         if (i === slide) {

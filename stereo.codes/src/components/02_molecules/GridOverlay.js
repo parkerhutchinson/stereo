@@ -1,52 +1,70 @@
-import React, { Component } from 'react'
-import {VelocityComponent} from 'velocity-react';
+import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
+class GridOverlay extends Component {
+  createGrid() {
+    const { gridCount } = this.props;
 
-export default class GridOverlay extends Component {
-  componentWillMount() {
-    this.setState({ isActive: false });
-  }
-  toggleButton() {
-    const shouldActive = !this.state.isActive ? true : false;
-    this.setState({ isActive: shouldActive }, () => {
-      document.body.classList.add('overlay');
-      if (!this.state.isActive) {
-        document.body.classList.remove('overlay');
+    return Array.from({length: gridCount}).map((v, i) => {
+      if (i > 18) {
+        return (<div className="grid-col hide" key={i}></div>)
+      } else {
+        return (<div className="grid-col" key={i}></div>)
       }
-    });
+    })
   }
-
   render() {
-    const active = this.state.isActive ? 'active' : '';
     return (
-      <VelocityComponent animation={{ scale: [this.state.isActive ? 1.2 : 1, 'easeInCirc'] }} duration={500}>
-        <StyledGridUI className={`${active} grid-overlay-ui about-button`}>
-          <button onClick={this.toggleButton.bind(this)}>toggle grid</button>
-        </StyledGridUI>
-      </VelocityComponent>
+      <StyledGridOverlay className={`${this.props.isActive ? 'active' : ''} grid-overlay`}>
+        {this.createGrid()}
+      </StyledGridOverlay>
     )
   }
 }
 
-const StyledGridUI = styled.div`
-  display: inline-block;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  button{
-    display: inline-block;
-    background: $radish;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    text-transform: uppercase;
+GridOverlay.propTypes = {
+  gridCount: PropTypes.number,
+  isActive: PropTypes.bool,
+}
+
+GridOverlay.defaultProps = {
+  gridCount: 24,
+  isActive: false,
+}
+
+const mapStateToProps = (state) => {
+  return {
+    isActive: state.gridOverlay.show,
   }
+}
+
+const StyledGridOverlay = styled.div`
+  display: none;
+  grid-template-columns: repeat(24, 1fr);
+  @media screen and (max-width: 768px) {grid-template-columns: repeat(18, 1fr);}
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999999999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   &.active{
-    button{
-      background: green;
+    display: grid;
+  }
+  .grid-col{
+    border-right: 1px solid red;
+    &:last-child{border: none;}
+    &.mobile{
+      @media screen and (max-width: 768px) {display: none;}
     }
   }
 `;
+
+export default connect(
+  mapStateToProps,
+  null
+)(GridOverlay);

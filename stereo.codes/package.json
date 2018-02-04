@@ -38,6 +38,7 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
+    "redux-mock-store": "^1.5.1",
     "style-loader": "0.19.0",
     "styled-components": "^3.1.4",
     "svg.easing.js": "^2.0.0",

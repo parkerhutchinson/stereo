@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { SHOW_HAMBURGER } from '../actions/navigation-actions';
 import { SHOW_WORK } from '../actions/work-actions';
+import { SHOW_GRID } from '../actions/grid-actions';
 
 function hamburgNavigation(state = { show: false }, action) {
 
@@ -31,7 +32,18 @@ function workModal(state = { show: false }, action) {
   }
 }
 
+function gridOverlay(state = { show: false }, action) {
+  switch(action.type) {
+    case SHOW_GRID:
+      return { show: action.show }
+    default:
+      return state;
+  }
+}
+
+
 const stereoApp = combineReducers({
+  gridOverlay,
   workModal,
   gallery,
   hamburgNavigation,

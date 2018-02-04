@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GridOverlayButton from './components/01_atoms/GridOverlayButton';
 import GridOverlay from './components/02_molecules/GridOverlay';
 import Navigation from './components/03_organisms/Navigation';
 import Intro from './components/04_ecosystem/Intro';
@@ -17,15 +18,19 @@ class App extends Component {
         <About />
         <Divider label="work"/>
         <Work />
+        <GridOverlayButton />
         <GridOverlay />
       </div>
     );
   }
 }
+// grid columns
 const gridNum = 25;
+// fonts
 const robo = `"Roboto", sans-serif`;
 const playfair = `"Playfair Display", serif`;
 
+// builds css grid templates
 const gridTemplate = (num) => {
   let grid = '';
   for(let i = 1; i < num; i++) {
@@ -41,6 +46,7 @@ const gridTemplate = (num) => {
   return grid;
 }
 
+// builds all grid columns
 const gridTemplateCol = (num) => {
   let gridCol = '';
   for(let i = 0; i < num; i++) {
