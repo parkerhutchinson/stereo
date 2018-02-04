@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 // have to use this otherwise it wont work in testing or other browsers
 const IntersectionObserver = require('intersection-observer-polyfill/dist/IntersectionObserver');
 
@@ -20,24 +21,32 @@ export default class SectionObserver extends Component {
   }
 
   componentDidMount() {
-    this.observer.observe(this.refs.sectionObserver);
+    this.observer.observe(this.section);
   }
   componentWillUnMount() {
-    this.observer.unobserve(this.refs.sectionObserver);
+    this.observer.unobserve(this.section);
   }
   render() {
+    const StyledObserver = styled.section`
+      align-items: ${this.props.align};
+    `;
     return (
-      <section className={`${this.props.classes} observer`} ref="sectionObserver">
+      <StyledObserver
+        className={`${this.props.classes} observer`}
+        ref="sectionObserver" innerRef={(comp) => { this.section = comp}}
+      >
         { this.props.children }
-      </section>
+      </StyledObserver>
     );
   }
 }
 
 SectionObserver.propTypes = {
   classes: PropTypes.string,
+  align: PropTypes.string,
 }
 
 SectionObserver.defaultProps = {
   classes: '',
+  align: 'start',
 }

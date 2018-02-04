@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import GridOverlayButton from './components/01_atoms/GridOverlayButton';
 import GridOverlay from './components/02_molecules/GridOverlay';
 import Navigation from './components/03_organisms/Navigation';
 import Intro from './components/04_ecosystem/Intro';
@@ -18,7 +17,6 @@ class App extends Component {
         <About />
         <Divider label="work"/>
         <Work />
-        <GridOverlayButton />
         <GridOverlay />
       </div>
     );
@@ -151,6 +149,70 @@ injectGlobal`
 
   ${gridTemplate(gridNum)}
   ${gridTemplateCol(gridNum)}
+
+  .about{
+    transition: all .4s;
+    .vertical-text h4{margin: 0;}
+  }
+
+  .intro{
+    margin-top: 125px;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    height: calc(100vh - 125px);
+    min-height: 550px;
+    max-height: 700px;
+    align-items: center;
+    margin-bottom: 50px;
+    .svg{
+      grid-column-start: 4;
+      padding-top: 40px;
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+      svg{
+        width: 100%;
+        max-width: 600px;
+      }
+    }
+    .copy{
+      grid-column-start: 13;
+    }
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(18, 1fr);
+      margin-top: 80px;
+      height: auto;
+      .copy.grid-col-10{
+        grid-column-start: 1;
+        grid-column-end: span 17;
+        .bg{opacity: 0;}
+        a.button{
+          &:before{
+            width: 50%;
+          }
+        }
+        a.button .button-text{
+          &:before{
+            height: 0;
+          }
+        }
+        a.button .button-arrow{
+          transform: rotate(90deg) scale(.8);
+          width: 20px;
+          &:before,
+          .button-arrow-head:before,
+          .button-arrow-head:after{
+            background: white;
+          }
+        }
+      }
+    }
+  }
+
+  .work{
+    width: 100%;
+  }
+
 `;
 
 export default App;
