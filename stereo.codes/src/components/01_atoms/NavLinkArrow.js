@@ -1,28 +1,79 @@
-$buttonPadding: 23px;
-.button{
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { showNav } from '../../actions/navigation-actions';
+import styled from 'styled-components';
+const Velocity = require('velocity-animate');
+
+
+class NavLink extends Component {
+  constructor(props){
+    super(props)
+    this.handleScrollTo.bind(this);
+  }
+  handleScrollTo(evt,url) {
+    const scrollToElem = document.querySelector(url);
+    this.props.showNav(false);
+    Velocity(scrollToElem, "scroll",  { duration: 1500, queue: false, offset: -150, easing: "easeOutCirc" });
+
+    evt.preventDefault();
+    return false;
+  }
+  render() {
+    return (
+      <a
+        href={this.props.url}
+        onClick={(evt) => this.handleScrollTo(evt, this.props.url)}
+        className={`${this.props.classes}`}
+      >
+        <span className="button-text">{ this.props.title }</span>
+        { this.props.children }
+      </a>
+    )
+  }
+}
+
+NavLink.defaultProps = {
+  url: '',
+  title: '',
+  classes: '',
+}
+
+NavLink.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  classes: PropTypes.string,
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  showNav: (show) => {
+    dispatch(showNav(show))
+  }
+})
+const buttonPadding = 23;
+const LinkStyled = styled.a`
   display: inline-flex;
   position: relative;
   overflow: hidden;
   font-size: 1.2rem;
-  border-right: 1px solid $radish;
+  border-right: 1px solid var(--radish);
   align-items: center;
   justify-content: space-around;
-  padding-right: $buttonPadding;
+  padding-right: ${buttonPadding};
   transform: translate3d(0,0,0);
   .button-text{
-    padding: $buttonPadding;
+    padding: ${buttonPadding};
     display: inline-block;
     position: relative;
     z-index: 2;
     transition: all .4s;
-    // vertical borders
     &:before{
       content: '';
       display: block;
       position: absolute;
       height: 100%;
       width: 1px;
-      background: $radish;
+      background: var(--radish);
       z-index: 1;
     }
     &:before{
@@ -32,7 +83,6 @@ $buttonPadding: 23px;
       transition: all .4s;
     }
   }
-  // horizontal borders
   .button-arrow{
     display: inline-block;
     position: relative;
@@ -89,7 +139,7 @@ $buttonPadding: 23px;
     position: absolute;
     height: 1px;
     width: 100%;
-    background: $radish;
+    background: var(--radish);
     z-index: 1;
   }
   &:before{
@@ -104,20 +154,25 @@ $buttonPadding: 23px;
   }
   &:hover{
     .button-text{
-      padding-left: $buttonPadding;
+      padding-left: ${buttonPadding};
       &:before{height: 100%;}
     }
     .button-arrow{
       width: 43px;
       &:before{
-        background: $radish;
+        background: var(--radish);
       }
       .button-arrow-head{
         &:before,&:after{
-          background: $radish;
+          background: var(--radish);
         }
       }
     }
     &:before{width: 100%;}
   }
-}
+`;
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(NavLink)
