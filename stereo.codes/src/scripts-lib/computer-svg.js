@@ -92,6 +92,7 @@ const circleLinesSVG = (draw) => {
 // computer animation group
 const computerSVG = (draw) => {
   const computer = draw.group();
+  const computerLogoG = draw.group();
   const computerG = draw.group();
   const maskComputer = draw.mask();
   const maskImage = draw.mask();
@@ -123,13 +124,22 @@ const computerSVG = (draw) => {
   .attr({fill: config.color.snow})
   .center(config.width / 2, config.height /2);
 
-  // const computerBGGradient = draw
-  // .gradient('linear', (stop) => {
-  //   stop.at({ offset: 0, color: '#666', opacity: .2})
-  //   stop.at({ offset: .5, color: '#666', opacity: .2})
-  //   stop.at({ offset: 1, color: '#000', opacity: .4})
-  // })
-  // .from(0,0).to(0,1);
+  const logoText = draw.text('STEREO CODES');
+  logoText.font({
+    family: 'courier',
+    size: '9'
+  });
+  logoText.move(40, 5);
+
+  const logoCircleL = draw
+  .circle(20)
+  .attr({fill: config.color.stormy})
+  .move(0, 0)
+
+  const logoCircleR = draw
+  .circle(20)
+  .attr({fill: '#FF4A4A'})
+  .move(10, 0);
 
   const computerBG = draw
   .rect(config.width - 163, config.height)
@@ -155,6 +165,11 @@ const computerSVG = (draw) => {
   .attr({ fill: 'white' })
   .center(config.width / 2, config.height / 2 - 100);
 
+  computerLogoG.add(logoCircleL);
+  computerLogoG.add(logoCircleR);
+  computerLogoG.add(logoText);
+  computerLogoG.move(120, config.height - 190);
+
   maskImage.add(imageM);
   image.maskWith(maskImage);
   computerG.add(computerBG.clone().attr({fill: config.color.woz}));
@@ -162,6 +177,7 @@ const computerSVG = (draw) => {
   computerG.add(computerScreenBevel);
   computerG.add(computerScreen);
   computerG.add(image);
+  computerG.add(computerLogoG);
   computerG.add(computerScreen.clone().attr({fill: computerScreenGloss}));
   computerG.move(0, 500)
   computerG.animate({duration: 1000, ease: 'expoOut', delay: 600}).move(0,20);
@@ -231,6 +247,27 @@ const computerCartridge = (draw) =>{
   labelTop.attr({fill: '#fff'});
   labelTop.move(12, 86);
 
+  const labelHeaderText = draw.text('Hackz');
+  labelHeaderText.font({
+    family: 'courier',
+    size: '9'
+  });
+  labelHeaderText.move(25, 94);
+
+  const labelListOneText = draw.text('telnet towel.blinkenlights.nl');
+  labelListOneText.font({
+    family: 'courier',
+    size: '8'
+  });
+  labelListOneText.move(25, 125);
+
+  const labelListTwoText = draw.text('nmap -oS - scanme.nmap.org');
+  labelListTwoText.font({
+    family: 'courier',
+    size: '8'
+  });
+  labelListTwoText.move(25, 145);
+
   const circleMini = draw
   .circle(150)
   .attr({fill: '#2F2F2F'})
@@ -244,7 +281,11 @@ const computerCartridge = (draw) =>{
   cartridge.add(labelSpot);
   cartridge.add(label);
   cartridge.add(labelTop);
-  cartridge.center(config.width / 2 + 30, config.height / 2 - 70);
+  cartridge.add(labelHeaderText);
+  cartridge.add(labelListOneText);
+  cartridge.add(labelListTwoText);
+  cartridge.scale(.99, 1)
+  cartridge.center(config.width / 2 + 60, config.height / 2 - 30);
 }
 
 export default introSVG;
