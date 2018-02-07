@@ -84,6 +84,17 @@ injectGlobal`
   	-moz-osx-font-smoothing: grayscale;
     font-family: var(--roboto);
     font-size: 1.4rem;
+    &:before{
+      content: '';
+      display: block;
+      height: 100vh;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, rgba(45,50,80,1) 0%,rgba(45,50,80,0) 100%);
+      z-index: 0;
+    }
   }
   a{
     color: white;
@@ -162,6 +173,8 @@ injectGlobal`
     max-height: 700px;
     align-items: center;
     margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
     .svg{
       grid-column-start: 4;
       padding-top: 40px;

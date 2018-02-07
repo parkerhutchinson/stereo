@@ -36,7 +36,7 @@ const StyledLogo = styled.h1`
   position: relative;
   min-height: 50px;
   line-height: 1.6;
-  font-size: 3.0rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   grid-column-start: 2;

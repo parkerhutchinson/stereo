@@ -57,8 +57,7 @@ const StyledCopyHeader = styled.header`
       width: 70%;
       height: 1px;
       background: var(--radish);
-      top: 50%;
-      transform: translateY(-50%);
+      top: 40px;
     }
   }
 `;
