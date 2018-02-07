@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 
@@ -47,6 +46,9 @@ const StyledCopyHeader = styled.header`
   display: grid;
   align-items: stretch;
   margin-bottom: 40px;
+  h1{
+    margin-bottom: 20px;
+  }
   span{
     &:before{
       content: '';

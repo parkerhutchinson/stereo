@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import GridOverlayButton from '../01_atoms/GridOverlayButton';

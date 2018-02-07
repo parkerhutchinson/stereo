@@ -5,7 +5,7 @@ import Intro from './components/04_ecosystem/Intro';
 import About from './components/04_ecosystem/About';
 import Divider from './components/01_atoms/Divider';
 import Work from './components/04_ecosystem/Work';
-import { injectGlobal, css } from 'styled-components';
+import { injectGlobal } from 'styled-components';
 
 class App extends Component {
   render() {
@@ -24,10 +24,6 @@ class App extends Component {
 }
 // grid columns
 const gridNum = 25;
-// fonts
-const robo = `"Roboto", sans-serif`;
-const playfair = `"Playfair Display", serif`;
-
 // builds css grid templates
 const gridTemplate = (num) => {
   let grid = '';
@@ -65,6 +61,8 @@ injectGlobal`
     --blueberry: rgba(51, 63, 106, 1);
     --milesdavis: rgba(73,88,143,1);
     --snow: rgba(255,255,255,1);
+    --roboto: "Roboto", sans-serif;
+    --playfair: "Playfair Display", serif;
   }
   *{
     margin: 0;
@@ -84,7 +82,7 @@ injectGlobal`
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
-    font-family: ${robo};
+    font-family: var(--roboto);
     font-size: 1.4rem;
   }
   a{
@@ -101,7 +99,7 @@ injectGlobal`
   }
 
   h1{
-    font-family: ${playfair};
+    font-family: var(--playfair);
     font-size: 5.0rem;
     letter-spacing: 2px;
     text-transform: capitalize;
@@ -111,28 +109,28 @@ injectGlobal`
   }
 
   h2{
-    font-family: ${playfair};
+    font-family: var(--playfair);
     font-size: 3.0rem;
     letter-spacing: 2px;
     text-transform: uppercase;
   }
 
   h3{
-    font-family: ${playfair};
-    font-size: 2.0rem;
-    text-transform: capitalize;
+    font-family: var(--roboto);
+    font-size: 1.5rem;
+    text-transform: uppercase;
     @media screen and (max-width: 768px) {
       font-size: 1.5rem;
     }
   }
 
   h6{
-    font-family: ${robo};
+    font-family: var(--roboto);
     font-size: 1.4rem;
   }
 
   p{
-    font-family: ${robo};
+    font-family: var(--roboto);
     font-size: 1.2rem;
     strong{
       font-weight: 600;

@@ -160,7 +160,7 @@ const StyledNavigation = styled.nav`
   position: fixed;
   width: 100%;
   top: 0;
-  background: transparentize(var(--blueberry), .1);
+  background: rgba(51,63,106, .9);
   z-index: 100;
   .grid-18{
     grid-column: 4 / span 18;

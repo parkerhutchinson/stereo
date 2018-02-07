@@ -3,7 +3,7 @@ import VerticalText from '../01_atoms/VerticalText';
 import Copy from '../03_organisms/Copy';
 import SectionObserver from '../03_organisms/SectionObserver';
 import Gallery from '../03_organisms/Gallery';
-import styled, { injectGlobal } from 'styled-components';
+import styled from 'styled-components';
 
 const About = (props) => (
   <SectionObserver classes="grid-24 grid-col-24 about" align="center">

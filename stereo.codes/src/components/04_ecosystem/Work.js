@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import WorkFinder from '../03_organisms/WorkFInder';
 import { connect } from 'react-redux';
 
