@@ -233,7 +233,8 @@ const computerCartridge = (draw) =>{
   const protectiveSleeve = draw.path('M311,35 L418,35 L418,90 C418,95.5228475 413.522847,100 408,100 L321,100 C315.477153,100 311,95.5228475 311,90 L311,35 Z M377.36829,43.3055556 L377.36829,90.9722222 L400.532162,90.9722222 L400.532162,43.3055556 L377.36829,43.3055556 Z');
   protectiveSleeve.attr({fill: '#2F2F2F'});
   protectiveSleeve.stroke({ color: '#2F2F2F', width: 1, linejoin: 'round' });
-  protectiveSleeve.move(50, 2);
+  protectiveSleeve.move(10, 2)
+  protectiveSleeve.animate({duration: 1000, ease: 'expoOut', delay: 600}).move(50,2);
 
   const labelSpot = draw.path('M310,326 L462,326 C467.522847,326 472,330.477153 472,336 L472,441 L300,441 L300,336 C300,330.477153 304.477153,326 310,326 Z');
   labelSpot.attr({fill: partIndentBG});
@@ -284,8 +285,10 @@ const computerCartridge = (draw) =>{
   cartridge.add(labelHeaderText);
   cartridge.add(labelListOneText);
   cartridge.add(labelListTwoText);
-  cartridge.scale(.99, 1)
-  cartridge.center(config.width / 2 + 60, config.height / 2 - 30);
+  cartridge.scale(.99, 1);
+  cartridge.move(200, 100).attr({opacity: 0});
+  cartridge.animate({duration: 800, ease: 'expoOut'}).move(300, 100).attr({opacity: 1})
+  cartridge.animate({duration: 800, ease: 'backOut'}).move(300, 200);
 }
 
 export default introSVG;
