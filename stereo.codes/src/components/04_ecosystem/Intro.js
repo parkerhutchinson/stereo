@@ -32,7 +32,7 @@ export default class Intro extends Component {
       )
     } else {
       return (
-        <SectionObserver classes="grid-col-24 grid-24 intro" align="center">
+        <SectionObserver classes="grid-col-24 grid-24 intro" align="center" label="intro">
           <VerticalText>
             <h4>1999 - 2018</h4>
             <p>Developer / Designer / Strategy</p>

@@ -51,7 +51,6 @@ class Navigation extends Component {
   circleSetup() {
     const posLeft = (window.innerWidth / 2) + 20;
     const posTop = (window.innerHeight / 2) * -1 + 20;
-
     return {
       transform: `translateX(${posLeft}px) translateY(${posTop}px)`,
     }

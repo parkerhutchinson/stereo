@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { SHOW_HAMBURGER } from '../actions/navigation-actions';
 import { SHOW_WORK } from '../actions/work-actions';
 import { SHOW_GRID } from '../actions/grid-actions';
+import { CURRENT_SECTION } from '../actions/observer-actions';
 
 function hamburgNavigation(state = { show: false }, action) {
 
@@ -41,12 +42,21 @@ function gridOverlay(state = { show: false }, action) {
   }
 }
 
+function currentSection(state = { section: 'none' }, action) {
+  switch(action.type) {
+    case CURRENT_SECTION:
+      return { section: action.section }
+    default:
+      return state;
+  }
+}
 
 const stereoApp = combineReducers({
-  gridOverlay,
-  workModal,
+  currentSection,
   gallery,
+  gridOverlay,
   hamburgNavigation,
+  workModal,
 });
 
 export default stereoApp;
