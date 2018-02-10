@@ -28,8 +28,9 @@ class WorkFinder extends Component {
           <h2>{ this.state.activeProject }</h2>
           <a href="#nope">arrow</a>
         </header>
-
+        <StyledFinderRows className="workfinder-rows grid-col-14">
         { this.getWork() }
+        </StyledFinderRows>
       </StyledFinder>
     )
   }
@@ -45,14 +46,31 @@ const mapStateToProps = (state) => {
   }
 }
 
+const StyledFinderRows = styled.div`
+  grid-column-start: 2;
+  position: relative;
+  z-index: 1;
+`;
+
 const StyledFinder = styled.div`
+  position: relative;
   background: white;
   grid-column-start: 5;
   padding: 40px 0;
   box-shadow: 10px 10px 30px var(--stormy);
-  height: calc(100vh - 15%);
-  overflow-y: scroll;
-  overflow-x: hidden;
+  height: calc(100vh - 20%);
+  overflow: hidden;
+  &:after{
+    display: block;
+    content: '';
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.7) 60%, rgba(255,255,255,1));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+  }
   header{
     grid-column-start: 2;
     display: flex;

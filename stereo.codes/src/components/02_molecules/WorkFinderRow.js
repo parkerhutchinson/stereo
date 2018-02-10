@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const WorkFinderRow = (props) => {
   return (
-    <StyledRow className="workfinder-row grid-col-14" onMouseOver={() => props.selected(props)}>
+    <StyledRow className="workfinder-row" onMouseOver={() => props.selected(props)}>
       <dd className="workfinder-row-name">
         <dl>
           <dt>{`${props.date} -`}</dt>
@@ -48,7 +48,6 @@ const StyledRow = styled.dl`
   width: 100%;
   display: flex;
   align-items: center;
-  grid-column-start: 2;
   transform: scale(1);
   position: relative;
   z-index: 1;
@@ -57,7 +56,7 @@ const StyledRow = styled.dl`
   .workfinder-row-name{width: 40%;}
   .workfinder-row-stack{width: 40%;}
   .workfinder-row-position{width: 20%;}
-  transition: border-color .8s;
+  transition: border-color 0s;
   & > dd{
     padding: 15px 0 14px;
   }
@@ -80,6 +79,7 @@ const StyledRow = styled.dl`
     }
   }
   &:hover{
+    transition-duration: .5s;
     transform: scale(1.05);
     border-color: var(--radish);
     z-index: 2;

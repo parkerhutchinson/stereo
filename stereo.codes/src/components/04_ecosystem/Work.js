@@ -1,19 +1,25 @@
 import React from 'react';
-import WorkFinder from '../03_organisms/WorkFInder';
+import PropTypes from 'prop-types';
+import { showModal } from '../../actions/modal-actions';
 import { connect } from 'react-redux';
 
 const Work = (props) => (
   <div className="work grid-col-24 grid-24">
-    <WorkFinder />
+    <a href="#open-modal" onClick={() => props.showModal(true)}>button</a>
   </div>
 )
 
-const mapStateToProps = (state) => {
-  return {
-    workModal: state.workModal
-  }
+Work.propTypes = {
+  showModal: PropTypes.func,
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  showModal: (show) => {
+    dispatch(showModal(show))
+  },
+});
+
 export default connect(
-  mapStateToProps,
-  null
+  null,
+  mapDispatchToProps
 )(Work);

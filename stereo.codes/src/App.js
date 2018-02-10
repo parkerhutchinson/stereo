@@ -5,6 +5,8 @@ import Intro from './components/04_ecosystem/Intro';
 import About from './components/04_ecosystem/About';
 import Divider from './components/01_atoms/Divider';
 import Work from './components/04_ecosystem/Work';
+import Modal from './components/03_organisms/Modal';
+import WorkFinder from './components/03_organisms/WorkFInder';
 import { injectGlobal } from 'styled-components';
 
 class App extends Component {
@@ -18,6 +20,9 @@ class App extends Component {
         <Divider label="work"/>
         <Work />
         <GridOverlay />
+        <Modal>
+          <WorkFinder />
+        </Modal>
       </div>
     );
   }
@@ -88,6 +93,7 @@ injectGlobal`
       content: '';
       display: block;
       height: 100vh;
+      max-height: 500px;
       width: 100%;
       position: absolute;
       top: 0;
