@@ -60,7 +60,7 @@ const StyledCopy = styled.article`
     z-index: 2;
     padding: ${copyWrapPadding} 0 ${copyWrapPadding} 0;
     .copy-content{
-      padding: 0 10% 5px;
+      padding: 0 11.50% 5px;
     }
     @media screen and (max-width: 768px) {
       padding: ${copyWrapPaddingMobile} 0 ${copyWrapPaddingMobile} 0;
@@ -71,7 +71,7 @@ const StyledCopy = styled.article`
     position: absolute;
     top: 0;
     right: 0;
-    width: 79.89%;
+    width: 77.85%;
     height: 100%;
     z-index: 1;
   }

@@ -62,7 +62,7 @@ injectGlobal`
   @import url(https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700);
   :root{
     --stormy: rgba(44, 46, 71, 1);
-    --radish: rgba(234, 76, 68, 1);
+    --radish: rgba(255, 74, 74, 1);
     --blueberry: rgba(51, 63, 106, 1);
     --milesdavis: rgba(73,88,143,1);
     --snow: rgba(255,255,255,1);

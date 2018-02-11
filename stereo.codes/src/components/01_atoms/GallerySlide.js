@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 
 export default class GallerySlide extends Component {
-  componentDidMount(nextprops) {
+  componentDidMount() {
     if (this.props.slideState === 4) {
       setTimeout(() => {
         ReactDOM.findDOMNode(this.refs.slide).classList.remove('out');
@@ -27,7 +27,7 @@ export default class GallerySlide extends Component {
         return '';
     }
   }
-  
+
   shouldComponentUpdate(newprops) {
     return newprops.slideState !== this.props.slideState;
   }
@@ -63,18 +63,18 @@ const StyledSlide = styled.div`
   opacity: 0;
   background-size: cover;
   background-position: center;
-  transform: scale(.8);
+  transform: scale(.8) translate3d(0,0,0);
   transition: all .8s;
   z-index: 1;
   pointer-events: none;
-  &:after{
+  &:before{
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     display: block;
-    height: 100%;
-    width: 100%;
+    height: 110%;
+    width: 110%;
     opacity: 1;
     background: var(--snow);
     transition: all .8s;
@@ -83,29 +83,29 @@ const StyledSlide = styled.div`
     left: -10%;
     opacity: 0;
     z-index: 3;
-    transform: scale(1.1);
+    transform: scale(1.1) translate3d(0,0,0);
   }
   &.current{
     left: 0;
     z-index: 3;
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translate3d(0,0,0);
     box-shadow: 10px 10px 30px rgba(0,0,0,.3);
-    &:after{ opacity: 0; }
+    &:before{ opacity: 0; }
   }
   &.next{
     left: 10%;
     opacity: 1;
-    &:after{ opacity: .4; }
     box-shadow: 10px 10px 30px rgba(0,0,0,.1);
-    transform: scale(.9);
+    transform: scale(.9) translate3d(0,0,0);
     z-index: 2;
+    &:before{ opacity: .4; }
   }
   &.last{
     left: 20%;
     opacity: 1;
-    transform: scale(.8);
+    transform: scale(.8) translate3d(0,0,0);
     z-index: 0;
-    &:after{ opacity: .8; }
+    &:before{ opacity: .8; }
   }
 `;

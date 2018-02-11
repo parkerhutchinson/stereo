@@ -11,7 +11,7 @@ const About = (props) => (
       <h4>STEREO</h4>
     </VerticalText>
     <StyledAboutContent className="grid-col-18 grid-18 about-content">
-      <Copy title="Hackerman" subTitle="Half Unicorn" grid={10}>
+      <Copy title="Hackerman" subTitle="Half Unicorn" grid={9}>
         <p>This is our world now. The world of the electron and the
         switch; the beauty of the baud. We exist without nationality,
         skin color, or religious bias. You wage wars, murder, cheat,

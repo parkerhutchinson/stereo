@@ -50,8 +50,22 @@ function modal(state = { show: false }, action) {
       return state;
   }
 }
+const bgImages = [
+  {
+    label: 'test',
+    image: 'https://images.unsplash.com/reserve/Hxev8VTsTuOJ27thHQdK_DSC_0068.JPG',
+  },
+  {
+    label: 'test two',
+    image: 'https://images.unsplash.com/photo-1484627147104-f5197bcd6651?auto=format&fit=crop&w=3150&q=80',
+  },
+]
+function workImages(state = bgImages) {
+  return state;
+}
 
 const stereoApp = combineReducers({
+  workImages,
   modal,
   currentSection,
   gallery,

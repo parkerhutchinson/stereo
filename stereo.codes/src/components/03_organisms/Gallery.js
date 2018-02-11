@@ -37,7 +37,11 @@ class Gallery extends Component {
     // update slides and setup default slides after
     const timer = setTimeout(() => {
       if (ReactDOM.findDOMNode(this.refs.gallery).querySelector('.out')) {
-        ReactDOM.findDOMNode(this.refs.gallery).querySelector('.out').classList.remove('out');
+        ReactDOM
+        .findDOMNode(this.refs.gallery)
+        .querySelector('.out')
+        .classList
+        .remove('out');
       }
       clearTimeout(timer);
     }, 700);

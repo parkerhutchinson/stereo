@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 
-export default const WorkBgElement = (props) => {
+const WorkBgElement = (props) => {
   const StyledBgWorkElement = styled.div`
     position: relative;
     &:before{
@@ -10,6 +10,8 @@ export default const WorkBgElement = (props) => {
       display: block;
       width: 100%;
       height: 100%;
+      background: none;
+      border: 10px solid var(--radish);
     }
     .bg-work-image{
       position: absolute;
@@ -34,5 +36,7 @@ WorkBgElement.propTypes = {
 }
 
 WorkBgElement.defaultProps = {
-  image: '';
+  image: '',
 }
+
+export default WorkBgElement;

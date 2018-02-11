@@ -1,11 +1,42 @@
-import Reactfrom 'react';
+import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
+import WorkBgElement from '../02_molecules/WorkBgElement';
+import { connect } from 'react-redux';
 
-export default const WorkLauncher = (props) => {
-  return(
-    <div className="grid-18">
+class WorkLauncher extends Component {
+  getWorkElements(props) {
+    const { mobileWork } = props;
 
-    </div>
-  )
+    return mobileWork.map((elem, i) =>
+      <WorkBgElement image={elem.image} key={i}/>
+    )
+  }
+  render() {
+    return(
+      <div className="grid-18">
+        { this.getWorkElements(this.props) }
+      </div>
+    )
+  }
 }
+
+WorkLauncher.propTypes = {
+  mobileWork: PropTypes.array,
+}
+
+WorkLauncher.defaultProps = {
+  mobileWork: [],
+}
+
+const mapStateToProps = (state) => {
+  return {
+    mobileWork: state.workImages,
+  }
+}
+
+
+export default connect(
+  mapStateToProps,
+  null
+)(WorkLauncher)
