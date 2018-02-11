@@ -60,6 +60,7 @@ const StyledFinder = styled.div`
   box-shadow: 10px 10px 30px var(--stormy);
   height: calc(100vh - 20%);
   overflow: hidden;
+  z-index: 2;
   &:after{
     display: block;
     content: '';

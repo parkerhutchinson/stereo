@@ -24,6 +24,7 @@ const StyledDivider = styled.div`
   grid-column: 1 / span 24;
   position: relative;
   padding: 140px 0 40px;
+  text-align: center;
   &:before{
     content: '';
     display: block;
@@ -38,11 +39,11 @@ const StyledDivider = styled.div`
   }
   h5{
     position: relative;
-    text-align: center;
     text-transform: uppercase;
     background: var(--blueberry);
     z-index: 1;
     padding: 10px 0;
+    display: inline-block;
   }
 `;
 

@@ -41,7 +41,7 @@ export default class Intro extends Component {
           <Copy
             title="Hack The Planet"
             subTitle="Crash n' Burn"
-            grid={10}
+            grid={9}
           >
           <p>This is our world now. The world of the electron and the
             switch; the beauty of the baud. We exist without nationality,

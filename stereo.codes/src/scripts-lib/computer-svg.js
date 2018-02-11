@@ -8,8 +8,8 @@ try {
 }
 
 const config = {
-  width: 500,
-  height: 500,
+  width: 530,
+  height: 530,
   lineCount: 90,
   color: {
     stormy: '#2c2e47',
@@ -54,18 +54,18 @@ const circleLinesSVG = (draw) => {
   circleM.animate({delay: 200, duration: 400, ease: 'expoOut'}).radius(config.width / 2);
 
   const circleMini = draw
-  .circle(config.width - 100)
+  .circle(config.width - 130)
   .attr({fill: circleMiniGradient})
   .center(config.width / 2, config.height /2);
 
   const circleMiniShadow = draw
-  .circle(config.width - 100)
+  .circle(config.width - 130)
   .attr({fill: config.color.stormy, opacity: '.3'})
   .center(config.width / 2, config.height /2);
 
   // filter 'drop shadow' aka blur
   circleMiniShadow.filter(function(add) {
-    const blur = add.offset(6, 6).in(add.sourceAlpha).gaussianBlur(10);
+    const blur = add.offset(6, 6).in(add.sourceAlpha).gaussianBlur(20);
 
     add.blend(add.source, blur);
     this.size('200%','200%').move(0, 0);
@@ -73,10 +73,10 @@ const circleLinesSVG = (draw) => {
   });
 
   circleMini.radius(0);
-  circleMini.animate({delay: 200, ease: 'expoOut'}).radius(config.width - 300);
+  circleMini.animate({delay: 200, ease: 'expoOut'}).radius(config.width - 315);
 
   circleMiniShadow.radius(0);
-  circleMiniShadow.animate({delay: 200, ease: 'expoOut'}).radius(config.width - 300);
+  circleMiniShadow.animate({delay: 200, ease: 'expoOut'}).radius(config.width - 315);
 
   // add circle and circle shadow to line group
   circleG.add(circleMiniShadow);

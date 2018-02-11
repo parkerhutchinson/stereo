@@ -27,6 +27,10 @@ export default class GallerySlide extends Component {
         return '';
     }
   }
+  
+  shouldComponentUpdate(newprops) {
+    return newprops.slideState !== this.props.slideState;
+  }
 
   render() {
     const { image, slideState } = this.props;
