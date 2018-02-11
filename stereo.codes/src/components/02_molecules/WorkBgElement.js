@@ -5,28 +5,31 @@ import styled from 'styled-components';
 const WorkBgElement = (props) => {
   const StyledBgWorkElement = styled.div`
     position: relative;
+    width: 100%;
+    min-height: 200px;
+    margin-bottom: 60px;
     &:before{
       content: '';
+      position: absolute;
+      top: 10%;
+      left: 0;
       display: block;
-      width: 100%;
-      height: 100%;
+      width: calc(100% - 10px);
+      height: 80%;
       background: none;
-      border: 10px solid var(--radish);
+      border: 5px solid var(--radish);
     }
     .bg-work-image{
-      position: absolute;
-      top: 0;
+      position: relative;
       left: 10%;
-      width: 89%;
-      height: 100%;
-      background-image: url(${props.image});
-      background-repeat: no-repeat;
-      background-size: contain;
+      width: 80%;
+      display: block;
+      box-shadow: 10px 10px 30px 0 var(--stormy);
     }
   `;
   return(
-    <StyledBgWorkElement className="grid-col-6">
-      <div className="bg-work-image"></div>
+    <StyledBgWorkElement>
+      <img className="bg-work-image" src={props.image} />
     </StyledBgWorkElement>
   )
 }

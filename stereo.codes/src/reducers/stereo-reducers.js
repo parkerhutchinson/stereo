@@ -4,6 +4,7 @@ import { SHOW_GRID } from '../actions/grid-actions';
 import { CURRENT_SECTION } from '../actions/observer-actions';
 import { SHOW_MODAL } from '../actions/modal-actions';
 
+
 function hamburgNavigation(state = { show: false }, action) {
 
   switch(action.type) {
@@ -53,11 +54,27 @@ function modal(state = { show: false }, action) {
 const bgImages = [
   {
     label: 'test',
-    image: 'https://images.unsplash.com/reserve/Hxev8VTsTuOJ27thHQdK_DSC_0068.JPG',
+    image: './images/bg-work/lycoming-mobile.jpg',
   },
   {
     label: 'test two',
-    image: 'https://images.unsplash.com/photo-1484627147104-f5197bcd6651?auto=format&fit=crop&w=3150&q=80',
+    image: './images/bg-work/draftboard-mobile.jpg',
+  },
+  {
+    label: 'test two',
+    image: './images/bg-work/lim-mobile.jpg',
+  },
+  {
+    label: 'test',
+    image: './images/bg-work/lycoming-mobile.jpg',
+  },
+  {
+    label: 'test two',
+    image: './images/bg-work/draftboard-mobile.jpg',
+  },
+  {
+    label: 'test two',
+    image: './images/bg-work/lim-mobile.jpg',
   },
 ]
 function workImages(state = bgImages) {
