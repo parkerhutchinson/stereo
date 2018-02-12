@@ -4,7 +4,7 @@ try {
   require('svg.easing.js');
   require('svg.filter.js');
 } catch(error) {
-
+  console.log(error);
 }
 
 const config = {

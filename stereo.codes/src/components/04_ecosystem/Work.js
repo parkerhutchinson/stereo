@@ -10,7 +10,7 @@ const Work = (props) => (
     <WorkLauncherBg />
     <StyledWorkLauncher className="work-launcher">
       <div className="work-launcher-main">
-        <StyledButton onClick={() => props.showModal(true)}>Browse Projetcts</StyledButton>
+        <StyledButton onClick={() => props.showModal(true)}>Browse Projects</StyledButton>
         <p>Over <strong>10 years</strong> of professional web<br/>development experience.</p>
       </div>
     </StyledWorkLauncher>

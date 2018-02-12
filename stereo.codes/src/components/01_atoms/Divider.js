@@ -23,7 +23,7 @@ const StyledDivider = styled.div`
   width: 100%;
   grid-column: 1 / span 24;
   position: relative;
-  padding: 140px 0 40px;
+  padding: 250px 0 40px;
   text-align: center;
   &:before{
     content: '';

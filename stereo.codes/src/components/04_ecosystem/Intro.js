@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SectionObserver from '../03_organisms/SectionObserver';
 import Copy from '../03_organisms/Copy';
 import NavLinkArrow from '../01_atoms/NavLinkArrow';
 import VerticalText from '../01_atoms/VerticalText';
+
 /* istanbul ignore next */
 import introSVG from '../../scripts-lib/computer-svg';
 
@@ -18,7 +20,6 @@ export default class Intro extends Component {
     } catch(error) {
       // do nothing
     }
-
   }
   componentDidCatch(error) {
     if(error) {

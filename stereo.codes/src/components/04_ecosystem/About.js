@@ -1,12 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import VerticalText from '../01_atoms/VerticalText';
 import Copy from '../03_organisms/Copy';
 import SectionObserver from '../03_organisms/SectionObserver';
 import Gallery from '../03_organisms/Gallery';
 import styled from 'styled-components';
+import { setSection } from '../../actions/observer-actions';
+import { connect } from 'react-redux';
+
 
 const About = (props) => (
-  <SectionObserver classes="grid-24 grid-col-24 about" align="center">
+  <SectionObserver classes="grid-24 grid-col-24 about" align="center" label="about">
     <VerticalText>
       <h4>STEREO</h4>
     </VerticalText>

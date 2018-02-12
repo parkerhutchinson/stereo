@@ -14,9 +14,9 @@ class WorkLauncherBg extends Component {
       const imageIndexOne = i === 0 ? i : i + 1;
       const imageIndexTwo = i === 0 ? i + 1 : i + 2;
       workbgGroup.push(
-        <StyledColumnGroup>
-          <WorkBgElement image={mobileWork[imageIndexOne].image} key={i} />
-          <WorkBgElement image={mobileWork[imageIndexTwo].image} key={i} />
+        <StyledColumnGroup key={i}>
+          <WorkBgElement image={mobileWork[imageIndexOne].image} />
+          <WorkBgElement image={mobileWork[imageIndexTwo].image} />
         </StyledColumnGroup>
       )
     }

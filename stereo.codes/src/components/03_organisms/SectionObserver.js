@@ -21,10 +21,14 @@ class SectionObserver extends Component {
   componentWillUnMount() {
     this.observer.unobserve(this.section);
   }
+  setSection = () => {
+    this.props.setSection(this.props.label);
+  }
   onChange(entries) {
     entries.forEach((entry) => {
       if (entry.intersectionRatio > .75) {
         entry.target.classList.add('inview');
+        this.setSection()
       } else {
         entry.target.classList.remove('inview');
       }
@@ -50,7 +54,6 @@ SectionObserver.propTypes = {
   align: PropTypes.string,
   label: PropTypes.string,
   setSection: PropTypes.func,
-  section: PropTypes.string,
 }
 
 SectionObserver.defaultProps = {
@@ -65,13 +68,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 })
 
-const mapStateToProps = (state) => {
-  return {
-    section: state.currentSection.section
-  }
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SectionObserver)
+  null,
+  mapDispatchToProps
+)(SectionObserver);
