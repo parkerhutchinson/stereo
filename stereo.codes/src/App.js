@@ -7,6 +7,7 @@ import Divider from './components/01_atoms/Divider';
 import Work from './components/04_ecosystem/Work';
 import Modal from './components/03_organisms/Modal';
 import WorkFinder from './components/03_organisms/WorkFInder';
+import SectionObserver from './components/03_organisms/SectionObserver';
 import { injectGlobal } from 'styled-components';
 
 class App extends Component {
@@ -16,9 +17,12 @@ class App extends Component {
         <Navigation />
         <Intro />
         <Divider label="about"/>
+
+        <Work />
         <About />
         <Divider label="work"/>
-        <Work />
+        <About />
+
         <GridOverlay />
         <Modal>
           <WorkFinder />
@@ -167,6 +171,7 @@ injectGlobal`
 
   .about{
     transition: all .4s;
+    overflow: hidden;
     .vertical-text h4{margin: 0;}
   }
 
@@ -228,6 +233,10 @@ injectGlobal`
 
   .work{
     width: 100%;
+    display: block;
+    clear: both;
+    height: 100vh;
+    overflow: hidden;
   }
 
 `;

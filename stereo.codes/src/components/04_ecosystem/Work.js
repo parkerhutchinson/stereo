@@ -4,21 +4,34 @@ import { modalOpen } from '../../actions/modal-actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import WorkLauncherBg from '../03_organisms/WorkLauncherBg';
+import SectionObserver from '../03_organisms/SectionObserver';
 
 const Work = (props) => (
-  <StyledWork className="work grid-col-24 grid-24">
-    <WorkLauncherBg />
-    <StyledWorkLauncher className="work-launcher">
-      <div className="work-launcher-main">
-        <StyledButton onClick={() => props.modalOpen(true)}>Browse Projects</StyledButton>
-        <p>Over <strong>10 years</strong> of professional web<br/>development experience.</p>
-      </div>
-    </StyledWorkLauncher>
-  </StyledWork>
+  <SectionObserver classes="grid-col-24 work grid-24" label="work" align="center">
+    <StyledWork className="grid-col-24 grid-24">
+
+      <WorkLauncherBg />
+
+      <StyledWorkLauncher className="work-launcher">
+        <div className="work-launcher-main">
+          <StyledButton onClick={() => props.modalOpen(true)}>Browse Projects</StyledButton>
+          <p>Over <strong>10 years</strong> of professional web<br/>development experience.</p>
+        </div>
+      </StyledWorkLauncher>
+
+    </StyledWork>
+  </SectionObserver>
 )
 
 Work.propTypes = {
   modalOpen: PropTypes.func,
+  section: PropTypes.string,
+}
+
+const mapStateToProps = (state) => {
+  return {
+    section: state.section,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -28,8 +41,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
-  null,
-  mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps,
 )(Work);
 
 const StyledWorkLauncher = styled.div`
@@ -62,6 +75,7 @@ const StyledButton = styled.button`
 
 const StyledWork = styled.div`
   min-height: 100vh;
+  margin-bottom: 200px;
   .grid-18{
     grid-column-start: 4;
   }

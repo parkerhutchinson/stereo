@@ -25,7 +25,7 @@ class WorkLauncherBg extends Component {
   }
   render() {
     return(
-      <StyledWorkLauncher className="bg-work grid-col-18">
+      <StyledWorkLauncher className={`bg-work grid-col-18`}>
         { this.getWorkElements(this.props) }
       </StyledWorkLauncher>
     )
@@ -42,11 +42,9 @@ WorkLauncherBg.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
-    section: state.Section,
     mobileWork: state.workImages,
   }
 }
-
 
 export default connect(
   mapStateToProps,

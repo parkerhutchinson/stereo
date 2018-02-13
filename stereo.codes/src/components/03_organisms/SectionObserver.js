@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { sectionAdd } from '../../actions/observer-actions';
 import { connect } from 'react-redux';
+import { req } from 'request';
 
-// have to use this otherwise it wont work in testing or other browsers
 const IntersectionObserver = require('intersection-observer-polyfill/dist/IntersectionObserver');
+// have to use this otherwise it wont work in testing or other browsers
+//
 
 const observerConfig = {
-  threshold: [0.5, 0.75],
+  threshold: [0, 0.25, 0.5, 0.75, 1.0],
 }
 
 class SectionObserver extends Component {
@@ -16,7 +18,15 @@ class SectionObserver extends Component {
     this.observer = new IntersectionObserver((entries) => this.onChange(entries), observerConfig);
   }
   componentDidMount() {
+    // safari sucks at support, but very good at render
+
     this.observer.observe(this.section);
+
+    const isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+
+    if (isSafari) {
+      this.props.sectionAdd('showall');
+    }
   }
   componentWillUnMount() {
     this.observer.unobserve(this.section);
