@@ -8,7 +8,7 @@ import { MODAL_OPEN } from '../actions/modal-actions';
 function navigation(state = { open: false }, action) {
   switch(action.type) {
     case NAVIGATION_OPEN:
-      return { open: action.open };
+      return Object.assign({}, state, { open: action.open });
     default:
       return state
   }
@@ -27,7 +27,7 @@ function gallery() {
 function grid(state = { activate: false }, action) {
   switch(action.type) {
     case GRID_ACTIVATE:
-      return { activate: action.show }
+      return Object.assign({}, state, { activate: action.show });
     default:
       return state;
   }
@@ -36,7 +36,7 @@ function grid(state = { activate: false }, action) {
 function section(state = '', action) {
   switch(action.type) {
     case SECTION_ADD:
-      return action.section
+      return Object.assign({}, state, action.section)
     default:
       return state;
   }
@@ -45,7 +45,7 @@ function section(state = '', action) {
 function modal(state = { MODAL_OPEN: false }, action) {
   switch(action.type) {
     case MODAL_OPEN:
-      return { open: action.open };
+      return Object.assign({}, state, { open: action.open });
     default:
       return state;
   }
