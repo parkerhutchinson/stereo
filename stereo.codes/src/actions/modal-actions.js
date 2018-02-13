@@ -1,6 +1,6 @@
-export const SHOW_MODAL = 'SHOW_MODAL';
+export const MODAL_OPEN = 'MODAL_OPEN';
 
-export const showModal = (show) => ({
-  type: SHOW_MODAL,
-  show
+export const modalOpen = (open) => ({
+  type: MODAL_OPEN,
+  open
 })

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Logo from '../01_atoms/Logo';
 import NavLink from '../01_atoms/NavLink';
 import { connect } from 'react-redux';
-import { showNav } from '../../actions/navigation-actions';
+import { navigationOpen } from '../../actions/navigation-actions';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 const Velocity = require('velocity-animate');
@@ -36,11 +36,11 @@ class Navigation extends Component {
   }
 
   openHamburger(evt) {
-    if (!this.props.showNavState) {
-      this.props.showNav(true);
+    if (!this.props.navigation.open) {
+      this.props.navigationOpen(true);
       this.transitionOpen(true);
     } else {
-      this.props.showNav(false);
+      this.props.navigationOpen(false);
       this.transitionOpen(false);
     }
 
@@ -111,13 +111,12 @@ class Navigation extends Component {
     });
   }
   componentWillReceiveProps(next) {
-    if(!next.showNavState) {
-      console.log(next);
+    if(!next.navigation) {
       this.transitionOpen(false);
     }
   }
   render() {
-    const show = this.props.showNavState ? 'active' : '';
+    const show = this.props.navigation.open ? 'active' : '';
     return (
       <StyledNavigation className={`${show} navigation`}>
         <div className="grid-col-18 grid-18">
@@ -135,18 +134,23 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-  showNavState: PropTypes.bool,
+  navigation: PropTypes.object,
+  navigationOpen: PropTypes.func,
+}
+
+Navigation.defaultProps = {
+  navigation: { open: false }
 }
 
 const mapStateToProps = (state) => {
   return {
-    showNavState: state.hamburgNavigation.show,
+    navigation: state.navigation,
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  showNav: (show) => {
-    dispatch(showNav(show))
+  navigationOpen: (open) => {
+    dispatch(navigationOpen(open))
   },
 })
 

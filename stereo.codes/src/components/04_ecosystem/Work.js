@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { showModal } from '../../actions/modal-actions';
+import { modalOpen } from '../../actions/modal-actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import WorkLauncherBg from '../03_organisms/WorkLauncherBg';
@@ -10,7 +10,7 @@ const Work = (props) => (
     <WorkLauncherBg />
     <StyledWorkLauncher className="work-launcher">
       <div className="work-launcher-main">
-        <StyledButton onClick={() => props.showModal(true)}>Browse Projects</StyledButton>
+        <StyledButton onClick={() => props.modalOpen(true)}>Browse Projects</StyledButton>
         <p>Over <strong>10 years</strong> of professional web<br/>development experience.</p>
       </div>
     </StyledWorkLauncher>
@@ -18,12 +18,12 @@ const Work = (props) => (
 )
 
 Work.propTypes = {
-  showModal: PropTypes.func,
+  modalOpen: PropTypes.func,
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  showModal: (show) => {
-    dispatch(showModal(show))
+  modalOpen: (open) => {
+    dispatch(modalOpen(open))
   },
 });
 

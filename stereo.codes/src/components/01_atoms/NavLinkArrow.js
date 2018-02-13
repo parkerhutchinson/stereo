@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { showNav } from '../../actions/navigation-actions';
+import { navigationOpen } from '../../actions/navigation-actions';
 import styled from 'styled-components';
 const Velocity = require('velocity-animate');
 
@@ -13,7 +13,7 @@ class NavLink extends Component {
   }
   handleScrollTo(evt,url) {
     const scrollToElem = document.querySelector(url);
-    this.props.showNav(false);
+    this.props.navigationOpen(false);
     Velocity(scrollToElem, "scroll",  { duration: 1500, queue: false, offset: -150, easing: "easeOutCirc" });
 
     evt.preventDefault();
@@ -43,11 +43,12 @@ NavLink.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   classes: PropTypes.string,
+  navigationOpen: PropTypes.func,
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  showNav: (show) => {
-    dispatch(showNav(show))
+  navigationOpen: (show) => {
+    dispatch(navigationOpen(show))
   }
 })
 const buttonPadding = '23px';

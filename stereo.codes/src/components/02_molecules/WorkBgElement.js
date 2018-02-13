@@ -29,7 +29,7 @@ const WorkBgElement = (props) => {
   `;
   return(
     <StyledBgWorkElement>
-      <img className="bg-work-image" src={props.image} />
+      <img className="bg-work-image" src={props.image} alt="bg-element"/>
     </StyledBgWorkElement>
   )
 }

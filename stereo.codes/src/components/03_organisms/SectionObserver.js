@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { setSection } from '../../actions/observer-actions';
+import { sectionAdd } from '../../actions/observer-actions';
 import { connect } from 'react-redux';
 
 // have to use this otherwise it wont work in testing or other browsers
@@ -22,7 +22,7 @@ class SectionObserver extends Component {
     this.observer.unobserve(this.section);
   }
   setSection = () => {
-    this.props.setSection(this.props.label);
+    this.props.sectionAdd(this.props.label);
   }
   onChange(entries) {
     entries.forEach((entry) => {
@@ -53,7 +53,7 @@ SectionObserver.propTypes = {
   classes: PropTypes.string,
   align: PropTypes.string,
   label: PropTypes.string,
-  setSection: PropTypes.func,
+  sectionAdd: PropTypes.func,
 }
 
 SectionObserver.defaultProps = {
@@ -63,8 +63,8 @@ SectionObserver.defaultProps = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setSection: (section) => {
-    dispatch(setSection(section))
+  sectionAdd: (section) => {
+    dispatch(sectionAdd(section))
   },
 })
 

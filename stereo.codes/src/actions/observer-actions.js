@@ -1,6 +1,6 @@
-export const CURRENT_SECTION = 'CURRENT_SECTION';
+export const SECTION_ADD = 'SECTION_ADD';
 
-export const setSection = (section) => ({
-  type: 'CURRENT_SECTION',
+export const sectionAdd = (section) => ({
+  type: 'SECTION_ADD',
   section
 })

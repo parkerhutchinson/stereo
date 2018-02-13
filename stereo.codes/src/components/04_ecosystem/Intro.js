@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import SectionObserver from '../03_organisms/SectionObserver';
 import Copy from '../03_organisms/Copy';
 import NavLinkArrow from '../01_atoms/NavLinkArrow';

@@ -1,6 +1,6 @@
-export const SHOW_HAMBURGER = 'SHOW_HAMBURGER';
+export const NAVIGATION_OPEN = 'NAVIGATION_OPEN';
 
-export const showNav = (show) => ({
-  type: 'SHOW_HAMBURGER',
-  show
+export const navigationOpen = (open) => ({
+  type: 'NAVIGATION_OPEN',
+  open
 })

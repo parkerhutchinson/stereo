@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { showNav } from '../../actions/navigation-actions';
+import { navigationOpen } from '../../actions/navigation-actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 const Velocity = require('velocity-animate');
@@ -9,7 +9,7 @@ const Velocity = require('velocity-animate');
 class Logo extends Component {
   handleClick(evt) {
     Velocity(document.body, "scroll", { duration: 1000, easing: "easeInOutQuad" });
-    this.props.showNav(false);
+    this.props.navigationOpen(false);
     evt.preventDefault();
     return false;
   }
@@ -27,8 +27,8 @@ Logo.propTypes = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  showNav: (show) => {
-    dispatch(showNav(show))
+  navigationOpen: (show) => {
+    dispatch(navigationOpen(show))
   }
 })
 

@@ -1,15 +1,14 @@
 import { combineReducers } from 'redux';
-import { SHOW_HAMBURGER } from '../actions/navigation-actions';
-import { SHOW_GRID } from '../actions/grid-actions';
-import { CURRENT_SECTION } from '../actions/observer-actions';
-import { SHOW_MODAL } from '../actions/modal-actions';
+import { NAVIGATION_OPEN } from '../actions/navigation-actions';
+import { GRID_ACTIVATE } from '../actions/grid-actions';
+import { SECTION_ADD } from '../actions/observer-actions';
+import { MODAL_OPEN } from '../actions/modal-actions';
 
 
-function hamburgNavigation(state = { show: false }, action) {
-
+function navigation(state = { open: false }, action) {
   switch(action.type) {
-    case SHOW_HAMBURGER:
-      return { show: action.show };
+    case NAVIGATION_OPEN:
+      return { open: action.open };
     default:
       return state
   }
@@ -25,28 +24,28 @@ function gallery() {
   return galleryImages;
 }
 
-function gridOverlay(state = { show: false }, action) {
+function grid(state = { activate: false }, action) {
   switch(action.type) {
-    case SHOW_GRID:
-      return { show: action.show }
+    case GRID_ACTIVATE:
+      return { activate: action.show }
     default:
       return state;
   }
 }
 
-function currentSection(state = { section: 'none' }, action) {
+function section(state = '', action) {
   switch(action.type) {
-    case CURRENT_SECTION:
-      return { section: action.section }
+    case SECTION_ADD:
+      return action.section
     default:
       return state;
   }
 }
 
-function modal(state = { show: false }, action) {
+function modal(state = { MODAL_OPEN: false }, action) {
   switch(action.type) {
-    case SHOW_MODAL:
-      return { show: action.show };
+    case MODAL_OPEN:
+      return { open: action.open };
     default:
       return state;
   }
@@ -84,10 +83,10 @@ function workImages(state = bgImages) {
 const stereoApp = combineReducers({
   workImages,
   modal,
-  currentSection,
+  section,
   gallery,
-  gridOverlay,
-  hamburgNavigation,
+  grid,
+  navigation,
 });
 
 export default stereoApp;

@@ -3,16 +3,16 @@ import { PropTypes } from 'prop-types';
 import {VelocityComponent} from 'velocity-react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { showGrid } from '../../actions/grid-actions';
+import { gridActivate } from '../../actions/grid-actions';
 
 class GridOverlayButton extends Component {
   componentWillMount() {
     this.setState({ isActive: false });
   }
   toggleButton() {
-    const shouldActive = !this.props.gridOverlay.show ? true : false;
+    const shouldActive = !this.props.grid.activate ? true : false;
     this.setState({ isActive:  shouldActive});
-    this.props.showGrid(shouldActive);
+    this.props.gridActivate(shouldActive);
   }
 
   render() {
@@ -38,17 +38,17 @@ class GridOverlayButton extends Component {
 }
 
 GridOverlayButton.propTypes = {
-  gridOverlay: PropTypes.object,
+  grid: PropTypes.object,
 }
 
 const mapStateToProps = (state) => {
   return {
-    gridOverlay: state.gridOverlay
+    grid: state.grid
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  showGrid: (show) => {
-    dispatch(showGrid(show))
+  gridActivate: (activate) => {
+    dispatch(gridActivate(activate))
   }
 })
 const StyledGridUI = styled.div`

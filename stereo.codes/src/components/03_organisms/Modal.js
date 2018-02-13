@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
-import { showModal } from '../../actions/modal-actions';
+import { modalOpen } from '../../actions/modal-actions';
 import { connect } from 'react-redux';
 
 class Modal extends Component {
   render() {
-    const showClass = this.props.modalState ? 'active' : '';
-    console.log(showClass);
+    const showClass = this.props.modal.open ? 'active' : '';
     return (
       <StyledModal className={`${showClass} grid-24`}>
-        <div className="modal-bg" onClick={() => this.props.closeModal(false)}></div>
+        <div className="modal-bg" onClick={() => this.props.modalOpen(false)}></div>
         { this.props.children }
       </StyledModal>
     )
@@ -18,13 +17,13 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-  modalState: PropTypes.bool,
-  closeModal: PropTypes.func,
+  modal: PropTypes.object,
+  modalOpen: PropTypes.func,
   children: PropTypes.element,
 }
 
 Modal.defaultProps = {
-  modalState: false,
+  modal: { open: false },
 }
 
 const StyledModal = styled.section`
@@ -56,14 +55,14 @@ const StyledModal = styled.section`
 `;
 
 const mapDispatchToProps = (dispatch) => ({
-  closeModal: (show) => {
-    dispatch(showModal(show))
+  modalOpen: (show) => {
+    dispatch(modalOpen(show))
   },
 });
 
 const mapStateToProps = (state) => {
   return {
-    modalState: state.modal.show,
+    modal: state.modal,
   }
 };
 

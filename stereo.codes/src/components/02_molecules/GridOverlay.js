@@ -19,7 +19,7 @@ class GridOverlay extends Component {
   render() {
     return (
       <div className="grid-ui">
-        <StyledGridOverlay className={`${this.props.isActive ? 'active' : ''} grid-overlay`}>
+        <StyledGridOverlay className={`${this.props.grid.activate ? 'active' : ''} grid-overlay`}>
           {this.createGrid()}
         </StyledGridOverlay>
         <GridOverlayButton />
@@ -30,17 +30,17 @@ class GridOverlay extends Component {
 
 GridOverlay.propTypes = {
   gridCount: PropTypes.number,
-  isActive: PropTypes.bool,
+  grid: PropTypes.object,
 }
 
 GridOverlay.defaultProps = {
   gridCount: 24,
-  isActive: false,
+  grid: { activate: false },
 }
 
 const mapStateToProps = (state) => {
   return {
-    isActive: state.gridOverlay.show,
+    grid: state.grid,
   }
 }
 
