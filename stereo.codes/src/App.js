@@ -17,12 +17,11 @@ class App extends Component {
         <Navigation />
         <Intro />
         <Divider label="about"/>
-
-        <Work />
         <About />
         <Divider label="work"/>
-        <About />
-
+        <SectionObserver label="work">
+          <Work />
+        </SectionObserver>
         <GridOverlay />
         <Modal>
           <WorkFinder />

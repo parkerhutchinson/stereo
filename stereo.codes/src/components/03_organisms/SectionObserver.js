@@ -19,7 +19,6 @@ class SectionObserver extends Component {
   }
   componentDidMount() {
     // safari sucks at support, but very good at render
-
     this.observer.observe(this.section);
 
     const isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
@@ -47,10 +46,12 @@ class SectionObserver extends Component {
   render() {
     const StyledObserver = styled.section`
       align-items: ${this.props.align};
+      width: 100%;
+      grid-column: 1 / span 24;
     `;
     return (
       <StyledObserver
-        className={`${this.props.classes} observer`}
+        className={`${this.props.classes} observer grid-24`}
         ref="sectionObserver" innerRef={(comp) => { this.section = comp}}
       >
         { this.props.children }
