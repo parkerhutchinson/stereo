@@ -29,7 +29,24 @@ class WorkFinder extends Component {
           <a href="#nope">arrow</a>
         </header>
         <StyledFinderRows className="workfinder-rows grid-col-14">
-        { this.getWork() }
+          <StyledFinderLabels>
+            <dd className="workfinder-label-name">
+              <dl>
+                <dt>Name</dt>
+              </dl>
+            </dd>
+            <dd className="workfinder-label-stack">
+              <dl>
+                <dt>Stack</dt>
+              </dl>
+            </dd>
+            <dd className="workfinder-label-position">
+              <dl>
+                <dt>Position</dt>
+              </dl>
+            </dd>
+          </StyledFinderLabels>
+          { this.getWork() }
         </StyledFinderRows>
       </StyledFinder>
     )
@@ -86,6 +103,22 @@ const StyledFinder = styled.div`
     a{
       color: var(--radish);
     }
+  }
+`;
+
+const StyledFinderLabels = styled.dl`
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #E4E3E3;
+  .workfinder-label-name{width: 40%;}
+  .workfinder-label-stack{width: 40%;}
+  .workfinder-label-position{width: 20%;}
+  dt{
+    font-weight: normal;
+    text-transform: uppercase;
+    color: rgba(40,38,51, .5);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
   }
 `;
 

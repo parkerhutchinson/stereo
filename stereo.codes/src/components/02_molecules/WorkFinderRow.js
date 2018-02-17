@@ -13,7 +13,7 @@ const WorkFinderRow = (props) => {
       </dd>
       <dd className="workfinder-row-stack">
         <dl>
-          <dd>{props.stack}</dd>
+          <dd>{props.stack.join(', ')}</dd>
         </dl>
       </dd>
       <dd className="workfinder-row-position">
