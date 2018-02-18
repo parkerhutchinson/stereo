@@ -21,10 +21,9 @@ class Gallery extends Component {
   }
 
   componentDidMount() {
-    const timer = setInterval(() => this.nextSlide(), 3500);
     this.setState(
       {
-        timer,
+        timer: null,
         slide: 0,
       }
     );
@@ -89,6 +88,15 @@ class Gallery extends Component {
 
     return markup;
   }
+  componentWillReceiveProps(nextProps){
+    if(this.props.play !== nextProps.play && nextProps.play) {
+      const timer = setInterval(() => this.nextSlide(), 3500);
+      this.setState({timer})
+    }
+    if(this.props.play !== nextProps.play && !nextProps.play) {
+      clearInterval(this.state.timer);
+    }
+  }
 
   render() {
     const { classes } = this.props;
@@ -103,10 +111,12 @@ class Gallery extends Component {
 Gallery.propTypes = {
   classes: PropTypes.string,
   images: PropTypes.array,
+  play: PropTypes.bool,
 }
 
 Gallery.defaultProps = {
   classes: '',
+  play: false,
 }
 
 const mapStateToProps = (state) => {

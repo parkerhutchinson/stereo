@@ -17,7 +17,9 @@ class App extends Component {
         <Navigation />
         <Intro />
         <Divider label="about"/>
+        <SectionObserver classes="grid-24 grid-col-24 about" align="center" label="about">
         <About />
+        </SectionObserver>
         <Divider label="work"/>
         <SectionObserver label="work" threshold={.4}>
           <Work />
