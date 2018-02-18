@@ -9,6 +9,7 @@ const IntersectionObserver = require('intersection-observer-polyfill/dist/Inters
 // have to use this otherwise it wont work in testing or other browsers
 //
 
+// granularity here because we need to allow many options from props
 const observerConfig = {
   threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
 }

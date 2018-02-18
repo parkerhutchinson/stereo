@@ -15,9 +15,30 @@ export default class CopyHeader extends Component {
     return markup;
   }
   render() {
+    const active = this.props.inview ? 'active' : '';
+    const StyledCopyHeader = styled.header`
+      display: grid;
+      align-items: stretch;
+      margin-bottom: 40px;
+      h1{
+        margin-bottom: 20px;
+        color: ${this.props.color}
+      }
+      span{
+        &:before{
+          content: '';
+          display: block;
+          position: relative;
+          width: 70%;
+          height: 1px;
+          background: var(--radish);
+          top: 40px;
+        }
+      }
+    `;
     return (
       <StyledCopyHeader
-        className={`${this.props.classes} grid-${this.props.grid} copy-header grid-col-${this.props.grid}`}
+        className={`${this.props.classes} ${active} grid-${this.props.grid} copy-header grid-col-${this.props.grid}`}
       >
         <span className="grid-col-1"></span>
         <div className={`grid-col-${this.state.gridSpan}`} >
@@ -33,31 +54,15 @@ CopyHeader.propTypes = {
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
   classes: PropTypes.string,
-  grid: PropTypes.number
+  grid: PropTypes.number,
+  color: PropTypes.string,
+  inview: PropTypes.bool,
 }
 
 CopyHeader.defaultProps = {
   title: '',
   classes: '',
   grid: 8,
+  inview: false,
+  color: 'var(--snow)',
 }
-
-const StyledCopyHeader = styled.header`
-  display: grid;
-  align-items: stretch;
-  margin-bottom: 40px;
-  h1{
-    margin-bottom: 20px;
-  }
-  span{
-    &:before{
-      content: '';
-      display: block;
-      position: relative;
-      width: 70%;
-      height: 1px;
-      background: var(--radish);
-      top: 40px;
-    }
-  }
-`;

@@ -87,7 +87,7 @@ const StyledButton = styled.button`
     left: 0;
     box-shadow: 10px 10px 30px 0 var(--stormy);
     z-index: 0;
-    transition: width cubic-bezier(.91,.02,.03,.98) .4s;
+    transition: width var(--fastanimation) .4s;
     transition-delay: 0s;
   }
   span{
@@ -118,7 +118,7 @@ const StyledSupportCopy = styled.p`
   transition: all cubic-bezier(.91,.02,.03,.98) .7s;
   transition-delay: 0s;
   &.active{
-    transition-delay: 1.7s;
+    transition-delay: 1.2s;
     top: 0px;
     opacity: 1;
   }

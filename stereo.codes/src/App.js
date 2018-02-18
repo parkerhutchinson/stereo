@@ -15,7 +15,9 @@ class App extends Component {
     return (
       <div className="app-stereo site-grid">
         <Navigation />
+        <SectionObserver classes="grid-col-24 grid-24 intro" align="center" label="intro">
         <Intro />
+        </SectionObserver>
         <Divider label="about"/>
         <SectionObserver classes="grid-24 grid-col-24 about" align="center" label="about">
         <About />
@@ -73,6 +75,7 @@ injectGlobal`
     --snow: rgba(255,255,255,1);
     --roboto: "Roboto", sans-serif;
     --playfair: "Playfair Display", serif;
+    --fastanimation: cubic-bezier(.91,.02,.03,.98);
   }
   *{
     margin: 0;

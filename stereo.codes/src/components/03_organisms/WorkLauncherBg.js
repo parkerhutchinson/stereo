@@ -61,11 +61,13 @@ const StyledColumnGroup = styled.div`
   position: relative;
   z-index: 1;
   top: 300px;
-  transition: top cubic-bezier(.53,.49,.64,.99);
+  opacity: 0;
+  transition: all cubic-bezier(.53,.49,.64,.99);
   transition-delay: 0;
   transition-duration: .5s;
   &.active{
     top: 0;
+    opacity: 1;
     transition-duration: 2.5s;
     &:first-child{
       transition-delay: .3s;

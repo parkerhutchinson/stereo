@@ -13,11 +13,11 @@ class About extends Component {
 
     return (
       <React.Fragment>
-        <VerticalText key="vert-1">
+        <VerticalText inview={active}>
           <h4>STEREO</h4>
         </VerticalText>
-        <StyledAboutContent className="grid-col-18 grid-18 about-content" key="aboutcontent">
-          <Copy title="Hackerman" subTitle="Half Unicorn" grid={9}>
+        <StyledAboutContent className={`${active ? 'active' : ''} grid-col-18 grid-18 about-content`}>
+          <Copy title="Hackerman" subTitle="Half Unicorn" grid={9} inview={active} color="var(--stormy)">
             <p>This is our world now. The world of the electron and the
             switch; the beauty of the baud. We exist without nationality,
             skin color, or religious bias. You wage wars, murder, cheat,
@@ -30,8 +30,8 @@ class About extends Component {
           </Copy>
           <Gallery play={active}/>
         </StyledAboutContent>
-        <div className="grid-col-1 spacer" key="spacer"></div>
-        <VerticalText key="vert-2">
+        <div className="grid-col-1 spacer"></div>
+        <VerticalText inview={active}>
           <h4>CODES</h4>
         </VerticalText>
       </React.Fragment>
@@ -60,6 +60,7 @@ const StyledAboutContent = styled.div`
   background: white;
   box-shadow: 10px 10px 40px var(--stormy);
   position: relative;
+
   &:after, &:before{
     content: '';
     display: block;
@@ -75,7 +76,6 @@ const StyledAboutContent = styled.div`
   .copy{
     grid-column-start: 2;
     .bg{display: none;}
-    color: var(--stormy);
     .copy-wrap{
       padding: 20px 0;
     }

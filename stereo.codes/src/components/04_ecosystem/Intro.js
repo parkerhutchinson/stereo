@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import SectionObserver from '../03_organisms/SectionObserver';
 import Copy from '../03_organisms/Copy';
 import NavLinkArrow from '../01_atoms/NavLinkArrow';
 import VerticalText from '../01_atoms/VerticalText';
-
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 /* istanbul ignore next */
 import introSVG from '../../scripts-lib/computer-svg';
 
-export default class Intro extends Component {
+class Intro extends Component {
   constructor(props) {
     super(props);
     this.state = { error: false }
@@ -26,14 +27,16 @@ export default class Intro extends Component {
     }
   }
   render() {
+    const active = this.props.section === 'intro';
     if (this.state.error) {
       return (
         <h1>something happened to svg probs</h1>
       )
     } else {
+
       return (
-        <SectionObserver classes="grid-col-24 grid-24 intro" align="center" label="intro">
-          <VerticalText>
+        <Fragment>
+          <VerticalText inview={active}>
             <h4>1999 - 2018</h4>
             <p>Developer / Designer / Strategy</p>
           </VerticalText>
@@ -42,6 +45,7 @@ export default class Intro extends Component {
             title="Hack The Planet"
             subTitle="Crash n' Burn"
             grid={9}
+            inview={active}
           >
           <p>This is our world now. The world of the electron and the
             switch; the beauty of the baud. We exist without nationality,
@@ -56,8 +60,27 @@ export default class Intro extends Component {
               </span>
             </NavLinkArrow>
           </Copy>
-        </SectionObserver>
+        </Fragment>
       )
     }
   }
 }
+
+Intro.propTypes = {
+  section: PropTypes.string,
+}
+
+Intro.defaultProps = {
+  section: '',
+}
+
+const mapStateToProps = (state) => {
+  return {
+    section: state.section,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(Intro)

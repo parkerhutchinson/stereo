@@ -117,8 +117,9 @@ class Navigation extends Component {
   }
   render() {
     const show = this.props.navigation.open ? 'active' : '';
+    const notTop = this.props.section !== 'intro';
     return (
-      <StyledNavigation className={`${show} navigation`}>
+      <StyledNavigation className={`${show} navigation ${notTop ? 'not-top' : ''}`}>
         <div className="grid-col-18 grid-18">
           <Logo classes="grid-col-9" />
           { this.createMainNav() }
@@ -136,15 +137,18 @@ class Navigation extends Component {
 Navigation.propTypes = {
   navigation: PropTypes.object,
   navigationOpen: PropTypes.func,
+  section: PropTypes.string,
 }
 
 Navigation.defaultProps = {
-  navigation: { open: false }
+  section: 'intro',
+  navigation: { open: false },
 }
 
 const mapStateToProps = (state) => {
   return {
     navigation: state.navigation,
+    section: state.section
   }
 }
 
@@ -165,6 +169,10 @@ const StyledNavigation = styled.nav`
   top: 0;
   background: rgba(51,63,106, 0);
   z-index: 100;
+  transition: background .3s;
+  &.not-top{
+    background: rgba(51,63,106, .9);
+  }
   .grid-18{
     grid-column: 4 / span 18;
     align-items: center;
