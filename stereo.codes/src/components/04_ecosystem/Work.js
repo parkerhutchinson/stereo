@@ -4,7 +4,6 @@ import { modalOpen } from '../../actions/modal-actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import WorkLauncherBg from '../03_organisms/WorkLauncherBg';
-import SectionObserver from '../03_organisms/SectionObserver';
 
 const Work = (props) => {
   const active = props.section === 'work' ? 'active' : '';

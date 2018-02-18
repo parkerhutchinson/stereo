@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import VerticalText from '../01_atoms/VerticalText';
 import Copy from '../03_organisms/Copy';
-import SectionObserver from '../03_organisms/SectionObserver';
 import Gallery from '../03_organisms/Gallery';
 import styled from 'styled-components';
 import { connect } from 'react-redux';

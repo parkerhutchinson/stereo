@@ -12,50 +12,8 @@ export default class Copy extends Component {
     const gridContent = grid - 2;
     const active = inview ? 'active' : '';
 
-    const StyledCopy = styled.article`
-      position: relative;
-      align-items: start;
-      color: ${color};
-      p{
-        font-size: 1.2rem;
-        line-height: 2.2;
-        margin-bottom: 50px;
-        strong{
-          font-weight: bold;
-          display: inline-block;
-          min-width: 73px;
-        }
-      }
-      .copy-wrap{
-        position: relative;
-        z-index: 2;
-        padding: ${copyWrapPadding} 0 ${copyWrapPadding} 0;
-        .copy-content{
-          padding: 0 11.50% 5px;
-        }
-        @media screen and (max-width: 768px) {
-          padding: ${copyWrapPaddingMobile} 0 ${copyWrapPaddingMobile} 0;
-        }
-      }
-      .bg{
-        background: var(--stormy);
-        position: absolute;
-        top: 0;
-        right: 0;
-        width:0%;
-        height: 100%;
-        z-index: 1;
-        transition: width var(--fastanimation) .7s;
-      }
-      &.active{
-        .bg{
-          width: 77.85%;
-        }
-      }
-    `;
-
     return (
-      <StyledCopy className={`${classes} grid-col-${grid} copy ${active}`}>
+      <StyledCopy className={`${classes} grid-col-${grid} copy ${active}`} color={color}>
         <div className={`grid-col-${grid} copy-wrap`}>
           <CopyHeader
             title={ title }
@@ -91,3 +49,54 @@ Copy.defaultProps = {
   inview: false,
   color: 'var(--snow)',
 }
+
+const StyledCopy = styled.article`
+  position: relative;
+  align-items: start;
+  color: ${props => props.color};
+  p{
+    font-size: 1.2rem;
+    line-height: 2.2;
+    margin-bottom: 50px;
+    strong{
+      font-weight: bold;
+      display: inline-block;
+      min-width: 73px;
+    }
+  }
+  .copy-wrap{
+    position: relative;
+    z-index: 2;
+    padding: ${copyWrapPadding} 0 ${copyWrapPadding} 0;
+    .copy-content{
+      padding: 0 11.50% 5px;
+      opacity: 0;
+      transition: opacity var(--fastanimation) .6s;
+      transition-delay: 0s;
+    }
+    @media screen and (max-width: 768px) {
+      padding: ${copyWrapPaddingMobile} 0 ${copyWrapPaddingMobile} 0;
+    }
+  }
+  .bg{
+    background: var(--stormy);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width:0%;
+    height: 100%;
+    z-index: 1;
+    transition: width var(--fastanimation) .7s;
+    transition-delay: 0s;
+  }
+  &.active{
+    .copy-content{
+      transition-delay: 1.2s;
+      opacity: 1;
+    }
+    .bg{
+      transition-delay: 1s;
+      width: 77.85%;
+    }
+  }
+`;

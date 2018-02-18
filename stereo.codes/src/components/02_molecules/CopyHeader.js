@@ -16,26 +16,7 @@ export default class CopyHeader extends Component {
   }
   render() {
     const active = this.props.inview ? 'active' : '';
-    const StyledCopyHeader = styled.header`
-      display: grid;
-      align-items: stretch;
-      margin-bottom: 40px;
-      h1{
-        margin-bottom: 20px;
-        color: ${this.props.color}
-      }
-      span{
-        &:before{
-          content: '';
-          display: block;
-          position: relative;
-          width: 70%;
-          height: 1px;
-          background: var(--radish);
-          top: 40px;
-        }
-      }
-    `;
+
     return (
       <StyledCopyHeader
         className={`${this.props.classes} ${active} grid-${this.props.grid} copy-header grid-col-${this.props.grid}`}
@@ -66,3 +47,56 @@ CopyHeader.defaultProps = {
   inview: false,
   color: 'var(--snow)',
 }
+
+const StyledCopyHeader = styled.header`
+  display: grid;
+  align-items: stretch;
+  margin-bottom: 40px;
+  h1{
+    position: relative;
+    margin-bottom: 20px;
+    color: ${props => props.color};
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all var(--fastanimation) .4s;
+    transition-delay: 0s;
+  }
+  h3{
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all var(--fastanimation) .4s;
+    transition-delay: 0s;
+  }
+  span{
+    &:before{
+      content: '';
+      display: block;
+      position: relative;
+      width: 0;
+      height: 1px;
+      background: var(--radish);
+      top: 40px;
+      transition: width var(--fastanimation) .4s;
+      transition-delay: 0s;
+    }
+  }
+  &.active{
+    h1{
+      transition-delay: .7s;
+      transform: translateY(0px);
+      opacity: 1;
+    }
+    h3{
+      opacity: 1;
+      transform: translateY(0px);
+      transition-delay: .9s;
+    }
+    span{
+      &:before{
+        transition-delay: 1s;
+        width: 70%;
+      }
+    }
+  }
+`;

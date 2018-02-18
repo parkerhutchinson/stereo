@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import SectionObserver from '../03_organisms/SectionObserver';
 import Copy from '../03_organisms/Copy';
 import NavLinkArrow from '../01_atoms/NavLinkArrow';
 import VerticalText from '../01_atoms/VerticalText';
@@ -46,6 +45,7 @@ class Intro extends Component {
             subTitle="Crash n' Burn"
             grid={9}
             inview={active}
+            color="var(--snow)"
           >
           <p>This is our world now. The world of the electron and the
             switch; the beauty of the baud. We exist without nationality,
