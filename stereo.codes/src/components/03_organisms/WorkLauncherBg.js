@@ -8,13 +8,14 @@ class WorkLauncherBg extends Component {
   getWorkElements(props) {
     const { mobileWork } = props;
     const numCols = 3;
-    const workbgGroup = []
+    const workbgGroup = [];
+    const active = this.props.section === 'work' ? 'active' : '';
 
     for (let i = 0; i < numCols; i++) {
       const imageIndexOne = i === 0 ? i : i + 1;
       const imageIndexTwo = i === 0 ? i + 1 : i + 2;
       workbgGroup.push(
-        <StyledColumnGroup key={i}>
+        <StyledColumnGroup key={i} className={`${active}`}>
           <WorkBgElement image={mobileWork[imageIndexOne].image} />
           <WorkBgElement image={mobileWork[imageIndexTwo].image} />
         </StyledColumnGroup>
@@ -33,15 +34,18 @@ class WorkLauncherBg extends Component {
 }
 
 WorkLauncherBg.propTypes = {
+  section: PropTypes.string,
   mobileWork: PropTypes.array,
 }
 
 WorkLauncherBg.defaultProps = {
+  section: '',
   mobileWork: [],
 }
 
 const mapStateToProps = (state) => {
   return {
+    section: state.section,
     mobileWork: state.workImages,
   }
 }
@@ -56,8 +60,23 @@ const StyledColumnGroup = styled.div`
   overflow: hidden;
   position: relative;
   z-index: 1;
-  &:nth-child(even){
-    top: 120px;
+  top: 300px;
+  transition: top cubic-bezier(.53,.49,.64,.99);
+  transition-delay: 0;
+  transition-duration: .5s;
+  &.active{
+    top: 0;
+    transition-duration: 2.5s;
+    &:first-child{
+      transition-delay: .3s;
+    }
+    &:nth-child(even){
+      top: 120px;
+      transition-delay: 0s;
+    }
+    &:last-child{
+      transition-delay: .3s;
+    }
   }
 `;
 

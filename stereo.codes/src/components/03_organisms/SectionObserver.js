@@ -10,7 +10,7 @@ const IntersectionObserver = require('intersection-observer-polyfill/dist/Inters
 //
 
 const observerConfig = {
-  threshold: [0, 0.25, 0.5, 0.75, 1.0],
+  threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
 }
 
 class SectionObserver extends Component {
@@ -35,7 +35,7 @@ class SectionObserver extends Component {
   }
   onChange(entries) {
     entries.forEach((entry) => {
-      if (entry.intersectionRatio > .75) {
+      if (entry.intersectionRatio > this.props.threshold) {
         entry.target.classList.add('inview');
         this.setSection()
       } else {
@@ -65,12 +65,14 @@ SectionObserver.propTypes = {
   align: PropTypes.string,
   label: PropTypes.string,
   sectionAdd: PropTypes.func,
+  threshold: PropTypes.number,
 }
 
 SectionObserver.defaultProps = {
   classes: '',
   align: 'start',
   label: 'none',
+  threshold: .5,
 }
 
 const mapDispatchToProps = (dispatch) => ({

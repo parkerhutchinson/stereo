@@ -19,7 +19,7 @@ class App extends Component {
         <Divider label="about"/>
         <About />
         <Divider label="work"/>
-        <SectionObserver label="work">
+        <SectionObserver label="work" threshold={.4}>
           <Work />
         </SectionObserver>
         <GridOverlay />
