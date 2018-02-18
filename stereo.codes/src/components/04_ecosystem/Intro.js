@@ -4,6 +4,7 @@ import NavLinkArrow from '../01_atoms/NavLinkArrow';
 import VerticalText from '../01_atoms/VerticalText';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 /* istanbul ignore next */
 import introSVG from '../../scripts-lib/computer-svg';
 
@@ -12,17 +13,26 @@ class Intro extends Component {
     super(props);
     this.state = { error: false }
   }
-  componentDidMount() {
-    // necessary for tests to work.
-    try {
-      introSVG(this.refs.svg);
-    } catch(error) {
-      // do nothing
-    }
-  }
   componentDidCatch(error) {
     if(error) {
       this.setState({error: true});
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.section !== nextProps.section && nextProps.section === 'intro') {
+      console.log(true);
+      try {
+        introSVG(this.refs.svg);
+      } catch(error) {
+        // do nothing
+      }
+    }
+    if (this.props.section !== nextProps.section && nextProps.section !== 'intro') {
+      const elem = ReactDOM.findDOMNode(this.refs.svg).querySelector('div');
+      if (elem) {
+        ReactDOM.findDOMNode(this.refs.svg).removeChild(elem);
+      }
     }
   }
   render() {

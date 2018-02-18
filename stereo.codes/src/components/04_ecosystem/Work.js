@@ -86,7 +86,7 @@ const StyledButton = styled.button`
     left: 0;
     box-shadow: 10px 10px 30px 0 var(--stormy);
     z-index: 0;
-    transition: width var(--fastanimation) .4s;
+    transition: width var(--fastanimation) .7s;
     transition-delay: 0s;
   }
   span{
@@ -98,12 +98,12 @@ const StyledButton = styled.button`
   }
   &.active{
     &:before{
-      transition-delay: 1s;
       width: 100%;
+      transition-delay: .5s;
     }
     span{
       color: rgba(255, 74, 74, 1);
-      transition-delay: 1s;
+      transition-delay: .5s;
     }
   }
 `;
@@ -117,7 +117,7 @@ const StyledSupportCopy = styled.p`
   transition: all cubic-bezier(.91,.02,.03,.98) .7s;
   transition-delay: 0s;
   &.active{
-    transition-delay: 1.2s;
+    transition-delay: .8s;
     top: 0px;
     opacity: 1;
   }

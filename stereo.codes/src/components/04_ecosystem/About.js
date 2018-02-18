@@ -56,11 +56,22 @@ const mapStateToProps = (state) => {
 const StyledAboutContent = styled.div`
   grid-column-start: 4;
   padding: 70px 0;
-  background: white;
-  box-shadow: 10px 10px 40px var(--stormy);
+  background: none;
   position: relative;
-
-  &:after, &:before{
+  &:before{
+    content: '';
+    position: absolute;
+    background: var(--snow);
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 10px 10px 30px 0 var(--stormy);
+    z-index: 0;
+    transition: width var(--fastanimation) .7s;
+    transition-delay: 0s;
+  }
+  &:after{
     content: '';
     display: block;
     width: 1px;
@@ -70,7 +81,6 @@ const StyledAboutContent = styled.div`
     transform: translateX(-50%);
     background: var(--radish);
   }
-  &:before{top: 0;}
   &:after{bottom: 0;}
   .copy{
     grid-column-start: 2;
@@ -90,6 +100,12 @@ const StyledAboutContent = styled.div`
   @media screen and (max-width: 768px) {
     .gallery{
       display: none;
+    }
+  }
+  &.active{
+    &:before{
+      transition-delay: .4s;
+      width: 100%;
     }
   }
 `;

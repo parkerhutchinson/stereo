@@ -70,14 +70,16 @@ const StyledColumnGroup = styled.div`
     opacity: 1;
     transition-duration: 2.5s;
     &:first-child{
-      transition-delay: .3s;
+      transition-delay: .5s;
+      transition-duration: 3.5s;
     }
     &:nth-child(even){
       top: 120px;
       transition-delay: 0s;
     }
     &:last-child{
-      transition-delay: .3s;
+      transition-delay: .5s;
+      transition-duration: 3.5s;
     }
   }
 `;

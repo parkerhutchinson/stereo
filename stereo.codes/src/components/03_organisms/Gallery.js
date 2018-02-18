@@ -5,15 +5,6 @@ import styled from 'styled-components';
 import GallerySlide from '../01_atoms/GallerySlide';
 import { connect } from 'react-redux';
 
-const StyledGallery = styled.aside`
-  position: relative;
-  display: block;
-  align-items: stretch;
-  background: white;
-  height: 400px;
-  padding: 20px;
-`;
-
 class Gallery extends Component {
   state = {
     play: false,
@@ -99,9 +90,9 @@ class Gallery extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, play } = this.props;
     return (
-      <StyledGallery className={`${classes} gallery grid-col-6`} ref="gallery">
+      <StyledGallery className={`${classes} gallery grid-col-6`} ref="gallery" play={play}>
         { this.getSlides(this.state.slide) }
       </StyledGallery>
     );
@@ -124,6 +115,18 @@ const mapStateToProps = (state) => {
     images: state.gallery,
   }
 }
+
+const StyledGallery = styled.aside`
+  position: relative;
+  display: block;
+  align-items: stretch;
+  background: white;
+  height: 400px;
+  padding: 20px;
+  opacity: ${props => props.play ? '1' : '0'};
+  transition: opacity var(--fastanimation) .8s;
+  transition-delay: ${props => props.play ? '1s' : '0s'}
+`;
 
 export default connect(
   mapStateToProps,
