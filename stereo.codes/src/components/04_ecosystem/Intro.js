@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 /* istanbul ignore next */
+import styled from 'styled-components';
 import introSVG from '../../scripts-lib/computer-svg';
 
 class Intro extends Component {
@@ -46,10 +47,9 @@ class Intro extends Component {
       return (
         <Fragment>
           <VerticalText inview={active}>
-            <h4>1999 - 2018</h4>
             <p>Developer / Designer / Strategy</p>
           </VerticalText>
-          <div className="svg grid-col-8" ref="svg"></div>
+          <StyledSVG className="svg grid-col-8" ref="svg"></StyledSVG>
           <Copy
             title="Hack The Planet"
             subTitle="Crash n' Burn"
@@ -90,6 +90,9 @@ const mapStateToProps = (state) => {
   }
 }
 
+const StyledSVG = styled.div`
+  min-height: 525px;
+`;
 export default connect(
   mapStateToProps,
   null

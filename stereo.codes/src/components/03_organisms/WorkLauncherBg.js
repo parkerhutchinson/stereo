@@ -71,15 +71,16 @@ const StyledColumnGroup = styled.div`
     transition-duration: 2.5s;
     &:first-child{
       transition-delay: .5s;
-      transition-duration: 3.5s;
+      transition-duration: 2s;
     }
     &:nth-child(even){
       top: 120px;
       transition-delay: 0s;
+      transition-duration: 1.5s;
     }
     &:last-child{
       transition-delay: .5s;
-      transition-duration: 3.5s;
+      transition-duration: 2s;
     }
   }
 `;

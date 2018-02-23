@@ -15,14 +15,30 @@ class App extends Component {
     return (
       <div className="app-stereo site-grid">
         <Navigation />
-        <SectionObserver classes="grid-col-24 grid-24 intro" align="center" label="intro">
-        <Intro />
+        <SectionObserver classes="grid-col-24 grid-24 intro" align="center" label="intro" threshold={.1}>
+          <Intro />
         </SectionObserver>
-        <Divider label="about"/>
+        <SectionObserver
+          classes="grid-24 grid-col-24 sectionObserverDivider"
+          align="center"
+          label="dividerabout"
+          nostate
+          threshold={.1}
+        >
+          <Divider label="about"/>
+        </SectionObserver>
         <SectionObserver classes="grid-24 grid-col-24 about" align="center" label="about">
-        <About />
+          <About />
         </SectionObserver>
-        <Divider label="work"/>
+        <SectionObserver
+          classes="grid-24 grid-col-24 sectionObserverDivider"
+          align="center"
+          label="dividerwork"
+          nostate
+          threshold={.1}
+        >
+          <Divider label="work"/>
+        </SectionObserver>
         <SectionObserver label="work" threshold={.4}>
           <Work />
         </SectionObserver>
@@ -173,6 +189,28 @@ injectGlobal`
   ${gridTemplate(gridNum)}
   ${gridTemplateCol(gridNum)}
 
+  .sectionObserverDivider{
+    .divider{
+      &:before{
+        height: 0;
+        transition: height .6s var(--fastanimation);
+      }
+      h5{
+        opacity: 0;
+        transition: opacity 1s var(--fastanimation);
+      }
+    }
+    &.inview{
+      .divider{
+        &:before{
+          height: 100%;
+        }
+        h5{
+          opacity: 1;
+        }
+      }
+    }
+  }
   .about{
     transition: all .4s;
     overflow: hidden;

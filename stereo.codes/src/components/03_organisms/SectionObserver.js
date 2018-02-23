@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { sectionAdd } from '../../actions/observer-actions';
 import { connect } from 'react-redux';
+import ReactDOM from 'react-dom';
 
 const IntersectionObserver = require('intersection-observer-polyfill/dist/IntersectionObserver');
 // have to use this otherwise it wont work in testing or other browsers
@@ -18,9 +19,8 @@ class SectionObserver extends Component {
     this.observer = new IntersectionObserver((entries) => this.onChange(entries), observerConfig);
   }
   componentDidMount() {
-    // safari sucks at support, but very good at render
     this.observer.observe(this.section);
-
+    // safari sucks at support, but very good at render
     const isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
 
     if (isSafari) {
@@ -37,7 +37,9 @@ class SectionObserver extends Component {
     entries.forEach((entry) => {
       if (entry.intersectionRatio > this.props.threshold) {
         entry.target.classList.add('inview');
-        this.setSection()
+        if (!this.props.nostate) {
+          this.setSection()
+        }
       } else {
         entry.target.classList.remove('inview');
       }
@@ -66,6 +68,7 @@ SectionObserver.propTypes = {
   label: PropTypes.string,
   sectionAdd: PropTypes.func,
   threshold: PropTypes.number,
+  nostate: PropTypes.bool,
 }
 
 SectionObserver.defaultProps = {
@@ -73,6 +76,7 @@ SectionObserver.defaultProps = {
   align: 'start',
   label: 'none',
   threshold: .5,
+  nostate: false,
 }
 
 const mapDispatchToProps = (dispatch) => ({
