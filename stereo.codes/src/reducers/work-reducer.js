@@ -1,19 +1,24 @@
 import { combineReducers } from 'redux';
+import { SET_ACTIVE_PROJECT } from '../actions/work-actions';
 
+// TODO: maybe use airtable for this state
 const portfolioList = [
   {
+    id: 1,
     title: 'draftboard',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
   },
   {
+    id: 2,
     title: 'draftboard',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
     na: true,
   },
   {
-    title: 'draftboard',
+    id: 3,
+    title: 'draftboard three',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
   },
@@ -46,6 +51,15 @@ const bgImages = [
   },
 ];
 
+const project = (state = { id: 0 }, action) => {
+  switch(action.type){
+    case SET_ACTIVE_PROJECT:
+      return Object.assign({}, state, { id: action.id });
+    default:
+      return state;
+  }
+}
+
 const portfolio = (state = portfolioList) => {
   return state;
 }
@@ -55,6 +69,7 @@ const workImages = (state = bgImages) => {
 }
 
 const work = combineReducers({
+  project,
   portfolio,
   workImages,
 });

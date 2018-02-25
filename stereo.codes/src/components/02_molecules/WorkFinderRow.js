@@ -4,7 +4,12 @@ import styled from 'styled-components';
 
 const WorkFinderRow = (props) => {
   return (
-    <StyledRow className="workfinder-row" onMouseOver={() => props.selected(props)} na={props.na}>
+    <StyledRow
+      className={`${props.active ? 'active' : ''} workfinder-row`}
+      onMouseOver={() => props.setHover(props)}
+      onClick={() => props.setActive(props)}
+      na={props.na}
+    >
       <dd className="workfinder-row-name">
         <dl>
           <dt>{`${props.date} -`}</dt>
@@ -31,7 +36,8 @@ WorkFinderRow.propTypes = {
   name: PropTypes.string,
   stack: PropTypes.array,
   position: PropTypes.string,
-  selected: PropTypes.func,
+  setHover: PropTypes.func,
+  setActive: PropTypes.func,
   na: PropTypes.bool,
 }
 

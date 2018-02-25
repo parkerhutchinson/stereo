@@ -3,19 +3,31 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import WorkFinderRow from '../02_molecules/WorkFinderRow';
 import styled from 'styled-components';
+import { setActiveProject } from '../../actions/work-actions';
 
 class WorkFinder extends Component {
   componentWillMount() {
     this.setState({ activeProject: 'test' });
   }
-  doHover(row) {
+  setHover(row) {
     if (!row.na) {
       this.setState({ activeProject: row.name });
     }
   }
+  setActive(row) {
+    console.log(row.id);
+    this.props.setActiveProject(row.id);
+  }
   getWork(rows) {
     return rows.map((row, i) =>
-      <WorkFinderRow selected={(row) => this.doHover(row)} key={i} name={row.title} na={row.na ? true : false}/>
+      <WorkFinderRow
+        id={row.id}
+        setHover={(row) => this.setHover(row)}
+        setActive={(row) => this.setActive(row)}
+        key={i}
+        name={row.title}
+        na={row.na ? true : false}
+      />
     );
   }
   render() {
@@ -56,6 +68,12 @@ class WorkFinder extends Component {
 WorkFinder.propTypes = {
   portfolio: PropTypes.array,
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  setActiveProject: (id) => {
+    dispatch(setActiveProject(id))
+  },
+});
 
 const mapStateToProps = (state) => {
   return {
@@ -108,7 +126,6 @@ const StyledFinder = styled.div`
 `;
 
 const StyledFinderGrid = styled.div`
-
   align-items: start;
 `;
 
@@ -130,5 +147,5 @@ const StyledFinderLabels = styled.dl`
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(WorkFinder);
