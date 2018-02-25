@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import GridOverlay from './components/02_molecules/GridOverlay';
 import Navigation from './components/03_organisms/Navigation';
 import Intro from './components/04_ecosystem/Intro';
@@ -7,6 +7,7 @@ import Divider from './components/01_atoms/Divider';
 import Work from './components/04_ecosystem/Work';
 import Modal from './components/03_organisms/Modal';
 import WorkFinder from './components/03_organisms/WorkFInder';
+import WorkProjectOverlay from './components/03_organisms/WorkProjectOverlay';
 import SectionObserver from './components/03_organisms/SectionObserver';
 import { injectGlobal } from 'styled-components';
 
@@ -44,7 +45,10 @@ class App extends Component {
         </SectionObserver>
         <GridOverlay />
         <Modal>
-          <WorkFinder />
+          <Fragment>
+            <WorkFinder />
+            <WorkProjectOverlay />
+          </Fragment>
         </Modal>
       </div>
     );

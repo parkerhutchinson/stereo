@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SET_ACTIVE_PROJECT } from '../actions/work-actions';
+import { SET_ACTIVE_PROJECT, CLOSE_ACTIVE_PROJECT } from '../actions/work-actions';
 
 // TODO: maybe use airtable for this state
 const portfolioList = [
@@ -51,10 +51,12 @@ const bgImages = [
   },
 ];
 
-const project = (state = { id: 0 }, action) => {
+const project = (state = { id: 0, show: false }, action) => {
   switch(action.type){
     case SET_ACTIVE_PROJECT:
-      return Object.assign({}, state, { id: action.id });
+      return Object.assign({}, state, { id: action.id, show: true });
+    case CLOSE_ACTIVE_PROJECT:
+      return Object.assign({}, state, { show: false });
     default:
       return state;
   }
