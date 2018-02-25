@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { sectionAdd } from '../../actions/observer-actions';
 import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
 
 const IntersectionObserver = require('intersection-observer-polyfill/dist/IntersectionObserver');
 // have to use this otherwise it wont work in testing or other browsers

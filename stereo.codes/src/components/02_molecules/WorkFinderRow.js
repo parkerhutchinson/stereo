@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const WorkFinderRow = (props) => {
   return (
-    <StyledRow className="workfinder-row" onMouseOver={() => props.selected(props)}>
+    <StyledRow className="workfinder-row" onMouseOver={() => props.selected(props)} na={props.na}>
       <dd className="workfinder-row-name">
         <dl>
           <dt>{`${props.date} -`}</dt>
@@ -32,6 +32,7 @@ WorkFinderRow.propTypes = {
   stack: PropTypes.array,
   position: PropTypes.string,
   selected: PropTypes.func,
+  na: PropTypes.bool,
 }
 
 WorkFinderRow.defaultProps = {
@@ -39,7 +40,23 @@ WorkFinderRow.defaultProps = {
   date: '2018',
   name: 'draftboard',
   stack: ['React', 'CSS3', 'HTML5'],
-  position: 'Full Stack'
+  position: 'Full Stack',
+  na: false,
+}
+
+// styled components are lit af.
+const naConditionalStyle = (props) => {
+  if (!props.na) {
+    return `
+      cursor: pointer;
+      transition-duration: .5s;
+      transform: scale(1.05);
+      border-color: var(--radish);
+      z-index: 2;
+      padding: 0 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,.1);
+    `;
+  }
 }
 
 const StyledRow = styled.dl`
@@ -52,7 +69,9 @@ const StyledRow = styled.dl`
   position: relative;
   z-index: 1;
   padding: 0;
-  cursor: pointer;
+  &.workfinder-row{
+    color: ${props => props.na ? 'rgba(44, 46, 71, .35)' : 'var(--stormy)'};
+  }
   .workfinder-row-name{width: 40%;}
   .workfinder-row-stack{width: 40%;}
   .workfinder-row-position{width: 20%;}
@@ -68,23 +87,15 @@ const StyledRow = styled.dl`
     dl{
       display: flex;
       align-items: center;
+
       dt{
-        color: var(--stormy);
         font-weight: bold;
         margin-right: 5px;
-      }
-      dd{
-        color: var(--stormy);
       }
     }
   }
   &:hover{
-    transition-duration: .5s;
-    transform: scale(1.05);
-    border-color: var(--radish);
-    z-index: 2;
-    padding: 0 15px;
-    box-shadow: 0 0 30px rgba(0,0,0,.1);
+    ${naConditionalStyle}
   }
 `;
 

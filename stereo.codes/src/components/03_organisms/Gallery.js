@@ -43,13 +43,7 @@ class Gallery extends Component {
     const { images } = this.props;
     const imagesLength = images.length - 1;
 
-    const slideNext = (slide) => {
-      if (slide + 1 > imagesLength) {
-        return 0;
-      } else {
-        return slide + 1;
-      }
-    }
+    const slideNext = (slide) => slide + 1 > imagesLength ? 0 : slide + 1;
 
     const slideLast = (slide) => {
       if (slide + 2 > imagesLength) {

@@ -9,16 +9,22 @@ class WorkFinder extends Component {
     this.setState({ activeProject: 'test' });
   }
   doHover(row) {
-    this.setState({ activeProject: row.name });
+    if (!row.na) {
+      this.setState({ activeProject: row.name });
+    }
   }
   getWork() {
     const staticRows = 20;
     const rows = [];
+    rows.push([
+      <WorkFinderRow selected={(props) => this.doHover(props)} key='test' name={`draftboard-test`} na/>
+    ])
     for(let i = 0; i < staticRows; i++) {
       rows.push([
         <WorkFinderRow selected={(props) => this.doHover(props)} key={i} name={`draftboard-${i}`}/>
       ])
     }
+
     return rows;
   }
   render() {
