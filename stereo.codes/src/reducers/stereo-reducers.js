@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import work from './work-reducer';
 import { NAVIGATION_OPEN } from '../actions/navigation-actions';
 import { GRID_ACTIVATE } from '../actions/grid-actions';
 import { SECTION_ADD } from '../actions/observer-actions';
@@ -50,38 +51,9 @@ function modal(state = { MODAL_OPEN: false }, action) {
       return state;
   }
 }
-const bgImages = [
-  {
-    label: 'test',
-    image: './images/bg-work/lycoming-mobile.jpg',
-  },
-  {
-    label: 'test two',
-    image: './images/bg-work/draftboard-mobile.jpg',
-  },
-  {
-    label: 'test two',
-    image: './images/bg-work/draftboard-mobile.jpg',
-  },
-  {
-    label: 'test',
-    image: './images/bg-work/lim-mobile.jpg',
-  },
-  {
-    label: 'test two',
-    image: './images/bg-work/lycoming-mobile.jpg',
-  },
-  {
-    label: 'test two',
-    image: './images/bg-work/lim-mobile.jpg',
-  },
-]
-function workImages(state = bgImages) {
-  return state;
-}
 
 const stereoApp = combineReducers({
-  workImages,
+  work,
   modal,
   section,
   gallery,

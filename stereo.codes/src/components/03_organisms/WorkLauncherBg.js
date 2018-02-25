@@ -46,7 +46,7 @@ WorkLauncherBg.defaultProps = {
 const mapStateToProps = (state) => {
   return {
     section: state.section,
-    mobileWork: state.workImages,
+    mobileWork: state.work.workImages,
   }
 }
 

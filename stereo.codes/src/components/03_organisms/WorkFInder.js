@@ -13,59 +13,53 @@ class WorkFinder extends Component {
       this.setState({ activeProject: row.name });
     }
   }
-  getWork() {
-    const staticRows = 20;
-    const rows = [];
-    rows.push([
-      <WorkFinderRow selected={(props) => this.doHover(props)} key='test' name={`draftboard-test`} na/>
-    ])
-    for(let i = 0; i < staticRows; i++) {
-      rows.push([
-        <WorkFinderRow selected={(props) => this.doHover(props)} key={i} name={`draftboard-${i}`}/>
-      ])
-    }
-
-    return rows;
+  getWork(rows) {
+    return rows.map((row, i) =>
+      <WorkFinderRow selected={(row) => this.doHover(row)} key={i} name={row.title} na={row.na ? true : false}/>
+    );
   }
   render() {
+    const { portfolio } = this.props;
     return (
-      <StyledFinder className="workfinder grid-col-16 grid-16">
-        <header className="grid-col-12">
-          <h2>{ this.state.activeProject }</h2>
-          <a href="#nope">arrow</a>
-        </header>
-        <StyledFinderRows className="workfinder-rows grid-col-14">
-          <StyledFinderLabels>
-            <dd className="workfinder-label-name">
-              <dl>
-                <dt>Name</dt>
-              </dl>
-            </dd>
-            <dd className="workfinder-label-stack">
-              <dl>
-                <dt>Stack</dt>
-              </dl>
-            </dd>
-            <dd className="workfinder-label-position">
-              <dl>
-                <dt>Position</dt>
-              </dl>
-            </dd>
-          </StyledFinderLabels>
-          { this.getWork() }
-        </StyledFinderRows>
+      <StyledFinder className="workfinder grid-col-16">
+        <StyledFinderGrid className="grid-16">
+          <header className="grid-col-12">
+            <h2>{ this.state.activeProject }</h2>
+            <a href="#nope">arrow</a>
+          </header>
+          <StyledFinderRows className="workfinder-rows grid-col-14">
+            <StyledFinderLabels>
+              <dd className="workfinder-label-name">
+                <dl>
+                  <dt>Name</dt>
+                </dl>
+              </dd>
+              <dd className="workfinder-label-stack">
+                <dl>
+                  <dt>Stack</dt>
+                </dl>
+              </dd>
+              <dd className="workfinder-label-position">
+                <dl>
+                  <dt>Position</dt>
+                </dl>
+              </dd>
+            </StyledFinderLabels>
+            { this.getWork(portfolio) }
+          </StyledFinderRows>
+        </StyledFinderGrid>
       </StyledFinder>
     )
   }
 }
 
 WorkFinder.propTypes = {
-  work: PropTypes.object,
+  portfolio: PropTypes.array,
 }
 
 const mapStateToProps = (state) => {
   return {
-    work: state.work
+    portfolio: state.work.portfolio
   }
 }
 
@@ -78,12 +72,13 @@ const StyledFinderRows = styled.div`
 const StyledFinder = styled.div`
   position: relative;
   background: white;
-  grid-column-start: 5;
   padding: 40px 0;
   box-shadow: 10px 10px 30px var(--stormy);
   height: calc(100vh - 20%);
   overflow: hidden;
   z-index: 2;
+  align-items: start;
+  grid-column-start: 5;
   &:after{
     display: block;
     content: '';
@@ -110,6 +105,11 @@ const StyledFinder = styled.div`
       color: var(--radish);
     }
   }
+`;
+
+const StyledFinderGrid = styled.div`
+
+  align-items: start;
 `;
 
 const StyledFinderLabels = styled.dl`
