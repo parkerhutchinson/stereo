@@ -15,8 +15,9 @@ class WorkFinder extends Component {
     }
   }
   setActive(row) {
-    console.log(row.id);
-    this.props.setActiveProject(row.id);
+    if (!row.na) {
+      this.props.setActiveProject(row.id);
+    }
   }
   getWork(rows) {
     return rows.map((row, i) =>
