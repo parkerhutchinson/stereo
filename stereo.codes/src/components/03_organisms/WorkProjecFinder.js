@@ -32,15 +32,16 @@ class WorkFinder extends Component {
     );
   }
   render() {
-    const { projects } = this.props;
+    const { projects, modal } = this.props;
+    console.log(modal);
     return (
-      <StyledFinder className="workfinder grid-col-16">
+      <StyledFinder className="workfinder grid-col-16" modal={modal}>
         <StyledFinderGrid className="grid-16">
           <header className="grid-col-12">
             <h2>{ this.state.activeProject }</h2>
             <a href="#nope">arrow</a>
           </header>
-          <StyledFinderRows className="workfinder-rows grid-col-14">
+          <StyledFinderRows className="workfinder-rows grid-col-14" modal={modal}>
             <StyledFinderLabels>
               <dd className="workfinder-label-name">
                 <dl>
@@ -68,6 +69,7 @@ class WorkFinder extends Component {
 
 WorkFinder.propTypes = {
   projects: PropTypes.array,
+  modal: PropTypes.object,
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -78,6 +80,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => {
   return {
+    modal: state.modal,
     projects: state.work.projects
   }
 }
@@ -86,18 +89,35 @@ const StyledFinderRows = styled.div`
   grid-column-start: 2;
   position: relative;
   z-index: 1;
+  transform: ${props => props.modal.open ? 'translateY(0px)' : 'translateY(50px)'};
+  opacity: ${props => props.modal.open ? '1' : '0'};
+  transition: all .4s var(--fastanimation);
+  transition-delay: ${props => props.modal.open ? '1.1s' : '0'};;
 `;
 
 const StyledFinder = styled.div`
   position: relative;
-  background: white;
+  background: none;
   padding: 40px 0;
-  box-shadow: 10px 10px 30px var(--stormy);
   height: calc(100vh - 20%);
   overflow: hidden;
   z-index: 2;
   align-items: start;
   grid-column-start: 5;
+  &:before{
+    display: block;
+    content: '';
+    width: 100%;
+    height: ${props => props.modal.open ? '100%' : '0%'};
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--snow);
+    box-shadow: 10px 10px 30px var(--stormy);
+    transition: height .8s var(--fastanimation);
+    transition-delay: ${props => props.modal.open ? '.4s' : '0'};
+    z-index: 0;
+  }
   &:after{
     display: block;
     content: '';
@@ -108,12 +128,21 @@ const StyledFinder = styled.div`
     bottom: 0;
     left: 0;
     z-index: 2;
+    opacity: ${props => props.modal.open ? '1' : '0'};
+    transition: opacity .8s var(--fastanimation);
+    transition-delay: .3s;
   }
   header{
     grid-column-start: 2;
     display: flex;
     align-items: content;
     margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+    transform: ${props => props.modal.open ? 'translateY(0px)' : 'translateY(50px)'};
+    opacity: ${props => props.modal.open ? '1' : '0'};
+    transition: all .4s var(--fastanimation);
+    transition-delay: ${props => props.modal.open ? '.9s' : '0'};
     h2{
       display: block;
       color: var(--stormy);

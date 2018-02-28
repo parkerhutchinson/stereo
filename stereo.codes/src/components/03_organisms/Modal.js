@@ -6,11 +6,12 @@ import { connect } from 'react-redux';
 
 class Modal extends Component {
   render() {
-    const showClass = this.props.modal.open ? 'active' : '';
+    const { modal, children } = this.props;
+    const showClass = modal.open ? 'active' : '';
     return (
       <StyledModal className={`${showClass} grid-24`}>
         <div className="modal-bg" onClick={() => this.props.modalOpen(false)}></div>
-        { this.props.children }
+        { children }
       </StyledModal>
     )
   }

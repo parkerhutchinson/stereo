@@ -43,7 +43,7 @@ function section(state = '', action) {
   }
 }
 
-function modal(state = { MODAL_OPEN: false }, action) {
+function modal(state = { open: false }, action) {
   switch(action.type) {
     case MODAL_OPEN:
       return Object.assign({}, state, { open: action.open });
