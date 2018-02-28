@@ -104,17 +104,21 @@ const StyledFinder = styled.div`
   z-index: 2;
   align-items: start;
   grid-column-start: 5;
+  opacity: ${props => props.modal.open ? '1' : '0'};
+  transition: all .3s var(--fastanimation);
+  transition-delay: ${props => props.modal.open ? '.4s' : '0'};
   &:before{
     display: block;
     content: '';
     width: 100%;
-    height: ${props => props.modal.open ? '100%' : '0%'};
+    height: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
     background: var(--snow);
     box-shadow: 10px 10px 30px var(--stormy);
-    transition: height .8s var(--fastanimation);
+    clip-path: ${props => props.modal.open ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(0 100%, 100% 70%, 100% 100%, 0 100%)'};
+    transition: all .8s var(--fastanimation);
     transition-delay: ${props => props.modal.open ? '.4s' : '0'};
     z-index: 0;
   }
