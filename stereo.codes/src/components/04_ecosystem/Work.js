@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { modalOpen } from '../../actions/modal-actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import WorkLauncherBg from '../03_organisms/WorkLauncherBg';
+import WorkProjectFinderBG from '../03_organisms/WorkProjectFinderBG';
 
 const Work = (props) => {
   const active = props.section === 'work' ? 'active' : '';
   return (
     <StyledWork className="grid-col-18 work grid-18">
 
-      <WorkLauncherBg />
+      <WorkProjectFinderBG />
 
       <StyledWorkLauncher className="work-launcher">
         <div className="work-launcher-main">

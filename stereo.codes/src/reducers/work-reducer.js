@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { SET_ACTIVE_PROJECT, CLOSE_ACTIVE_PROJECT } from '../actions/work-actions';
 
 // TODO: maybe use airtable for this state
-const portfolioList = [
+const projectList = [
   {
     id: 1,
     title: 'draftboard',
@@ -62,7 +62,7 @@ const project = (state = { id: 0, show: false }, action) => {
   }
 }
 
-const portfolio = (state = portfolioList) => {
+const projects = (state = projectList) => {
   return state;
 }
 
@@ -72,7 +72,7 @@ const workImages = (state = bgImages) => {
 
 const work = combineReducers({
   project,
-  portfolio,
+  projects,
   workImages,
 });
 

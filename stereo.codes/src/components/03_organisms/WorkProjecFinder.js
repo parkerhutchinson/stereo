@@ -32,7 +32,7 @@ class WorkFinder extends Component {
     );
   }
   render() {
-    const { portfolio } = this.props;
+    const { projects } = this.props;
     return (
       <StyledFinder className="workfinder grid-col-16">
         <StyledFinderGrid className="grid-16">
@@ -58,7 +58,7 @@ class WorkFinder extends Component {
                 </dl>
               </dd>
             </StyledFinderLabels>
-            { this.getWork(portfolio) }
+            { this.getWork(projects) }
           </StyledFinderRows>
         </StyledFinderGrid>
       </StyledFinder>
@@ -67,7 +67,7 @@ class WorkFinder extends Component {
 }
 
 WorkFinder.propTypes = {
-  portfolio: PropTypes.array,
+  projects: PropTypes.array,
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -78,7 +78,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => {
   return {
-    portfolio: state.work.portfolio
+    projects: state.work.projects
   }
 }
 

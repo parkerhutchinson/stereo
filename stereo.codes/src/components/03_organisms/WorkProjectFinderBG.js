@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import WorkBgElement from '../02_molecules/WorkBgElement';
 import { connect } from 'react-redux';
 
-class WorkLauncherBg extends Component {
+class WorkProjectFinderBG extends Component {
   getWorkElements(props) {
     const { mobileWork } = props;
     const numCols = 3;
@@ -33,12 +33,12 @@ class WorkLauncherBg extends Component {
   }
 }
 
-WorkLauncherBg.propTypes = {
+WorkProjectFinderBG.propTypes = {
   section: PropTypes.string,
   mobileWork: PropTypes.array,
 }
 
-WorkLauncherBg.defaultProps = {
+WorkProjectFinderBG.defaultProps = {
   section: '',
   mobileWork: [],
 }
@@ -53,7 +53,7 @@ const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
   null
-)(WorkLauncherBg)
+)(WorkProjectFinderBG)
 
 const StyledColumnGroup = styled.div`
   width: 30%;
