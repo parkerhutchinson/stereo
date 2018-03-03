@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { closeActiveProject } from '../../actions/work-actions';
+import Copy from './Copy';
 
 class WorkProjectOverlay extends Component {
   closeProject(evt) {
@@ -11,13 +12,15 @@ class WorkProjectOverlay extends Component {
     return false;
   }
   render() {
-    const { id, show } = this.props;
+    const { project } = this.props;
+    const subTitle = project.stack ? project.stack.join(', ') : null;
     return(
-      <StyledWorkProjectOverlay show={show}>
+      <StyledWorkProjectOverlay show={project.show}>
         <div className="project-image"></div>
         <div className="project-details">
-          <h1>Hello World {id}</h1>
-          <a href="#open" onClick={(evt) => this.closeProject(evt)}>Close Project</a>
+          <Copy title={project.title} color={'var(--radish)'} inview={true} subTitle={subTitle}>
+            <a href="#open" onClick={(evt) => this.closeProject(evt)}>Close Project</a>
+          </Copy>
         </div>
       </StyledWorkProjectOverlay>
     )
@@ -25,12 +28,12 @@ class WorkProjectOverlay extends Component {
 }
 
 WorkProjectOverlay.propTypes = {
-  id: PropTypes.number,
+  project: PropTypes.object,
   show: PropTypes.bool,
 }
 
 WorkProjectOverlay.defaultProps = {
-  id: 0,
+  project: {},
   show: false,
 }
 
@@ -42,8 +45,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => {
   return {
-    id: state.work.project.id,
-    show: state.work.project.show,
+    project: state.work.project
   }
 }
 

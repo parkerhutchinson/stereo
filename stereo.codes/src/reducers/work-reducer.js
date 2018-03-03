@@ -11,14 +11,14 @@ const projectList = [
   },
   {
     id: 2,
-    title: 'draftboard',
+    title: 'LIM Business of Fashion',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
     na: true,
   },
   {
     id: 3,
-    title: 'draftboard three',
+    title: 'Lycoming',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
   },
@@ -51,10 +51,12 @@ const bgImages = [
   },
 ];
 
-const project = (state = { id: 0, show: false }, action) => {
+const project = (state = { show: false }, action) => {
   switch(action.type){
     case SET_ACTIVE_PROJECT:
-      return Object.assign({}, state, { id: action.id, show: true });
+      const project = projectList.filter((obj) => obj.id == action.id)[0];
+      project['show'] =  true;
+      return Object.assign({}, state, project);
     case CLOSE_ACTIVE_PROJECT:
       return Object.assign({}, state, { show: false });
     default:
