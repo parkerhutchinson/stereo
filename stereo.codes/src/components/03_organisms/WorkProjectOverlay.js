@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { closeActiveProject } from '../../actions/work-actions';
 import Copy from './Copy';
+import { hextorgb, rgbtohsl } from '../../scripts-lib/helper-colors';
 
 class WorkProjectOverlay extends Component {
   closeProject(evt) {
@@ -14,11 +15,22 @@ class WorkProjectOverlay extends Component {
   render() {
     const { project } = this.props;
     const subTitle = project.stack ? project.stack.join(', ') : null;
+    const rgb = project.color ? hextorgb(project.color) : null;
+    const hsl = project.color ? rgbtohsl(rgb[0], rgb[1], rgb[2]) : null;
+    console.log(hsl);
     return(
       <StyledWorkProjectOverlay show={project.show}>
-        <div className="project-image"></div>
+        <StyledProjectImage color={project.color} show={project.show}>
+          <img src={project.image} alt=""/>
+        </StyledProjectImage>
         <div className="project-details">
-          <Copy title={project.title} color={'var(--radish)'} inview={true} subTitle={subTitle}>
+          <Copy
+            title={project.title}
+            subTitle={subTitle}
+            color={'var(--stormy)'}
+            inview={true}
+            grid={12}
+          >
             <a href="#open" onClick={(evt) => this.closeProject(evt)}>Close Project</a>
           </Copy>
         </div>
@@ -49,6 +61,22 @@ const mapStateToProps = (state) => {
   }
 }
 
+const StyledProjectImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: ${props => props.color};
+  transition: all .7s var(--fastanimation);
+  clip-path: ${props => props.show ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 0, 100% 0, 100% 0, 0 0)'};
+  display: flex;
+  align-items: center;
+  img{
+    display: inline-block;
+    max-height: 80%;
+  }
+`;
 
 const StyledWorkProjectOverlay = styled.article`
   position: absolute;
@@ -59,19 +87,6 @@ const StyledWorkProjectOverlay = styled.article`
   opacity: 1;
   pointer-events: ${props => props.show ? 'auto' : 'none'};
   transition: all .4s var(--fastanimation);
-  .project-image{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background: var(--radish);
-    transition: all .7s var(--fastanimation);
-    background-image: url(https://images.unsplash.com/reserve/Hxev8VTsTuOJ27thHQdK_DSC_0068.JPG);
-    background-position: center;
-    background-size: cover;
-    clip-path: ${props => props.show ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 0, 100% 0, 100% 0, 0 0)'};
-  }
   .project-details{
     color: var(--radish);
     position: absolute;
@@ -82,9 +97,6 @@ const StyledWorkProjectOverlay = styled.article`
     right: 0;
     clip-path: ${props => props.show ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)'};
     transition: all .7s var(--fastanimation);
-    a{
-      color: var(--radish);
-    }
   }
 `;
 

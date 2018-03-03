@@ -8,6 +8,8 @@ const projectList = [
     title: 'draftboard',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
+    color: '#DDF0EC',
+    image: './images/bg-work/draftboard-mobile.jpg',
   },
   {
     id: 2,
