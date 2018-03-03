@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import WorkProjectFinderBG from '../03_organisms/WorkProjectFinderBG';
 
 const Work = (props) => {
-  const active = props.section === 'work' ? 'active' : '';
+  const active = props.section ? 'active' : '';
   return (
     <StyledWork className="grid-col-18 work grid-18">
 
@@ -30,12 +30,12 @@ const Work = (props) => {
 }
 Work.propTypes = {
   modalOpen: PropTypes.func,
-  section: PropTypes.string,
+  section: PropTypes.bool,
 }
 
 const mapStateToProps = (state) => {
   return {
-    section: state.section,
+    section: state.section.work,
   }
 }
 

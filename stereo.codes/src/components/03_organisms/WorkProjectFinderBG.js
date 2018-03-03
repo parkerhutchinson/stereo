@@ -9,7 +9,7 @@ class WorkProjectFinderBG extends Component {
     const { mobileWork } = props;
     const numCols = 3;
     const workbgGroup = [];
-    const active = this.props.section === 'work' ? 'active' : '';
+    const active = this.props.section ? 'active' : '';
 
     for (let i = 0; i < numCols; i++) {
       const imageIndexOne = i === 0 ? i : i + 1;
@@ -34,18 +34,18 @@ class WorkProjectFinderBG extends Component {
 }
 
 WorkProjectFinderBG.propTypes = {
-  section: PropTypes.string,
+  section: PropTypes.bool,
   mobileWork: PropTypes.array,
 }
 
 WorkProjectFinderBG.defaultProps = {
-  section: '',
+  section: false,
   mobileWork: [],
 }
 
 const mapStateToProps = (state) => {
   return {
-    section: state.section,
+    section: state.section.work,
     mobileWork: state.work.workImages,
   }
 }

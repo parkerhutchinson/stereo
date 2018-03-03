@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 class About extends Component {
   render() {
-    const active = this.props.section === 'about';
+    const active = this.props.section;
 
     return (
       <React.Fragment>
@@ -39,16 +39,16 @@ class About extends Component {
 }
 
 About.propTypes = {
-  section: PropTypes.string,
+  section: PropTypes.bool,
 }
 
 About.defaultProps = {
-  section: '',
+  section: false,
 }
 
 const mapStateToProps = (state) => {
   return {
-    section: state.section,
+    section: state.section.about,
   }
 }
 

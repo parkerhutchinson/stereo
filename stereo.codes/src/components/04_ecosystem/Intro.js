@@ -21,15 +21,15 @@ class Intro extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.section !== nextProps.section && nextProps.section === 'intro') {
-      console.log(true);
+    if (nextProps.section) {
       try {
         introSVG(this.refs.svg);
       } catch(error) {
         // do nothing
       }
     }
-    if (this.props.section !== nextProps.section && nextProps.section !== 'intro') {
+    console.log(!nextProps.section);
+    if (!nextProps.section) {
       const elem = ReactDOM.findDOMNode(this.refs.svg).querySelector('div');
       if (elem) {
         ReactDOM.findDOMNode(this.refs.svg).removeChild(elem);
@@ -37,7 +37,7 @@ class Intro extends Component {
     }
   }
   render() {
-    const active = this.props.section === 'intro';
+    const active = this.props.section;
     if (this.state.error) {
       return (
         <h1>something happened to svg probs</h1>
@@ -77,16 +77,16 @@ class Intro extends Component {
 }
 
 Intro.propTypes = {
-  section: PropTypes.string,
+  section: PropTypes.bool,
 }
 
 Intro.defaultProps = {
-  section: '',
+  section: false,
 }
 
 const mapStateToProps = (state) => {
   return {
-    section: state.section,
+    section: state.section.intro,
   }
 }
 

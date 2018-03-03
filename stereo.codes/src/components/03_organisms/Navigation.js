@@ -116,10 +116,10 @@ class Navigation extends Component {
     }
   }
   render() {
-    const show = this.props.navigation.open ? 'active' : '';
-    const notTop = this.props.section !== 'intro';
+    const { navigation, section } = this.props;
+    const show = navigation.open ? 'active' : '';
     return (
-      <StyledNavigation className={`${show} navigation ${notTop ? 'not-top' : ''}`}>
+      <StyledNavigation className={`${show} navigation ${!section ? 'not-top' : ''}`}>
         <div className="grid-col-18 grid-18">
           <Logo classes="grid-col-9" />
           { this.createMainNav() }
@@ -137,18 +137,18 @@ class Navigation extends Component {
 Navigation.propTypes = {
   navigation: PropTypes.object,
   navigationOpen: PropTypes.func,
-  section: PropTypes.string,
+  section: PropTypes.bool,
 }
 
 Navigation.defaultProps = {
-  section: 'intro',
+  section: false,
   navigation: { open: false },
 }
 
 const mapStateToProps = (state) => {
   return {
     navigation: state.navigation,
-    section: state.section
+    section: state.section.intro
   }
 }
 

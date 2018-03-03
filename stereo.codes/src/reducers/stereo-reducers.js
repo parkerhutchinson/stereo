@@ -34,10 +34,10 @@ function grid(state = { activate: false }, action) {
   }
 }
 
-function section(state = '', action) {
+function section(state = {}, action) {
   switch(action.type) {
     case SECTION_ADD:
-      return action.section
+      return Object.assign({}, state, action.section);
     default:
       return state;
   }

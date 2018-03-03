@@ -29,18 +29,21 @@ class SectionObserver extends Component {
   componentWillUnMount() {
     this.observer.unobserve(this.section);
   }
-  setSection = () => {
-    this.props.sectionAdd(this.props.label);
+  setSection = (set) => {
+    let tmp = {}
+    tmp[this.props.label] = set;
+    this.props.sectionAdd(tmp);
   }
   onChange(entries) {
     entries.forEach((entry) => {
       if (entry.intersectionRatio > this.props.threshold) {
         entry.target.classList.add('inview');
         if (!this.props.nostate) {
-          this.setSection()
+          this.setSection(true);
         }
       } else {
         entry.target.classList.remove('inview');
+        this.setSection(false);
       }
     })
   }
