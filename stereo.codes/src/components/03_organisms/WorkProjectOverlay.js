@@ -17,7 +17,7 @@ class WorkProjectOverlay extends Component {
         <div className="project-image"></div>
         <div className="project-details">
           <h1>Hello World {id}</h1>
-          <a href="#" onClick={(evt) => this.closeProject(evt)}>Close Project</a>
+          <a href="#open" onClick={(evt) => this.closeProject(evt)}>Close Project</a>
         </div>
       </StyledWorkProjectOverlay>
     )
