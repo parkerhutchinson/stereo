@@ -24,7 +24,7 @@ export const rgbtohsl = (r, g, b) => {
 
     h /= 6;
   }
-  return [(h*100+0.5)|0, ((s*100+0.5)|0), ((l*100+0.5)|0)];
+  return [(h*360)|0, ((s*100)|0), ((l*100)|0)];
 }
 
 export const hextorgb = (hex) => {

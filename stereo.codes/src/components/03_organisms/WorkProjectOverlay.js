@@ -17,10 +17,10 @@ class WorkProjectOverlay extends Component {
     const subTitle = project.stack ? project.stack.join(', ') : null;
     const rgb = project.color ? hextorgb(project.color) : null;
     const hsl = project.color ? rgbtohsl(rgb[0], rgb[1], rgb[2]) : null;
-    console.log(hsl);
+
     return(
       <StyledWorkProjectOverlay show={project.show}>
-        <StyledProjectImage color={project.color} show={project.show}>
+        <StyledProjectImage color={project.color} show={project.show} shadow={hsl}>
           <img src={project.image} alt=""/>
         </StyledProjectImage>
         <div className="project-details">
@@ -61,6 +61,13 @@ const mapStateToProps = (state) => {
   }
 }
 
+const shadow = (hsl) => {
+  const h = hsl[0];
+  const s = hsl[1];
+  const l = hsl[2] > 60 ? hsl[2] - 60 : hsl[2];
+  return `hsla(${h}, ${s}%, ${l}%, .5)`;
+}
+
 const StyledProjectImage = styled.div`
   position: absolute;
   top: 0;
@@ -75,6 +82,7 @@ const StyledProjectImage = styled.div`
   img{
     display: inline-block;
     max-height: 80%;
+    box-shadow: 10px 10px 30px ${props => props.shadow ? shadow(props.shadow) : null};
   }
 `;
 
