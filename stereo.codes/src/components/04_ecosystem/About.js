@@ -15,7 +15,7 @@ class About extends Component {
         <VerticalText inview={active}>
           <h4>STEREO</h4>
         </VerticalText>
-        <StyledAboutContent className={`${active ? 'active' : ''} grid-col-18 grid-18 about-content`}>
+        <StyledAboutContent className="grid-col-18 grid-18 about-content" inview={active}>
           <Copy title="Hackerman" subTitle="Half Unicorn" grid={9} inview={active} color="var(--stormy)">
             <p>This is our world now. The world of the electron and the
             switch; the beauty of the baud. We exist without nationality,
@@ -58,18 +58,20 @@ const StyledAboutContent = styled.div`
   padding: 70px 0;
   background: none;
   position: relative;
+  opacity: ${props => props.inview ? '1' : '0'};
+  transition: all var(--fastanimation) .7s;
   &:before{
     content: '';
     position: absolute;
     background: var(--snow);
-    width: 0%;
+    width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     box-shadow: 10px 10px 30px 0 var(--stormy);
     z-index: 0;
-    transition: width var(--fastanimation) .7s;
-    transition-delay: 0s;
+    clip-path: ${props => props.inview ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(0 0%, 30% 0%, 0% 100%, 0 100%)'};
+    transition: all var(--fastanimation) .9s;
   }
   &:after{
     content: '';
@@ -100,12 +102,6 @@ const StyledAboutContent = styled.div`
   @media screen and (max-width: 768px) {
     .gallery{
       display: none;
-    }
-  }
-  &.active{
-    &:before{
-      transition-delay: .4s;
-      width: 100%;
     }
   }
 `;

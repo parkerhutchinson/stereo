@@ -44,7 +44,7 @@ class Navigation extends Component {
       this.transitionOpen(false);
     }
 
-    // evt.preventDefault();
+    evt.preventDefault();
     return false;
   }
 

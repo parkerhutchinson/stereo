@@ -10,10 +10,9 @@ export default class Copy extends Component {
   render() {
     const { grid, classes, subTitle, title, inview, color } = this.props;
     const gridContent = grid - 2;
-    const active = inview ? 'active' : '';
 
     return (
-      <StyledCopy className={`${classes} grid-col-${grid} copy ${active}`} color={color}>
+      <StyledCopy className={`${classes} grid-col-${grid} copy`} color={color} inview={inview}>
         <div className={`grid-col-${grid} copy-wrap`}>
           <CopyHeader
             title={ title }
@@ -70,9 +69,9 @@ const StyledCopy = styled.article`
     padding: ${copyWrapPadding} 0 ${copyWrapPadding} 0;
     .copy-content{
       padding: 0 11.50% 5px;
-      opacity: 0;
+      opacity: ${props => props.inview ? '1' : '0'};
       transition: opacity var(--fastanimation) .6s;
-      transition-delay: 0s;
+      transition-delay: ${props => props.inview ? '1.2s' : '0s'};
     }
     @media screen and (max-width: 768px) {
       padding: ${copyWrapPaddingMobile} 0 ${copyWrapPaddingMobile} 0;
@@ -83,20 +82,12 @@ const StyledCopy = styled.article`
     position: absolute;
     top: 0;
     right: 0;
-    width:0%;
+    width: 77.85%;
     height: 100%;
     z-index: 1;
-    transition: width var(--fastanimation) .7s;
-    transition-delay: 0s;
-  }
-  &.active{
-    .copy-content{
-      transition-delay: 1.2s;
-      opacity: 1;
-    }
-    .bg{
-      transition-delay: 1s;
-      width: 77.85%;
-    }
+    opacity: ${props => props.inview ? '1' : '0'};
+    clip-path: ${props => props.inview ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%)'};
+    transition: all var(--fastanimation) .9s;
+    transition-delay: ${props => props.inview ? '1s' : '0s'};
   }
 `;
