@@ -24,7 +24,7 @@ class WorkProjectOverlay extends Component {
           <img src={project.image} alt=""/>
         </StyledProjectImage>
         <div className="project-details">
-          <Copy
+          <StyledOverlayCopy
             title={project.title}
             subTitle={subTitle}
             color={'var(--stormy)'}
@@ -32,7 +32,7 @@ class WorkProjectOverlay extends Component {
             grid={12}
           >
             <a href="#open" onClick={(evt) => this.closeProject(evt)}>Close Project</a>
-          </Copy>
+          </StyledOverlayCopy>
         </div>
       </StyledWorkProjectOverlay>
     )
@@ -79,6 +79,7 @@ const StyledProjectImage = styled.div`
   clip-path: ${props => props.show ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 0, 100% 0, 100% 0, 0 0)'};
   display: flex;
   align-items: center;
+  justify-content: space-around;
   img{
     display: inline-block;
     max-height: 80%;
@@ -106,6 +107,10 @@ const StyledWorkProjectOverlay = styled.article`
     clip-path: ${props => props.show ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)'};
     transition: all .7s var(--fastanimation);
   }
+`;
+
+const StyledOverlayCopy = styled(Copy)`
+  .bg{display: none;}
 `;
 
 export default connect(

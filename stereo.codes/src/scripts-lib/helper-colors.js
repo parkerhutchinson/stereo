@@ -1,10 +1,12 @@
 export const rgbtohsl = (r, g, b) => {
-  r /= 255, g /= 255, b /= 255;
+  r /= 255;
+  g /= 255;
+  b /= 255;
 
   var max = Math.max(r, g, b), min = Math.min(r, g, b);
   var h, s, l = (max + min) / 2;
 
-  if (max == min) {
+  if (max === min) {
     h = s = 0; // achromatic
   } else {
     var d = max - min;
@@ -20,6 +22,8 @@ export const rgbtohsl = (r, g, b) => {
       case b:
         h = (r - g) / d + 4;
         break;
+      default:
+        return;
     }
 
     h /= 6;
