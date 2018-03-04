@@ -1,47 +1,93 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { modalOpen } from '../../actions/modal-actions';
+import { setEscapeCode, closeActiveProject } from '../../actions/work-actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import WorkProjectFinderBG from '../03_organisms/WorkProjectFinderBG';
 
-const Work = (props) => {
-  const active = props.section ? 'active' : '';
-  return (
-    <StyledWork className="grid-col-18 work grid-18">
+class Work extends Component {
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeypress.bind(this));
+  }
+  // escape key handler
+  handleKeypress(e){
+    switch (e.keyCode) {
+      case 27:
+        this.closeWindow();
+        break;
+      default:
+        return;
+    }
+  }
+  // hackiest thing ever. pretty sure state machine would be more dynamic.
+  closeWindow() {
+    const { escwatcher } = this.props;
+    switch(escwatcher.code) {
+      case 1:
+        this.props.modalOpen(false);
+        break;
+      case 2:
+        this.props.closeActiveProject();
+        this.props.setEscapeCode({code: 1});
+        break;
+      default:
+        return;
+    }
+  }
+  openFinder() {
+    this.props.setEscapeCode({code: 1});
+    this.props.modalOpen(true);
+  }
+  render() {
+    const { section } = this.props;
+    const inview = section.work ? section.work : null;
+    return (
+      <StyledWork className="grid-col-18 work grid-18">
 
-      <WorkProjectFinderBG />
+        <WorkProjectFinderBG />
 
-      <StyledWorkLauncher className="work-launcher">
-        <div className="work-launcher-main">
-          <StyledButton onClick={() => props.modalOpen(true)} className={active}>
-            <span>
-              Browse Projects
-            </span>
-          </StyledButton>
+        <StyledWorkLauncher className="work-launcher">
+          <div className="work-launcher-main">
+            <StyledButton onClick={() => this.openFinder()} inview={inview}>
+              <span>
+                Browse Projects
+              </span>
+            </StyledButton>
 
-          <StyledSupportCopy className={active}>
-            Over <strong>10 years</strong> of professional web<br/>development experience.
-          </StyledSupportCopy>
-        </div>
-      </StyledWorkLauncher>
-    </StyledWork>
-  )
+            <StyledSupportCopy inview={inview}>
+              Over <strong>10 years</strong> of professional web<br/>development experience.
+            </StyledSupportCopy>
+          </div>
+        </StyledWorkLauncher>
+      </StyledWork>
+    )
+  }
 }
+
 Work.propTypes = {
   modalOpen: PropTypes.func,
-  section: PropTypes.bool,
+  section: PropTypes.object,
+  windows: PropTypes.number,
+  escwatcher: PropTypes.object,
 }
 
 const mapStateToProps = (state) => {
   return {
-    section: state.section.work,
+    section: state.section,
+    escwatcher: state.work.escapeWatcher,
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   modalOpen: (open) => {
     dispatch(modalOpen(open))
+  },
+  setEscapeCode: (code) => {
+    dispatch(setEscapeCode(code))
+  },
+  closeActiveProject: (show) => {
+    dispatch(closeActiveProject(show))
   },
 });
 
@@ -80,47 +126,32 @@ const StyledButton = styled.button`
     content: '';
     position: absolute;
     background: var(--snow);
-    width: 0%;
+    width: ${props => props.inview ? '100%' : '0%'};
     height: 100%;
     top: 0;
     left: 0;
     box-shadow: 10px 10px 30px 0 var(--stormy);
     z-index: 0;
     transition: width var(--fastanimation) .7s;
-    transition-delay: 0s;
+    transition-delay: ${props => props.inview ? '.5s' : '0s'};
   }
   span{
     position: relative;
     z-index: 1;
-    color: rgba(255, 74, 74, 0);
+    color: ${props => props.inview ? 'rgba(255, 74, 74, 1)' : 'rgba(255, 74, 74, 0)'};;
     transition: color cubic-bezier(.91,.02,.03,.98) .8s;
-    transition-delay: 0s;
-  }
-  &.active{
-    &:before{
-      width: 100%;
-      transition-delay: .5s;
-    }
-    span{
-      color: rgba(255, 74, 74, 1);
-      transition-delay: .5s;
-    }
+    transition-delay: ${props => props.inview ? '.5s' : '0s'};
   }
 `;
 
 const StyledSupportCopy = styled.p`
   position: relative;
-  top: -100px;
+  top: ${props => props.inview ? '0px' : '-100px'};
   font-size: 1.4rem;
   p{line-height: 1.8;}
-  opacity: 0;
+  opacity: ${props => props.inview ? '1' : '0'};
   transition: all cubic-bezier(.91,.02,.03,.98) .7s;
-  transition-delay: 0s;
-  &.active{
-    transition-delay: .8s;
-    top: 0px;
-    opacity: 1;
-  }
+  transition-delay: ${props => props.inview ? '.8s' : '0s'};;
 `;
 
 const StyledWork = styled.div`

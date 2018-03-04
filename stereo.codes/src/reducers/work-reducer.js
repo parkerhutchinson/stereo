@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux';
-import { SET_ACTIVE_PROJECT, CLOSE_ACTIVE_PROJECT } from '../actions/work-actions';
+import {
+  SET_ACTIVE_PROJECT,
+  CLOSE_ACTIVE_PROJECT,
+  SET_ESCAPE_CODE,
+} from '../actions/work-actions';
 
 // TODO: maybe use airtable for this state
 const projectList = [
@@ -56,6 +60,9 @@ const bgImages = [
     image: './images/bg-work/lim-mobile.jpg',
   },
 ];
+const initialEscapeWatcher = {
+  code: 0,
+}
 
 const project = (state = { show: false }, action) => {
   switch(action.type){
@@ -78,10 +85,21 @@ const workImages = (state = bgImages) => {
   return state;
 }
 
+// I bet this would be easier with RX or state machine thing.
+const escapeWatcher = (state = initialEscapeWatcher, action) => {
+  switch(action.type){
+    case SET_ESCAPE_CODE:
+      return Object.assign({}, state, action.code);
+    default:
+      return state;
+  }
+}
+
 const work = combineReducers({
   project,
   projects,
   workImages,
+  escapeWatcher,
 });
 
 export default work;

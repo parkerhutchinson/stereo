@@ -20,6 +20,10 @@ class WorkProjectOverlay extends Component {
 
     return(
       <StyledWorkProjectOverlay show={project.show}>
+        <ul>
+          <li><a href="#close" onClick={(evt) => this.closeProject(evt)}>CLOSE</a></li>
+          <li><span>esc</span></li>
+        </ul>
         <StyledProjectImage color={project.color} show={project.show} shadow={hsl}>
           <img src={project.image} alt=""/>
         </StyledProjectImage>
@@ -33,7 +37,6 @@ class WorkProjectOverlay extends Component {
           >
             {/* // yeah yeah i dont want to hear it. */}
             <div dangerouslySetInnerHTML={{__html: project.copy}} />
-            <a href="#open" onClick={(evt) => this.closeProject(evt)}>Close Project</a>
           </StyledOverlayCopy>
         </div>
       </StyledWorkProjectOverlay>
@@ -66,8 +69,9 @@ const mapStateToProps = (state) => {
 const shadow = (hsl) => {
   const h = hsl[0];
   const s = hsl[1];
-  const l = hsl[2] > 60 ? hsl[2] - 60 : hsl[2];
-  return `hsla(${h}, ${s}%, ${l}%, .5)`;
+  const l = hsl[2] > 50 ? hsl[2] - 50 : hsl[2];
+  console.log(hsl[2]);
+  return `hsla(${h}, ${s}%, ${l}%, .3)`;
 }
 
 const StyledProjectImage = styled.div`

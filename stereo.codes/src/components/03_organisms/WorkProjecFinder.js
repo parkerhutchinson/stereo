@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import WorkFinderRow from '../02_molecules/WorkFinderRow';
 import styled from 'styled-components';
-import { setActiveProject } from '../../actions/work-actions';
+import { setActiveProject, setEscapeCode } from '../../actions/work-actions';
 
 class WorkFinder extends Component {
   componentWillMount() {
@@ -17,6 +17,7 @@ class WorkFinder extends Component {
   setActive(row) {
     if (!row.na) {
       this.props.setActiveProject(row.id);
+      this.props.setEscapeCode({code: 2});
     }
   }
   getWork(rows) {
@@ -33,7 +34,6 @@ class WorkFinder extends Component {
   }
   render() {
     const { projects, modal } = this.props;
-    console.log(modal);
     return (
       <StyledFinder className="workfinder grid-col-16" modal={modal}>
         <StyledFinderGrid className="grid-16">
@@ -75,6 +75,9 @@ WorkFinder.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   setActiveProject: (id) => {
     dispatch(setActiveProject(id))
+  },
+  setEscapeCode: (code) => {
+    dispatch(setEscapeCode(code))
   },
 });
 
