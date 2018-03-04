@@ -31,6 +31,8 @@ class WorkProjectOverlay extends Component {
             inview={true}
             grid={12}
           >
+            {/* // yeah yeah i dont want to hear it. */}
+            <div dangerouslySetInnerHTML={{__html: project.copy}} />
             <a href="#open" onClick={(evt) => this.closeProject(evt)}>Close Project</a>
           </StyledOverlayCopy>
         </div>
@@ -110,7 +112,12 @@ const StyledWorkProjectOverlay = styled.article`
 `;
 
 const StyledOverlayCopy = styled(Copy)`
+  *{color: ${props => props.color}}
+  .copy-wrap .copy-content{padding: 0 8.5% 5px;}
+  span.grid-col-1:before{display: none;}
   .bg{display: none;}
+  p{margin-bottom: 20px;}
+  p:last-child{margin-bottom: 50px;}
 `;
 
 export default connect(

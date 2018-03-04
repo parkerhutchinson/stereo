@@ -10,19 +10,23 @@ const projectList = [
     position: 'Full Stack',
     color: '#DDF0EC',
     image: './images/bg-work/draftboard-mobile.jpg',
+    copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>'
   },
   {
     id: 2,
     title: 'LIM Business of Fashion',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
-    na: true,
+    color: '#BEE0FA',
+    image: './images/bg-work/lim-mobile.jpg',
   },
   {
     id: 3,
     title: 'Lycoming',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
+    color: '#FDE6E6',
+    image: './images/bg-work/lycoming-mobile.jpg',
   },
 ]
 
