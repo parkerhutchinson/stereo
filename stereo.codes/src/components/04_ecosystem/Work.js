@@ -44,9 +44,7 @@ class Work extends Component {
     const inview = section.work ? section.work : null;
     return (
       <StyledWork className="grid-col-18 work grid-18">
-
         <WorkProjectFinderBG />
-
         <StyledWorkLauncher className="work-launcher">
           <div className="work-launcher-main">
             <StyledButton onClick={() => this.openFinder()} inview={inview}>

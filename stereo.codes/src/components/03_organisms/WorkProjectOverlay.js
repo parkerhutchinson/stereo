@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { closeActiveProject } from '../../actions/work-actions';
+import { closeActiveProject, setEscapeCode } from '../../actions/work-actions';
 import Copy from './Copy';
 import { hextorgb, rgbtohsl } from '../../scripts-lib/helper-colors';
+import WorkCloseUI from '../02_molecules/WorkCloseUI';
 
 class WorkProjectOverlay extends Component {
   closeProject(evt) {
     this.props.closeActiveProject();
+    this.props.setEscapeCode({code: 1})
     evt.preventDefault();
     return false;
   }
@@ -20,10 +22,7 @@ class WorkProjectOverlay extends Component {
 
     return(
       <StyledWorkProjectOverlay show={project.show}>
-        <ul>
-          <li><a href="#close" onClick={(evt) => this.closeProject(evt)}>CLOSE</a></li>
-          <li><span>esc</span></li>
-        </ul>
+        <WorkCloseUI clicked={() => this.closeProject()}/>
         <StyledProjectImage color={project.color} show={project.show} shadow={hsl}>
           <img src={project.image} alt=""/>
         </StyledProjectImage>
@@ -57,6 +56,9 @@ WorkProjectOverlay.defaultProps = {
 const mapDispatchToProps = (dispatch) => ({
   closeActiveProject: (show) => {
     dispatch(closeActiveProject(show))
+  },
+  setEscapeCode: (code) => {
+    dispatch(setEscapeCode(code))
   },
 })
 
@@ -123,6 +125,7 @@ const StyledOverlayCopy = styled(Copy)`
   p{margin-bottom: 20px;}
   p:last-child{margin-bottom: 50px;}
 `;
+
 
 export default connect(
   mapStateToProps,
