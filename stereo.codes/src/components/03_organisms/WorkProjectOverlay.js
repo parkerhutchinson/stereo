@@ -8,11 +8,9 @@ import { hextorgb, rgbtohsl } from '../../scripts-lib/helper-colors';
 import WorkCloseUI from '../02_molecules/WorkCloseUI';
 
 class WorkProjectOverlay extends Component {
-  closeProject(evt) {
+  closeProject() {
     this.props.closeActiveProject();
-    this.props.setEscapeCode({code: 1})
-    evt.preventDefault();
-    return false;
+    this.props.setEscapeCode({code: 1});
   }
   render() {
     const { project } = this.props;
@@ -22,7 +20,7 @@ class WorkProjectOverlay extends Component {
 
     return(
       <StyledWorkProjectOverlay show={project.show}>
-        <WorkCloseUI clicked={() => this.closeProject()}/>
+        <WorkCloseUI clicked={() => this.closeProject()} show={project.show} color="var(--stormy)"/>
         <StyledProjectImage color={project.color} show={project.show} shadow={hsl}>
           <img src={project.image} alt=""/>
         </StyledProjectImage>
@@ -44,6 +42,8 @@ class WorkProjectOverlay extends Component {
 }
 
 WorkProjectOverlay.propTypes = {
+  closeActiveProject: PropTypes.func,
+  setEscapeCode: PropTypes.func,
   project: PropTypes.object,
   show: PropTypes.bool,
 }

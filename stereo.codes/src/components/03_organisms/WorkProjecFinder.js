@@ -4,10 +4,16 @@ import { connect } from 'react-redux';
 import WorkFinderRow from '../02_molecules/WorkFinderRow';
 import styled from 'styled-components';
 import { setActiveProject, setEscapeCode } from '../../actions/work-actions';
+import { modalOpen } from '../../actions/modal-actions';
+
 
 class WorkFinder extends Component {
   componentWillMount() {
-    this.setState({ activeProject: 'test' });
+    this.setState(
+      {
+        activeProject: 'test',
+      }
+    );
   }
   setHover(row) {
     if (!row.na) {
@@ -75,6 +81,9 @@ WorkFinder.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   setActiveProject: (id) => {
     dispatch(setActiveProject(id))
+  },
+  modalOpen: (open) => {
+    dispatch(modalOpen(open))
   },
   setEscapeCode: (code) => {
     dispatch(setEscapeCode(code))

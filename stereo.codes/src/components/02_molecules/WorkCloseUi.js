@@ -2,15 +2,31 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 
-class WorkCloseUI extends Component {
+export default class WorkCloseUI extends Component {
+  handleClick(evt) {
+    this.props.clicked();
+    evt.preventDefault();
+  }
   render() {
+    const { className, show, color } = this.props;
     return(
-      <StyledOverlayUI>
-        <li><a href="#close" onClick={(evt) => this.closeProject(evt)}>CLOSE</a></li>
+      <StyledOverlayUI className={className} show={show} color={color}>
+        <li><a href="#close" onClick={(evt) => this.handleClick(evt)}>CLOSE</a></li>
         <li><span>esc</span></li>
       </StyledOverlayUI>
     )
   }
+}
+
+WorkCloseUI.propTypes = {
+  show: PropTypes.bool,
+  color: PropTypes.string,
+  className: PropTypes.string,
+  clicked: PropTypes.func,
+}
+
+WorkCloseUI.defaultProps = {
+  show: false,
 }
 
 const StyledOverlayUI = styled.ul`
@@ -20,6 +36,9 @@ const StyledOverlayUI = styled.ul`
   right: 30px;
   display: flex;
   align-items: stretch;
+  opacity: ${props => props.show ? '1' : '0'};
+  transition: all .5s var(--fastanimation);
+  transition-delay: ${props => props.show ? '1s' : '0s'};
   li{
     display: flex;
     align-items: center;
@@ -27,7 +46,7 @@ const StyledOverlayUI = styled.ul`
   }
   li a{
     position: relative;
-    color: var(--stormy);
+    color: ${props => props.color};
     font-size: 1.1rem;
     padding-bottom: 3px;
     &:before{
@@ -35,7 +54,7 @@ const StyledOverlayUI = styled.ul`
       display: block;
       width: 100%;
       height: 1px;
-      background: var(--stormy);
+      background: ${props => props.color};
       position: absolute;
       bottom: 0;
       left: 0;
@@ -45,9 +64,9 @@ const StyledOverlayUI = styled.ul`
     span{
       display: inline-block;
       padding: 6px 3px;
-      border: 1px solid var(--stormy);
+      border: 1px solid ${props => props.color};
       font-size: .8rem;
-      color: var(--stormy);
+      color: ${props => props.color};
       border-radius: 3px;
     }
   }
