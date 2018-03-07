@@ -14,7 +14,7 @@ const projectList = [
     position: 'Full Stack',
     color: '#DDF0EC',
     image: './images/bg-work/draftboard-mobile.jpg',
-    copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>'
+    copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
   },
   {
     id: 2,
@@ -23,6 +23,7 @@ const projectList = [
     position: 'Full Stack',
     color: '#BEE0FA',
     image: './images/bg-work/lim-mobile.jpg',
+    copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
   },
   {
     id: 3,
@@ -31,6 +32,7 @@ const projectList = [
     position: 'Full Stack',
     color: '#FDE6E6',
     image: './images/bg-work/lycoming-mobile.jpg',
+    copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
   },
 ]
 

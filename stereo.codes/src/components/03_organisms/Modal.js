@@ -52,7 +52,7 @@ const StyledModal = styled.section`
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: rgba(51, 63, 106, .8);
+    background: rgba(var(--blueberry), .8);
     backdrop-filter: ${props => props.modal ? 'blur(0px)' : 'blur(7px)'};: blur(0px);
   }
 `;

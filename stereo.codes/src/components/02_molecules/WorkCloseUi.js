@@ -48,26 +48,23 @@ const StyledOverlayUI = styled.ul`
     position: relative;
     color: ${props => props.color};
     font-size: 1.1rem;
-    padding-bottom: 3px;
-    &:before{
-      content: '';
-      display: block;
-      width: 100%;
-      height: 1px;
-      background: ${props => props.color};
-      position: absolute;
-      bottom: 0;
-      left: 0;
+    letter-spacing: 1px;
+    line-height: 0;
+    transition: color .4s;
+    &:hover{
+      color: rgb(var(--radish));
     }
   }
   li:last-child{
     span{
       display: inline-block;
-      padding: 6px 3px;
+      padding: 9px 5px 8px;
+      line-height: 0;
       border: 1px solid ${props => props.color};
-      font-size: .8rem;
+      font-size:.8rem;
       color: ${props => props.color};
       border-radius: 3px;
+      text-transform: uppercase;
     }
   }
 `;

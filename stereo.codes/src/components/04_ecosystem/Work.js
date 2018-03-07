@@ -136,7 +136,7 @@ const StyledButton = styled.button`
   span{
     position: relative;
     z-index: 1;
-    color: ${props => props.inview ? 'rgba(255, 74, 74, 1)' : 'rgba(255, 74, 74, 0)'};;
+    color: ${props => props.inview ? 'rgba(var(--radish), 1)' : 'rgba(255, 74, 74, 0)'};;
     transition: color cubic-bezier(.91,.02,.03,.98) .8s;
     transition-delay: ${props => props.inview ? '.5s' : '0s'};
   }

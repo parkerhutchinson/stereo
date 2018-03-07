@@ -88,11 +88,12 @@ const gridTemplateCol = (num) => {
 injectGlobal`
   @import url(https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700);
   :root{
-    ${'' /* --stormy: 44, 46, 71; */}
-    --stormy: 0, 0, 0;
+    --stormy: 44, 46, 71;
     --radish: 255, 74, 74;
-    ${'' /* --blueberry: 51, 63, 106; */}
-    --blueberry: 37, 37, 37;
+    --blueberry: 51, 63, 106;
+    ${'' /* --stormy: 0, 0, 0;
+    --radish: 119, 239, 142;
+    --blueberry: 37, 37, 37; */}
     --snow: 255,255,255;
     --roboto: "Roboto", sans-serif;
     --playfair: "Playfair Display", serif;

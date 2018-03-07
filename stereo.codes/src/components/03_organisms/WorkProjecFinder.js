@@ -139,7 +139,7 @@ const StyledFinder = styled.div`
     content: '';
     width: 100%;
     height: 80px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.7) 60%, rgba(255,255,255,1));
+    background: linear-gradient(to bottom, rgba(var(--snow),0), rgba(var(--snow),.7) 60%, rgba(var(--snow),1));
     position: absolute;
     bottom: 0;
     left: 0;
