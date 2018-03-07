@@ -47,7 +47,7 @@ Copy.defaultProps = {
   classes: '',
   grid: 8,
   inview: false,
-  color: 'var(--snow)',
+  color: 'rgb(var(--snow))',
 }
 
 const StyledCopy = styled.article`
@@ -79,7 +79,7 @@ const StyledCopy = styled.article`
     }
   }
   .bg{
-    background: var(--stormy);
+    background: rgb(var(--stormy));
     position: absolute;
     top: 0;
     right: 0;

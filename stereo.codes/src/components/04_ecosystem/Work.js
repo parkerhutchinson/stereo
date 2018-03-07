@@ -112,7 +112,7 @@ const StyledWorkLauncher = styled.div`
 
 const StyledButton = styled.button`
   font-family: var(--playfair);
-  color: var(--radish);
+  color: rgb(var(--radish));
   font-size: 2.4rem;
   background: none;
   padding: 20px 80px;
@@ -123,12 +123,12 @@ const StyledButton = styled.button`
   &:before{
     content: '';
     position: absolute;
-    background: var(--snow);
+    background: rgb(var(--snow));
     width: ${props => props.inview ? '100%' : '0%'};
     height: 100%;
     top: 0;
     left: 0;
-    box-shadow: 10px 10px 30px 0 var(--stormy);
+    box-shadow: 10px 10px 30px 0 rgb(var(--stormy));
     z-index: 0;
     transition: width var(--fastanimation) .7s;
     transition-delay: ${props => props.inview ? '.5s' : '0s'};

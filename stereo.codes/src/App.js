@@ -88,11 +88,12 @@ const gridTemplateCol = (num) => {
 injectGlobal`
   @import url(https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700);
   :root{
-    --stormy: rgba(44, 46, 71, 1);
-    --radish: rgba(255, 74, 74, 1);
-    --blueberry: rgba(51, 63, 106, 1);
-    --milesdavis: rgba(73,88,143,1);
-    --snow: rgba(255,255,255,1);
+    ${'' /* --stormy: 44, 46, 71; */}
+    --stormy: 0, 0, 0;
+    --radish: 255, 74, 74;
+    ${'' /* --blueberry: 51, 63, 106; */}
+    --blueberry: 37, 37, 37;
+    --snow: 255,255,255;
     --roboto: "Roboto", sans-serif;
     --playfair: "Playfair Display", serif;
     --fastanimation: cubic-bezier(.91,.02,.03,.98);
@@ -108,8 +109,8 @@ injectGlobal`
     font-size: 62.5%;
   }
   body{
-    background: var(--blueberry);
-    color: var(--snow);
+    background: rgb(var(--blueberry));
+    color: rgb(var(--snow));
     overflow-x: hidden;
     text-rendering: geometricPrecision;
     font-smoothing: antialiased;
@@ -126,7 +127,7 @@ injectGlobal`
       position: absolute;
       top: 0;
       left: 0;
-      background: linear-gradient(to bottom, rgba(45,50,80,1) 0%,rgba(45,50,80,0) 100%);
+      background: linear-gradient(to bottom, rgb(var(--stormy)) 0%, rgb(var(--blueberry)) 100%);
       z-index: 0;
     }
   }

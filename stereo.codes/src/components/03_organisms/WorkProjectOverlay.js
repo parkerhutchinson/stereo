@@ -20,7 +20,7 @@ class WorkProjectOverlay extends Component {
 
     return(
       <StyledWorkProjectOverlay show={project.show}>
-        <WorkCloseUI clicked={() => this.closeProject()} show={project.show} color="var(--stormy)"/>
+        <WorkCloseUI clicked={() => this.closeProject()} show={project.show} color="rgb(var(--stormy))"/>
         <StyledProjectImage color={project.color} show={project.show} shadow={hsl}>
           <img src={project.image} alt=""/>
         </StyledProjectImage>
@@ -28,7 +28,7 @@ class WorkProjectOverlay extends Component {
           <StyledOverlayCopy
             title={project.title}
             subTitle={subTitle}
-            color={'var(--stormy)'}
+            color={'rgb(var(--stormy))'}
             inview={true}
             grid={12}
           >
@@ -105,9 +105,9 @@ const StyledWorkProjectOverlay = styled.article`
   pointer-events: ${props => props.show ? 'auto' : 'none'};
   transition: all .4s var(--fastanimation);
   .project-details{
-    color: var(--radish);
+    color: rgb(var(--radish));
     position: absolute;
-    background: var(--snow);
+    background: rgb(var(--snow));
     width: 50%;
     height: 100%;
     top: 0;

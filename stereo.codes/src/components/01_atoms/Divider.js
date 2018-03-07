@@ -34,13 +34,13 @@ const StyledDivider = styled.div`
     transform: translateX(-50%);
     width: 1px;
     height: 100%;
-    background: var(--radish);
+    background: rgb(var(--radish));
     z-index: 0;
   }
   h5{
     position: relative;
     text-transform: uppercase;
-    background: var(--blueberry);
+    background: rgb(var(--blueberry));
     z-index: 1;
     padding: 10px 0;
     display: inline-block;

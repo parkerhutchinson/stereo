@@ -127,8 +127,8 @@ const StyledFinder = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
-    background: var(--snow);
-    box-shadow: 10px 10px 30px var(--stormy);
+    background: rgb(var(--snow));
+    box-shadow: 10px 10px 30px rgb(var(--stormy));
     clip-path: ${props => props.modal.open ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(0 100%, 100% 70%, 100% 100%, 0 100%)'};
     transition: all .8s var(--fastanimation);
     transition-delay: ${props => props.modal.open ? '.4s' : '0'};
@@ -161,12 +161,12 @@ const StyledFinder = styled.div`
     transition-delay: ${props => props.modal.open ? '.9s' : '0'};
     h2{
       display: block;
-      color: var(--stormy);
+      color: rgb(var(--stormy));
       text-transform: capitalize;
       font-weight: normal;
     }
     a{
-      color: var(--radish);
+      color: rgb(var(--radish));
     }
   }
 `;

@@ -55,7 +55,7 @@ class Intro extends Component {
             subTitle="Crash n' Burn"
             grid={9}
             inview={active}
-            color="var(--snow)"
+            color="rgb(var(--snow))"
           >
           <p>This is our world now. The world of the electron and the
             switch; the beauty of the baud. We exist without nationality,

@@ -17,14 +17,14 @@ const WorkBgElement = (props) => {
       width: calc(100% - 10px);
       height: 80%;
       background: none;
-      border: 5px solid var(--radish);
+      border: 5px solid rgb(var(--radish));
     }
     .bg-work-image{
       position: relative;
       left: 10%;
       width: 80%;
       display: block;
-      box-shadow: 10px 10px 30px 0 var(--stormy);
+      box-shadow: 10px 10px 30px 0 rgb(var(--stormy));
     }
   `;
   return(

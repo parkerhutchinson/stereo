@@ -76,7 +76,7 @@ const StyledSlide = styled.div`
     height: 110%;
     width: 110%;
     opacity: 1;
-    background: var(--snow);
+    background: rgb(var(--snow));
     transition: all .8s;
   }
   &.out{

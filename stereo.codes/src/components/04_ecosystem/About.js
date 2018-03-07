@@ -16,7 +16,7 @@ class About extends Component {
           <h4>STEREO</h4>
         </VerticalText>
         <StyledAboutContent className="grid-col-18 grid-18 about-content" inview={active}>
-          <Copy title="Hackerman" subTitle="Half Unicorn" grid={9} inview={active} color="var(--stormy)">
+          <Copy title="Hackerman" subTitle="Half Unicorn" grid={9} inview={active} color="rgb(var(--stormy))">
             <p>This is our world now. The world of the electron and the
             switch; the beauty of the baud. We exist without nationality,
             skin color, or religious bias. You wage wars, murder, cheat,
@@ -63,12 +63,12 @@ const StyledAboutContent = styled.div`
   &:before{
     content: '';
     position: absolute;
-    background: var(--snow);
+    background: rgb(var(--snow));
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    box-shadow: 10px 10px 30px 0 var(--stormy);
+    box-shadow: 10px 10px 30px 0 rgb(var(--stormy));
     z-index: 0;
     clip-path: ${props => props.inview ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(0 0%, 30% 0%, 0% 100%, 0 100%)'};
     transition: all var(--fastanimation) .9s;
@@ -81,7 +81,7 @@ const StyledAboutContent = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--radish);
+    background: rgb(var(--radish));
   }
   &:after{bottom: 0;}
   .copy{

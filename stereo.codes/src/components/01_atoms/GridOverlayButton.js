@@ -20,7 +20,7 @@ class GridOverlayButton extends Component {
 
     const ButtonStyled = styled.button`
       display: inline-block;
-      background: ${this.state.isActive ? 'green' : 'var(--radish)'};
+      background: ${this.state.isActive ? 'green' : 'rgb(var(--radish))'};
       color: white;
       padding: 10px;
       font-size: 16px;

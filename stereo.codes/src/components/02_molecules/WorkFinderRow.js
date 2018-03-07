@@ -57,7 +57,7 @@ const naConditionalStyle = (props) => {
       cursor: pointer;
       transition-duration: .5s;
       transform: scale(1.05);
-      border-color: var(--radish);
+      border-color: rgb(var(--radish));
       z-index: 2;
       padding: 0 15px;
       box-shadow: 0 0 30px rgba(0,0,0,.1);
@@ -76,7 +76,7 @@ const StyledRow = styled.dl`
   z-index: 1;
   padding: 0;
   &.workfinder-row{
-    color: ${props => props.na ? 'rgba(44, 46, 71, .35)' : 'var(--stormy)'};
+    color: ${props => props.na ? 'rgba(44, 46, 71, .35)' : 'rgb(var(--stormy))'};
   }
   .workfinder-row-name{width: 40%;}
   .workfinder-row-stack{width: 40%;}

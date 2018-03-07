@@ -57,7 +57,7 @@ const LinkStyled = styled.a`
   position: relative;
   overflow: hidden;
   font-size: 1.2rem;
-  border-right: 1px solid var(--radish);
+  border-right: 1px solid rgb(var(--radish));
   align-items: center;
   justify-content: space-around;
   padding-right: ${buttonPadding};
@@ -74,7 +74,7 @@ const LinkStyled = styled.a`
       position: absolute;
       height: 100%;
       width: 1px;
-      background: var(--radish);
+      background: rgb(var(--radish));
       z-index: 1;
     }
     &:before{
@@ -140,7 +140,7 @@ const LinkStyled = styled.a`
     position: absolute;
     height: 1px;
     width: 100%;
-    background: var(--radish);
+    background: rgb(var(--radish));
     z-index: 1;
   }
   &:before{
@@ -161,11 +161,11 @@ const LinkStyled = styled.a`
     .button-arrow{
       width: 43px;
       &:before{
-        background: var(--radish);
+        background: rgb(var(--radish));
       }
       .button-arrow-head{
         &:before,&:after{
-          background: var(--radish);
+          background: rgb(var(--radish));
         }
       }
     }

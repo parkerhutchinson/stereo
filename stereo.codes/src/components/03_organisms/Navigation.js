@@ -119,7 +119,7 @@ class Navigation extends Component {
     const { navigation, section } = this.props;
     const show = navigation.open ? 'active' : '';
     return (
-      <StyledNavigation className={`${show} navigation ${!section ? 'not-top' : ''}`}>
+      <StyledNavigation className="navigation" isTop={section}>
         <div className="grid-col-18 grid-18">
           <Logo classes="grid-col-9" />
           { this.createMainNav() }
@@ -170,9 +170,20 @@ const StyledNavigation = styled.nav`
   background: rgba(51,63,106, 0);
   z-index: 100;
   transition: background .3s;
-  &.not-top{
-    background: rgba(51,63,106, .9);
+  &:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgb(var(--blueberry));
+    opacity: ${props => !props.isTop ? '.9' : '0'};
+    z-index: 0;
+    transition: all .4s var(--fastanimation);
   }
+  & > *{position:relative;z-index: 1;}
   .grid-18{
     grid-column: 4 / span 18;
     align-items: center;
@@ -203,7 +214,7 @@ const StyledNavigation = styled.nav`
       content: '';
       width: 100%;
       height: 1px;
-      background: var(--snow);
+      background: rgb(var(--snow));
       position: absolute;
       top: 50%;
       left: 50%;
@@ -230,7 +241,7 @@ const StyledNavigation = styled.nav`
     top: 0;
     right: 0;
     z-index: 2;
-    background: var(--blueberry);
+    background: rgb(var(--blueberry));
     width: 100%;
     height: 100vh;
     opacity:0;
@@ -244,7 +255,7 @@ const StyledNavigation = styled.nav`
     .circle{
       width: 0;
       height: 0;
-      background: var(--radish);
+      background: rgb(var(--radish));
       position: absolute;
       border-radius: 50%;
     }
@@ -267,7 +278,7 @@ const StyledNavigation = styled.nav`
     &.active{
       opacity:1;
       pointer-events: auto;
-      background: var(--radish);
+      background: rgb(var(--radish));
       ul{
         display: block;
         text-align: center;

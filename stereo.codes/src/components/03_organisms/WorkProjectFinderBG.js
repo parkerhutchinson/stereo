@@ -97,7 +97,7 @@ const StyledWorkLauncher = styled.div`
     display: block;
     position: absolute;
     z-index: 2;
-    background: linear-gradient(to bottom, rgba(51, 63, 106, .6), var(--blueberry) 80%);
+    background: linear-gradient(to bottom, rgba(var(--blueberry), .6), rgb(var(--blueberry)) 80%);
     height: 100%;
     width: 100%;
     top: 0;

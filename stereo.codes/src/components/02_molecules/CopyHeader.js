@@ -45,7 +45,7 @@ CopyHeader.defaultProps = {
   classes: '',
   grid: 8,
   inview: false,
-  color: 'var(--snow)',
+  color: 'rgb(var(--snow))',
 }
 
 const StyledCopyHeader = styled.header`
@@ -75,7 +75,7 @@ const StyledCopyHeader = styled.header`
       position: relative;
       width: 0;
       height: 1px;
-      background: var(--radish);
+      background: rgb(var(--radish));
       top: 40px;
       transition: width var(--fastanimation) .4s;
       transition-delay: 0s;
