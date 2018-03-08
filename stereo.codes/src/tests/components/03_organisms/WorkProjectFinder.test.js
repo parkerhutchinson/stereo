@@ -1,15 +1,15 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { MockProvider } from '../../../scripts-lib/MockProvider';
-import WorkFinder from '../../../components/03_organisms/WorkFinder';
+import WorkProjectFinder from '../../../components/03_organisms/WorkProjectFinder';
 
-describe('<WorkFinder />', () => {
+describe('<WorkProjectFinder />', () => {
   const wrapper = mount(
     <MockProvider>
-      <WorkFinder />
+      <WorkProjectFinder />
     </MockProvider>
   );
   it('should render', () => {
-    expect(wrapper.find(WorkFinder).exists()).toBe(true);
+    expect(wrapper.find(WorkProjectFinder).exists()).toBe(true);
   })
 })

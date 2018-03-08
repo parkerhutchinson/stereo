@@ -8,8 +8,8 @@ import configureStore from 'redux-mock-store';
 
 describe('<GridOverlayButton />', () => {
   const initialState = {
-    gridOverlay: {
-      show: false
+    grid: {
+      activate: false
     }
   }
   const mockStore = configureStore();
@@ -25,7 +25,7 @@ describe('<GridOverlayButton />', () => {
   // action testing
   const show = true;
   const expectedAction = {
-    type: actions.SHOW_GRID,
+    type: actions.GRID_ACTIVATE,
     show
   }
 
@@ -40,6 +40,6 @@ describe('<GridOverlayButton />', () => {
   });
 
   it('shouild trigger the grid overlay action', () => {
-    expect(actions.showGrid(show)).toEqual(expectedAction);
+    expect(actions.gridActivate(show)).toEqual(expectedAction);
   });
 });
