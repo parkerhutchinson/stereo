@@ -19,18 +19,18 @@ class WorkProjectOverlay extends Component {
     const hsl = project.color ? rgbtohsl(rgb[0], rgb[1], rgb[2]) : null;
 
     return(
-      <StyledWorkProjectOverlay show={project.show}>
+      <StyledWorkProjectOverlay show={project.show} color={project.color} className="grid-24 grid-col-24">
         <WorkCloseUI clicked={() => this.closeProject()} show={project.show} color="rgb(var(--stormy))"/>
-        <StyledProjectImage color={project.color} show={project.show} shadow={hsl}>
+        <StyledProjectImage show={project.show} shadow={hsl} className="grid-col-12">
           <img src={project.image} alt=""/>
         </StyledProjectImage>
-        <div className="project-details">
+        <div className="project-details grid-col-12 grid-12">
           <StyledOverlayCopy
             title={project.title}
             subTitle={subTitle}
             color={'rgb(var(--stormy))'}
-            inview={true}
-            grid={12}
+            inview={project.show}
+            grid={9}
           >
             {/* // yeah yeah i dont want to hear it. */}
             <div dangerouslySetInnerHTML={{__html: project.copy}} />
@@ -77,17 +77,19 @@ const shadow = (hsl) => {
 }
 
 const StyledProjectImage = styled.div`
-  position: absolute;
-  top: 0;
+  position: relative;
   left: 0;
-  width: 50%;
+  top: ${props => props.show ? '0' : '100px'};
   height: 100%;
   background: ${props => props.color};
-  transition: all .7s var(--fastanimation);
-  clip-path: ${props => props.show ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 0, 100% 0, 100% 0, 0 0)'};
   display: flex;
   align-items: center;
   justify-content: space-around;
+  z-index: 1;
+  opacity: ${props => props.show ? '1' : '0'};
+  transition: all;
+  transition-delay: ${props => props.show ? '.6s' : '0'};
+  transition-duration: ${props => props.show ? '1.4s' : '.4s'};
   img{
     display: inline-block;
     max-height: 80%;
@@ -101,27 +103,42 @@ const StyledWorkProjectOverlay = styled.article`
   z-index: 999;
   width: 100%;
   height: 100vh;
-  opacity: 1;
+  align-items: center;
+  opacity: ${props => props.show ? '1' : '0'};
   pointer-events: ${props => props.show ? 'auto' : 'none'};
   transition: all .4s var(--fastanimation);
+  &.grid-24{
+    align-items: center;
+    align-content: stretch
+  };
   .project-details{
     color: rgb(var(--radish));
-    position: absolute;
-    background: rgb(var(--snow));
-    width: 50%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    clip-path: ${props => props.show ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)'};
+    opacity: ${props => props.show ? '1' : '0'};
     transition: all .7s var(--fastanimation);
+    transition-delay: ${props => props.show ? '.4s' : '0'};
+    z-index: 1;
+  }
+  &:before{
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 0;
+    background: ${props => props.color};
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    clip-path: ${props => props.show ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(0 100%, 100% 70%, 100% 100%, 0 100%)'};
+    transition: all .8s var(--fastanimation);
+    transition-delay: ${props => props.show ? '.2s' : '0'};
   }
 `;
 
 const StyledOverlayCopy = styled(Copy)`
+  grid-column-start: 0;
   *{color: ${props => props.color}}
-  .copy-wrap .copy-content{padding: 0 8.5% 5px;}
   span.grid-col-1:before{display: none;}
-  .bg{display: none;}
+  .bg{background: rgb(var(--snow));}
   p{margin-bottom: 20px;}
   p:last-child{margin-bottom: 50px;}
 `;
