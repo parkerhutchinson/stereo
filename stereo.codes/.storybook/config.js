@@ -1,59 +1,14 @@
-import React, { Component, Fragment } from 'react';
-import GridOverlay from './components/02_molecules/GridOverlay';
-import Navigation from './components/03_organisms/Navigation';
-import Intro from './components/04_ecosystem/Intro';
-import About from './components/04_ecosystem/About';
-import Divider from './components/01_atoms/Divider';
-import Work from './components/04_ecosystem/Work';
-import Modal from './components/03_organisms/Modal';
-import WorkProjectFinder from './components/03_organisms/WorkProjectFinder';
-import WorkProjectOverlay from './components/03_organisms/WorkProjectOverlay';
-import SectionObserver from './components/03_organisms/SectionObserver';
+import { configure } from '@storybook/react';
 import { injectGlobal } from 'styled-components';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="app-stereo site-grid">
-        <Navigation />
-        <SectionObserver classes="grid-col-24 grid-24 intro" align="center" label="intro" threshold={.1}>
-          <Intro />
-        </SectionObserver>
-        <SectionObserver
-          classes="grid-24 grid-col-24 sectionObserverDivider"
-          align="center"
-          label="dividerabout"
-          nostate
-          threshold={.1}
-        >
-          <Divider label="about"/>
-        </SectionObserver>
-        <SectionObserver classes="grid-24 grid-col-24 about" align="center" label="about">
-          <About />
-        </SectionObserver>
-        <SectionObserver
-          classes="grid-24 grid-col-24 sectionObserverDivider"
-          align="center"
-          label="dividerwork"
-          nostate
-          threshold={.1}
-        >
-          <Divider label="work"/>
-        </SectionObserver>
-        <SectionObserver label="work" threshold={.4}>
-          <Work />
-        </SectionObserver>
-        <GridOverlay />
-        <Modal>
-          <Fragment>
-            <WorkProjectFinder />
-            <WorkProjectOverlay />
-          </Fragment>
-        </Modal>
-      </div>
-    );
-  }
+// automatically import all files ending in *.stories.js
+const req = require.context('../stories', true, /.stories.js$/);
+function loadStories() {
+  req.keys().forEach((filename) => req(filename));
 }
+
+configure(loadStories, module);
+
 // grid columns
 const gridNum = 25;
 // builds css grid templates
@@ -116,18 +71,6 @@ injectGlobal`
   	-moz-osx-font-smoothing: grayscale;
     font-family: var(--roboto);
     font-size: 1.4rem;
-    &:before{
-      content: '';
-      display: block;
-      height: 100vh;
-      max-height: 500px;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: linear-gradient(to bottom, rgb(var(--stormy)) 0%, rgb(var(--blueberry)) 100%);
-      z-index: 0;
-    }
   }
   a{
     color: white;
@@ -284,5 +227,3 @@ injectGlobal`
     overflow: hidden;
   }
 `;
-
-export default App;

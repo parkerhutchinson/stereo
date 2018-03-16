@@ -70,7 +70,8 @@ const project = (state = { show: false }, action) => {
   switch(action.type){
     case SET_ACTIVE_PROJECT:
       const project = projectList.filter((obj) => obj.id === action.id)[0];
-      project['show'] =  true;
+      console.log(project);
+      project['show'] = true;
       return Object.assign({}, state, project);
     case CLOSE_ACTIVE_PROJECT:
       return Object.assign({}, state, { show: false });

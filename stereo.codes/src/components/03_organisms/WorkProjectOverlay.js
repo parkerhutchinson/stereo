@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { closeActiveProject, setEscapeCode } from '../../actions/work-actions';
+import { setActiveProject, closeActiveProject, setEscapeCode } from '../../actions/work-actions';
 import Copy from './Copy';
 import { hextorgb, rgbtohsl } from '../../scripts-lib/helper-colors';
 import WorkCloseUI from '../02_molecules/WorkCloseUI';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class WorkProjectOverlay extends Component {
   closeProject() {
     this.props.closeActiveProject();
     this.props.setEscapeCode({code: 1});
+  }
+  updateProject(e) {
+    const newProject = this.props.project.id += 1;
+    this.props.setActiveProject(newProject);
+    e.preventDefault()
   }
   render() {
     const { project } = this.props;
@@ -19,24 +25,51 @@ class WorkProjectOverlay extends Component {
     const hsl = project.color ? rgbtohsl(rgb[0], rgb[1], rgb[2]) : null;
 
     return(
-      <StyledWorkProjectOverlay show={project.show} color={project.color} className="grid-24 grid-col-24">
-        <WorkCloseUI clicked={() => this.closeProject()} show={project.show} color="rgb(var(--stormy))"/>
-        <StyledProjectImage show={project.show} shadow={hsl} className="grid-col-12">
-          <img src={project.image} alt=""/>
-        </StyledProjectImage>
-        <div className="project-details grid-col-12 grid-12">
-          <StyledOverlayCopy
-            title={project.title}
-            subTitle={subTitle}
-            color={'rgb(var(--stormy))'}
-            inview={project.show}
-            grid={9}
-          >
-            {/* // yeah yeah i dont want to hear it. */}
-            <div dangerouslySetInnerHTML={{__html: project.copy}} />
-          </StyledOverlayCopy>
-        </div>
-      </StyledWorkProjectOverlay>
+      <ReactCSSTransitionGroup
+          transitionName="project-transition"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+          className="transition-group"
+        >
+        <StyledWorkProjectOverlay
+          show={project.show}
+          color={project.color}
+          className="grid-24 grid-col-24"
+          key={project.color}
+        >
+
+          <WorkCloseUI
+            clicked={() => this.closeProject()}
+            show={project.show}
+            color="rgb(var(--stormy))"
+            key="ui"
+          />
+          <a href="#update-project" onClick={(e) => this.updateProject(e)} className="update-test" key="update">update</a>
+          
+            <StyledProjectImage
+              show={project.show}
+              shadow={hsl}
+              className="grid-col-12"
+              key="image-group"
+            >
+              <img src={project.image} alt="" key={project.image}/>
+            </StyledProjectImage>
+
+            <div className="project-details grid-col-12 grid-12" key="grid">
+              <StyledOverlayCopy
+                title={project.title}
+                subTitle={subTitle}
+                color={'rgb(var(--stormy))'}
+                inview={project.show}
+                grid={9}
+                key={project.title}
+              >
+                {/* // yeah yeah i dont want to hear it. */}
+                <div dangerouslySetInnerHTML={{__html: project.copy}} key={project.copy}/>
+              </StyledOverlayCopy>
+            </div>
+        </StyledWorkProjectOverlay>
+      </ReactCSSTransitionGroup>
     )
   }
 }
@@ -44,6 +77,7 @@ class WorkProjectOverlay extends Component {
 WorkProjectOverlay.propTypes = {
   closeActiveProject: PropTypes.func,
   setEscapeCode: PropTypes.func,
+  setActiveProject: PropTypes.func,
   project: PropTypes.object,
   show: PropTypes.bool,
 }
@@ -60,6 +94,9 @@ const mapDispatchToProps = (dispatch) => ({
   setEscapeCode: (code) => {
     dispatch(setEscapeCode(code))
   },
+  setActiveProject: (id) => {
+    dispatch(setActiveProject(id))
+  },
 })
 
 const mapStateToProps = (state) => {
@@ -72,7 +109,7 @@ const shadow = (hsl) => {
   const h = hsl[0];
   const s = hsl[1];
   const l = hsl[2] > 50 ? hsl[2] - 50 : hsl[2];
-  console.log(hsl[2]);
+  
   return `hsla(${h}, ${s}%, ${l}%, .3)`;
 }
 
@@ -107,6 +144,12 @@ const StyledWorkProjectOverlay = styled.article`
   opacity: ${props => props.show ? '1' : '0'};
   pointer-events: ${props => props.show ? 'auto' : 'none'};
   transition: all .4s var(--fastanimation);
+  .update-test{
+    position: absolute;
+    top: 30px;
+    right: 150px;
+    color: red;
+  }
   &.grid-24{
     align-items: center;
     align-content: stretch
