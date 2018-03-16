@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 
 import Divider from '../src/components/01_atoms/Divider';
