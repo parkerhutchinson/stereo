@@ -114,9 +114,9 @@ const StyledGallery = styled.aside`
   position: relative;
   display: block;
   align-items: stretch;
-  background: white;
   height: 400px;
   padding: 20px;
+  width: 100%;
   opacity: ${props => props.play ? '1' : '0'};
   transition: opacity var(--fastanimation) .8s;
   transition-delay: ${props => props.play ? '1s' : '0s'}

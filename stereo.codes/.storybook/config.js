@@ -72,6 +72,7 @@ injectGlobal`
     font-family: var(--roboto);
     font-size: 1.4rem;
   }
+  #root{padding: 30px;}
   a{
     color: white;
     text-decoration: none;
