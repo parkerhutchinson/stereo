@@ -14,7 +14,7 @@ const config = {
   color: {
     stormy: '#2c2e47',
     snow: '#fff',
-    radish: '#D04A56',
+    radish: '#FF005C',
     woz: '#eee',
   },
   image: 'https://thumbs.gfycat.com/RingedDistantIcefish-size_restricted.gif',
