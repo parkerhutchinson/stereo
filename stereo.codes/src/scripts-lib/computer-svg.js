@@ -14,6 +14,7 @@ const config = {
   color: {
     stormy: '#2c2e47',
     snow: '#fff',
+    radish: '#D04A56',
     woz: '#eee',
   },
   image: 'https://thumbs.gfycat.com/RingedDistantIcefish-size_restricted.gif',
@@ -42,7 +43,7 @@ const circleLinesSVG = (draw) => {
 
   const circleMiniGradient = draw
   .gradient('linear', (stop) => {
-    stop.at({ offset: .2, color: '#FF4A4A', opacity: 1})
+    stop.at({ offset: .2, color: config.color.radish, opacity: 1})
     stop.at({ offset: 1, color: '#333F6A', opacity: 0})
   })
   .from(0,0).to(0,1.5);
@@ -51,7 +52,7 @@ const circleLinesSVG = (draw) => {
   .circle(0)
   .attr({fill: config.color.snow})
   .center(config.width / 2, config.height /2);
-  circleM.animate({delay: 200, duration: 400, ease: 'expoOut'}).radius(config.width / 2);
+  circleM.animate({delay: 200, duration: 400, ease: 'expoOut'}).radius(config.width / 2 + 40);
 
   const circleMini = draw
   .circle(config.width - 130)
@@ -68,7 +69,6 @@ const circleLinesSVG = (draw) => {
     const blur = add.offset(6, 6).in(add.sourceAlpha).gaussianBlur(20);
 
     add.blend(add.source, blur);
-    this.size('200%','200%').move(0, 0);
     return true;
   });
 
@@ -81,11 +81,9 @@ const circleLinesSVG = (draw) => {
   // add circle and circle shadow to line group
   circleG.add(circleMiniShadow);
   circleG.add(circleMini);
-
   // add items to mask
 
   maskCircle.add(circleM);
-
   circleG.maskWith(maskCircle);
 }
 
@@ -196,8 +194,8 @@ const computerCartridge = (draw) =>{
   const cartridge = draw.group();
 
   const cartridgeBG = draw.gradient('linear', (stop) => {
-    stop.at({ offset: 0, color: '#FF4A4A', opacity: .7})
-    stop.at({ offset: 1, color: '#FF4A4A', opacity: .7})
+    stop.at({ offset: 0, color: config.color.radish, opacity: .7})
+    stop.at({ offset: 1, color: config.color.radish, opacity: .7})
   })
   .from(0, 0).to(0, 1);
 
@@ -222,7 +220,7 @@ const computerCartridge = (draw) =>{
 
   const cartridgePath =
   draw.path('M600.747059,349.291209 L566.024427,349.291209 L563.252388,346.667497 L555.464277,346.667497 L552.84514,344.675824 L539.5,344.675824 L539.5,534.799499 L545.298098,539.5 L728.435947,539.5 L733.5,534.819105 L733.5,352.297133 L725.05326,342.5 L718.983795,342.5 L714.903074,344.675824 L702.61098,344.675824 L698.960246,348.480683 L693.205882,348.480683 L693.205882,349.291209 L649.541176,349.291209 L649.541176,409.587912 L600.747059,409.587912 L600.747059,349.291209 Z M723.176471,515.565934 L732.588235,515.565934 L732.588235,524.181319 L723.176471,524.181319 L723.176471,515.565934 Z');
-  cartridgePath.stroke({ color: '#D04A56', width: 1, linejoin: 'round' });
+  cartridgePath.stroke({ color: config.color.radish, width: 1, linejoin: 'round' });
   cartridgePath.attr({ fill: cartridgeBG });
   cartridgePath.move(0, 0);
 
