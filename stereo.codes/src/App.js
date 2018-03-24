@@ -5,20 +5,29 @@ import Intro from './components/04_ecosystem/Intro';
 import About from './components/04_ecosystem/About';
 import Divider from './components/01_atoms/Divider';
 import Work from './components/04_ecosystem/Work';
-import Modal from './components/03_organisms/Modal';
-import WorkProjectFinder from './components/03_organisms/WorkProjectFinder';
-import WorkProjectOverlay from './components/03_organisms/WorkProjectOverlay';
 import SectionObserver from './components/03_organisms/SectionObserver';
 import { injectGlobal } from 'styled-components';
+
+if (process.env.NODE_ENV !== 'production') {
+  const {whyDidYouUpdate} = require('why-did-you-update')
+  whyDidYouUpdate(React)
+}
 
 class App extends Component {
   render() {
     return (
       <div className="app-stereo site-grid">
         <Navigation />
-        <SectionObserver classes="grid-col-24 grid-24 intro" align="center" label="intro" threshold={.1}>
+        
+        <SectionObserver
+          classes="grid-col-24 grid-24 intro"
+          align="center"
+          label="intro"
+          threshold={.1}
+        >
           <Intro />
         </SectionObserver>
+
         <SectionObserver
           classes="grid-24 grid-col-24 sectionObserverDivider"
           align="center"
@@ -28,9 +37,15 @@ class App extends Component {
         >
           <Divider label="about"/>
         </SectionObserver>
-        <SectionObserver classes="grid-24 grid-col-24 about" align="center" label="about">
+
+        <SectionObserver
+          classes="grid-24 grid-col-24 about"
+          align="center"
+          label="about"
+        >
           <About />
         </SectionObserver>
+
         <SectionObserver
           classes="grid-24 grid-col-24 sectionObserverDivider"
           align="center"
@@ -40,16 +55,12 @@ class App extends Component {
         >
           <Divider label="work"/>
         </SectionObserver>
+
         <SectionObserver label="work" threshold={.4}>
           <Work />
         </SectionObserver>
+
         <GridOverlay />
-        <Modal>
-          <Fragment>
-            <WorkProjectFinder />
-            <WorkProjectOverlay />
-          </Fragment>
-        </Modal>
       </div>
     );
   }

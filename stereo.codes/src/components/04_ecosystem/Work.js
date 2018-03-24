@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { modalOpen } from '../../actions/modal-actions';
 import { setEscapeCode, closeActiveProject } from '../../actions/work-actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import WorkProjectFinderBG from '../03_organisms/WorkProjectFinderBG';
+import Modal from '../03_organisms/Modal';
+import WorkProjectFinder from '../03_organisms/WorkProjectFinder';
+import WorkProjectOverlay from '../03_organisms/WorkProjectOverlay';
 
 class Work extends Component {
   componentDidMount() {
@@ -43,22 +46,30 @@ class Work extends Component {
     const { section } = this.props;
     const inview = section.work ? section.work : null;
     return (
-      <StyledWork className="grid-col-18 work grid-18">
-        <WorkProjectFinderBG />
-        <StyledWorkLauncher className="work-launcher">
-          <div className="work-launcher-main">
-            <StyledButton onClick={() => this.openFinder()} inview={inview}>
-              <span>
-                Browse Projects
-              </span>
-            </StyledButton>
+      <Fragment>
+        <StyledWork className="grid-col-18 work grid-18">
+          <WorkProjectFinderBG />
+          <StyledWorkLauncher className="work-launcher">
+            <div className="work-launcher-main">
+              <StyledButton onClick={() => this.openFinder()} inview={inview}>
+                <span>
+                  Browse Projects
+                </span>
+              </StyledButton>
 
-            <StyledSupportCopy inview={inview}>
-              Over <strong>10 years</strong> of professional web<br/>development experience.
-            </StyledSupportCopy>
-          </div>
-        </StyledWorkLauncher>
-      </StyledWork>
+              <StyledSupportCopy inview={inview}>
+                Over <strong>10 years</strong> of professional web<br/>development experience.
+              </StyledSupportCopy>
+            </div>
+          </StyledWorkLauncher>
+        </StyledWork>
+        <Modal>
+          <Fragment>
+            <WorkProjectFinder />
+            <WorkProjectOverlay />
+          </Fragment>
+        </Modal>
+      </Fragment>
     )
   }
 }

@@ -6,7 +6,8 @@ import { setActiveProject, closeActiveProject, setEscapeCode } from '../../actio
 import Copy from './Copy';
 import { hextorgb, rgbtohsl } from '../../scripts-lib/helper-colors';
 import WorkCloseUI from '../02_molecules/WorkCloseUI';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactTransitionGroup from 'react-addons-css-transition-group';
+import { ReactDOM } from 'react'
 
 class WorkProjectOverlay extends Component {
   closeProject() {
@@ -18,6 +19,10 @@ class WorkProjectOverlay extends Component {
     this.props.setActiveProject(newProject);
     e.preventDefault()
   }
+  componentWillAppear(callback) {
+    ReactDOM.findDOMNode(this.refs.project).classList.add('intro');
+    callback();
+  }
   render() {
     const { project } = this.props;
     const subTitle = project.stack ? project.stack.join(', ') : null;
@@ -25,12 +30,14 @@ class WorkProjectOverlay extends Component {
     const hsl = project.color ? rgbtohsl(rgb[0], rgb[1], rgb[2]) : null;
 
     return(
-      <ReactCSSTransitionGroup
-          transitionName="project-transition"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}
-          className="transition-group"
-        >
+      <ReactTransitionGroup
+        transitionName="project-overlay"
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300}
+        component="div"
+        className="work-project-overlay"
+        ref="project"
+      >
         <StyledWorkProjectOverlay
           show={project.show}
           color={project.color}
@@ -69,7 +76,7 @@ class WorkProjectOverlay extends Component {
               </StyledOverlayCopy>
             </div>
         </StyledWorkProjectOverlay>
-      </ReactCSSTransitionGroup>
+      </ReactTransitionGroup>
     )
   }
 }
