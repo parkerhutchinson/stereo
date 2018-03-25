@@ -66,11 +66,12 @@ const initialEscapeWatcher = {
   code: 0,
 }
 
-const project = (state = { show: false }, action) => {
+const project = (state = { show: false, from: 'row' }, action) => {
   switch(action.type){
+    // case SET_ACTIVE_PROJECT_FROM:
+    //   return Object.assign({}, state, { from: action.from });
     case SET_ACTIVE_PROJECT:
       const project = projectList.filter((obj) => obj.id === action.id)[0];
-      console.log(project);
       project['show'] = true;
       return Object.assign({}, state, project);
     case CLOSE_ACTIVE_PROJECT:

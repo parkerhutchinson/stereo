@@ -8,10 +8,10 @@ import Work from './components/04_ecosystem/Work';
 import SectionObserver from './components/03_organisms/SectionObserver';
 import { injectGlobal } from 'styled-components';
 
-if (process.env.NODE_ENV !== 'production') {
-  const {whyDidYouUpdate} = require('why-did-you-update')
-  whyDidYouUpdate(React)
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   const {whyDidYouUpdate} = require('why-did-you-update')
+//   whyDidYouUpdate(React)
+// }
 
 class App extends Component {
   render() {

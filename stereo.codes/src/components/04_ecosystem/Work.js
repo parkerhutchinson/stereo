@@ -8,6 +8,8 @@ import WorkProjectFinderBG from '../03_organisms/WorkProjectFinderBG';
 import Modal from '../03_organisms/Modal';
 import WorkProjectFinder from '../03_organisms/WorkProjectFinder';
 import WorkProjectOverlay from '../03_organisms/WorkProjectOverlay';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 class Work extends Component {
   componentDidMount() {
@@ -43,7 +45,7 @@ class Work extends Component {
     this.props.modalOpen(true);
   }
   render() {
-    const { section } = this.props;
+    const { section, project } = this.props;
     const inview = section.work ? section.work : null;
     return (
       <Fragment>
@@ -66,7 +68,14 @@ class Work extends Component {
         <Modal>
           <Fragment>
             <WorkProjectFinder />
-            <WorkProjectOverlay />
+            <ReactCSSTransitionGroup
+              transitionName="project-overlay-wrap"
+              transitionEnter={false}
+              transitionEnterTimeout={0}
+              transitionLeaveTimeout={1000}
+            >
+              { project.show ? <WorkProjectOverlay /> : null }
+            </ReactCSSTransitionGroup>
           </Fragment>
         </Modal>
       </Fragment>
@@ -79,12 +88,14 @@ Work.propTypes = {
   section: PropTypes.object,
   windows: PropTypes.number,
   escwatcher: PropTypes.object,
+  project: PropTypes.object,
 }
 
 const mapStateToProps = (state) => {
   return {
     section: state.section,
     escwatcher: state.work.escapeWatcher,
+    project: state.work.project
   }
 }
 
