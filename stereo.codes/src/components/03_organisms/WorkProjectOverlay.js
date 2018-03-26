@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import styled, { injectGlobal } from 'styled-components';
 import { setActiveProject, closeActiveProject, setEscapeCode } from '../../actions/work-actions';
 import Copy from './Copy';
-import { hextorgb, rgbtohsl } from '../../scripts-lib/helper-colors';
 import WorkCloseUI from '../02_molecules/WorkCloseUI';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 import ReactDOM from 'react-dom';
 
 class WorkProjectOverlay extends Component {
@@ -19,30 +19,9 @@ class WorkProjectOverlay extends Component {
     this.props.setActiveProject(newProject);
     e.preventDefault()
   }
-  // componentWillUpdate(nextprops) {
-  //   const { project } = this.props;
-  //   console.log(project)
-  //   if (!project.title) {
-  //     ReactDOM.findDOMNode(this.refs.project).classList.add('project-intro');
-  //   }
-  // }
-  // componentWillEnter (callback) {
-  //   console.log('wtf')
-  //   callback;
-  // }
-  // componentWillLeave (callback) {
-  //   callback;
-  // }
-  // componentDidEnter() {
-  //   console.log('enter?');
-  //   ReactDOM.findDOMNode(this.refs.project).classList.add('project-overlay-enter');
-    
-  // }
   getProject() {
     const { project } = this.props;
     const subTitle = project.stack ? project.stack.join(', ') : null;
-    const rgb = project.color ? hextorgb(project.color) : null;
-    const hsl = project.color ? rgbtohsl(rgb[0], rgb[1], rgb[2]) : null;
     return (
       <StyledWorkProjectOverlay
         show={true}
@@ -53,14 +32,14 @@ class WorkProjectOverlay extends Component {
         <WorkCloseUI
           clicked={() => this.closeProject()}
           show={true}
-          color="rgb(var(--stormy))"
+          color="rgb(var(--radish))"
           key="ui"
         />
         <a href="#update-project" onClick={(e) => this.updateProject(e)} className="update-test" key="update">update</a>
         
         <StyledProjectImage
           show={true}
-          shadow={hsl}
+          shadow={project.color}
           className="grid-col-12"
           key="image-group"
         >
@@ -71,7 +50,7 @@ class WorkProjectOverlay extends Component {
           <StyledOverlayCopy
             title={project.title}
             subTitle={subTitle}
-            color={'rgb(var(--stormy))'}
+            color={project.color}
             inview={true}
             grid={9}
             key={project.title}
@@ -136,18 +115,31 @@ const mapStateToProps = (state) => {
   }
 }
 
-const shadow = (hsl) => {
-  const h = hsl[0];
-  const s = hsl[1];
-  const l = hsl[2] > 50 ? hsl[2] - 50 : hsl[2];
-  
-  return `hsla(${h}, ${s}%, ${l}%, .3)`;
+const colors = {
+  light: {
+    background: 'var(--stormy)',
+    shadow: '8, 1, 33',
+    text: 'var(--snow)',
+    panel: 'var(--blueberry)',
+  },
+  dark: {
+    background: 'var(--blueberry)',
+    shadow: '8, 1, 33',
+    text: 'var(--snow)',
+    panel: 'var(--stormy)',
+  }
+}
+const getColors = (color, type) => {
+  return colors[color] ? `rgb(${colors[color][type]})` : '';
 }
 
 injectGlobal`
   .project-overlay{z-index: 999;}
   .project-appear{
     opacity: .01;
+    .copy{
+      opacity: .01;
+    }
     .grid-col-12 img{
       opacity: .01;
       top: 100px;
@@ -159,6 +151,11 @@ injectGlobal`
   .project-appear.project-appear-active{
     opacity: 1;
     transition: all .8s var(--fastanimation);
+    .copy{
+      opacity: 1;
+      transition: all .4s var(--fastanimation);
+      transition-delay: .4s;
+    }
     .grid-col-12 img{
       opacity: 1;
       top: 0px;
@@ -203,6 +200,7 @@ injectGlobal`
     .copy{
       opacity: 1;
       transition: all .4s;
+      transition-delay: .4s;
     }
     &:before{
       clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
@@ -241,7 +239,6 @@ const StyledProjectImage = styled.div`
   position: relative;
   left: 0;
   height: 100%;
-  background: ${props => props.color};
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -250,7 +247,7 @@ const StyledProjectImage = styled.div`
     position: relative;
     display: inline-block;
     max-height: 80%;
-    box-shadow: 10px 10px 30px ${props => props.shadow ? shadow(props.shadow) : null};
+    box-shadow: 10px 10px 30px ${ props => getColors(props.shadow, 'shadow') };
   }
 `;
 
@@ -273,7 +270,7 @@ const StyledWorkProjectOverlay = styled.article`
     align-content: stretch
   };
   .project-details{
-    color: rgb(var(--radish));
+    color: ${ props => getColors(props.color, 'text') };
     opacity: ${props => props.show ? '1' : '0'};
     transition: all .7s var(--fastanimation);
     transition-delay: ${props => props.show ? '.4s' : '0'};
@@ -284,7 +281,7 @@ const StyledWorkProjectOverlay = styled.article`
     display: block;
     position: absolute;
     z-index: 0;
-    background: ${props => props.color};
+    background: ${ props => getColors(props.color, 'background') };
     height: 100%;
     width: 100%;
     top: 0;
@@ -294,9 +291,9 @@ const StyledWorkProjectOverlay = styled.article`
 
 const StyledOverlayCopy = styled(Copy)`
   grid-column-start: 0;
-  *{color: ${props => props.color}}
+  *{color:  ${ props => getColors(props.color, 'text') };}
   span.grid-col-1:before{display: none;}
-  .bg{background: rgb(var(--snow));}
+  .bg{background: ${ props => getColors(props.color, 'panel') };}
   p{margin-bottom: 20px;}
   p:last-child{margin-bottom: 50px;}
 `;

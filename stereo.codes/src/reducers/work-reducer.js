@@ -12,7 +12,7 @@ const projectList = [
     title: 'draftboard',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
-    color: '#DDF0EC',
+    color: 'light',
     image: './images/bg-work/draftboard-mobile.jpg',
     copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
   },
@@ -21,7 +21,7 @@ const projectList = [
     title: 'LIM Business of Fashion',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
-    color: '#BEE0FA',
+    color: 'dark',
     image: './images/bg-work/lim-mobile.jpg',
     copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
   },
@@ -30,7 +30,7 @@ const projectList = [
     title: 'Lycoming',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
-    color: '#FDE6E6',
+    color: 'light',
     image: './images/bg-work/lycoming-mobile.jpg',
     copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
   },
@@ -68,8 +68,6 @@ const initialEscapeWatcher = {
 
 const project = (state = { show: false, from: 'row' }, action) => {
   switch(action.type){
-    // case SET_ACTIVE_PROJECT_FROM:
-    //   return Object.assign({}, state, { from: action.from });
     case SET_ACTIVE_PROJECT:
       const project = projectList.filter((obj) => obj.id === action.id)[0];
       project['show'] = true;
