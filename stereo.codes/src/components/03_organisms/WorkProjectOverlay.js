@@ -145,6 +145,7 @@ const shadow = (hsl) => {
 }
 
 injectGlobal`
+  .project-overlay{z-index: 999;}
   .project-appear{
     opacity: .01;
     .grid-col-12 img{
@@ -182,15 +183,16 @@ injectGlobal`
   }
   .project-overlay-wrap-leave.project-overlay-wrap-leave-active article{
     transition-delay: 0s;
-    transition: all 1s;
+    transition: all .4s;
     opacity: 0;
   }
   .project-enter{
+    z-index: 9999;
     .copy{
       opacity: .01;
     }
     &:before{
-      opacity: .01;
+      clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%);
     }
     .grid-col-12 img{
       opacity: 0.01;
@@ -203,20 +205,18 @@ injectGlobal`
       transition: all .4s;
     }
     &:before{
-      opacity: 1;
-      transition-duration: .4s;
+      clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
+      transition: all 1s var(--fastanimation);
     }
     .grid-col-12 img{
       left: 0px;
       opacity: 1;
-      transition: all .4s;
+      transition: all 1s var(--fastanimation);
     }
   }
   .project-leave {
+    z-index: 999;
     .copy{
-      opacity: 1;
-    }
-    &:before{
       opacity: 1;
     }
     .grid-col-12 img{
@@ -229,15 +229,10 @@ injectGlobal`
       opacity: .01;
       transition-duration: .4s;
     }
-    &:before{
-      opacity: .01;
-      transition-duration: .4s;
-      transition-delay: 0s;
-    }
     .grid-col-12 img{
       opacity: .01;
       right: 100px;
-      transition: all .4s;
+      transition: all 1s var(--fastanimation);
     }
   }
 `;
@@ -261,7 +256,6 @@ const StyledProjectImage = styled.div`
 
 const StyledWorkProjectOverlay = styled.article`
   position: absolute;
-  z-index: 999;
   width: 100%;
   height: 100vh;
   left: 0;

@@ -72,7 +72,7 @@ class Work extends Component {
               transitionName="project-overlay-wrap"
               transitionEnter={false}
               transitionEnterTimeout={0}
-              transitionLeaveTimeout={1000}
+              transitionLeaveTimeout={400}
             >
               { project.show ? <WorkProjectOverlay /> : null }
             </ReactCSSTransitionGroup>
