@@ -64,7 +64,7 @@ class Intro extends Component {
             yet we're the criminals. Yes, I am a criminal. My crime is
             that of curiosity. <strong>I am a hacker</strong>,
             and this is my manifesto.</p>
-            <NavLinkArrow title="LEARN MORE" url=".about" classes="button">
+            <NavLinkArrow title="LEARN MORE" url=".about" classes="button" scrollTo>
               <span className="button-arrow">
                 <span className="button-arrow-head"></span>
               </span>

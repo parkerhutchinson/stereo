@@ -6,6 +6,7 @@ import { setActiveProject, closeActiveProject, setEscapeCode } from '../../actio
 import Copy from './Copy';
 import WorkCloseUI from '../02_molecules/WorkCloseUI';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import NavLinkArrow from '../01_atoms/NavLinkArrow';
 
 import ReactDOM from 'react-dom';
 
@@ -18,6 +19,21 @@ class WorkProjectOverlay extends Component {
     const newProject = this.props.project.id += 1;
     this.props.setActiveProject(newProject);
     e.preventDefault()
+  }
+  getButton(project) {
+    const props = {
+      title: project.title,
+      url: project.link,
+      classes: "button",
+      target: "_blank",
+    }
+    return (
+      <NavLinkArrow {...props}>
+        <span className="button-arrow">
+          <span className="button-arrow-head"></span>
+        </span>
+      </NavLinkArrow>
+    )
   }
   getProject() {
     const { project } = this.props;
@@ -57,6 +73,7 @@ class WorkProjectOverlay extends Component {
           >
             {/* // yeah yeah i dont want to hear it. */}
             <div dangerouslySetInnerHTML={{__html: project.copy}} key={project.copy}/>
+            { project.link ? this.getButton(project) : null }
           </StyledOverlayCopy>
         </div>
       </StyledWorkProjectOverlay>
@@ -247,7 +264,7 @@ const StyledProjectImage = styled.div`
     position: relative;
     display: inline-block;
     max-height: 80%;
-    box-shadow: 10px 10px 30px ${ props => getColors(props.shadow, 'shadow') };
+    box-shadow: 10px 10px 40px ${ props => getColors(props.shadow, 'shadow') };
   }
 `;
 
@@ -292,7 +309,6 @@ const StyledWorkProjectOverlay = styled.article`
 const StyledOverlayCopy = styled(Copy)`
   grid-column-start: 0;
   *{color:  ${ props => getColors(props.color, 'text') };}
-  span.grid-col-1:before{display: none;}
   .bg{background: ${ props => getColors(props.color, 'panel') };}
   p{margin-bottom: 20px;}
   p:last-child{margin-bottom: 50px;}

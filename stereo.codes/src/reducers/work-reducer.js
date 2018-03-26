@@ -9,11 +9,12 @@ import {
 const projectList = [
   {
     id: 1,
-    title: 'draftboard',
+    title: 'Draftboard',
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
     color: 'light',
     image: './images/bg-work/draftboard-mobile.jpg',
+    link: 'https://draftboard.com',
     copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
   },
   {
@@ -22,6 +23,7 @@ const projectList = [
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
     color: 'dark',
+    link: null,
     image: './images/bg-work/lim-mobile.jpg',
     copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
   },
@@ -31,6 +33,7 @@ const projectList = [
     stack: ['react', 'css3', 'html5'],
     position: 'Full Stack',
     color: 'light',
+    link: null,
     image: './images/bg-work/lycoming-mobile.jpg',
     copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
   },

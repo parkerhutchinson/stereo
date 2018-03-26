@@ -12,6 +12,7 @@ class NavLink extends Component {
     this.handleScrollTo.bind(this);
   }
   handleScrollTo(evt,url) {
+    if (!this.props.scrollTo) return;
     const scrollToElem = document.querySelector(url);
     this.props.navigationOpen(false);
     Velocity(scrollToElem, "scroll",  { duration: 1500, queue: false, offset: -150, easing: "easeOutCirc" });
@@ -20,14 +21,16 @@ class NavLink extends Component {
     return false;
   }
   render() {
+    const {url, classes, title, children, ...other} = this.props;
     return (
       <LinkStyled
-        href={this.props.url}
-        onClick={(evt) => this.handleScrollTo(evt, this.props.url)}
-        className={`${this.props.classes}`}
+        href={url}
+        onClick={(evt) => this.handleScrollTo(evt, url)}
+        className={`${classes}`}
+        {...other}
       >
-        <span className="button-text">{ this.props.title }</span>
-        { this.props.children }
+        <span className="button-text">{ title }</span>
+        { children }
       </LinkStyled>
     )
   }
@@ -37,6 +40,7 @@ NavLink.defaultProps = {
   url: '',
   title: '',
   classes: '',
+  scrollTo: false,
 }
 
 NavLink.propTypes = {
@@ -44,6 +48,7 @@ NavLink.propTypes = {
   title: PropTypes.string.isRequired,
   classes: PropTypes.string,
   navigationOpen: PropTypes.func,
+  scrollTo: PropTypes.bool,
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -68,6 +73,7 @@ const LinkStyled = styled.a`
     position: relative;
     z-index: 2;
     transition: all .4s;
+    text-transform: uppercase;
     &:before{
       content: '';
       display: block;
