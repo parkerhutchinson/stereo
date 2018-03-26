@@ -27,4 +27,5 @@ describe('<NavLink />', () => {
   it('has a href attribute value', () => {
     expect(wrapper.find(NavLink).find('a').prop('href')).toEqual("#test");
   });
+
 });

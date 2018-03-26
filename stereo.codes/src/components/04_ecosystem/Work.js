@@ -150,7 +150,7 @@ const StyledButton = styled.button`
     height: 100%;
     top: 0;
     left: 0;
-    box-shadow: 10px 10px 30px 0 rgb(var(--stormy));
+    box-shadow: 10px 10px 30px 0 rgb('8, 1, 33');
     z-index: 0;
     transition: width var(--fastanimation) .7s;
     transition-delay: ${props => props.inview ? '.5s' : '0s'};

@@ -24,7 +24,7 @@ const WorkBgElement = (props) => {
       left: 10%;
       width: 80%;
       display: block;
-      box-shadow: 10px 10px 30px 0 rgb(var(--stormy));
+      box-shadow: 10px 10px 30px 0 rgb('8, 1, 33');
     }
   `;
   return(

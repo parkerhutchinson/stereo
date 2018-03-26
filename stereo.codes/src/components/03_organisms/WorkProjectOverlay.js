@@ -149,13 +149,24 @@ const colors = {
 const getColors = (color, type) => {
   return colors[color] ? `rgb(${colors[color][type]})` : '';
 }
-
+// sucks that styled-components offers nothing for state transitions
 injectGlobal`
   .project-overlay{z-index: 999;}
   .project-appear{
     opacity: .01;
+    ul{
+      opacity: .01;
+    }
     .copy{
       opacity: .01;
+      span.grid-col-1{
+        &:before{
+          width: 0%;
+        }
+      }
+      .bg{
+        clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%);
+      }
     }
     .grid-col-12 img{
       opacity: .01;
@@ -168,10 +179,24 @@ injectGlobal`
   .project-appear.project-appear-active{
     opacity: 1;
     transition: all .8s var(--fastanimation);
+    ul{
+      opacity: 1;
+      transition: opacity .4s var(--fastanimation);
+      transition-delay: .4s;
+    }
     .copy{
       opacity: 1;
       transition: all .4s var(--fastanimation);
       transition-delay: .4s;
+      span.grid-col-1{
+        &:before{
+          width: 70%;
+        }
+      }
+      .bg{
+        clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
+        transition-delay: .4s;
+      }
     }
     .grid-col-12 img{
       opacity: 1;
@@ -181,7 +206,6 @@ injectGlobal`
     &:before{
       clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
       transition: all .8s var(--fastanimation);
-      transition-delay: .2s;
     }
   }
   .project-overlay-wrap{
@@ -276,15 +300,16 @@ const StyledWorkProjectOverlay = styled.article`
   top: 0;
   align-items: center;
   pointer-events: ${props => props.show ? 'auto' : 'none'};
+  ul li a:hover{color: rgb(var(--snow))}
   .update-test{
     position: absolute;
     top: 30px;
     right: 150px;
-    color: red;
+    color: rgb(var(--radish));
   }
   &.grid-24{
     align-items: center;
-    align-content: stretch
+    align-content: stretch;
   };
   .project-details{
     color: ${ props => getColors(props.color, 'text') };
