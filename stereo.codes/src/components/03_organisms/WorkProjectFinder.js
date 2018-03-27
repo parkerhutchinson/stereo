@@ -44,8 +44,11 @@ class WorkFinder extends Component {
       <StyledFinder className="workfinder grid-col-16" modal={modal}>
         <StyledFinderGrid className="grid-16">
           <header className="grid-col-12">
-            <h2>{ this.state.activeProject }</h2>
-            <a href="#nope">arrow</a>
+            <h2>{ this.state.activeProject }
+              <span className="arrow">
+                <span className="head"></span>
+              </span>
+            </h2>
           </header>
           <StyledFinderRows className="workfinder-rows grid-col-14" modal={modal}>
             <StyledFinderLabels>
@@ -160,10 +163,59 @@ const StyledFinder = styled.div`
     transition: all .4s var(--fastanimation);
     transition-delay: ${props => props.modal.open ? '.9s' : '0'};
     h2{
-      display: block;
+      display: flex;
       color: rgb(var(--stormy));
       text-transform: capitalize;
       font-weight: normal;
+      align-items: center;
+      span.arrow{
+        display: inline-block;
+        position: relative;
+        width: 30px;
+        margin-left: 20px;
+        &:before{
+          content: '';
+          display: inline-block;
+          height: 1px;
+          background: rgb(var(--radish));
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          z-index: 1;
+          transition: all .4s;
+        }
+        .head{
+          position: absolute;
+          z-index: 2;
+          top: 50%;
+          right: -4px;
+          height: 15px;
+          width: 10px;
+          transform: translateY(-50%);
+          &:before, &:after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: rgb(var(--radish));
+            right: 0;
+            border-radius: 50%;
+            transition: all .4s;
+          }
+          &:before{
+            top: 0;
+            transform-origin: left center;
+            transform: rotate(45deg);
+          }
+          &:after{
+            bottom: 0;
+            transform-origin: left center;
+            transform: rotate(-45deg);
+          }
+        }
+      }
     }
     a{
       color: rgb(var(--radish));

@@ -48,7 +48,7 @@ class WorkProjectOverlay extends Component {
         <WorkCloseUI
           clicked={() => this.closeProject()}
           show={true}
-          color="rgb(var(--radish))"
+          color="rgb(var(--snow))"
           key="ui"
         />
         <a href="#update-project" onClick={(e) => this.updateProject(e)} className="update-test" key="update">update</a>
@@ -72,7 +72,7 @@ class WorkProjectOverlay extends Component {
             key={project.title}
           >
             {/* // yeah yeah i dont want to hear it. */}
-            <div dangerouslySetInnerHTML={{__html: project.copy}} key={project.copy}/>
+            <div dangerouslySetInnerHTML={{__html: project.copy}} key={project.copy} />
             { project.link ? this.getButton(project) : null }
           </StyledOverlayCopy>
         </div>
@@ -143,7 +143,14 @@ const colors = {
     background: 'var(--blueberry)',
     shadow: '8, 1, 33',
     text: 'var(--snow)',
-    panel: 'var(--stormy)',
+    panel: 'var(--blueberry)',
+  }
+}
+const getBackground = (color) => {
+  if (color === 'dark') {
+    return `linear-gradient(${getColors('light', 'background')}, ${getColors('dark', 'background')})`;
+  } else {
+    return `linear-gradient(${getColors('dark', 'background')}, ${getColors('light', 'background')})`;
   }
 }
 const getColors = (color, type) => {
@@ -182,7 +189,7 @@ injectGlobal`
     ul{
       opacity: 1;
       transition: opacity .4s var(--fastanimation);
-      transition-delay: .4s;
+      transition-delay: .9s;
     }
     .copy{
       opacity: 1;
@@ -323,7 +330,7 @@ const StyledWorkProjectOverlay = styled.article`
     display: block;
     position: absolute;
     z-index: 0;
-    background: ${ props => getColors(props.color, 'background') };
+    background: ${ props => getBackground(props.color) };
     height: 100%;
     width: 100%;
     top: 0;
