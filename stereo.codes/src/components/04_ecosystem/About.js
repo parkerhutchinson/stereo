@@ -16,7 +16,7 @@ class About extends Component {
           <h4>STEREO</h4>
         </VerticalText>
         <StyledAboutContent className="grid-col-18 grid-18 about-content" inview={active}>
-          <Copy title="Hackerman" subTitle="Half Unicorn" grid={9} inview={active} color="rgb(var(--stormy))">
+          <Copy title="Hackerman" subTitle="Half Unicorn" grid={9} inview={active} color="rgb(var(--blueberry))">
             <p>This is our world now. The world of the electron and the
             switch; the beauty of the baud. We exist without nationality,
             skin color, or religious bias. You wage wars, murder, cheat,

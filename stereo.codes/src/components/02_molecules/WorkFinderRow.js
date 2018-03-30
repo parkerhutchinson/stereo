@@ -76,7 +76,7 @@ const StyledRow = styled.dl`
   z-index: 1;
   padding: 0;
   &.workfinder-row{
-    color: ${props => props.na ? 'rgba(44, 46, 71, .35)' : 'rgb(var(--stormy))'};
+    color: ${props => props.na ? 'rgba(44, 46, 71, .35)' : 'rgb(var(--blueberry))'};
   }
   .workfinder-row-name{width: 40%;}
   .workfinder-row-stack{width: 40%;}
