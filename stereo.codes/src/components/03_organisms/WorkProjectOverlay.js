@@ -8,7 +8,6 @@ import WorkCloseUI from '../02_molecules/WorkCloseUI';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import NavLinkArrow from '../01_atoms/NavLinkArrow';
 
-import ReactDOM from 'react-dom';
 
 class WorkProjectOverlay extends Component {
   closeProject() {

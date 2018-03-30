@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import WorkFinderRow from '../02_molecules/WorkFinderRow';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 import { setActiveProject, setEscapeCode } from '../../actions/work-actions';
 import { modalOpen } from '../../actions/modal-actions';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class WorkFinder extends Component {
   componentWillMount() {
@@ -44,11 +44,19 @@ class WorkFinder extends Component {
       <StyledFinder className="workfinder grid-col-16" modal={modal}>
         <StyledFinderGrid className="grid-16">
           <header className="grid-col-12">
-            <h2>{ this.state.activeProject }
-              <span className="arrow">
-                <span className="head"></span>
+            <ReactCSSTransitionGroup
+              component="h2"
+              transitionName="project-finder-header"
+              transitionEnterTimeout={400}
+              transitionLeave={false}
+            >
+              <span key={this.state.activeProject}>
+                { this.state.activeProject }
+                <span className="arrow" key="arrow">
+                  <span className="head"></span>
+                </span>
               </span>
-            </h2>
+            </ReactCSSTransitionGroup>
           </header>
           <StyledFinderRows className="workfinder-rows grid-col-14" modal={modal}>
             <StyledFinderLabels>
@@ -99,6 +107,7 @@ const mapStateToProps = (state) => {
     projects: state.work.projects
   }
 }
+
 
 const StyledFinderRows = styled.div`
   grid-column-start: 2;
@@ -163,11 +172,43 @@ const StyledFinder = styled.div`
     transition: all .4s var(--fastanimation);
     transition-delay: ${props => props.modal.open ? '.9s' : '0'};
     h2{
-      display: flex;
       color: rgb(var(--stormy));
       text-transform: capitalize;
       font-weight: normal;
-      align-items: center;
+      position: relative;
+      height: 40px;
+      width: 100%;
+      & > span:first-child{
+        z-index: 1;
+        background: white;
+      }
+      & > span{
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        &.project-finder-header{
+          &-enter{
+            opacity: .01;
+            left: -30px;
+          }
+          &-enter-active{
+            opacity: 1;
+            left: 0;
+            transition: all .4s var(--fastanimation);
+          }
+          &-leave{
+            pointer-events: none;
+            opacity: 0;
+          }
+          &-leave-active{
+            opacity: 0;
+          }
+        }
+      }
       span.arrow{
         display: inline-block;
         position: relative;
