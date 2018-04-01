@@ -203,13 +203,12 @@ const StyledNavigation = styled.nav`
     width: 20px;
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 3px;
     z-index: 3;
     display: none;
     overflow: hidden;
     text-indent: 9999px;
     z-index: 10;
-
     &:before, &:after{
       content: '';
       width: 100%;
@@ -307,6 +306,8 @@ const StyledNavigation = styled.nav`
     grid-template-columns: repeat(18, 1fr);
     grid-column: span 18;
     height: 90px;
+    top: 0;
+    
     .grid-18{
       grid-column: 2 / span 16;
       align-items: center;

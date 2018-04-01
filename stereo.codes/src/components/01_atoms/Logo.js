@@ -47,6 +47,7 @@ const StyledLogo = styled.h1`
     font-size: 1.6rem;
     padding-left: 0;
     margin-left: 0;
+    min-height: 0;
   }
 `;
 

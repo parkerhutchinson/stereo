@@ -60,6 +60,11 @@ const StyledAboutContent = styled.div`
   position: relative;
   opacity: ${props => props.inview ? '1' : '0'};
   transition: all var(--fastanimation) .7s;
+  grid-template-columns: repeat(18, 1fr);
+  @media screen and (max-width: 768px) {
+    grid-column-start: 1;
+    grid-template-columns: repeat(18, 1fr);
+  }
   &:before{
     content: '';
     position: absolute;
@@ -94,6 +99,11 @@ const StyledAboutContent = styled.div`
       h3{
         padding-bottom: 10px;
       }
+    }
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(14, 1fr);
+      grid-column-start: 1;
+      grid-column-end: 19;
     }
   }
   .gallery{

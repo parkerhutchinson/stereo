@@ -25,6 +25,9 @@ const StyledDivider = styled.div`
   position: relative;
   padding: 250px 0 40px;
   text-align: center;
+  @media screen and (max-width: 768px) {
+    padding: 100px 0 20px;
+  }
   &:before{
     content: '';
     display: block;

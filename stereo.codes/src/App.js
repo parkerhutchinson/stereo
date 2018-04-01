@@ -232,6 +232,10 @@ injectGlobal`
     transition: all .4s;
     overflow: hidden;
     .vertical-text h4{margin: 0;}
+    grid-template-columns: repeat(24, 1fr);
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(18, 1fr);
+    }
   }
 
   .intro{
@@ -261,9 +265,10 @@ injectGlobal`
     }
     @media screen and (max-width: 768px) {
       grid-template-columns: repeat(18, 1fr);
-      margin-top: 80px;
+      margin-top: 40px;
       height: auto;
-      .copy.grid-col-10{
+      margin-bottom: 0;
+      .copy.grid-col-9{
         grid-column-start: 1;
         grid-column-end: span 17;
         .bg{opacity: 0;}
