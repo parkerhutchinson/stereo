@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { modalOpen } from '../../actions/modal-actions';
 import { connect } from 'react-redux';
 import { setEscapeCode } from '../../actions/work-actions';
-import WorkCloseUI from '../02_molecules/WorkCloseUI';
+import WorkCloseUI from '../02_molecules/WorkCloseUi';
 
 
 class Modal extends Component {

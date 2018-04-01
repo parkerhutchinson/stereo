@@ -9,7 +9,7 @@ import {
   getNextActiveProject
 } from '../../actions/work-actions';
 import Copy from './Copy';
-import WorkCloseUI from '../02_molecules/WorkCloseUI';
+import WorkCloseUI from '../02_molecules/WorkCloseUi';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import NavLinkArrow from '../01_atoms/NavLinkArrow';
 
