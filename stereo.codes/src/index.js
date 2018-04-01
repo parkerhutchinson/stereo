@@ -3,10 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import stereoApp from './reducers/stereo-reducers';
-
-const stereoStore = createStore(stereoApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import stereoStore from './store';
 
 ReactDOM.render(
   <Provider store={stereoStore}>

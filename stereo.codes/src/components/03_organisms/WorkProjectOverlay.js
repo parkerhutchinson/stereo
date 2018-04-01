@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled, { injectGlobal } from 'styled-components';
-import { setActiveProject, closeActiveProject, setEscapeCode } from '../../actions/work-actions';
+import {
+  setActiveProject,
+  closeActiveProject,
+  setEscapeCode,
+  getNextActiveProject
+} from '../../actions/work-actions';
 import Copy from './Copy';
 import WorkCloseUI from '../02_molecules/WorkCloseUI';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -14,9 +19,8 @@ class WorkProjectOverlay extends Component {
     this.props.closeActiveProject();
     this.props.setEscapeCode({code: 1});
   }
-  updateProject(e) {
-    const newProject = this.props.project.id += 1;
-    this.props.setActiveProject(newProject);
+  updateProject(e, projectID) {
+    this.props.getNextActiveProject(projectID);
     e.preventDefault()
   }
   getButton(project) {
@@ -42,7 +46,7 @@ class WorkProjectOverlay extends Component {
         show={true}
         color={project.color}
         className="grid-24 grid-col-24 project-overlay"
-        key={project.color}
+        key={project.title}
       >
         <WorkCloseUI
           clicked={() => this.closeProject()}
@@ -50,7 +54,7 @@ class WorkProjectOverlay extends Component {
           color="rgb(var(--snow))"
           key="ui"
         />
-        <a href="#update-project" onClick={(e) => this.updateProject(e)} className="update-test" key="update">update</a>
+        <a href="#update-project" onClick={(e) => this.updateProject(e, project.id)} className="update-test" key="update">update</a>
         
         <StyledProjectImage
           show={true}
@@ -103,6 +107,7 @@ WorkProjectOverlay.propTypes = {
   closeActiveProject: PropTypes.func,
   setEscapeCode: PropTypes.func,
   setActiveProject: PropTypes.func,
+  getNextActiveProject: PropTypes.func,
   project: PropTypes.object,
   show: PropTypes.bool,
 }
@@ -122,6 +127,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setActiveProject: (id) => {
     dispatch(setActiveProject(id))
+  },
+  getNextActiveProject: (id) => {
+    dispatch(getNextActiveProject(id))
   },
 })
 
@@ -160,6 +168,7 @@ injectGlobal`
   .project-overlay{z-index: 999;}
   .project-appear{
     opacity: .01;
+    
     ul{
       opacity: .01;
     }
@@ -232,6 +241,7 @@ injectGlobal`
   }
   .project-enter{
     z-index: 9999;
+    .update-test{pointer-events: none;}
     .copy{
       opacity: .01;
     }
@@ -260,6 +270,7 @@ injectGlobal`
     }
   }
   .project-leave {
+    .update-test{pointer-events: none;}
     z-index: 999;
     .copy{
       opacity: 1;
@@ -312,13 +323,14 @@ const StyledWorkProjectOverlay = styled.article`
     top: 30px;
     right: 150px;
     color: rgb(var(--radish));
+    z-index: 2;
   }
   &.grid-24{
     align-items: center;
     align-content: stretch;
   };
   .project-details{
-    color: ${ props => getColors(props.color, 'text') };
+    color: ${props => getColors(props.color, 'text')};
     opacity: ${props => props.show ? '1' : '0'};
     transition: all .7s var(--fastanimation);
     transition-delay: ${props => props.show ? '.4s' : '0'};
