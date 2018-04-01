@@ -6,7 +6,8 @@ import {
   setActiveProject,
   closeActiveProject,
   setEscapeCode,
-  getNextActiveProject
+  getNextActiveProject,
+  getPrevActiveProject
 } from '../../actions/work-actions';
 import Copy from './Copy';
 import WorkCloseUI from '../02_molecules/WorkCloseUi';
@@ -19,9 +20,13 @@ class WorkProjectOverlay extends Component {
     this.props.closeActiveProject();
     this.props.setEscapeCode({code: 1});
   }
-  updateProject(e, projectID) {
+  nextProject(e, projectID) {
     this.props.getNextActiveProject(projectID);
-    e.preventDefault()
+    e.preventDefault();
+  }
+  prevProject(e, projectID) {
+    this.props.getPrevActiveProject(projectID);
+    e.preventDefault();
   }
   getButton(project) {
     const props = {
@@ -54,8 +59,20 @@ class WorkProjectOverlay extends Component {
           color="rgb(var(--snow))"
           key="ui"
         />
-        <a href="#update-project" onClick={(e) => this.updateProject(e, project.id)} className="update-test" key="update">update</a>
-        
+
+        <a
+          href="#next-project"
+          onClick={(e) => this.nextProject(e, project.id)}
+          className="project-nav project-nav-next"
+          key="next-update"
+        >Next</a>
+        <a
+          href="#prev-project"
+          onClick={(e) => this.prevProject(e, project.id)}
+          className="project-nav project-nav-prev"
+          key="prev-update"
+        >Prev</a>
+
         <StyledProjectImage
           show={true}
           shadow={project.color}
@@ -107,6 +124,7 @@ WorkProjectOverlay.propTypes = {
   setEscapeCode: PropTypes.func,
   setActiveProject: PropTypes.func,
   getNextActiveProject: PropTypes.func,
+  getPrevActiveProject: PropTypes.func,
   project: PropTypes.object,
   show: PropTypes.bool,
 }
@@ -129,6 +147,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getNextActiveProject: (id) => {
     dispatch(getNextActiveProject(id))
+  },
+  getPrevActiveProject: (id) => {
+    dispatch(getPrevActiveProject(id))
   },
 })
 
@@ -240,7 +261,7 @@ injectGlobal`
   }
   .project-enter{
     z-index: 9999;
-    .update-test{pointer-events: none;}
+    .project-nav{pointer-events: none;}
     .copy{
       opacity: .01;
     }
@@ -269,7 +290,7 @@ injectGlobal`
     }
   }
   .project-leave {
-    .update-test{pointer-events: none;}
+    .project-nav{pointer-events: none;}
     z-index: 999;
     .copy{
       opacity: 1;
@@ -316,13 +337,25 @@ const StyledWorkProjectOverlay = styled.article`
   top: 0;
   align-items: center;
   pointer-events: ${props => props.show ? 'auto' : 'none'};
-  ul li a:hover{color: rgb(var(--snow))}
-  .update-test{
+  .project-nav{
     position: absolute;
-    top: 30px;
-    right: 150px;
-    color: rgb(var(--radish));
+    bottom: 60px;
+    right: 50px;
+    color: rgb(var(--snow));
     z-index: 2;
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    transition: all .4s;
+    &-prev{
+      right: 110px;
+    }
+    &:hover{
+      color: rgb(var(--radish));
+    }
   }
   &.grid-24{
     align-items: center;
