@@ -83,7 +83,6 @@ class WorkProjectOverlay extends Component {
     )
   }
   render() {
-    const { project } = this.props;
     return(
       <ReactCSSTransitionGroup
         component="div"

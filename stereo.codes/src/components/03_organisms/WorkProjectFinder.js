@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import WorkFinderRow from '../02_molecules/WorkFinderRow';
-import styled, { injectGlobal } from 'styled-components';
+import styled from 'styled-components';
 import { setActiveProject, setEscapeCode } from '../../actions/work-actions';
 import { modalOpen } from '../../actions/modal-actions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import GridOverlay from './components/02_molecules/GridOverlay';
 import Navigation from './components/03_organisms/Navigation';
 import Intro from './components/04_ecosystem/Intro';
