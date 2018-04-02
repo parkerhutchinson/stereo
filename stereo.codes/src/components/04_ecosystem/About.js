@@ -64,6 +64,7 @@ const StyledAboutContent = styled.div`
   @media screen and (max-width: 768px) {
     grid-column-start: 1;
     grid-template-columns: repeat(18, 1fr);
+    padding: 30px 0;
   }
   &:before{
     content: '';
@@ -97,7 +98,11 @@ const StyledAboutContent = styled.div`
     }
     .copy-content{
       h3{
+        text-transform: capitalize;
         padding-bottom: 10px;
+        @media screen and (max-width: 768px) {
+          padding-bottom: 5px;
+        }
       }
     }
     @media screen and (max-width: 768px) {

@@ -52,6 +52,9 @@ const StyledCopyHeader = styled.header`
   display: grid;
   align-items: stretch;
   margin-bottom: 40px;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 30px;
+  }
   h1{
     position: relative;
     margin-bottom: 20px;
@@ -60,6 +63,9 @@ const StyledCopyHeader = styled.header`
     transform: translateY(50px);
     transition: all var(--fastanimation) .4s;
     transition-delay: 0s;
+    @media screen and (max-width: 768px) {
+      margin-bottom: 5px;
+    }
   }
   h3{
     position: relative;
@@ -79,6 +85,9 @@ const StyledCopyHeader = styled.header`
       top: 40px;
       transition: width var(--fastanimation) .4s;
       transition-delay: 0s;
+      @media screen and (max-width: 768px) {
+        top: 20px;
+      }
     }
   }
   &.active{
