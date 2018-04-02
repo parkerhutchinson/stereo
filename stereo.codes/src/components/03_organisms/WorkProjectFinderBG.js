@@ -65,6 +65,7 @@ const StyledColumnGroup = styled.div`
   transition: all cubic-bezier(.53,.49,.64,.99);
   transition-delay: 0;
   transition-duration: .5s;
+  
   &.active{
     top: 0;
     opacity: 1;
@@ -83,6 +84,15 @@ const StyledColumnGroup = styled.div`
       transition-duration: 2s;
     }
   }
+  @media screen and (max-width: 768px) {
+    width: 45%;
+    &:last-child{display: none;}
+    &.active{
+      &:nth-child(even){
+        top: 20px;
+      }
+    }
+  }
 `;
 
 const StyledWorkLauncher = styled.div`
@@ -92,6 +102,11 @@ const StyledWorkLauncher = styled.div`
   flex-wrap: wrap;
   position: relative;
   overflow: hidden;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(18, 1fr);
+    grid-column-start: 1;
+    grid-column-end: 19;
+  }
   &:before{
     content: '';
     display: block;

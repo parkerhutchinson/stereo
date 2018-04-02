@@ -86,7 +86,7 @@ const StyledCopyHeader = styled.header`
       transition: width var(--fastanimation) .4s;
       transition-delay: 0s;
       @media screen and (max-width: 768px) {
-        top: 20px;
+        top: 22px;
       }
     }
   }

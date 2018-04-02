@@ -321,10 +321,19 @@ const StyledProjectImage = styled.div`
   align-items: center;
   justify-content: space-around;
   z-index: 1;
+  @media screen and (max-width: 768px) {
+    mix-blend-mode: screen;
+    opacity: .3;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
   img{
     position: relative;
     display: inline-block;
-    max-height: 80%;
+    max-height: 100%;
     box-shadow: 10px 10px 40px ${ props => getColors(props.shadow, 'shadow') };
   }
 `;
@@ -337,6 +346,11 @@ const StyledWorkProjectOverlay = styled.article`
   top: 0;
   align-items: center;
   pointer-events: ${props => props.show ? 'auto' : 'none'};
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(18, 1fr);
+    grid-column-start: 1;
+    grid-column-end: 19;
+  }
   .project-nav{
     position: absolute;
     bottom: 60px;
@@ -360,6 +374,11 @@ const StyledWorkProjectOverlay = styled.article`
   &.grid-24{
     align-items: center;
     align-content: stretch;
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(18, 1fr);
+      grid-column-start: 1;
+      grid-column-end: 19;
+    }
   };
   .project-details{
     color: ${props => getColors(props.color, 'text')};
@@ -367,6 +386,11 @@ const StyledWorkProjectOverlay = styled.article`
     transition: all .7s var(--fastanimation);
     transition-delay: ${props => props.show ? '.4s' : '0'};
     z-index: 1;
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(18, 1fr);
+      grid-column-start: 1;
+      grid-column-end: 19; 
+    }
   }
   &:before{
     content: '';

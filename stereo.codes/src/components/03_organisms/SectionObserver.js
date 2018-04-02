@@ -52,6 +52,11 @@ class SectionObserver extends Component {
       align-items: ${this.props.align};
       width: 100%;
       grid-column: 1 / span 24;
+      @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(18, 1fr);
+        grid-column-start: 1;
+        grid-column-end: 19;
+      }
     `;
     return (
       <StyledObserver

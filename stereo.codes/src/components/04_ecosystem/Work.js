@@ -179,4 +179,10 @@ const StyledWork = styled.div`
   margin-bottom: 200px;
   grid-column-start: 4;
   position: relative;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(18, 1fr);
+    grid-column-start: 1;
+    grid-column-end: 19;
+    min-height: 50vh;
+  }
 `;

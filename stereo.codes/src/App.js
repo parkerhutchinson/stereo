@@ -205,7 +205,12 @@ injectGlobal`
 
   ${gridTemplate(gridNum)}
   ${gridTemplateCol(gridNum)}
-
+  .grid-24{
+    grid-template-columns: repeat(24, 1fr);
+    @media screen and (max-width: 768px){
+      grid-template-columns: repeat(18, 1fr);
+    }
+  }
   .sectionObserverDivider{
     .divider{
       &:before{
@@ -270,7 +275,7 @@ injectGlobal`
       margin-bottom: 0;
       .copy.grid-col-9{
         grid-column-start: 1;
-        grid-column-end: span 17;
+        grid-column-end: span 18;
         .bg{opacity: 0;}
         a.button{
           &:before{

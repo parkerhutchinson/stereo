@@ -15,7 +15,7 @@ class Modal extends Component {
   render() {
     const { modal, children } = this.props;
     return (
-      <StyledModal className="grid-24" modal={modal.open}>
+      <StyledModal modal={modal.open}>
         <WorkCloseUI clicked={(evt) => this.closeModal(evt)} color="rgb(var(--snow))" show={modal.open}/>
         <div className="modal-bg" onClick={() => this.closeModal()}></div>
         { children }
