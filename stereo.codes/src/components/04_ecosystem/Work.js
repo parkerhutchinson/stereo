@@ -130,6 +130,9 @@ const StyledWorkLauncher = styled.div`
   .work-launcher-main{
     max-width: 400px;
   }
+  @media screen and (max-width: 768px) {
+    height: 60vh;
+  }
 `;
 
 const StyledButton = styled.button`

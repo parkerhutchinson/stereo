@@ -131,6 +131,12 @@ const StyledFinder = styled.div`
   opacity: ${props => props.modal.open ? '1' : '0'};
   transition: all .3s var(--fastanimation);
   transition-delay: ${props => props.modal.open ? '.4s' : '0'};
+  @media screen and (max-width: 768px) {
+    &.grid-col-16{
+      grid-column-start: 1;
+      grid-column-end: span 19;
+    }
+  }
   &:before{
     display: block;
     content: '';

@@ -323,7 +323,7 @@ const StyledProjectImage = styled.div`
   z-index: 1;
   @media screen and (max-width: 768px) {
     mix-blend-mode: screen;
-    opacity: .3;
+    opacity: .1;
     position: absolute;
     left: 0;
     top: 0;
@@ -333,8 +333,13 @@ const StyledProjectImage = styled.div`
   img{
     position: relative;
     display: inline-block;
-    max-height: 100%;
+    max-height: 80%;
     box-shadow: 10px 10px 40px ${ props => getColors(props.shadow, 'shadow') };
+    @media screen and (max-width: 768px) {
+      max-height: 1000%;
+      height: auto;
+      width: 120%;
+    }
   }
 `;
 
@@ -411,6 +416,12 @@ const StyledOverlayCopy = styled(Copy)`
   .bg{background: ${ props => getColors(props.color, 'panel') };}
   p{margin-bottom: 20px;}
   p:last-child{margin-bottom: 50px;}
+  @media screen and (max-width: 768px) {
+    &.grid-col-9{
+      grid-column-end: span 18;
+    }
+    
+  }
 `;
 
 
