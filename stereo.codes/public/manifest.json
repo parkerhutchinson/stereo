@@ -1,25 +1,20 @@
 {
   "short_name": "STEREO",
-  "name": "Web portfolio for Parker Hutchinson(stereocodes)",
+  "name": "STEREO",
   "icons": [
     {
-      "src": "launcher-icon-2x.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "launcher-icon-3x.png",
-      "sizes": "144x144",
-      "type": "image/png"
+      "src": "splash-image.svg",
+      "sizes": "512x512",
+      "type": "image/svg"
     },
     {
       "src": "launcher-icon-4x.png",
-      "sizes": "192x192",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "start_url": "./index.html",
-  "display": "standalone",
+  "display": "fullscreen",
   "theme_color": "#1B0064",
   "background_color": "#1B0064"
 }

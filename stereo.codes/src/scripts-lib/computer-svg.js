@@ -14,9 +14,10 @@ const config = {
   color: {
     stormy: '#2c2e47',
     snow: '#fff',
-    radish: '#FF005C',
+    radish: '#F10044',
     woz: '#eee',
   },
+  gradient: ['#F10044', '#E60074', '#1B0064'],
   image: 'https://thumbs.gfycat.com/RingedDistantIcefish-size_restricted.gif',
 }
 // bootstrap
@@ -43,10 +44,11 @@ const circleLinesSVG = (draw) => {
 
   const circleMiniGradient = draw
   .gradient('linear', (stop) => {
-    stop.at({ offset: .2, color: config.color.radish, opacity: 1})
-    stop.at({ offset: 1, color: '#333F6A', opacity: 0})
+    stop.at({ offset: .2, color: config.gradient[0]})
+    stop.at({ offset: .5, color: config.gradient[1]})
+    stop.at({ offset: .8, color: config.gradient[2]})
   })
-  .from(0,0).to(0,1.5);
+  .from(0,-0.5).to(0,1);
 
   const circleM = draw
   .circle(0)
