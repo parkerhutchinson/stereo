@@ -14,7 +14,13 @@ class NavLink extends Component {
   handleScrollTo(evt,url) {
     const scrollToElem = document.querySelector(url);
     this.props.navigationOpen(false);
-    Velocity(scrollToElem, "scroll",  { duration: 1500, queue: false, offset: -150, easing: "easeOutCirc" });
+    Velocity(scrollToElem, "scroll",  {
+      duration: 1500,
+      queue: false,
+      offset: -150,
+      easing: "easeOutCirc",
+      mobileHA: false
+    });
 
     evt.preventDefault();
     return false;

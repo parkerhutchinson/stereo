@@ -8,7 +8,11 @@ const Velocity = require('velocity-animate');
 
 class Logo extends Component {
   handleClick(evt) {
-    Velocity(document.body, "scroll", { duration: 1000, easing: "easeInOutQuad" });
+    Velocity(document.body, "scroll", {
+      duration: 1000,
+      easing: "easeInOutQuad",
+      mobileHA: false
+    });
     this.props.navigationOpen(false);
     evt.preventDefault();
     return false;

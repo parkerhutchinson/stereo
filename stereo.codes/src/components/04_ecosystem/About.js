@@ -7,6 +7,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class About extends Component {
+  galleryActiveDesktopOnly() {
+    const active = this.props.section;
+    return window.width >= 768 && active;
+  }
   render() {
     const active = this.props.section;
 
@@ -27,7 +31,7 @@ class About extends Component {
             <h3>Parker Hutchinson</h3>
             <h4>Full Stack Javascript Developer</h4>
           </Copy>
-          <Gallery play={active}/>
+          <Gallery play={this.galleryActiveDesktopOnly()}/>
         </StyledAboutContent>
         <div className="grid-col-1 spacer"></div>
         <VerticalText inview={active}>

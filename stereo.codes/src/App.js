@@ -273,7 +273,6 @@ injectGlobal`
       .copy.grid-col-9{
         grid-column-start: 1;
         grid-column-end: span 18;
-        .bg{opacity: 0;}
         a.button{
           &:before{
             width: 50%;
