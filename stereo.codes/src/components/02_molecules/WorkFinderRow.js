@@ -81,6 +81,11 @@ const StyledRow = styled.dl`
   .workfinder-row-name{width: 40%;}
   .workfinder-row-stack{width: 40%;}
   .workfinder-row-position{width: 20%;}
+  @media screen and (max-width: 768px) {
+    .workfinder-row-stack{display: none;}
+    .workfinder-row-name{width: 70%;}
+    .workfinder-row-position{width: 30%;}
+  }
   transition: border-color 0s;
   & > dd{
     padding: 15px 0 14px;
@@ -100,8 +105,10 @@ const StyledRow = styled.dl`
       }
     }
   }
-  &:hover{
-    ${naConditionalStyle}
+  @media screen and (min-width: 768px) {
+    &:hover{
+      ${naConditionalStyle}
+    }
   }
 `;
 

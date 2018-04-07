@@ -171,6 +171,10 @@ injectGlobal`
     font-size: 3.0rem;
     letter-spacing: 2px;
     text-transform: uppercase;
+    @media screen and (max-width: 768px) {
+      font-size: 2.0rem;
+      letter-spacing: 0px;
+    }
   }
 
   h3{

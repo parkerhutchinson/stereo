@@ -11,7 +11,7 @@ class WorkFinder extends Component {
   componentWillMount() {
     this.setState(
       {
-        activeProject: 'test',
+        activeProject: 'Select a Project',
       }
     );
   }
@@ -22,6 +22,7 @@ class WorkFinder extends Component {
   }
   setActive(row) {
     if (!row.na) {
+      this.setState({ activeProject: row.name });
       this.props.setActiveProject(row.id);
       this.props.setEscapeCode({code: 2});
     }
@@ -132,9 +133,15 @@ const StyledFinder = styled.div`
   transition: all .3s var(--fastanimation);
   transition-delay: ${props => props.modal.open ? '.4s' : '0'};
   @media screen and (max-width: 768px) {
+    padding: 20px 0;
+    height: 100vh;
     &.grid-col-16{
       grid-column-start: 1;
       grid-column-end: span 19;
+    }
+    .grid-col-14{
+      grid-column-start: 2;
+      grid-column-end: span 16;
     }
   }
   &:before{
@@ -177,8 +184,13 @@ const StyledFinder = styled.div`
     opacity: ${props => props.modal.open ? '1' : '0'};
     transition: all .4s var(--fastanimation);
     transition-delay: ${props => props.modal.open ? '.9s' : '0'};
+    @media screen and (max-width: 768px) {
+      grid-column-start: 2;
+      grid-column-end: span 16;
+      margin-bottom: 20px;
+    }
     h2{
-      color: rgb(var(--stormy));
+      color: rgb(var(--blueberry));
       text-transform: capitalize;
       font-weight: normal;
       position: relative;
@@ -272,15 +284,26 @@ const StyledFinder = styled.div`
 
 const StyledFinderGrid = styled.div`
   align-items: start;
+  @media screen and (max-width: 768px) {
+    &.grid-16{
+      grid-template-columns: repeat(18, 1fr);
+    }
+  }
 `;
 
 const StyledFinderLabels = styled.dl`
   display: flex;
+  justify-content: space-between;
   width: 100%;
   border-bottom: 1px solid #E4E3E3;
   .workfinder-label-name{width: 40%;}
   .workfinder-label-stack{width: 40%;}
   .workfinder-label-position{width: 20%;}
+  @media screen and (max-width: 768px) {
+    .workfinder-label-stack{display: none;}
+    .workfinder-label-name{width: 70%;}
+    .workfinder-label-position{width: 30%;}
+  }
   dt{
     font-weight: normal;
     text-transform: uppercase;

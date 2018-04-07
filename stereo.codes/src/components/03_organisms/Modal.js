@@ -42,9 +42,11 @@ const StyledModal = styled.section`
   height: 100vh;
   opacity: ${props => props.modal ? '1' : '0'};
   z-index: 99999;
-  padding-top: 5%;
   pointer-events: ${props => props.modal ? 'auto' : 'none'};
   transition: all .5s var(--fastanimation);
+  @media screen and (min-width: 768px){
+    padding-top: 5%;
+  }
   .modal-bg{
     position: absolute;
     top: 0;
@@ -53,7 +55,7 @@ const StyledModal = styled.section`
     height: 100%;
     z-index: 1;
     background: rgba(var(--blueberry), .8);
-    backdrop-filter: ${props => props.modal ? 'blur(0px)' : 'blur(7px)'};: blur(0px);
+    backdrop-filter: ${props => props.modal ? 'blur(0px)' : 'blur(7px)'};
   }
 `;
 
