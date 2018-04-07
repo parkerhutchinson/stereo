@@ -117,6 +117,7 @@ const StyledGallery = styled.aside`
   height: 400px;
   padding: 20px;
   width: 100%;
+  transform: translate3d(0,0,0);
   opacity: ${props => props.play ? '1' : '0'};
   transition: opacity var(--fastanimation) .8s;
   transition-delay: ${props => props.play ? '1s' : '0s'}

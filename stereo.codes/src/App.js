@@ -103,8 +103,8 @@ injectGlobal`
     --radish: 241, 0, 69;
     --stormy: 31, 0, 117;
     --snow: 255,255,255;
-    --roboto: "Roboto", sans-serif;
-    --playfair: "Playfair Display", serif;
+    --roboto: "Roboto", "helvetica-neue", sans-serif;
+    --playfair: "Playfair Display", times, serif;
     --fastanimation: cubic-bezier(.91,.02,.03,.98);
   }
   *{
@@ -138,6 +138,9 @@ injectGlobal`
       left: 0;
       background: linear-gradient(to bottom, rgb(var(--stormy)) 0%, rgb(var(--blueberry)) 100%);
       z-index: 0;
+    }
+    @media screen and (max-width: 768px) {
+      will-change: scroll-position;
     }
   }
   a{
@@ -302,6 +305,9 @@ injectGlobal`
     clear: both;
     height: 100vh;
     overflow: hidden;
+    @media screen and (max-width: 768px) {
+      height: 60vh;
+    }
   }
 `;
 

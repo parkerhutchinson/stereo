@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 class About extends Component {
   galleryActiveDesktopOnly() {
     const active = this.props.section;
-    return window.width >= 768 && active;
+    return window.outerWidth >= 768 ? active : false;
   }
   render() {
     const active = this.props.section;

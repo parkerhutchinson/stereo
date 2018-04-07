@@ -73,6 +73,9 @@ const StyledCopy = styled.article`
       opacity: ${props => props.inview ? '1' : '0'};
       transition: opacity var(--fastanimation) .6s;
       transition-delay: ${props => props.inview ? '1.2s' : '0s'};
+      @media screen and (max-width: 768px) {
+        transition-delay: ${props => props.inview ? '.5s' : '0s'};
+      }
     }
     @media screen and (max-width: 768px) {
       padding: ${copyWrapPaddingMobile} 0 ${copyWrapPaddingMobile} 0;
@@ -86,9 +89,13 @@ const StyledCopy = styled.article`
     width: 77.85%;
     height: 100%;
     z-index: 1;
+    transform: translate3d(0,0,0);
     opacity: ${props => props.inview ? '1' : '0'};
     clip-path: ${props => props.inview ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%)'};
     transition: all var(--fastanimation) .9s;
     transition-delay: ${props => props.inview ? '1s' : '0s'};
+    @media screen and (max-width: 768px) {
+      transition-delay: ${props => props.inview ? '.2s' : '0s'};
+    }
   }
 `;

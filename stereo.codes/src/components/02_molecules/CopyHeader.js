@@ -93,13 +93,20 @@ const StyledCopyHeader = styled.header`
   &.active{
     h1{
       transition-delay: .7s;
+
       transform: translateY(0px);
       opacity: 1;
+      @media screen and (max-width: 768px) {
+        transition-delay: 0s;
+      }
     }
     h3{
       opacity: 1;
       transform: translateY(0px);
       transition-delay: .9s;
+      @media screen and (max-width: 768px) {
+        transition-delay: .2s;
+      }
     }
     span{
       &:before{
