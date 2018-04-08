@@ -133,7 +133,7 @@ const StyledFinder = styled.div`
   transition: all .3s var(--fastanimation);
   transition-delay: ${props => props.modal.open ? '.4s' : '0'};
   @media screen and (max-width: 768px) {
-    padding: 20px 0;
+    padding: 40px 0 0;
     height: 100vh;
     &.grid-col-16{
       grid-column-start: 1;
@@ -180,6 +180,7 @@ const StyledFinder = styled.div`
     margin-bottom: 30px;
     position: relative;
     z-index: 1;
+    padding-top: 20px;
     transform: ${props => props.modal.open ? 'translateY(0px)' : 'translateY(50px)'};
     opacity: ${props => props.modal.open ? '1' : '0'};
     transition: all .4s var(--fastanimation);

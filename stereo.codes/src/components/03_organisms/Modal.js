@@ -40,12 +40,29 @@ const StyledModal = styled.section`
   left: 0;
   width: 100%;
   height: 100vh;
+  padding-top: 5%;
   opacity: ${props => props.modal ? '1' : '0'};
   z-index: 99999;
   pointer-events: ${props => props.modal ? 'auto' : 'none'};
   transition: all .5s var(--fastanimation);
-  @media screen and (min-width: 768px){
-    padding-top: 5%;
+  @media screen and (max-width: 768px){
+    padding-top: 0%;
+    ul{
+      top: 0;
+      right: 0;
+      width: 100%;
+      background: rgb(var(--blueberry));
+      display: block;
+      li{
+        display: block;
+        &&a[href]{
+          display: block;
+          padding: 10px;
+          line-height: auto;
+        }
+      }
+      li:last-child{display: none;}
+    }
   }
   .modal-bg{
     position: absolute;
@@ -57,6 +74,7 @@ const StyledModal = styled.section`
     background: rgba(var(--blueberry), .8);
     backdrop-filter: ${props => props.modal ? 'blur(0px)' : 'blur(7px)'};
   }
+
 `;
 
 const mapDispatchToProps = (dispatch) => ({
