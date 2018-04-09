@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
+import { zdepth } from '../../lib/styled-helpers';
 
 export default class WorkCloseUI extends Component {
   handleClick(evt) {
@@ -31,7 +32,7 @@ WorkCloseUI.defaultProps = {
 
 const StyledOverlayUI = styled.ul`
   position: absolute;
-  z-index: 999;
+  z-index: ${zdepth('mid')};
   top: 30px;
   right: 30px;
   display: flex;

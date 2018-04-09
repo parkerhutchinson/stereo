@@ -9,6 +9,7 @@ import Modal from '../03_organisms/Modal';
 import WorkProjectFinder from '../03_organisms/WorkProjectFinder';
 import WorkProjectOverlay from '../03_organisms/WorkProjectOverlay';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { zdepth } from '../../lib/styled-helpers';
 
 
 class Work extends Component {
@@ -126,7 +127,7 @@ const StyledWorkLauncher = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  z-index: 3;
+  z-index: ${zdepth('mid')};
   .work-launcher-main{
     max-width: 400px;
   }
@@ -154,13 +155,13 @@ const StyledButton = styled.button`
     top: 0;
     left: 0;
     box-shadow: 10px 10px 30px 0 rgb('8, 1, 33');
-    z-index: 0;
+    z-index: ${zdepth('lowest')};
     transition: width var(--fastanimation) .7s;
     transition-delay: ${props => props.inview ? '.5s' : '0s'};
   }
   span{
     position: relative;
-    z-index: 1;
+    z-index: ${zdepth('low')};
     color: ${props => props.inview ? 'rgba(var(--radish), 1)' : 'rgba(255, 74, 74, 0)'};;
     transition: color cubic-bezier(.91,.02,.03,.98) .8s;
     transition-delay: ${props => props.inview ? '.5s' : '0s'};

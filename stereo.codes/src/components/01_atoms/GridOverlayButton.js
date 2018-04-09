@@ -4,6 +4,7 @@ import {VelocityComponent} from 'velocity-react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { gridActivate } from '../../actions/grid-actions';
+import { zdepth } from '../../lib/styled-helpers';
 
 class GridOverlayButton extends Component {
   componentWillMount() {
@@ -56,7 +57,7 @@ const StyledGridUI = styled.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 9999;
+  z-index: ${zdepth('highest')};
 `;
 
 export default connect(

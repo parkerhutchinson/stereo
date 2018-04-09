@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import CopyHeader from '../02_molecules/CopyHeader';
+import { zdepth } from '../../lib/styled-helpers';
+
+
 const copyWrapPadding = '60px';
 const copyWrapPaddingMobile = '35px';
 
@@ -66,7 +69,7 @@ const StyledCopy = styled.article`
   }
   .copy-wrap{
     position: relative;
-    z-index: 2;
+    z-index: ${zdepth('mid')};
     padding: ${copyWrapPadding} 0 ${copyWrapPadding} 0;
     .copy-content{
       padding: 0 11.50% 5px;
@@ -88,7 +91,7 @@ const StyledCopy = styled.article`
     right: 0;
     width: 77.85%;
     height: 100%;
-    z-index: 1;
+    z-index: ${zdepth('low')};
     transform: translate3d(0,0,0);
     opacity: ${props => props.inview ? '1' : '0'};
     clip-path: ${props => props.inview ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%)'};

@@ -7,6 +7,7 @@ import Divider from './components/01_atoms/Divider';
 import Work from './components/04_ecosystem/Work';
 import SectionObserver from './components/03_organisms/SectionObserver';
 import { injectGlobal } from 'styled-components';
+import { zdepth } from './lib/styled-helpers';
 
 if (process.env.NODE_ENV !== 'production') {
   const {whyDidYouUpdate} = require('why-did-you-update')
@@ -137,7 +138,7 @@ injectGlobal`
       top: 0;
       left: 0;
       background: linear-gradient(to bottom, rgb(var(--stormy)) 0%, rgb(var(--blueberry)) 100%);
-      z-index: 0;
+      z-index: ${zdepth('lowest')};
     }
     @media screen and (max-width: 768px) {
       will-change: scroll-position;
@@ -257,7 +258,7 @@ injectGlobal`
     align-items: center;
     margin-bottom: 50px;
     position: relative;
-    z-index: 1;
+    z-index: ${zdepth('low')};
     .svg{
       grid-column-start: 4;
       padding-top: 40px;

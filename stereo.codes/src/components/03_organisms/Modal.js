@@ -5,6 +5,7 @@ import { modalOpen } from '../../actions/modal-actions';
 import { connect } from 'react-redux';
 import { setEscapeCode } from '../../actions/work-actions';
 import WorkCloseUI from '../02_molecules/WorkCloseUi';
+import { zdepth } from '../../lib/styled-helpers';
 
 
 class Modal extends Component {
@@ -42,7 +43,7 @@ const StyledModal = styled.section`
   height: 100vh;
   padding-top: 5%;
   opacity: ${props => props.modal ? '1' : '0'};
-  z-index: 99999;
+  z-index: ${zdepth('highest')};
   pointer-events: ${props => props.modal ? 'auto' : 'none'};
   transition: all .5s var(--fastanimation);
   @media screen and (max-width: 768px){
@@ -70,7 +71,7 @@ const StyledModal = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: ${zdepth('low')};
     background: rgba(var(--blueberry), .8);
     backdrop-filter: ${props => props.modal ? 'blur(0px)' : 'blur(7px)'};
   }

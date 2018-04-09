@@ -5,6 +5,8 @@ import Gallery from '../03_organisms/Gallery';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { zdepth } from '../../lib/styled-helpers';
+
 
 class About extends Component {
   galleryActiveDesktopOnly() {
@@ -79,7 +81,7 @@ const StyledAboutContent = styled.div`
     top: 0;
     left: 0;
     box-shadow: 10px 10px 30px 0 rgb(var(--stormy));
-    z-index: 0;
+    z-index: ${zdepth('lowest')};
     clip-path: ${props => props.inview ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(0 0%, 30% 0%, 0% 100%, 0 100%)'};
     transition: all var(--fastanimation) .9s;
   }

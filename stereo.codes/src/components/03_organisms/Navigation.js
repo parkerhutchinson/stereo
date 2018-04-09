@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { navigationOpen } from '../../actions/navigation-actions';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
+import { zdepth } from '../../lib/styled-helpers';
 const Velocity = require('velocity-animate');
 
 class Navigation extends Component {
@@ -125,7 +126,7 @@ class Navigation extends Component {
           { this.createMainNav() }
           <a className="hamburger-btn" href="#hamburger" onClick={(evt) => this.openHamburger(evt)}>hamburger</a>
         </div>
-        <div className={`${show} hamburger`}>
+        <div className={`${show} hamburger-menu`}>
           <span className="circle" ref="circle" style={this.circleSetup()}></span>
           { this.createMainNav() }
         </div>
@@ -168,7 +169,7 @@ const StyledNavigation = styled.nav`
   width: 100%;
   top: 0;
   background: rgba(51,63,106, 0);
-  z-index: 100;
+  z-index: ${zdepth('high')};
   transition: background .3s;
   &:before{
     content: '';
@@ -180,10 +181,13 @@ const StyledNavigation = styled.nav`
     height: 100%;
     background: rgb(var(--blueberry));
     opacity: ${props => !props.isTop ? '.9' : '0'};
-    z-index: 0;
+    z-index: ${zdepth('lowest')};
     transition: all .4s var(--fastanimation);
   }
-  & > *{position:relative;z-index: 1;}
+  & > *{
+    position:relative;
+    z-index: ${zdepth('low')};
+  }
   .grid-18{
     grid-column: 4 / span 18;
     align-items: center;
@@ -204,11 +208,10 @@ const StyledNavigation = styled.nav`
     position: absolute;
     right: 20px;
     top: 3px;
-    z-index: 3;
     display: none;
     overflow: hidden;
     text-indent: 9999px;
-    z-index: 10;
+    z-index: ${zdepth('highest')};
     &:before, &:after{
       content: '';
       width: 100%;
@@ -235,11 +238,11 @@ const StyledNavigation = styled.nav`
       }
     }
   }
-  .hamburger{
+  .hamburger-menu{
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 2;
+    z-index: ${zdepth('highest')};
     background: rgb(var(--blueberry));
     width: 100%;
     height: 100vh;
@@ -316,7 +319,7 @@ const StyledNavigation = styled.nav`
       grid-column: span 18;
       text-align: center;
       position: relative;
-      z-index: 3;
+      z-index: ${zdepth('high')};
       a{opacity: 1; transition: all .4s;}
     }
     &.active{

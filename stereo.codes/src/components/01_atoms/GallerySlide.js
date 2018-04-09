@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-
+import { zdepth } from '../../lib/styled-helpers';
 
 export default class GallerySlide extends Component {
   componentDidMount() {
@@ -65,7 +65,7 @@ const StyledSlide = styled.div`
   background-position: center;
   transform: scale(.8) translate3d(0,0,0);
   transition: all .8s;
-  z-index: 1;
+  z-index: ${zdepth('low')};
   pointer-events: none;
   &:before{
     content: '';
@@ -82,12 +82,12 @@ const StyledSlide = styled.div`
   &.out{
     left: -10%;
     opacity: 0;
-    z-index: 3;
+    z-index: ${zdepth('high')};
     transform: scale(1.1) translate3d(0,0,0);
   }
   &.current{
     left: 0;
-    z-index: 3;
+    z-index: ${zdepth('high')};
     opacity: 1;
     transform: scale(1) translate3d(0,0,0);
     box-shadow: 10px 10px 30px rgba(0,0,0,.3);
@@ -98,14 +98,14 @@ const StyledSlide = styled.div`
     opacity: 1;
     box-shadow: 10px 10px 30px rgba(0,0,0,.1);
     transform: scale(.9) translate3d(0,0,0);
-    z-index: 2;
+    z-index: ${zdepth('mid')};
     &:before{ opacity: .4; }
   }
   &.last{
     left: 20%;
     opacity: 1;
     transform: scale(.8) translate3d(0,0,0);
-    z-index: 0;
+    z-index: ${zdepth('lowest')};
     &:before{ opacity: .8; }
   }
 `;

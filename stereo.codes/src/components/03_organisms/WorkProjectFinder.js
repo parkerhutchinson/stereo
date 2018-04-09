@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { setActiveProject, setEscapeCode } from '../../actions/work-actions';
 import { modalOpen } from '../../actions/modal-actions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { zdepth } from '../../lib/styled-helpers';
 
 class WorkFinder extends Component {
   componentWillMount() {
@@ -113,7 +114,7 @@ const mapStateToProps = (state) => {
 const StyledFinderRows = styled.div`
   grid-column-start: 2;
   position: relative;
-  z-index: 1;
+  z-index: ${zdepth('low')};
   transform: ${props => props.modal.open ? 'translateY(0px)' : 'translateY(50px)'};
   opacity: ${props => props.modal.open ? '1' : '0'};
   transition: all .4s var(--fastanimation);
@@ -126,7 +127,7 @@ const StyledFinder = styled.div`
   padding: 40px 0;
   height: calc(100vh - 20%);
   overflow: hidden;
-  z-index: 2;
+  z-index: ${zdepth('low')};
   align-items: start;
   grid-column-start: 4;
   opacity: ${props => props.modal.open ? '1' : '0'};
@@ -157,7 +158,7 @@ const StyledFinder = styled.div`
     clip-path: ${props => props.modal.open ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(0 100%, 100% 70%, 100% 100%, 0 100%)'};
     transition: all .8s var(--fastanimation);
     transition-delay: ${props => props.modal.open ? '.4s' : '0'};
-    z-index: 0;
+    z-index: ${zdepth('lowest')};
   }
   &:after{
     display: block;
@@ -168,7 +169,7 @@ const StyledFinder = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 2;
+    z-index: ${zdepth('mid')};
     opacity: ${props => props.modal.open ? '1' : '0'};
     transition: opacity .8s var(--fastanimation);
     transition-delay: .3s;
@@ -179,7 +180,7 @@ const StyledFinder = styled.div`
     align-items: content;
     margin-bottom: 30px;
     position: relative;
-    z-index: 1;
+    z-index: ${zdepth('low')};
     padding-top: 20px;
     transform: ${props => props.modal.open ? 'translateY(0px)' : 'translateY(50px)'};
     opacity: ${props => props.modal.open ? '1' : '0'};
@@ -198,7 +199,7 @@ const StyledFinder = styled.div`
       height: 40px;
       width: 100%;
       & > span:first-child{
-        z-index: 1;
+        z-index: ${zdepth('low')};
         background: white;
       }
       & > span{
@@ -243,12 +244,12 @@ const StyledFinder = styled.div`
           top: 50%;
           left: 0;
           transform: translateY(-50%);
-          z-index: 1;
+          z-index: ${zdepth('low')};
           transition: all .4s;
         }
         .head{
           position: absolute;
-          z-index: 2;
+          z-index: ${zdepth('mid')};
           top: 50%;
           right: -4px;
           height: 15px;

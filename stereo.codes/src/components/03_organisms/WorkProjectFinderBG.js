@@ -3,6 +3,8 @@ import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import WorkBgElement from '../02_molecules/WorkBgElement';
 import { connect } from 'react-redux';
+import { zdepth } from '../../lib/styled-helpers';
+
 
 class WorkProjectFinderBG extends Component {
   getWorkElements(props) {
@@ -59,7 +61,7 @@ const StyledColumnGroup = styled.div`
   width: 30%;
   overflow: hidden;
   position: relative;
-  z-index: 1;
+  z-index: ${zdepth('low')};
   top: 300px;
   opacity: 0;
   transition: all cubic-bezier(.53,.49,.64,.99);
@@ -111,7 +113,7 @@ const StyledWorkLauncher = styled.div`
     content: '';
     display: block;
     position: absolute;
-    z-index: 2;
+    z-index: ${zdepth('mid')};
     background: linear-gradient(to bottom, rgba(var(--blueberry), .6), rgb(var(--blueberry)) 80%);
     height: 100%;
     width: 100%;

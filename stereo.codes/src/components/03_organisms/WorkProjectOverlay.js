@@ -13,6 +13,7 @@ import Copy from './Copy';
 import WorkCloseUI from '../02_molecules/WorkCloseUi';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import NavLinkArrow from '../01_atoms/NavLinkArrow';
+import { zdepth } from '../../lib/styled-helpers';
 
 
 class WorkProjectOverlay extends Component {
@@ -185,7 +186,7 @@ const getColors = (color, type) => {
 }
 // sucks that styled-components offers nothing for state transitions
 injectGlobal`
-  .project-overlay{z-index: 999;}
+  .project-overlay{z-index: ${zdepth('high')};}
   .project-appear{
     opacity: .01;
     
@@ -260,7 +261,7 @@ injectGlobal`
     opacity: 0;
   }
   .project-enter{
-    z-index: 9999;
+    z-index: ${zdepth('highest')};
     .project-nav{pointer-events: none;}
     .copy{
       opacity: .01;
@@ -291,7 +292,7 @@ injectGlobal`
   }
   .project-leave {
     .project-nav{pointer-events: none;}
-    z-index: 999;
+    z-index: ${zdepth('high')};
     .copy{
       opacity: 1;
     }
@@ -320,7 +321,7 @@ const StyledProjectImage = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  z-index: 1;
+  z-index: ${zdepth('low')};
   @media screen and (max-width: 768px) {
     mix-blend-mode: screen;
     opacity: .1;
@@ -361,7 +362,7 @@ const StyledWorkProjectOverlay = styled.article`
     bottom: 60px;
     right: 50px;
     color: rgb(var(--snow));
-    z-index: 2;
+    z-index: ${zdepth('high')};
     display: inline-block;
     width: 30px;
     text-align: center;
@@ -395,7 +396,7 @@ const StyledWorkProjectOverlay = styled.article`
     opacity: ${props => props.show ? '1' : '0'};
     transition: all .7s var(--fastanimation);
     transition-delay: ${props => props.show ? '.4s' : '0'};
-    z-index: 1;
+    z-index: ${zdepth('low')};
     @media screen and (max-width: 768px) {
       grid-template-columns: repeat(18, 1fr);
       grid-column-start: 1;
@@ -406,7 +407,7 @@ const StyledWorkProjectOverlay = styled.article`
     content: '';
     display: block;
     position: absolute;
-    z-index: 0;
+    z-index: ${zdepth('lowest')};
     background: ${ props => getBackground(props.color) };
     height: 100%;
     width: 100%;

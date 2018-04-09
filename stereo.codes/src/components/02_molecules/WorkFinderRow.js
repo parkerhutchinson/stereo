@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { zdepth } from '../../lib/styled-helpers';
 
 const WorkFinderRow = (props) => {
   return (
@@ -58,7 +59,7 @@ const naConditionalStyle = (props) => {
       transition-duration: .5s;
       transform: scale(1.05);
       border-color: rgb(var(--radish));
-      z-index: 2;
+      z-index: ${zdepth('mid')};
       padding: 0 15px;
       box-shadow: 0 0 30px rgba(0,0,0,.1);
     `;
@@ -73,7 +74,7 @@ const StyledRow = styled.dl`
   align-items: center;
   transform: scale(1);
   position: relative;
-  z-index: 1;
+  z-index: ${zdepth('low')};
   padding: 0;
   &.workfinder-row{
     color: ${props => props.na ? 'rgba(44, 46, 71, .35)' : 'rgb(var(--blueberry))'};

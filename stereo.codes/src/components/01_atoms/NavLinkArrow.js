@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { navigationOpen } from '../../actions/navigation-actions';
 import styled from 'styled-components';
+import { zdepth } from '../../lib/styled-helpers';
 const Velocity = require('velocity-animate');
 
 
@@ -71,7 +72,7 @@ const LinkStyled = styled.a`
     padding: ${buttonPadding};
     display: inline-block;
     position: relative;
-    z-index: 2;
+    z-index: ${zdepth('mid')};
     transition: all .4s;
     text-transform: uppercase;
     &:before{
@@ -81,7 +82,7 @@ const LinkStyled = styled.a`
       height: 100%;
       width: 1px;
       background: rgb(var(--radish));
-      z-index: 1;
+      z-index: ${zdepth('low')};
     }
     &:before{
       left: 0;
@@ -107,12 +108,12 @@ const LinkStyled = styled.a`
       top: 50%;
       left: 0;
       transform: translateY(-50%);
-      z-index: 1;
+      z-index: ${zdepth('low')};
       transition: all .4s;
     }
     .button-arrow-head{
       position: absolute;
-      z-index: 2;
+      z-index: ${zdepth('mid')};
       top: 50%;
       right: -4px;
       height: 20px;
@@ -147,7 +148,7 @@ const LinkStyled = styled.a`
     height: 1px;
     width: 100%;
     background: rgb(var(--radish));
-    z-index: 1;
+    z-index: ${zdepth('low')};
   }
   &:before{
     top: 0;

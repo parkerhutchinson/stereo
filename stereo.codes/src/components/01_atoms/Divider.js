@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
+import { zdepth } from '../../lib/styled-helpers';
 
 
 const Divider = (props) => (
@@ -38,13 +39,13 @@ const StyledDivider = styled.div`
     width: 1px;
     height: 100%;
     background: rgb(var(--radish));
-    z-index: 0;
+    z-index: ${zdepth('lowest')};
   }
   h5{
     position: relative;
     text-transform: uppercase;
     background: rgb(var(--blueberry));
-    z-index: 1;
+    z-index: ${zdepth('low')};
     padding: 10px 0;
     display: inline-block;
   }
