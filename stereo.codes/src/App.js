@@ -7,7 +7,7 @@ import Divider from './components/01_atoms/Divider';
 import Work from './components/04_ecosystem/Work';
 import SectionObserver from './components/03_organisms/SectionObserver';
 import { injectGlobal } from 'styled-components';
-import { zdepth } from './lib/styled-helpers';
+import { zdepth, gridTemplate, gridTemplateCol } from './lib/styled-helpers';
 
 if (process.env.NODE_ENV !== 'production') {
   const {whyDidYouUpdate} = require('why-did-you-update')
@@ -69,33 +69,6 @@ class App extends Component {
 // grid columns
 const gridNum = 25;
 // builds css grid templates
-const gridTemplate = (num) => {
-  let grid = '';
-  for(let i = 1; i < num; i++) {
-     grid += `
-      .grid-${i}{
-        display: grid;
-        grid-template-rows: 1fr;
-        grid-template-columns: repeat(${i}, 1fr);
-        align-items: start;
-      }
-    `;
-  }
-  return grid;
-}
-
-// builds all grid columns
-const gridTemplateCol = (num) => {
-  let gridCol = '';
-  for(let i = 0; i < num; i++) {
-    gridCol += `
-      .grid-col-${i}{
-        grid-column-end: span ${i};
-      }
-    `;
-  }
-  return gridCol;
-}
 
 injectGlobal`
   @import url(https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700);
