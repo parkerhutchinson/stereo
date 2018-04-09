@@ -40,7 +40,6 @@ const StyledOverlayUI = styled.ul`
   transition: all .5s var(--fastanimation);
   transition-delay: ${props => props.show ? '1s' : '0s'};
   li{
-    display: flex;
     align-items: center;
     &:first-child{margin-right: 15px;}
   }
@@ -49,7 +48,6 @@ const StyledOverlayUI = styled.ul`
     color: ${props => props.color};
     font-size: 1.1rem;
     letter-spacing: 1px;
-    line-height: 0;
     transition: color .4s;
     &:hover{
       color: rgb(var(--radish));

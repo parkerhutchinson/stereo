@@ -42,9 +42,9 @@ class WorkFinder extends Component {
   render() {
     const { projects, modal } = this.props;
     return (
-      <StyledFinder className="workfinder grid-col-16" modal={modal}>
-        <StyledFinderGrid className="grid-16">
-          <header className="grid-col-12">
+      <StyledFinder className="workfinder grid-col-18" modal={modal}>
+        <StyledFinderGrid className="grid-18">
+          <header className="grid-col-16">
             <ReactCSSTransitionGroup
               component="h2"
               transitionName="project-finder-header"
@@ -59,7 +59,7 @@ class WorkFinder extends Component {
               </span>
             </ReactCSSTransitionGroup>
           </header>
-          <StyledFinderRows className="workfinder-rows grid-col-14" modal={modal}>
+          <StyledFinderRows className="workfinder-rows grid-col-16" modal={modal}>
             <StyledFinderLabels>
               <dd className="workfinder-label-name">
                 <dl>
@@ -128,18 +128,18 @@ const StyledFinder = styled.div`
   overflow: hidden;
   z-index: 2;
   align-items: start;
-  grid-column-start: 5;
+  grid-column-start: 4;
   opacity: ${props => props.modal.open ? '1' : '0'};
   transition: all .3s var(--fastanimation);
   transition-delay: ${props => props.modal.open ? '.4s' : '0'};
   @media screen and (max-width: 768px) {
     padding: 40px 0 0;
     height: 100vh;
-    &.grid-col-16{
+    &.grid-col-18{
       grid-column-start: 1;
       grid-column-end: span 19;
     }
-    .grid-col-14{
+    .grid-col-16{
       grid-column-start: 2;
       grid-column-end: span 16;
     }

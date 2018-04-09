@@ -55,10 +55,10 @@ const StyledModal = styled.section`
       display: block;
       li{
         display: block;
-        &&a[href]{
+        a{
           display: block;
           padding: 10px;
-          line-height: auto;
+          line-height: 1;
         }
       }
       li:last-child{display: none;}
