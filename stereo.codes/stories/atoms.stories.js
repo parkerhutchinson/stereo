@@ -5,7 +5,7 @@ import Logo from '../src/components/01_atoms/Logo';
 import Divider from '../src/components/01_atoms/Divider';
 import GallerySlide from '../src/components/01_atoms/GallerySlide';
 
-import { MockProvider } from '../src/scripts-lib/MockProvider';
+import { MockProvider } from '../src/lib/MockProvider';
 
 const image = "https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?ixlib=rb-0.3.5&s=d5b622e2ea747f0eaa17e73a2040031a&auto=format&fit=crop&w=3254&q=80";
 

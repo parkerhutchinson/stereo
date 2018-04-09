@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {shallow,mount} from 'enzyme';
 import Navigation from '../../../components/03_organisms/Navigation';
-import { MockProvider } from '../../../scripts-lib/MockProvider';
+import { MockProvider } from '../../../lib/MockProvider';
 import Logo from '../../../components/01_atoms/Logo';
 import NavLink from '../../../components/01_atoms/NavLink';
 

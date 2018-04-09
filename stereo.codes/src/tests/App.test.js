@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../App';
 import { mount } from 'enzyme';
-import { MockProvider } from '../scripts-lib/MockProvider';
+import { MockProvider } from '../lib/MockProvider';
 
 it('should mount', () => {
   const wrapper = mount(

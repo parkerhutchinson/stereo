@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount, shallow } from 'enzyme';
 import NavLink from '../../../components/01_atoms/NavLink';
-import { MockProvider } from '../../../scripts-lib/MockProvider';
+import { MockProvider } from '../../../lib/MockProvider';
 
 describe('<NavLink />', () => {
   const props = {

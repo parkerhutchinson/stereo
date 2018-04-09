@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import Gallery from '../src/components/03_organisms/Gallery';
-import { MockProvider } from '../src/scripts-lib/MockProvider';
+import { MockProvider } from '../src/lib/MockProvider';
 import markdownDecorator from '../node_modules/storybook-addon-markdown';
 
 const details = `

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {mount, shallow} from 'enzyme';
 import * as actions from '../../../actions/grid-actions';
 import GridOverlayButton from '../../../components/01_atoms/GridOverlayButton';
-import { MockProvider } from '../../../scripts-lib/MockProvider';
+import { MockProvider } from '../../../lib/MockProvider';
 import configureStore from 'redux-mock-store';
 
 describe('<GridOverlayButton />', () => {

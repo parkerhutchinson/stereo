@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Work from '../../../components/04_ecosystem/Work.js';
-import { MockProvider } from '../../../scripts-lib/MockProvider';
+import { MockProvider } from '../../../lib/MockProvider';
 
 describe('<Work >', () => {
   const wrapper = mount(

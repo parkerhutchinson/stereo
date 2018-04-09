@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import { shallow, mount, render } from 'enzyme';
-import { MockProvider } from '../../../scripts-lib/MockProvider';
+import { MockProvider } from '../../../lib/MockProvider';
 import SectionObserver from '../../../components/03_organisms/SectionObserver';
 const IntersectionObserver = require('intersection-observer-polyfill/dist/IntersectionObserver');
 

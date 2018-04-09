@@ -375,6 +375,11 @@ const StyledWorkProjectOverlay = styled.article`
     &:hover{
       color: rgb(var(--radish));
     }
+    @media screen and (max-width: 768px) {
+      top: 20px;
+      bottom: auto;
+      left: 20px;
+    }
   }
   &.grid-24{
     align-items: center;

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 /* istanbul ignore next */
 import styled from 'styled-components';
-import introSVG from '../../scripts-lib/computer-svg';
+import introSVG from '../../lib/computer-svg';
 
 class Intro extends Component {
   constructor(props) {

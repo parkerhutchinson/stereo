@@ -1,5 +1,5 @@
 import React from 'react';
-import { MockProvider } from '../../../scripts-lib/MockProvider';
+import { MockProvider } from '../../../lib/MockProvider';
 import Gallery from '../../../components/03_organisms/Gallery';
 import { mount } from 'enzyme';
 

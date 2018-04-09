@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { MockProvider } from '../../../scripts-lib/MockProvider';
+import { MockProvider } from '../../../lib/MockProvider';
 import WorkProjectFinder from '../../../components/03_organisms/WorkProjectFinder';
 
 describe('<WorkProjectFinder />', () => {
