@@ -56,7 +56,7 @@ class Work extends Component {
             <div className="work-launcher-main">
               <StyledButton onClick={() => this.openFinder()} inview={inview}>
                 <span>
-                  Browse Projects
+                  View Projects
                 </span>
               </StyledButton>
 
@@ -137,15 +137,18 @@ const StyledWorkLauncher = styled.div`
 `;
 
 const StyledButton = styled.button`
-  font-family: var(--playfair);
+  font-family: var(--roboto);
+  text-transform: uppercase;
   color: rgb(var(--radish));
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   background: none;
-  padding: 20px 80px;
+  padding: 29px 80px 23px;
   position: relative;
   cursor: pointer;
   display: inline-block;
   margin-bottom: 30px;
+  line-height: 1;
+  overflow: hidden;
   &:before{
     content: '';
     position: absolute;
@@ -159,12 +162,37 @@ const StyledButton = styled.button`
     transition: width var(--fastanimation) .7s;
     transition-delay: ${props => props.inview ? '.5s' : '0s'};
   }
+  &:after{
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0%;
+    z-index: ${zdepth('lowest')};
+    background: rgb(var(--radish));
+    opacity: 0;
+    transition: all var(--fastanimation) .7s;
+  }
   span{
     position: relative;
     z-index: ${zdepth('low')};
     color: ${props => props.inview ? 'rgba(var(--radish), 1)' : 'rgba(255, 74, 74, 0)'};;
     transition: color cubic-bezier(.91,.02,.03,.98) .8s;
     transition-delay: ${props => props.inview ? '.5s' : '0s'};
+  }
+  @media screen and (min-width: 768px) {
+    &:hover{
+      &:after{
+        width: 100%;
+        opacity: 1;
+      }
+      span{
+        color: rgb(var(--snow));
+        transition: all var(--fastanimation) .5s;
+      }
+    }
   }
 `;
 
