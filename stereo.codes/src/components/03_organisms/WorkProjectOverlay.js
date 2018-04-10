@@ -92,6 +92,7 @@ class WorkProjectOverlay extends Component {
             inview={true}
             grid={9}
             key={project.title}
+            copyImage={project.image}
           >
             {/* // yeah yeah i dont want to hear it. */}
             <div dangerouslySetInnerHTML={{__html: project.copy}} key={project.copy} />
@@ -324,13 +325,7 @@ const StyledProjectImage = styled.div`
   justify-content: space-around;
   z-index: ${zdepth('low')};
   @media screen and (max-width: 768px) {
-    mix-blend-mode: screen;
-    opacity: .1;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    display: none;
   }
   img{
     position: relative;
@@ -381,6 +376,9 @@ const StyledWorkProjectOverlay = styled.article`
       top: 20px;
       bottom: auto;
       left: 20px;
+      &-prev{
+        left: 50px;
+      }
     }
   }
   &.grid-24{
@@ -420,7 +418,7 @@ const StyledWorkProjectOverlay = styled.article`
 const StyledOverlayCopy = styled(Copy)`
   grid-column-start: 0;
   *{color:  ${ props => getColors(props.color, 'text') };}
-  .bg{background: ${ props => getColors(props.color, 'panel') };}
+  .bg{background-color: ${ props => getColors(props.color, 'panel') };}
   p{margin-bottom: 20px;}
   p:last-child{margin-bottom: 50px;}
   @media screen and (max-width: 768px) {

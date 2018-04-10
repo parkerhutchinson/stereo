@@ -11,11 +11,11 @@ const copyWrapPaddingMobile = '35px';
 
 export default class Copy extends Component {
   render() {
-    const { grid, classes, subTitle, title, inview, color, className } = this.props;
+    const { grid, classes, subTitle, title, inview, color, className, copyImage } = this.props;
     const gridContent = grid - 2;
 
     return (
-      <StyledCopy className={`${classes} grid-col-${grid} copy ${className}`} color={color} inview={inview}>
+      <StyledCopy className={`${classes} grid-col-${grid} copy ${className}`} color={color} inview={inview} image={copyImage}>
         <div className={`grid-col-${grid} copy-wrap`}>
           <CopyHeader
             title={ title }
@@ -43,6 +43,7 @@ Copy.propTypes = {
   inview: PropTypes.bool,
   color: PropTypes.string,
   className: PropTypes.string,
+  copyImage: PropTypes.string,
 }
 
 Copy.defaultProps = {
@@ -51,6 +52,7 @@ Copy.defaultProps = {
   grid: 8,
   inview: false,
   color: 'rgb(var(--snow))',
+  copyImage: '',
 }
 
 const StyledCopy = styled.article`
@@ -85,20 +87,33 @@ const StyledCopy = styled.article`
     }
   }
   .bg{
-    background: rgb(var(--stormy));
+    background-color: rgb(var(--stormy));
     position: absolute;
     top: 0;
     right: 0;
     width: 77.85%;
     height: 100%;
     z-index: ${zdepth('low')};
-    transform: translate3d(0,0,0);
     opacity: ${props => props.inview ? '1' : '0'};
     clip-path: ${props => props.inview ? 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' : 'polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%)'};
     transition: all var(--fastanimation) .9s;
     transition-delay: ${props => props.inview ? '1s' : '0s'};
     @media screen and (max-width: 768px) {
       transition-delay: ${props => props.inview ? '.2s' : '0s'};
+      &:before{
+        content: '';
+        display: block;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: lighten;
+        transform: translate3d(0,0,0);
+        background-image: url('${props => props.image}');
+        background-size: cover;
+        background-position: center;
+        opacity: .1;
+      }
     }
   }
 `;
