@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { bgImages, projectList } from '../store/work-store';
 import {
   SET_ACTIVE_PROJECT,
   CLOSE_ACTIVE_PROJECT,
@@ -7,77 +8,25 @@ import {
   DECREMENT_ACTIVE_PROJECT
 } from '../actions/work-actions';
 
-// TODO: maybe use airtable for this state
-const projectList = [
-  {
-    id: 0,
-    title: 'Draftboard',
-    stack: ['react', 'css3', 'html5'],
-    position: 'Full Stack',
-    color: 'dark',
-    image: './images/bg-work/draftboard-mobile.jpg',
-    link: 'https://draftboard.com',
-    copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
-  },
-  {
-    id: 1,
-    title: 'LIM Business of Fashion',
-    stack: ['react', 'css3', 'html5'],
-    position: 'Full Stack',
-    color: 'light',
-    link: 'https://limcollege.edu',
-    image: './images/bg-work/lim-mobile.jpg',
-    copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
-  },
-  {
-    id: 2,
-    title: 'Lycoming',
-    stack: ['react', 'css3', 'html5'],
-    position: 'Full Stack',
-    color: 'dark',
-    link: 'http://www.lycoming.com',
-    image: './images/bg-work/lycoming-mobile.jpg',
-    copy: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores id voluptate harum maiores tenetur distinctio doloremque, in sequi repellat deleniti earum? Alias quod fugit vitae dignissimos aut, expedita quae iste.</p>',
-  },
-]
-
-const bgImages = [
-  {
-    label: 'test',
-    image: './images/bg-work/lycoming-mobile.jpg',
-  },
-  {
-    label: 'test two',
-    image: './images/bg-work/draftboard-mobile.jpg',
-  },
-  {
-    label: 'test two',
-    image: './images/bg-work/draftboard-mobile.jpg',
-  },
-  {
-    label: 'test',
-    image: './images/bg-work/lim-mobile.jpg',
-  },
-  {
-    label: 'test two',
-    image: './images/bg-work/lycoming-mobile.jpg',
-  },
-  {
-    label: 'test two',
-    image: './images/bg-work/lim-mobile.jpg',
-  },
-];
 const initialEscapeWatcher = {
   code: 0,
 }
 
+const yingyang = {
+  tof: true,
+}
+
 const project = (state = { show: false }, action) => {
-  let actionID = action.id;
-  const projectL = projectList.length - 1;
+  const actionID = action.id;
+  const availableProjects = projectList.filter((obj) => !obj.na || obj.na === undefined);
+  const availableProjectL = availableProjects.length - 1;
+  const yoyo = yingyang.tof ? false : true;
 
   switch(action.type){
     case SET_ACTIVE_PROJECT:
       const project = projectList.filter((obj) => obj.id === actionID)[0];
+      yingyang.tof = yoyo;
+      project['light'] = yoyo;
       project['show'] = true;
       return Object.assign({}, state, project);
 
@@ -85,14 +34,20 @@ const project = (state = { show: false }, action) => {
       return Object.assign({}, state, { show: false });
 
     case INCREMENT_ACTIVE_PROJECT:
-      const nextProjectID = action.id < projectL ? actionID += 1 : 0;
-      const projectNext = projectList.filter((obj) => obj.id === nextProjectID)[0];
+      const nextProjectIndex = availableProjects.findIndex((obj) => obj.id === actionID) + 1;
+      const nextProjectID = nextProjectIndex <= availableProjectL ? availableProjects[nextProjectIndex].id : availableProjects[0].id;
+      const projectNext = availableProjects.filter((obj) => obj.id === nextProjectID)[0];
+      yingyang.tof = yoyo;
+      projectNext['light'] = yoyo;
       projectNext['show'] = true;
       return Object.assign({}, state, projectNext);
 
     case DECREMENT_ACTIVE_PROJECT:
-      const prevProjectID = action.id > 0 ? actionID -= 1 : projectL;
-      const projectPrev = projectList.filter((obj) => obj.id === prevProjectID)[0];
+      const prevProjectIndex = availableProjects.findIndex((obj) => obj.id === actionID) - 1;
+      const prevProjectID = prevProjectIndex >= 0 ? availableProjects[prevProjectIndex].id : availableProjects[availableProjectL].id;
+      const projectPrev = availableProjects.filter((obj) => obj.id === prevProjectID)[0];
+      yingyang.tof = yoyo;
+      projectPrev['light'] = yoyo;
       projectPrev['show'] = true;
       return Object.assign({}, state, projectPrev);
 

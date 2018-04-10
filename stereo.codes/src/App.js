@@ -9,10 +9,10 @@ import SectionObserver from './components/03_organisms/SectionObserver';
 import { injectGlobal } from 'styled-components';
 import { zdepth, gridTemplate, gridTemplateCol } from './lib/styled-helpers';
 
-if (process.env.NODE_ENV !== 'production') {
-  const {whyDidYouUpdate} = require('why-did-you-update')
-  whyDidYouUpdate(React)
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   const {whyDidYouUpdate} = require('why-did-you-update')
+//   whyDidYouUpdate(React)
+// }
 
 class App extends Component {
   render() {
@@ -101,6 +101,7 @@ injectGlobal`
   	-moz-osx-font-smoothing: grayscale;
     font-family: var(--roboto);
     font-size: 1.4rem;
+    scroll-behavior: smooth;
     &:before{
       content: '';
       display: block;

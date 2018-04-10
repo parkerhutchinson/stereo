@@ -47,10 +47,11 @@ class WorkProjectOverlay extends Component {
   getProject() {
     const { project } = this.props;
     const subTitle = project.stack ? project.stack.join(', ') : null;
+    const color = project.light ? 'light' : 'dark';
     return (
       <StyledWorkProjectOverlay
         show={true}
-        color={project.color}
+        color={color}
         className="grid-24 grid-col-24 project-overlay"
         key={project.title}
       >
@@ -76,7 +77,7 @@ class WorkProjectOverlay extends Component {
 
         <StyledProjectImage
           show={true}
-          shadow={project.color}
+          shadow={color}
           className="grid-col-12"
           key="image-group"
         >
@@ -87,7 +88,7 @@ class WorkProjectOverlay extends Component {
           <StyledOverlayCopy
             title={project.title}
             subTitle={subTitle}
-            color={project.color}
+            color={color}
             inview={true}
             grid={9}
             key={project.title}

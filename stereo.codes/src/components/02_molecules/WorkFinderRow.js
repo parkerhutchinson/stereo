@@ -96,6 +96,7 @@ const StyledRow = styled.dl`
     text-transform: capitalize;
     font-size: 1.4rem;
     line-height: 1.4;
+    letter-spacing: .90px;
     dl{
       display: flex;
       align-items: center;
