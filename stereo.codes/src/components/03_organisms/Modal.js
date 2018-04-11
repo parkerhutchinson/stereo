@@ -51,15 +51,16 @@ const StyledModal = styled.section`
     ul{
       top: 0;
       right: 0;
-      width: 100%;
-      background: rgb(var(--blueberry));
+      width: auto;
       display: block;
       li{
         display: block;
+        &:first-child{margin-right: 0;}
         a{
           display: block;
-          padding: 10px;
+          padding: 20px;
           line-height: 1;
+          color: rgb(var(--radish));
         }
       }
       li:last-child{display: none;}

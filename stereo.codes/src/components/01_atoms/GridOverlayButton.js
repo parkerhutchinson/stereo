@@ -18,20 +18,20 @@ class GridOverlayButton extends Component {
 
   render() {
     const active = this.state.isActive ? 'active' : '';
-
     const ButtonStyled = styled.button`
       display: inline-block;
-      background: ${this.state.isActive ? 'green' : 'rgb(var(--radish))'};
-      color: white;
+      background: ${this.state.isActive ? 'rgb(var(--snow))' : 'rgb(var(--radish))'};
+      color: ${this.state.isActive ? 'rgb(var(--radish))' : 'rgb(var(--snow))'};
       padding: 10px;
       font-size: 16px;
       cursor: pointer;
       text-transform: uppercase;
     `;
+
     return (
       <VelocityComponent animation={{ scale: [this.state.isActive ? 1.2 : 1, 'easeInCirc'] }} duration={500}>
         <StyledGridUI className={`${active} grid-overlay-ui about-button`}>
-          <ButtonStyled onClick={this.toggleButton.bind(this)}>toggle grid</ButtonStyled>
+          <ButtonStyled onClick={this.toggleButton.bind(this)}>G</ButtonStyled>
         </StyledGridUI>
       </VelocityComponent>
     )
@@ -57,7 +57,8 @@ const StyledGridUI = styled.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: ${zdepth('highest')};
+  /* lol i know right? */
+  z-index: 99999999999;
 `;
 
 export default connect(

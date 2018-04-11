@@ -352,6 +352,15 @@ const StyledWorkProjectOverlay = styled.article`
     grid-template-columns: repeat(18, 1fr);
     grid-column-start: 1;
     grid-column-end: 19;
+    ul{
+      li:first-child{
+        text-align: right;
+        margin-right: 0;
+        a{
+          color: rgb(var(--snow));
+        }
+      }
+    }
   }
   .project-nav{
     position: absolute;
@@ -373,11 +382,12 @@ const StyledWorkProjectOverlay = styled.article`
       color: rgb(var(--radish));
     }
     @media screen and (max-width: 768px) {
-      top: 20px;
+      top: 0px;
       bottom: auto;
-      left: 20px;
+      left: 80px;
+      padding: 20px;
       &-prev{
-        left: 50px;
+        left: 0px;
       }
     }
   }
@@ -425,7 +435,6 @@ const StyledOverlayCopy = styled(Copy)`
     &.grid-col-9{
       grid-column-end: span 18;
     }
-    
   }
 `;
 

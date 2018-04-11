@@ -54,10 +54,10 @@ class Work extends Component {
           <WorkProjectFinderBG />
           <StyledWorkLauncher className="work-launcher">
             <div className="work-launcher-main">
+              {/* i know this looks weird */}
               <StyledButton onClick={() => this.openFinder()} inview={inview}>
-                <span>
-                  View Projects
-                </span>
+                <span>View Projects</span>
+                <span>View Projects</span>
               </StyledButton>
 
               <StyledSupportCopy inview={inview}>
@@ -145,10 +145,13 @@ const StyledButton = styled.button`
   padding: 29px 80px 23px;
   position: relative;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  align-items: stretch;
   margin-bottom: 30px;
   line-height: 1;
   overflow: hidden;
+  transform: scale(1);
+  transition: all var(--fastanimation) .4s;
   &:before{
     content: '';
     position: absolute;
@@ -175,22 +178,38 @@ const StyledButton = styled.button`
     opacity: 0;
     transition: all var(--fastanimation) .7s;
   }
-  span{
+  span:first-child{
     position: relative;
     z-index: ${zdepth('low')};
+    opacity: 1;
     color: ${props => props.inview ? 'rgba(var(--radish), 1)' : 'rgba(255, 74, 74, 0)'};;
     transition: color cubic-bezier(.91,.02,.03,.98) .8s;
     transition-delay: ${props => props.inview ? '.5s' : '0s'};
   }
+  span:last-child{
+    position: absolute;
+    display: flex;
+    color: rgb(var(--snow));
+    align-items: center;
+    z-index: ${zdepth('low')};
+    opacity: 0;
+    transition: all var(--fastanimation) .5s;
+  }
   @media screen and (min-width: 768px) {
-    &:hover{
+    &:hover, &:active{
+      transform: scale(1.1);
       &:after{
         width: 100%;
         opacity: 1;
       }
       span{
-        color: rgb(var(--snow));
-        transition: all var(--fastanimation) .5s;
+        &:first-child{
+          transition: opacity cubic-bezier(.91,.02,.03,.98) .8s;
+          opacity: 0;
+        }
+        &:last-child{
+          opacity: 1; 
+        }
       }
     }
   }

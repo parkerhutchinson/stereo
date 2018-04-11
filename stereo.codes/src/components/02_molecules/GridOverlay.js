@@ -9,7 +9,7 @@ class GridOverlay extends Component {
     const { gridCount } = this.props;
 
     return Array.from({length: gridCount}).map((v, i) => {
-      if (i > 18) {
+      if (i >= 17) {
         return (<div className="grid-col hide" key={i}></div>)
       } else {
         return (<div className="grid-col" key={i}></div>)
@@ -61,7 +61,7 @@ const StyledGridOverlay = styled.div`
   .grid-col{
     border-right: 1px solid red;
     &:last-child{border: none;}
-    &.mobile{
+    &.hide{
       @media screen and (max-width: 768px) {display: none;}
     }
   }
