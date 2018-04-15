@@ -4,7 +4,6 @@ import {VelocityComponent} from 'velocity-react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { gridActivate } from '../../actions/grid-actions';
-import { zdepth } from '../../lib/styled-helpers';
 
 class GridOverlayButton extends Component {
   componentWillMount() {

@@ -14,7 +14,7 @@ class Navigation extends Component {
     this.navConfig = {
       about: '.about',
       work: '.work',
-      contact: '.contact',
+      connect: '.connect',
     }
     this.openHamburger.bind(this);
   }

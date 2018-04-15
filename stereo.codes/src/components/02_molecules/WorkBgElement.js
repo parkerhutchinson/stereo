@@ -17,7 +17,7 @@ const WorkBgElement = (props) => {
       width: calc(100% - 10px);
       height: 80%;
       background: none;
-      border: 5px solid;
+      border: 2px solid;
       border-color: rgb(var(--radish));
     }
     .bg-work-image{

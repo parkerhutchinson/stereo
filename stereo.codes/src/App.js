@@ -5,6 +5,7 @@ import Intro from './components/04_ecosystem/Intro';
 import About from './components/04_ecosystem/About';
 import Divider from './components/01_atoms/Divider';
 import Work from './components/04_ecosystem/Work';
+import Connect from './components/04_ecosystem/Connect';
 import SectionObserver from './components/03_organisms/SectionObserver';
 import { injectGlobal } from 'styled-components';
 import { zdepth, gridTemplate, gridTemplateCol } from './lib/styled-helpers';
@@ -59,6 +60,15 @@ class App extends Component {
 
         <SectionObserver label="work" threshold={.4}>
           <Work />
+          <Divider label="Connect"/>
+        </SectionObserver>
+        
+        <SectionObserver
+          label="connect"
+          threshold={.4}
+          classes="grid-24 grid-col-24 connect"
+        >
+          <Connect />
         </SectionObserver>
 
         <GridOverlay />

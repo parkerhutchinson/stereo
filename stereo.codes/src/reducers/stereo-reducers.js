@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import work from './work-reducer';
+import connect from './connect-reducer';
 import { NAVIGATION_OPEN } from '../actions/navigation-actions';
 import { GRID_ACTIVATE } from '../actions/grid-actions';
 import { SECTION_ADD } from '../actions/observer-actions';
@@ -55,6 +56,7 @@ function modal(state = { open: false }, action) {
 const stereoApp = combineReducers({
   work,
   modal,
+  connect,
   section,
   gallery,
   grid,
