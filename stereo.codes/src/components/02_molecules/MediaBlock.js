@@ -109,13 +109,14 @@ const StyledMediaCopy = styled.header`
 `;
 const StyledSpotifyIcon = styled.i`
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   position: absolute;
   top: 30px;
   left: 30px;
   z-index: ${zdepth('high')};
-  background: rgb(var(--radish));
+  background: url(./images/connect/icn-spotify.svg);
+  background-size: contain;
 `;
 export default MediaBlock;

@@ -52,7 +52,6 @@ const StyledConnect = styled.div`
   align-content: stretch;
   grid-column-rows: auto;
   grid-row-gap: 120px;
-  justify-items: center;
   padding-bottom: 100px;
   a:nth-of-type(2n + 1){
     grid-column-start: 11;
