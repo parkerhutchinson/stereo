@@ -60,13 +60,12 @@ class App extends Component {
 
         <SectionObserver label="work" threshold={.4}>
           <Work />
-          <Divider label="Connect"/>
         </SectionObserver>
         
         <SectionObserver
           label="connect"
           threshold={.4}
-          classes="grid-24 grid-col-24 connect"
+          classes="connect"
         >
           <Connect />
         </SectionObserver>

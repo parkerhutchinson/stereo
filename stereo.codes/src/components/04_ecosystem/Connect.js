@@ -9,9 +9,10 @@ class Connect extends Component {
     return music.map((artist) =>
     <MediaBlock
       title={artist.name}
-      subtitle={artist.album}
+      subTitle={artist.album}
       image={artist.artwork}
       key={artist.name}
+      link={artist.link}
     />)
   }
   render() {
@@ -31,11 +32,13 @@ class Connect extends Component {
 
 Connect.propTypes = {
   music: PropTypes.array,
+  section: PropTypes.object,
 }
 
 const mapStateToProps = (state) => {
   return {
     music: state.connect.music,
+    section: state.section,
   }
 }
 
@@ -50,7 +53,8 @@ const StyledConnect = styled.div`
   grid-column-rows: auto;
   grid-row-gap: 120px;
   justify-items: center;
-  div:nth-of-type(2n + 1){
+  padding-bottom: 100px;
+  a:nth-of-type(2n + 1){
     grid-column-start: 11;
   }
 `;
