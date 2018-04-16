@@ -7,7 +7,7 @@ const MediaBlock = (props) => {
   return (
     <StyledMediaBlock className="grid-col-8 grid-8 media-block" href={props.link}>
       <StyledSpotifyIcon />
-      <img src={props.image} className="grid-col-6" alt={props.title}/>
+      <img src={props.image} className="grid-col-7" alt={props.title}/>
       <StyledMediaCopy>
         <h2>{props.title}</h2>
         { props.subTitle ? (<h4>{ props.subTitle }</h4>) : null }

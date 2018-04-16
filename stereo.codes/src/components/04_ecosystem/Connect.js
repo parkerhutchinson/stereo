@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
-import MediaBlock from '../02_molecules/MediaBlock';
 import { connect } from 'react-redux';
+import StereoGallery from '../03_organisms/StereoGallery';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 class Connect extends Component {
-  getMediaBlocks(music) {
-    return music.map((artist) =>
-    <MediaBlock
-      title={artist.name}
-      subTitle={artist.album}
-      image={artist.artwork}
-      key={artist.name}
-      link={artist.link}
-    />)
-  }
   render() {
     const { music } = this.props;
     return (
@@ -22,8 +12,8 @@ class Connect extends Component {
         <StyledConnect className="grid-18 grid-col-18">
           <StyledConnectIntro className="grid-col-8">
             <h1>Music That<br/>Drives Me.</h1>
+            <StereoGallery />
           </StyledConnectIntro>
-          { this.getMediaBlocks(music) }
         </StyledConnect>
       </React.Fragment>
     )
