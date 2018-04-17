@@ -11,20 +11,33 @@ import {
 
 class StereoGallery extends Component {
   getMediaBlocks(music) {
-    return music.map((artist) =>
-    <MediaBlock
-      title={artist.name}
-      subTitle={artist.album}
-      image={artist.artwork}
-      key={artist.name}
-      link={artist.link}
-    />)
+    return (<MediaBlock
+      title={music.name}
+      subTitle={music.album}
+      image={music.artwork}
+      key={music.name}
+      link={music.link}
+    />);
+  }
+  getNextMusic(e, id) {
+    this.props.getNextMusicSelection(id);
+    e.preventDefault();
+  }
+  getPrevMusic(e, id) {
+    this.props.getPrevMusicSelection(id);
+    e.preventDefault();
   }
   render() {
     const { music } = this.props;
+    let musicIndex = music.id;
+    const nextId = musicIndex + 1;
+    const prevId = musicIndex - 1;
+
     return (
       <React.Fragment>
         <StyledStereoGallery className="grid-col-8">
+          <a href="#next" onClick={ (e) => this.getNextMusic(e, nextId) }>Next</a>
+          <a href="#prev" onClick={ (e) => this.getPrevMusic(e, prevId) }>Prev</a>
           <ReactCSSTransitionGroup
             component="div"
             transitionName="stereo-gallery"
@@ -40,7 +53,7 @@ class StereoGallery extends Component {
 }
 
 StereoGallery.propTypes = {
-  music: PropTypes.array.isRequired,
+  music: PropTypes.object.isRequired,
 }
 
 StereoGallery.defaultProps = {
@@ -68,5 +81,7 @@ export default connect(
 )(StereoGallery);
 
 const StyledStereoGallery = styled.aside`
-
+  .stereo-gallery{
+    background: red;
+  }
 `;

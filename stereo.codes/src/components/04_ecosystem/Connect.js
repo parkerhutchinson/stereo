@@ -3,17 +3,25 @@ import { connect } from 'react-redux';
 import StereoGallery from '../03_organisms/StereoGallery';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Copy from '../03_organisms/Copy';
 
 class Connect extends Component {
   render() {
-    const { music } = this.props;
     return (
       <React.Fragment>
         <StyledConnect className="grid-18 grid-col-18">
-          <StyledConnectIntro className="grid-col-8">
-            <h1>Music That<br/>Drives Me.</h1>
-            <StereoGallery />
-          </StyledConnectIntro>
+            <Copy
+                title="Stereo's Stereo"
+                subTitle="My Latest Tracks"
+                grid={8}
+                inview={true}
+                color="rgb(var(--snow))"
+              >
+                <p>This is our world now. The world of the electron and the
+              switch; the beauty of the baud. We exist without nationality,
+              skin color, or religious bias.</p>
+            </Copy>
+          <StereoGallery />
         </StyledConnect>
       </React.Fragment>
     )
@@ -21,7 +29,7 @@ class Connect extends Component {
 }
 
 Connect.propTypes = {
-  music: PropTypes.array,
+  music: PropTypes.object,
   section: PropTypes.object,
 }
 
@@ -43,30 +51,11 @@ const StyledConnect = styled.div`
   grid-column-rows: auto;
   grid-row-gap: 120px;
   padding-bottom: 100px;
+  align-items: center;
   a:nth-of-type(2n + 1){
     grid-column-start: 11;
   }
 `;
 const StyledConnectIntro = styled.header`
   align-self: center;
-  h1{
-    color: rgb(var(--snow));
-    padding-left: 50px;
-    position: relative;
-    &:before{
-      content: '';
-      display: block;
-      position: absolute;
-      width: 40px;
-      height: 1px;
-      background: rgb(var(--radish));
-      top: 40px;
-      left: 0;
-      transition: width var(--fastanimation) .4s;
-      transition-delay: 0s;
-      @media screen and (max-width: 768px) {
-        top: 22px;
-      }
-    }
-  }
 `;

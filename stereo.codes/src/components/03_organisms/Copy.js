@@ -15,7 +15,13 @@ export default class Copy extends Component {
     const gridContent = grid - 2;
 
     return (
-      <StyledCopy className={`${classes} grid-col-${grid} copy ${className}`} color={color} inview={inview} image={copyImage}>
+      <StyledCopy
+        className={`${classes} grid-col-${grid} copy ${className}`}
+        color={color}
+        inview={inview}
+        image={copyImage}
+        grid={grid}
+      >
         <div className={`grid-col-${grid} copy-wrap`}>
           <CopyHeader
             title={ title }
@@ -74,7 +80,7 @@ const StyledCopy = styled.article`
     z-index: ${zdepth('mid')};
     padding: ${copyWrapPadding} 0 ${copyWrapPadding} 0;
     .copy-content{
-      padding: 0 11.50% 5px;
+      padding: 0 ${props => (100 / props.grid)}% 5px;
       opacity: ${props => props.inview ? '1' : '0'};
       transition: opacity var(--fastanimation) .6s;
       transition-delay: ${props => props.inview ? '1.2s' : '0s'};

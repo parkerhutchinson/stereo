@@ -1,13 +1,13 @@
 export const musicStore = [
   {
-    id: 1,
+    id: 0,
     name: 'lone',
     album: 'levitate',
     artwork: './images/connect/artist-lone.png',
     link:'spotify://spotify:album:1UbjpFeq2jl2W2sh5gIwhL'
   },
   {
-    id: 2,
+    id: 1,
     name: 'zomby',
     album: 'with love',
     artwork: './images/connect/artist-zomby.png',
