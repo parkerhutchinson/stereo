@@ -101,8 +101,9 @@ const LinkStyled = styled.a`
     &:before{
       content: '';
       display: inline-block;
-      height: 1px;
-      background: white;
+      height: 0px;
+      border-bottom: 1px solid rgb(var(--snow));
+      stroke-linecap: round;
       width: 100%;
       position: absolute;
       top: 50%;
@@ -115,30 +116,14 @@ const LinkStyled = styled.a`
       position: absolute;
       z-index: ${zdepth('mid')};
       top: 50%;
-      right: -4px;
-      height: 20px;
-      width: 13px;
-      transform: translateY(-50%);
-      &:before, &:after{
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        background: white;
-        right: 0;
-        border-radius: 50%;
-        transition: all .4s;
-      }
-      &:before{
-        top: 0;
-        transform-origin: left center;
-        transform: rotate(45deg);
-      }
-      &:after{
-        bottom: 0;
-        transform-origin: left center;
-        transform: rotate(-45deg);
-      }
+      right: 2px;
+      height: 15px;
+      width: 15px;
+      transform: translateY(-50%) rotate(-45deg);
+      border-right: 1px solid rgb(var(--snow));
+      border-bottom: 1px solid rgb(var(--snow));
+      stroke-linecap: round;
+      transition: all .4s;
     }
   }
   &:before,&:after{
@@ -168,12 +153,10 @@ const LinkStyled = styled.a`
     .button-arrow{
       width: 43px;
       &:before{
-        background: rgb(var(--radish));
+        border-color: rgb(var(--radish));
       }
       .button-arrow-head{
-        &:before,&:after{
-          background: rgb(var(--radish));
-        }
+        border-color: rgb(var(--radish));
       }
     }
     &:before{width: 100%;}

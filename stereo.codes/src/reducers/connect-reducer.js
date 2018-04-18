@@ -7,7 +7,9 @@ import {
 
 const musicListLength = musicStore.length - 1;
 
-const music = (state = musicStore[0], action) => {
+const defaultState = musicStore[0];
+defaultState.albumL = musicStore.length;
+const music = (state = defaultState, action) => {
   const actionId = action.id;
   switch(action.type) {
     case INCREMENT_MUSIC_SELECTION:

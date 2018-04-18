@@ -251,30 +251,14 @@ const StyledFinder = styled.div`
           position: absolute;
           z-index: ${zdepth('mid')};
           top: 50%;
-          right: -4px;
-          height: 15px;
+          right: 2px;
+          height: 10px;
           width: 10px;
-          transform: translateY(-50%);
-          &:before, &:after{
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            background: rgb(var(--radish));
-            right: 0;
-            border-radius: 50%;
-            transition: all .4s;
-          }
-          &:before{
-            top: 0;
-            transform-origin: left center;
-            transform: rotate(45deg);
-          }
-          &:after{
-            bottom: 0;
-            transform-origin: left center;
-            transform: rotate(-45deg);
-          }
+          transform: translateY(-50%) rotate(-45deg);
+          border-right: 1px solid rgb(var(--radish));
+          border-bottom: 1px solid rgb(var(--radish));
+          stroke-linecap: round;
+          transition: all .4s;
         }
       }
     }

@@ -2,6 +2,8 @@
 # Created by https://www.gitignore.io/api/docker,node,react
 .DS_Store
 #!! ERROR: docker is undefined. Use list command to see defined gitignore types !!#
+.vscode
+.vscode/*
 
 ### Node ###
 # Logs

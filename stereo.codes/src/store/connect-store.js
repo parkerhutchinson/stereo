@@ -19,5 +19,12 @@ export const musicStore = [
     album: 'drunk',
     artwork: './images/connect/artist-thundercat.png',
     link:'spotify://spotify:album:4anxEzh8xEKSPXKHGWiFue'
+  },
+  {
+    id: 3,
+    name: 'zomby_two',
+    album: 'drunk',
+    artwork: './images/connect/artist-thundercat.png',
+    link:'spotify://spotify:album:4anxEzh8xEKSPXKHGWiFue'
   }
 ] 

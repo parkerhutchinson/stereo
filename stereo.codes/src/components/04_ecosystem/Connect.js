@@ -48,16 +48,14 @@ export default connect(
 const StyledConnect = styled.div`
   grid-column-start: 3;
   align-content: stretch;
-  grid-column-rows: 1;
+  grid-template-rows: 1fr;
   grid-row-gap: 120px;
   padding-bottom: 100px;
   &.grid-20{
     align-items: center;
   }
-  a:nth-of-type(2n + 1){
-    grid-column-start: 11;
-  }
   .stereo-gallery-wrap{
     grid-column-start: 12;
+    grid-template-rows: 1fr;
   }
 `;

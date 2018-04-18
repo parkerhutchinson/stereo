@@ -72,7 +72,7 @@ class App extends Component {
         </SectionObserver>
         <SectionObserver
           label="connect"
-          threshold={.4}
+          threshold={.8}
           classes="connect"
         >
           <Connect />
@@ -307,9 +307,11 @@ injectGlobal`
     }
   }
   .divider-connect{
-    position: relative;
-    z-index: ${zdepth('mid')};
-    margin-top: calc(-30vh);
+    @media screen and (min-width: 768px) {
+      position: relative;
+      z-index: ${zdepth('mid')};
+      margin-top: calc(-30vh);
+    }
   }
   .connect{
     z-index: ${zdepth('mid')};
