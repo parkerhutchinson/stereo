@@ -61,7 +61,15 @@ class App extends Component {
         <SectionObserver label="work" threshold={.4}>
           <Work />
         </SectionObserver>
-        
+        <SectionObserver
+          classes="grid-24 grid-col-24 sectionObserverDivider divider-connect"
+          align="center"
+          label="dividerconnect"
+          nostate
+          threshold={.1}
+        >
+          <Divider label="connect"/>
+        </SectionObserver>
         <SectionObserver
           label="connect"
           threshold={.4}
@@ -291,11 +299,20 @@ injectGlobal`
     width: 100%;
     display: block;
     clear: both;
-    height: 100vh;
+    height: calc(100vh - 30px);
+    max-height: 700px;
     overflow: hidden;
     @media screen and (max-width: 768px) {
       height: 60vh;
     }
+  }
+  .divider-connect{
+    position: relative;
+    z-index: ${zdepth('mid')};
+    margin-top: calc(-30vh);
+  }
+  .connect{
+    z-index: ${zdepth('mid')};
   }
 `;
 

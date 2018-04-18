@@ -122,7 +122,7 @@ const StyledWorkLauncher = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 20%);
   text-align: center;
   display: flex;
   align-items: center;
@@ -227,7 +227,6 @@ const StyledSupportCopy = styled.p`
 
 const StyledWork = styled.div`
   min-height: 100vh;
-  margin-bottom: 200px;
   grid-column-start: 4;
   position: relative;
   @media screen and (max-width: 768px) {

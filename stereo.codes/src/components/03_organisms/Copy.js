@@ -97,7 +97,8 @@ const StyledCopy = styled.article`
     position: absolute;
     top: 0;
     right: 0;
-    width: 77.85%;
+    /* width: 77.85%; */
+    width: ${props => (100 - (100 / props.grid * 2))}%;
     height: 100%;
     z-index: ${zdepth('low')};
     opacity: ${props => props.inview ? '1' : '0'};

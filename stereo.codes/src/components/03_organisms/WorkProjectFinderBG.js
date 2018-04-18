@@ -102,7 +102,6 @@ const StyledWorkLauncher = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  position: relative;
   overflow: hidden;
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(18, 1fr);

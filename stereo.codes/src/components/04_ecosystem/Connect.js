@@ -9,11 +9,11 @@ class Connect extends Component {
   render() {
     return (
       <React.Fragment>
-        <StyledConnect className="grid-18 grid-col-18">
+        <StyledConnect className="grid-20 grid-col-20">
             <Copy
                 title="Stereo's Stereo"
                 subTitle="My Latest Tracks"
-                grid={8}
+                grid={9}
                 inview={true}
                 color="rgb(var(--snow))"
               >
@@ -46,16 +46,18 @@ export default connect(
 )(Connect);
 
 const StyledConnect = styled.div`
-  grid-column-start: 4;
+  grid-column-start: 3;
   align-content: stretch;
-  grid-column-rows: auto;
+  grid-column-rows: 1;
   grid-row-gap: 120px;
   padding-bottom: 100px;
-  align-items: center;
+  &.grid-20{
+    align-items: center;
+  }
   a:nth-of-type(2n + 1){
     grid-column-start: 11;
   }
-`;
-const StyledConnectIntro = styled.header`
-  align-self: center;
+  .stereo-gallery-wrap{
+    grid-column-start: 12;
+  }
 `;
