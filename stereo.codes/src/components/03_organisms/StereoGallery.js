@@ -35,7 +35,7 @@ class StereoGallery extends Component {
     ReactDOM.findDOMNode(this.refs.meta).classList.add('noclick');
     setTimeout(() => {
       ReactDOM.findDOMNode(this.refs.meta).classList.remove('noclick');
-    }, 500);
+    }, 900);
   }
   getNextMusic(id) {
     this.props.getNextMusicSelection(id);
@@ -67,8 +67,8 @@ class StereoGallery extends Component {
             <ReactCSSTransitionGroup
               component="header"
               transitionName="stereo-gallery-meta"
-              transitionEnterTimeout={400}
-              transitionLeaveTimeout={400}
+              transitionEnterTimeout={800}
+              transitionLeaveTimeout={800}
             >
               { this.getMediaMeta(music) }
             </ReactCSSTransitionGroup>
@@ -238,7 +238,7 @@ const StyledMediaCopy = styled.a`
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: all .4s ease-out;
+      transition: all .8s var(--fastanimation);
       &-active{
         opacity: 1;
         top: 0;
@@ -251,7 +251,7 @@ const StyledMediaCopy = styled.a`
       width: 100%;
       height: 100%;
       opacity: 1;
-      transition: all .4s ease-out;
+      transition: all .8s var(--fastanimation);
       &-active{
         opacity: 0;
         top: -40px;

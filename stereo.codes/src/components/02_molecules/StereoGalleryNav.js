@@ -100,6 +100,9 @@ const StyledGalleryNav = styled.nav`
       transform: rotate(180deg);
       margin-right: 10px;
     }
+    &-next{
+      margin-right: 20px;
+    }
     &:hover{
       &:before{
         border-color: rgb(var(--blueberry));
@@ -111,11 +114,11 @@ const StyledGalleryNav = styled.nav`
   }
   ul{
     display: inline-flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    width: calc(100% - 120px);
+    width: calc(100% - 130px);
     height: 7px;
-    margin-right: 10px;
+    margin: 0 30px;
     padding: 0;
     overflow: hidden;
   }
