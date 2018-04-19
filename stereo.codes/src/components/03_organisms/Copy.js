@@ -11,7 +11,16 @@ const copyWrapPaddingMobile = '35px';
 
 export default class Copy extends Component {
   render() {
-    const { grid, classes, subTitle, title, inview, color, className, copyImage } = this.props;
+    const {
+      grid,
+      classes,
+      subTitle,
+      title,
+      inview,
+      color,
+      className,
+      copyImage
+    } = this.props;
     const gridContent = grid - 2;
 
     return (
@@ -22,7 +31,7 @@ export default class Copy extends Component {
         image={copyImage}
         grid={grid}
       >
-        <div className={`grid-col-${grid} copy-wrap`}>
+        <div className={`copy-wrap`}>
           <CopyHeader
             title={ title }
             subTitle={ subTitle }
@@ -35,7 +44,7 @@ export default class Copy extends Component {
             {this.props.children}
           </div>
         </div>
-        <span className={`grid-col-${gridContent} bg`}></span>
+        <span className={`bg`}></span>
       </StyledCopy>
     )
   }

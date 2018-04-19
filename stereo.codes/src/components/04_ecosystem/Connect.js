@@ -4,6 +4,7 @@ import StereoGallery from '../03_organisms/StereoGallery';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Copy from '../03_organisms/Copy';
+import NavLinkArrow from '../01_atoms/NavLinkArrow';
 
 class Connect extends Component {
   render() {
@@ -22,6 +23,16 @@ class Connect extends Component {
                 <p>This is our world now. The world of the electron and the
               switch; the beauty of the baud. We exist without nationality,
               skin color, or religious bias.</p>
+              <NavLinkArrow
+                url="https://open.spotify.com/user/phono_mono?si=hcW-WJ2UR_COLRXD3Rx6wg"
+                title="My Spotify"
+                target="_blank"
+                classes="button"
+              >
+                <span className="button-arrow">
+                  <span className="button-arrow-head"></span>
+                </span>
+              </NavLinkArrow>
             </Copy>
           <StereoGallery inview={inview}/>
         </StyledConnect>
@@ -48,11 +59,22 @@ export default connect(
 )(Connect);
 
 const StyledConnect = styled.div`
+  display: grid;
   grid-column-start: 3;
   align-content: stretch;
   grid-template-rows: 1fr;
-  grid-row-gap: 120px;
   padding-bottom: 100px;
+  &.grid-20{
+    align-items: center;
+  }
+  @media screen and (max-width: 768px){
+    &.grid-20{
+      grid-template-columns: repeat(16, 1fr);
+      grid-column-start: 1;
+      grid-column-end: span 18;
+      grid-template-rows: auto;
+    }
+  }
   .copy-header.active{
     h1{transition-delay: 0s;}
     h3{transition-delay: .3s;}
@@ -62,12 +84,15 @@ const StyledConnect = styled.div`
       .copy-content{transition-delay: .5s;}
     }
     .bg{transition-delay: .4s;}
-  }
-  &.grid-20{
-    align-items: center;
+    @media screen and (max-width: 768px) {
+      grid-column-end: span 16;
+    }
   }
   .stereo-gallery-wrap{
     grid-column-start: 12;
     grid-template-rows: 1fr;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 `;
