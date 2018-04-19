@@ -23,8 +23,6 @@ MediaBlock.defaultProps = {
 }
 
 const StyledMediaBlock = styled.a`
-  grid-template-rows: 1;
-  display: grid;
   position: relative;
   z-index: ${zdepth('low')};
   img{
@@ -35,21 +33,6 @@ const StyledMediaBlock = styled.a`
     grid-column-start: 1;
     transform: translate3d(0,0,0) scale(1);
     transition: transform .8s var(--fastanimation);
-  }
-  @media screen and (min-width: 768px) {
-    &:hover{
-      h2, h4{
-        color: rgb(var(--snow));
-      }
-      header{
-        &:after{
-          width: 100%;
-        }
-      }
-      img{
-        transform: translate3d(0,0,0) scale(1.1);
-      }
-    }
   }
 `;
 const StyledSpotifyIcon = styled.i`
