@@ -46,14 +46,14 @@ class StereoGallery extends Component {
     this.preventClick();
   }
   render() {
-    const { music } = this.props;
+    const { music, inview } = this.props;
     let musicIndex = music.id;
     const nextId = musicIndex + 1;
     const prevId = musicIndex - 1;
 
     return (
       <React.Fragment>
-        <StyledStereoGallery className="stereo-gallery-wrap grid-col-9 grid-9">
+        <StyledStereoGallery className="stereo-gallery-wrap grid-col-9 grid-9" inview={inview}>
           <ReactCSSTransitionGroup
             component="div"
             className="block grid-col-9"
@@ -86,10 +86,12 @@ class StereoGallery extends Component {
 
 StereoGallery.propTypes = {
   music: PropTypes.object.isRequired,
+  inview: PropTypes.bool,
 }
 
 StereoGallery.defaultProps = {
   music: [],
+  inview: false,
 }
 
 const mapStateToProps = (state) => {
@@ -115,6 +117,10 @@ export default connect(
 const StyledStereoGallery = styled.aside`
   position: relative;
   grid-template-rows: 1fr;
+  opacity: ${props => props.inview ? '1' : '0'};
+  top: ${props => props.inview ? '0' : '50px'};
+  transition: all .4s;
+  transition-delay: ${props => props.inview ? '1.1s' : '0s'};
   .meta, .block{
     position: relative;
     grid-row-end: 1;
@@ -126,12 +132,7 @@ const StyledStereoGallery = styled.aside`
     position: relative;
     height: 513px;
     transform: translate3d(0,0,0) scale(1);
-    transition: transform .4s var(--fastanimation);
-    @media screen and (min-width: 768px) {
-      &:hover{
-        transform: translate3d(0,0,0) scale(1.1);
-      }
-    }
+    transition: transform .5s var(--fastanimation);
     a{
       position: absolute;
       top: 0;
@@ -139,12 +140,17 @@ const StyledStereoGallery = styled.aside`
       height: 100%;
       width: 100%;
     }
+    @media screen and (min-width: 768px) {
+      &:hover{
+        transform: translate3d(0,0,0) scale(1.1);
+      }
+    }
   }
   .meta{
     grid-column-start: 5;
     grid-column-end: 10;
     z-index: ${zdepth('mid')};
-    margin-top: 60px;
+    margin-top: 90px;
     background: rgb(var(--snow));
     position: relative;
     min-height: 173px;
@@ -157,6 +163,10 @@ const StyledStereoGallery = styled.aside`
     a{
       cursor: pointer;
     }
+    opacity: ${props => props.inview ? '1' : '0'};
+    top: ${props => props.inview ? '0' : '50px'};
+    transition: all .4s;
+    transition-delay: ${props => props.inview ? '1.4s' : '0s'};
   }
   .stereo-gallery-block{
     &-enter{
@@ -165,11 +175,14 @@ const StyledStereoGallery = styled.aside`
       left: 0;
       height: 100%;
       width: 100%;
-      transition: all .4s var(--fastanimation);
-      clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%);
       z-index: ${zdepth('high')};
+      transform: translate3d(0,0,0);
+      clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%);
+      opacity: 0;
+      transition: clip-path .4s var(--fastanimation), opacity .2s;
       &-active{
         clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
+        opacity: 1;
       }
     }
     &-leave{
@@ -179,6 +192,11 @@ const StyledStereoGallery = styled.aside`
       height: 100%;
       width: 100%;
       z-index: ${zdepth('low')};
+      opacity: 1;
+      transition: opacity .4s;
+      &-active{
+        opacity: 0;
+      }
     }
   }
 `;
