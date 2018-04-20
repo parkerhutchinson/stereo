@@ -5,11 +5,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Copy from '../03_organisms/Copy';
 import NavLinkArrow from '../01_atoms/NavLinkArrow';
+import HackImageLoader from '../02_molecules/HackImageLoader';
+import { musicStore } from '../../store/connect-store';
 
 class Connect extends Component {
   render() {
     const { section } = this.props;
     const inview = section.connect ? section.connect : null;
+    const images = musicStore.map((img) => img.artwork);
     return (
       <React.Fragment>
         <StyledConnect className="grid-20 grid-col-20">
@@ -36,6 +39,7 @@ class Connect extends Component {
             </Copy>
           <StereoGallery inview={inview}/>
         </StyledConnect>
+        <HackImageLoader images={images} />
       </React.Fragment>
     )
   }
