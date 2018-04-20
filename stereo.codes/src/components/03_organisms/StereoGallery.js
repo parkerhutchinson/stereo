@@ -35,7 +35,7 @@ class StereoGallery extends Component {
     ReactDOM.findDOMNode(this.refs.meta).classList.add('noclick');
     setTimeout(() => {
       ReactDOM.findDOMNode(this.refs.meta).classList.remove('noclick');
-    }, 900);
+    }, 1300);
   }
   getNextMusic(id) {
     this.props.getNextMusicSelection(id);
@@ -58,8 +58,8 @@ class StereoGallery extends Component {
             component="div"
             className="block grid-col-9"
             transitionName="stereo-gallery-block"
-            transitionEnterTimeout={400}
-            transitionLeaveTimeout={400}
+            transitionEnterTimeout={1400}
+            transitionLeaveTimeout={1400}
           >
             { this.getMediaBlocks(music) }
           </ReactCSSTransitionGroup>
@@ -179,8 +179,12 @@ const StyledStereoGallery = styled.aside`
       transform: translate3d(0,0,0);
       clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%);
       opacity: 0;
-      transition: clip-path .4s var(--fastanimation), opacity .2s;
+      transition-property: clip-path, opacity;
+      transition-duration: .8s, .4s;
+      transition-timing-function: var(--fastanimation), ease;
+      
       &-active{
+        transition-delay: .2s, .4s;
         clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
         opacity: 1;
       }
@@ -194,7 +198,9 @@ const StyledStereoGallery = styled.aside`
       z-index: ${zdepth('low')};
       opacity: 1;
       transition: opacity .4s;
+      
       &-active{
+        transition-delay: 1.2s;
         opacity: 0;
       }
     }
