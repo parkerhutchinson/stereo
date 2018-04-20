@@ -307,11 +307,11 @@ injectGlobal`
     }
   }
   .divider-connect{
+    margin-bottom: 50px;
     @media screen and (min-width: 768px) {
       position: relative;
       z-index: ${zdepth('mid')};
       margin-top: calc(-30vh);
-      margin-bottom: 50px;
     }
   }
   .connect{
