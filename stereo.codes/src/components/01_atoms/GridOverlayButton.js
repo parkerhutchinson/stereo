@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import {VelocityComponent} from 'velocity-react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { gridActivate } from '../../actions/grid-actions';
@@ -16,23 +15,15 @@ class GridOverlayButton extends Component {
   }
 
   render() {
+    const { isActive } = this.state;
     const active = this.state.isActive ? 'active' : '';
-    const ButtonStyled = styled.button`
-      display: inline-block;
-      background: ${this.state.isActive ? 'rgb(var(--snow))' : 'rgb(var(--radish))'};
-      color: ${this.state.isActive ? 'rgb(var(--radish))' : 'rgb(var(--snow))'};
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      text-transform: uppercase;
-    `;
-
     return (
-      <VelocityComponent animation={{ scale: [this.state.isActive ? 1.2 : 1, 'easeInCirc'] }} duration={500}>
-        <StyledGridUI className={`${active} grid-overlay-ui about-button`}>
-          <ButtonStyled onClick={this.toggleButton.bind(this)}>G</ButtonStyled>
-        </StyledGridUI>
-      </VelocityComponent>
+      <StyledGridUI className={`${active} grid-overlay-ui about-button`}>
+        <ButtonStyled
+          onClick={this.toggleButton.bind(this)}
+          isActive={isActive}
+        ></ButtonStyled>
+      </StyledGridUI>
     )
   }
 }
@@ -58,6 +49,39 @@ const StyledGridUI = styled.div`
   right: 20px;
   /* lol i know right? */
   z-index: 99999999999;
+`;
+
+const ButtonStyled = styled.button`
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  font-size: 16px;
+  background: none;
+  border: 1px solid ${props => props.isActive ? 'rgb(var(--snow))' : 'rgb(var(--radish))'};;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+  transition: all .4s;
+
+  &:before{
+    content: '';
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: ${props => props.isActive ? 'rgb(var(--snow))' : 'rgb(var(--radish))'};
+    position: absolute;
+    top: 0;
+    right: 9px;
+    transition: all .4s;
+  }
+  @media screen and (min-width: 768px) {
+    &:hover{
+      border-color: rgb(var(--snow));
+      &:before{
+        background: rgb(var(--snow));
+      }
+    }
+  }
 `;
 
 export default connect(
