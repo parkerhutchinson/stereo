@@ -131,6 +131,7 @@ const StyledStereoGallery = styled.aside`
     z-index: ${zdepth('low')};
     position: relative;
     height: 513px;
+    overflow: hidden;
     transform: translate3d(0,0,0) scale(1);
     transition: transform .5s var(--fastanimation);
     a{

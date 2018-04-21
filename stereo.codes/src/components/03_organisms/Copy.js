@@ -21,7 +21,6 @@ export default class Copy extends Component {
       className,
       copyImage
     } = this.props;
-    const gridContent = grid - 2;
 
     return (
       <StyledCopy
