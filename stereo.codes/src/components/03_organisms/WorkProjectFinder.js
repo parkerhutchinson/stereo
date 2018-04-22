@@ -36,6 +36,8 @@ class WorkFinder extends Component {
         setActive={(row) => this.setActive(row)}
         key={i}
         name={row.title}
+        stack={row.stack}
+        position={row.position}
         na={row.na ? true : false}
       />
     );

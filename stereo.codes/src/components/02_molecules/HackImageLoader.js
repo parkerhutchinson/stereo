@@ -16,7 +16,7 @@ const HackImageLoader = (props) => {
 }
 
 HackImageLoader.propTypes = {
-  images: PropTypes.object,
+  images: PropTypes.array,
 }
 
 HackImageLoader.defaultProps = {

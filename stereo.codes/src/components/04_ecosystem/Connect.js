@@ -23,9 +23,7 @@ class Connect extends Component {
                 inview={inview}
                 color="rgb(var(--snow))"
               >
-                <p>This is our world now. The world of the electron and the
-              switch; the beauty of the baud. We exist without nationality,
-              skin color, or religious bias.</p>
+                <p>My drive to code and design is only matched by my insatiable need to listen to music. When my cans go on its time to get -ish done. Checkout this small sample set of the top albums in my collection. </p>
               <NavLinkArrow
                 url="https://open.spotify.com/user/phono_mono?si=hcW-WJ2UR_COLRXD3Rx6wg"
                 title="My Spotify"
