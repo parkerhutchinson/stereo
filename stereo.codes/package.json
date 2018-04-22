@@ -50,7 +50,7 @@
     "styled-transition-group": "^1.0.0",
     "svg.easing.js": "^2.0.0",
     "svg.filter.js": "^2.0.2",
-    "svg.js": "^2.6.3",
+    "svg.js": "^2.6.4",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
     "useragent": "^2.3.0",
