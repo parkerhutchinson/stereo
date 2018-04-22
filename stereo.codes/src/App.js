@@ -86,7 +86,6 @@ class App extends Component {
 // grid columns
 const gridNum = 25;
 // builds css grid templates
-
 injectGlobal`
   @import url(https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700);
   :root{
