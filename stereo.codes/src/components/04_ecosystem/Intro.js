@@ -57,13 +57,7 @@ class Intro extends Component {
             inview={active}
             color="rgb(var(--snow))"
           >
-          <p>This is our world now. The world of the electron and the
-            switch; the beauty of the baud. We exist without nationality,
-            skin color, or religious bias. You wage wars, murder, cheat,
-            lie to us and try to make us believe it's for our own good,
-            yet we're the criminals. Yes, I am a criminal. My crime is
-            that of curiosity. <strong>I am a hacker</strong>,
-            and this is my manifesto.</p>
+          <p>This site and all it's works are a culmination of over 10 years of professional web development and design. I have built marketing sites, web apps, CLI's, custom frameworks, and servers. My knowledge spans the full gamut of web technology and then some. I have designed, strategized, coded, and deployed on the best of what the web has to offer. My experience ranges from  Wordpress to Django to React and I am your Super-ployee<sup>&trade;</sup>. </p>
             <NavLinkArrow title="LEARN MORE" url=".about" classes="button" scrollTo>
               <span className="button-arrow">
                 <span className="button-arrow-head"></span>
