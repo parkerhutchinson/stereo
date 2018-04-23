@@ -32,15 +32,18 @@ class Navigation extends Component {
 
   render() {
     const { navigation, section } = this.props;
+    console.log(navigation);
     return (
-      <StyledNavigation isTop={section} className="grid-24 grid-col-24">
-        <div className="grid-col-18 grid-18">
-          <Logo classes="grid-col-9" />
-          <NavigationMenu menu={this.navConfig} mobile={false} />
-          <a className="hamburger-btn" href="#hamburger" onClick={(evt) => this.openHamburger(evt)}>hamburger</a>
-        </div>
-        <HamburgerNav open={navigation.open} menu={this.navConfig} />
-      </StyledNavigation>
+      <React.Fragment>
+        <StyledNavigation isTop={section} className="grid-24 grid-col-24">
+          <div className="grid-col-18 grid-18">
+            <Logo classes="grid-col-9" />
+            <NavigationMenu menu={this.navConfig} mobile={false} />
+          </div>
+          <StyledHamburgerBtn href="#hamburger" onClick={(evt) => this.openHamburger(evt)}>hamburger</StyledHamburgerBtn>
+        </StyledNavigation>
+        <HamburgerNav show={navigation.open} menu={this.navConfig} />
+      </React.Fragment>
     )
   }
 }
@@ -76,9 +79,9 @@ const StyledNavigation = styled.nav`
   width: 100%;
   height: 125px;
   background: rgba(51,63,106, 0);
-  z-index: ${zdepth('high')};
   transition: background .3s;
-  z-index: ${zdepth('low')};
+  z-index: ${zdepth('high')};
+  grid-template-rows: 1;
   &.grid-24{align-items: center;}
   &:before{
     content: '';
@@ -94,34 +97,10 @@ const StyledNavigation = styled.nav`
     transition: all .4s var(--fastanimation);
   }
   .grid-col-18{
-    grid-column: 4 / span 18;
+    @media screen and (min-width: 768px){
+      grid-column: 4 / span 18;
+    }
     align-items: center;
-  }
-  .hamburger-btn{
-    position: relative;
-    height: 20px;
-    width: 20px;
-    display: none;
-    overflow: hidden;
-    text-indent: 9999px;
-    z-index: ${zdepth('highest')};
-    grid-column-start: 16;
-    grid-column-end: 17;
-    grid-row-end: 1;
-    &:before, &:after{
-      content: '';
-      width: 100%;
-      height: 1px;
-      background: rgb(var(--snow));
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%) rotate(0deg);
-      transition: all .4s;
-    }
-    @media screen and (max-width: 768px) {
-      display: block;
-    }
   }
   @media screen and (max-width: 768px){
     grid-template-columns: repeat(18, 1fr);
@@ -129,8 +108,9 @@ const StyledNavigation = styled.nav`
     height: 90px;
     top: 0;
     .grid-18{
-      grid-column: 2 / span 16;
       align-items: center;
+      grid-row-start: 1;
+      ul{display: none;}
     }
     h1{
       grid-column: span 18;
@@ -139,6 +119,32 @@ const StyledNavigation = styled.nav`
       z-index: ${zdepth('high')};
       a{opacity: 1; transition: all .4s;}
     }
+  }
+`;
+
+const StyledHamburgerBtn = styled.a`
+  position: absolute;
+  top: 35px;
+  right: 30px;
+  height: 20px;
+  width: 20px;
+  display: none;
+  overflow: hidden;
+  text-indent: 9999px;
+  z-index: ${zdepth('highest')};
+  &:before, &:after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: rgb(var(--snow));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    transition: all .4s;
+  }
+  @media screen and (max-width: 768px) {
+    display: block;
   }
 `;
 

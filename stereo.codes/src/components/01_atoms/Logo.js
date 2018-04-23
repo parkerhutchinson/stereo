@@ -19,7 +19,7 @@ class Logo extends Component {
   }
   render() {
     return(
-      <StyledLogo className={`${this.props.classes} grid-col-3 logo`} onClick={(evt) => this.handleClick(evt)}>
+      <StyledLogo className={`${this.props.classes} logo`} onClick={(evt) => this.handleClick(evt)}>
         <a href="#top">Stereo</a>
       </StyledLogo>
     );
