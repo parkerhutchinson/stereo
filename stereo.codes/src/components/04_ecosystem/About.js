@@ -26,16 +26,21 @@ class About extends Component {
           <Copy title="Hackerman" subTitle="Ninja is a dirty word" grid={9} inview={active} color="rgb(var(--blueberry))">
             <CopyPaginator 
               blocks={[(
-                  <React.Fragment>
+                  <div key="block-1">
                     <p>Steve Ballmer once said "Developers! Developers! Developers!". I think this perfectly describes my thoughts on programming today.    I feel fortunate to be apart of an industry that affords sweaty bald businessmen to shout at nerds...</p>
                     <p>My name is Parker and this is my digital portfolio. My interest into this field started with my curiosity of design and interactivity from such agencies as [Hi-res](http://hi-res.net/), [Big Spaceship](https://www.bigspaceship.com/), and [2advanced](https://thefwa.com/profiles/2advanced-studios). Whose specialty at the time was Flash.. I know right? Nay be there a developer today that doesn't cringe at just the Name. I was a self taught ActionScript2/3 developer that built interactive experiences for brands.</p>
-                  </React.Fragment>
-                ),(
-                  <React.Fragment>
+                  </div>
+                ),
+                (
+                  <div key="block-2">
                     <p>Of course that ship sailed around 2010 and companies like Big Spaceship had to convert their existing businesses to open web standards technology like HTML, CSS, and Javascript. Large companies(famously Apple) started to drop Flash support and the rest of the industry has followed. Taking queue I began working with backend developers to deliver marketing and business websites with Zend Framework and the CMS that pretends not to be a CMS, Wordpress.</p>
+                  </div>
+                ),
+                (
+                  <div key="block-3">
                     <p>Since then I have been honing my skills around the front-end development stack. I've worked on all the trendy frameworks and libraries and solutions. Angular 1.x, Backbone, Prototype, jQuery, Drupal, Wordpress, Zend Framework, Django, Flask, Rails, React, and many others. I've built CLI's for automating my local stack and deployment strategies using Python's Fabric. I've built Electron helper apps for clients and even a custom short link generator using Node and MongoDB.</p>
                     <p>My spare time isn't all bleeps and bloops. I enjoy the outdoors as much as any PNW-er. When I'm not coding, I'm out riding my bike, playing Overwatch, Skiing/Snowboarding, or waiting in line for the best food in the country.</p>
-                  </React.Fragment>
+                  </div>
                 )
               ]}
             />
