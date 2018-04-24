@@ -35,6 +35,7 @@ class WorkFinder extends Component {
         setHover={(row) => this.setHover(row)}
         setActive={(row) => this.setActive(row)}
         key={i}
+        date={row.date}
         name={row.title}
         stack={row.stack}
         position={row.position}

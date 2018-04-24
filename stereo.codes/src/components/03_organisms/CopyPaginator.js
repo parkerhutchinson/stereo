@@ -36,12 +36,11 @@ class CopyPaginator extends Component {
   render() {
     const { blocks } = this.props;
     const { block } = this.state;
-    const prevButton = (<a href="#prev" onClick={() => this.navigateBlock(blocks, 'prev')}>Prev Page</a>);
-    const nextButton = (<a href="#next" onClick={() => this.navigateBlock(blocks, 'next')}>Next Page</a>);
-    
+    const prevButton = (<a href="#prev" className="prev" onClick={() => this.navigateBlock(blocks, 'prev')}><span></span></a>);
+    const nextButton = (<a href="#next" className="next" onClick={() => this.navigateBlock(blocks, 'next')}><span></span></a>);
+
     return(
       <StyledCopyPaginator>
-        { block !== 0 ? prevButton : null}
         <ReactCSSTransitionGroup
           component="div"
           transitionName="copypaginator"
@@ -50,7 +49,11 @@ class CopyPaginator extends Component {
         >
           { this.getBlocks(blocks, block) }
         </ReactCSSTransitionGroup>
+        <StyledPaginatorNav>
+        { block !== 0 ? prevButton : null}
+        <h5>{ block + 1} / {blocks.length}</h5>
         { block !== blocks.length - 1 ? nextButton : null}
+        </StyledPaginatorNav>
       </StyledCopyPaginator>
     )
   }
@@ -89,7 +92,68 @@ const StyledCopyPaginator = styled.div`
       }
     }
   }
-  a{
+`;
+
+const StyledPaginatorNav = styled.nav`
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h5{
     color: rgb(var(--radish));
+    display: inline-block;
+    text-align: center;
+    padding: 0 10px;
+  }
+  a{
+    position: relative;
+    color: rgb(var(--radish));
+    z-index: ${zdepth('high')};
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    transition: all .4s;
+    transform: scale(.8) rotate(0deg);
+    overflow: hidden;
+    &:before{
+      content: '';
+      display: inline-block;
+      height: 0px;
+      border-bottom: 1px solid rgb(var(--radish));
+      stroke-linecap: round;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: ${zdepth('low')};
+      transition: all .4s;
+    }
+    span{
+      position: absolute;
+      z-index: ${zdepth('mid')};
+      top: 50%;
+      right: 2px;
+      height: 12px;
+      width: 12px;
+      transform: translateY(-50%) rotate(-45deg);
+      border-right: 1px solid rgb(var(--radish));
+      border-bottom: 1px solid rgb(var(--radish));
+      stroke-linecap: round;
+      transition: all .4s;
+    }
+    &.prev{
+      transform: scale(.8) rotate(-180deg);
+    }
+    @media screen and (min-width: 768px) {
+      &:hover{
+        transform: scale(1);
+        &.prev{
+          transform: scale(1) rotate(-180deg);
+        }
+      }
+    }
   }
 `;
