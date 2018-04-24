@@ -19,8 +19,8 @@ class CopyPaginator extends Component {
     const { block } = this.state;
     const blocksL = blocks.length - 1;
     const blockI = block;
-    const nextBlock = (block + 1) > blocksL ? 0 : blockI + 1 ;
-    const prevBlock = (block - 1) < 0 ? blocksL : blockI - 1;
+    const nextBlock = (block + 1) > blocksL ? blocksL : blockI + 1 ;
+    const prevBlock = (block - 1) < 0 ? 0 : blockI - 1;
 
     if (dir === 'next') {
       this.setState({ block: nextBlock });
@@ -35,8 +35,8 @@ class CopyPaginator extends Component {
     const { blocks } = this.props;
     return(
       <StyledCopyPaginator>
+        <a href="#prev" onClick={() => this.navigateBlock(blocks, 'prev')}>Prev Page</a>
         { this.getBlocks(blocks, this.state.block) }
-        <a href="#next" onClick={() => this.navigateBlock(blocks, 'prev')}>Prev Page</a>
         <a href="#next" onClick={() => this.navigateBlock(blocks, 'next')}>Next Page</a>
       </StyledCopyPaginator>
     )
