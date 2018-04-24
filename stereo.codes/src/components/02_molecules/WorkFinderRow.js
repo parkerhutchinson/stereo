@@ -9,6 +9,7 @@ const WorkFinderRow = (props) => {
     <StyledRow
       className={`${props.active ? 'active' : ''} workfinder-row`}
       onMouseOver={() => props.setHover(props)}
+      onTouchStart={() => props.setActive(props)}
       onClick={() => props.setActive(props)}
       na={props.na}
     >
