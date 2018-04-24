@@ -76,7 +76,10 @@ const StyledCopy = styled.article`
   p{
     font-size: 1.2rem;
     line-height: 2.2;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
+    &:last-of-type{
+      margin-bottom: 50px;
+    }
     strong{
       font-weight: bold;
       display: inline-block;
