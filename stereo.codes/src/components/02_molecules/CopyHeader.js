@@ -104,6 +104,7 @@ const StyledCopyHeader = styled.header`
       opacity: 1;
       transform: translateY(0px);
       transition-delay: .9s;
+      letter-spacing: 1px;
       @media screen and (max-width: 768px) {
         transition-delay: .2s;
       }

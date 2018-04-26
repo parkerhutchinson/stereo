@@ -57,12 +57,12 @@ const ButtonStyled = styled.button`
   height: 20px;
   font-size: 16px;
   background: none;
-  border: 1px solid ${props => props.isActive ? 'rgb(var(--snow))' : 'rgb(var(--radish))'};;
+  border: 1px solid;
+  border-color: ${props => props.isActive ? 'rgb(var(--snow))' : 'rgb(var(--radish))'};
   cursor: pointer;
   text-transform: uppercase;
   position: relative;
   transition: all .4s;
-
   &:before{
     content: '';
     display: block;

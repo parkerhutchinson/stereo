@@ -68,6 +68,7 @@ const LinkStyled = styled.a`
   justify-content: space-around;
   padding-right: ${buttonPadding};
   transform: translate3d(0,0,0);
+  letter-spacing: 1px;
   .button-text{
     padding: ${buttonPadding};
     display: inline-block;

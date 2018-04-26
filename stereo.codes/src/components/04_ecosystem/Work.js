@@ -219,7 +219,7 @@ const StyledSupportCopy = styled.p`
   position: relative;
   top: ${props => props.inview ? '0px' : '-100px'};
   font-size: 1.4rem;
-  p{line-height: 1.8;}
+  line-height: 1.8;
   opacity: ${props => props.inview ? '1' : '0'};
   transition: all cubic-bezier(.91,.02,.03,.98) .7s;
   transition-delay: ${props => props.inview ? '.8s' : '0s'};;

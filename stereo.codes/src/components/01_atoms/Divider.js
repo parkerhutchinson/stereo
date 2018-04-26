@@ -48,6 +48,7 @@ const StyledDivider = styled.div`
     z-index: ${zdepth('low')};
     padding: 10px 0;
     display: inline-block;
+    letter-spacing:1px;
   }
 `;
 

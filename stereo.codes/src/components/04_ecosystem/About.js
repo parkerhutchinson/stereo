@@ -81,6 +81,9 @@ const StyledAboutContent = styled.div`
   opacity: ${props => props.inview ? '1' : '0'};
   transition: all var(--fastanimation) .7s;
   grid-template-columns: repeat(18, 1fr);
+  &.grid-18{
+    align-items: center;
+  }
   @media screen and (max-width: 768px) {
     grid-column-start: 1;
     grid-template-columns: repeat(18, 1fr);
@@ -120,6 +123,7 @@ const StyledAboutContent = styled.div`
       h3{
         text-transform: capitalize;
         padding-bottom: 10px;
+        letter-spacing: 1px;
         @media screen and (max-width: 768px) {
           padding-bottom: 5px;
         }

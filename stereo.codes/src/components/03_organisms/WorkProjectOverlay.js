@@ -369,7 +369,7 @@ const StyledWorkProjectOverlay = styled.article`
     color: rgb(var(--snow));
     z-index: ${zdepth('high')};
     display: inline-block;
-    width: 30px;
+    width: 50px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;

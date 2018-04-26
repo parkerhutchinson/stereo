@@ -66,6 +66,8 @@ const StyledConnect = styled.div`
   align-content: stretch;
   grid-template-rows: 1fr;
   padding-bottom: 100px;
+  margin-bottom: 50px;
+
   &.grid-20{
     align-items: center;
   }
