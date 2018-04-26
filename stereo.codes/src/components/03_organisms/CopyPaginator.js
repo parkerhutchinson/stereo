@@ -44,8 +44,9 @@ class CopyPaginator extends Component {
         <ReactCSSTransitionGroup
           component="div"
           transitionName="copypaginator"
-          transitionEnterTimeout={800}
-          transitionLeaveTimeout={400}
+          transitionEnterTimeout={600}
+          transitionLeaveTimeout={600}
+          className="paginationTransition"
         >
           { this.getBlocks(blocks, block) }
         </ReactCSSTransitionGroup>
@@ -67,15 +68,22 @@ export default CopyPaginator;
 
 const StyledCopyPaginator = styled.div`
   position: relative;
+  .paginationTransition{
+    position: relative;
+    .copy-block{
+      background: rgb(var(--snow));
+      
+    }
+  }
   .copypaginator{
     &-enter{
       position: relative;
       opacity: 0;
       background: rgb(var(--snow));
-      transition: opacity .8s;
       z-index: ${zdepth('mid')};
       &-active{
         opacity: 1;
+        transition: all .6s;
       }
     }
     &-leave{
@@ -85,10 +93,11 @@ const StyledCopyPaginator = styled.div`
       height: 100%;
       width: 100%;
       background: rgb(var(--snow));
-      z-index: ${zdepth('low')};
+      z-index: ${zdepth('lowest')};
       opacity: 1;
       &-active{
         opacity: 0;
+        transition: all .6s;
       }
     }
   }
