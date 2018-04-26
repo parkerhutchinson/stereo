@@ -32,7 +32,6 @@ class Navigation extends Component {
 
   render() {
     const { navigation, section } = this.props;
-    console.log(navigation);
     return (
       <React.Fragment>
         <StyledNavigation isTop={section} className="grid-24 grid-col-24">

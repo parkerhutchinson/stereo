@@ -22,9 +22,9 @@ export const musicStore = [
   },
   {
     id: 3,
-    name: 'zomby_two',
-    album: 'drunk',
-    artwork: './images/connect/artist-zomby.png',
-    link:'spotify://spotify:album:4anxEzh8xEKSPXKHGWiFue'
+    name: 'suicideyear',
+    album: 'japan',
+    artwork: './images/connect/artist-suicideyear.png',
+    link:'spotify://spotify:album:6r8NBLUPYz61JFBVDsEOFO'
   }
 ] 

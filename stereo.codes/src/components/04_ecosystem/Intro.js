@@ -28,7 +28,6 @@ class Intro extends Component {
         // do nothing
       }
     }
-    console.log(!nextProps.section);
     if (!nextProps.section) {
       const elem = ReactDOM.findDOMNode(this.refs.svg).querySelector('div');
       if (elem) {

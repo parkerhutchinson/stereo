@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { zdepth } from '../../lib/styled-helpers';
 
 const WorkFinderRow = (props) => {
-  console.log(props.stack);
   return (
     <StyledRow
       className={`${props.active ? 'active' : ''} workfinder-row`}

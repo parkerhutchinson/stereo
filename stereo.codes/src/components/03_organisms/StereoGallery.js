@@ -31,7 +31,6 @@ class StereoGallery extends Component {
     )
   }
   preventClick() {
-    console.log(ReactDOM.findDOMNode(this.refs.meta));
     ReactDOM.findDOMNode(this.refs.meta).classList.add('noclick');
     setTimeout(() => {
       ReactDOM.findDOMNode(this.refs.meta).classList.remove('noclick');
