@@ -138,7 +138,7 @@ const computerSVG = (draw) => {
 
   const logoCircleR = draw
   .circle(20)
-  .attr({fill: '#FF4A4A'})
+  .attr({fill: config.color.radish})
   .move(10, 0);
 
   const computerBG = draw

@@ -28,7 +28,7 @@ class About extends Component {
               blocks={[(
                   <div key="block-1" className="copy-block">
                     <p>Steve Ballmer once said "Developers! Developers! Developers!". I think this perfectly describes my thoughts on programming today.    I feel fortunate to be apart of an industry that affords sweaty bald businessmen to shout at nerds...</p>
-                    <p>My name is Parker and this is my digital portfolio. My interest into this field started with my curiosity of design and interactivity from such agencies as <a href="http://hi-res.net/" target="_blank">Hi-res</a>, <a href="https://www.bigspaceship.com/" target="_blank">Big Spaceship</a>, and <a href="https://thefwa.com/profiles/2advanced-studios" target="_blank">2advanced</a>. Whose specialty at the time was Flash.. I know right? Nay be there a developer today that doesn't cringe at just the Name. I was a self taught ActionScript2/3 developer that built interactive experiences for brands.</p>
+                    <p>My name is Parker and this is my digital portfolio. My interest into this field started with my curiosity of design and interactivity from such agencies as <a href="http://hi-res.net/" target="_blank" rel="noopener noreferrer">Hi-res</a>, <a href="https://www.bigspaceship.com/" target="_blank" rel="noopener noreferrer">Big Spaceship</a>, and <a href="https://thefwa.com/profiles/2advanced-studios" target="_blank" rel="noopener noreferrer">2advanced</a>. Whose specialty at the time was Flash.. I know right? Nay be there a developer today that doesn't cringe at just the Name. I was a self taught ActionScript2/3 developer that built interactive experiences for brands.</p>
                   </div>
                 ),
                 (
