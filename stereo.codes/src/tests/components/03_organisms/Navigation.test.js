@@ -17,7 +17,8 @@ describe('<Navigation />', () => {
   });
 
   it('renders all nav links', () => {
-    expect(wrapper.find(Logo)).toHaveLength(1);
+    // hamburger includes another logo
+    expect(wrapper.find(Logo)).toHaveLength(2);
     expect(wrapper.find('ul li').length).toEqual(6);
   });
 });
