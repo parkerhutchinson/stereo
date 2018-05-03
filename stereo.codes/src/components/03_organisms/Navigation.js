@@ -17,6 +17,7 @@ class Navigation extends Component {
       {url: '.connect', title: 'connect'},
     ]
     this.openHamburger.bind(this);
+    this.state = {ready: false};
   }
 
   openHamburger(evt) {
@@ -30,11 +31,16 @@ class Navigation extends Component {
     return false;
   }
 
+  componentDidMount() {
+    setTimeout(() => this.setState({ ready: true }), 400); 
+  }
+
   render() {
+    const { ready } = this.state;
     const { navigation, section } = this.props;
     return (
       <React.Fragment>
-        <StyledNavigation isTop={section} className="grid-24 grid-col-24">
+        <StyledNavigation isTop={section} className="grid-24 grid-col-24" ready={ready}>
           <div className="grid-col-18 grid-18">
             <Logo classes="grid-col-9" />
             <NavigationMenu menu={this.navConfig} mobile={false} />
@@ -78,9 +84,10 @@ const StyledNavigation = styled.nav`
   width: 100%;
   height: 125px;
   background: rgba(51,63,106, 0);
-  transition: background .3s;
+  transition: background .3s, opacity .8s ease 1s;
   z-index: ${zdepth('high')};
   grid-template-rows: 1;
+  opacity: ${props => props.ready ? '1' : '0'};
   &.grid-24{align-items: center;}
   &:before{
     content: '';
