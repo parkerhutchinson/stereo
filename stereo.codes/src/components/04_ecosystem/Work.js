@@ -70,9 +70,10 @@ class Work extends Component {
           <Fragment>
             <WorkProjectFinder />
             <ReactCSSTransitionGroup
+              component="div"
               transitionName="project-overlay-wrap"
-              transitionEnter={false}
-              transitionEnterTimeout={0}
+              // transitionEnter={false}
+              transitionEnterTimeout={400}
               transitionLeaveTimeout={400}
             >
               { project.show ? <WorkProjectOverlay /> : null }

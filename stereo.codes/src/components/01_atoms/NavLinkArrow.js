@@ -146,21 +146,23 @@ const LinkStyled = styled.a`
     bottom: 0;
     right: 0;
   }
-  &:hover{
-    .button-text{
-      padding-left: ${buttonPadding};
-      &:before{height: 100%;}
-    }
-    .button-arrow{
-      width: 43px;
-      &:before{
-        border-color: rgb(var(--radish));
+  @media screen and (min-width: 768px) {
+    &:hover{
+      .button-text{
+        padding-left: ${buttonPadding};
+        &:before{height: 100%;}
       }
-      .button-arrow-head{
-        border-color: rgb(var(--radish));
+      .button-arrow{
+        width: 43px;
+        &:before{
+          border-color: rgb(var(--radish));
+        }
+        .button-arrow-head{
+          border-color: rgb(var(--radish));
+        }
       }
+      &:before{width: 100%;}
     }
-    &:before{width: 100%;}
   }
 `;
 

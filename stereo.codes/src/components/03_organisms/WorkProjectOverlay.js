@@ -188,10 +188,11 @@ const getColors = (color, type) => {
 }
 // sucks that styled-components offers nothing for state transitions
 injectGlobal`
-  .project-overlay{z-index: ${zdepth('high')};}
+  .project-overlay{
+    z-index: ${zdepth('high')};
+  }
   .project-appear{
     opacity: .01;
-    
     ul{
       opacity: .01;
     }
@@ -203,6 +204,7 @@ injectGlobal`
         }
       }
       .bg{
+        transform: translate3d(0,0,0);
         clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%);
       }
     }
@@ -211,6 +213,7 @@ injectGlobal`
       top: 100px;
     }
     &:before{
+      transform: translate3d(0,0,0);
       clip-path: polygon(0 100%, 100% 70%, 100% 100%, 0 100%);
     }
   }
@@ -232,6 +235,7 @@ injectGlobal`
         }
       }
       .bg{
+        transform: translate3d(0,0,0);
         clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
         transition-delay: .4s;
       }
@@ -242,6 +246,7 @@ injectGlobal`
       transition: all .8s var(--fastanimation);
     }
     &:before{
+      transform: translate3d(0,0,0);
       clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
       transition: all .8s var(--fastanimation);
     }
@@ -253,6 +258,11 @@ injectGlobal`
     position: absolute;
     top: 0;
     left: 0;
+    &-enter, &-enter-active{
+      a{
+        pointer-events: none;
+      }
+    }
   }
   .project-overlay article{
     opacity: 1;
@@ -347,7 +357,6 @@ const StyledWorkProjectOverlay = styled.article`
   left: 0;
   top: 0;
   align-items: center;
-  pointer-events: ${props => props.show ? 'auto' : 'none'};
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(18, 1fr);
     grid-column-start: 1;
