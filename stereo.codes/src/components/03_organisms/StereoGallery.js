@@ -116,17 +116,20 @@ export default connect(
 const StyledStereoGallery = styled.aside`
   position: relative;
   grid-template-rows: 1fr;
+  align-items: start;
   opacity: ${props => props.inview ? '1' : '0'};
   top: ${props => props.inview ? '0' : '50px'};
   transition: all .4s;
   transition-delay: ${props => props.inview ? '1.1s' : '0s'};
-  .meta, .block{
+  .meta{
     position: relative;
     grid-row-end: 1;
   }
   .block{
     grid-column-start: 1;
     grid-column-end: 9;
+    grid-row-end: 1;
+    align-items: start;
     z-index: ${zdepth('low')};
     position: relative;
     top: 0;

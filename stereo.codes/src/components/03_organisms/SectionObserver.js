@@ -48,20 +48,14 @@ class SectionObserver extends Component {
     })
   }
   render() {
-    const StyledObserver = styled.section`
-      align-items: ${this.props.align};
-      width: 100%;
-      grid-column: 1 / span 24;
-      @media screen and (max-width: 768px) {
-        grid-template-columns: repeat(18, 1fr);
-        grid-column-start: 1;
-        grid-column-end: 19;
-      }
-    `;
+    const { align } = this.props;
+    console.log(this);
+    console.log(align);
     return (
       <StyledObserver
-        className={`${this.props.classes} observer grid-24`}
+        className={`${this.props.classes} grid-24`}
         ref="sectionObserver" innerRef={(comp) => { this.section = comp}}
+        align={align}
       >
         { this.props.children }
       </StyledObserver>
@@ -96,3 +90,15 @@ export default connect(
   null,
   mapDispatchToProps
 )(SectionObserver);
+
+const StyledObserver = styled.section`
+  display: grid;
+  align-items: ${props => props.align};
+  width: 100%;
+  grid-column: 1 / span 24;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(18, 1fr);
+    grid-column-start: 1;
+    grid-column-end: 19;
+  }
+`;

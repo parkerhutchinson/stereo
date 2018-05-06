@@ -30,7 +30,6 @@ export const gridTemplate = (num) => {
         display: grid;
         grid-template-rows: 1fr;
         grid-template-columns: repeat(${i}, 1fr);
-        align-items: start;
       }
     `;
   }
