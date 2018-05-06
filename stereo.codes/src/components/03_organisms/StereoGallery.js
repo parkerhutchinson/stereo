@@ -55,7 +55,7 @@ class StereoGallery extends Component {
         <StyledStereoGallery className="stereo-gallery-wrap grid-col-9 grid-9" inview={inview}>
           <ReactCSSTransitionGroup
             component="div"
-            className="block grid-col-9"
+            className="block grid-col-9 grid-9"
             transitionName="stereo-gallery-block"
             transitionEnterTimeout={1400}
             transitionLeaveTimeout={1400}
@@ -126,9 +126,11 @@ const StyledStereoGallery = styled.aside`
   }
   .block{
     grid-column-start: 1;
-    grid-column-end: 10;
+    grid-column-end: 9;
     z-index: ${zdepth('low')};
     position: relative;
+    top: 0;
+    left: 0;
     height: 513px;
     overflow: hidden;
     transform: translate3d(0,0,0) scale(1);
@@ -170,11 +172,6 @@ const StyledStereoGallery = styled.aside`
   }
   .stereo-gallery-block{
     &-enter{
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
       z-index: ${zdepth('high')};
       transform: translate3d(0,0,0);
       clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%);
@@ -190,11 +187,6 @@ const StyledStereoGallery = styled.aside`
       }
     }
     &-leave{
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
       z-index: ${zdepth('low')};
       opacity: 1;
       transition: opacity .4s;

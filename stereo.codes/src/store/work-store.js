@@ -25,7 +25,7 @@ export const projectList = [
     title: 'Cisco CIIP',
     stack: ['Django', 'Vanilla JS'],
     position: 'Full Stack',
-    image: './images/work/ciip-mobile.png',
+    image: './images/work/cisco-mobile.png',
     link: 'https://myciip.com',
     copy: '<p>Cisco International Internship Program (CIIP) is a online portal for college students to apply for internships at Cisco. My role for this project was to fill the role as sole maintainer for a ongoing monthly retainer. The app is built in a custom Django 1.7 theme. It facilitates not only student applications but a admin interface for Cisco maintainers to review, approve, or deny potential applicants.</p>',
   },
@@ -35,11 +35,28 @@ export const projectList = [
     title: 'PRPL Shortlink',
     stack: ['Node', 'MongoDB', 'Express'],
     position: 'Full Stack',
-    image: './images/work/lycoming-mobile.jpg',
+    image: './images/work/neo.png',
+    link: null,
     copy: '<p>short link project was assigned to me to create a SEO URL for any publication or resource that PRPL wanted to track. This project needed to integrate easily into the Wordpress CMS as a plugin for our content authors to easily create urls. The backend for this project is built using Node, Express, and MongoDB. It dynamically creates a custom token and assigns the token to a URL redirect. When user click the link.prpl.rs/{token} url it brings them to our subdomain, fires a custom GA action, and then redirects the user to the url assigned to the token in the MongoDB.</p>',
   },
   {
     id: 4,
+    date: '2016',
+    title: 'Joes American Grill',
+    stack: ['Wordpress','Responsive'],
+    position: 'Full Stack',
+    na: true, 
+  },
+  {
+    id: 5,
+    date: '2016',
+    title: 'Canvas Restaruant',
+    stack: ['Wordpress','Responsive'],
+    position: 'Full Stack',
+    na: true, 
+  },
+  {
+    id: 6,
     date: '2016',
     title: 'LIM Business of Fashion',
     stack: ['Drupal 8', 'NGINX', 'javascript'],
@@ -48,6 +65,7 @@ export const projectList = [
     image: './images/work/lim-mobile.jpg',
     copy: '<p>Where business meets fashion, LIM is New York\'s top business fashion school. Built in Drupal 7, my role on this project was full stack developer. I created the front-end, back-end, and server stack which involved load balancing multi server and CDN setup.</p>',
   },
+  
   
 ]
 

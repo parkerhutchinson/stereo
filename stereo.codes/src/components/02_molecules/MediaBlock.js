@@ -5,7 +5,7 @@ import { zdepth } from '../../lib/styled-helpers';
 
 const MediaBlock = (props) => {
   return (
-    <StyledMediaBlock className="grid-col-9 grid-9 media-block" href={props.link} img={props.image}>
+    <StyledMediaBlock className="media-block" href={props.link} img={props.image}>
       <StyledSpotifyIcon />
       <div className="img"></div>
     </StyledMediaBlock>
@@ -23,20 +23,15 @@ MediaBlock.defaultProps = {
 }
 
 const StyledMediaBlock = styled.a`
-  position: relative;
-  z-index: ${zdepth('low')};
-  width: 100%;
-  height: 400px;
   .img{
+    position: absolute; 
+    top: 0;
+    left: 0;
     display: block;
     height: 100%;
-    grid-row-start: 1;
-    grid-column-start: 1;
-    grid-column-end: span 8;
+    width: 100%;
     background: url(${props => props.img}) no-repeat center;
     background-size: cover;
-    transform: translate3d(0,0,0) scale(1);
-    transition: transform .8s var(--fastanimation);
   }
 `;
 const StyledSpotifyIcon = styled.i`
