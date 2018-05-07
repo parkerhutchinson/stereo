@@ -17,7 +17,7 @@ class Navigation extends Component {
       {url: '.connect', title: 'connect'},
     ]
     this.openHamburger.bind(this);
-    this.state = {ready: false};
+    this.state = { ready: false };
   }
 
   openHamburger(evt) {

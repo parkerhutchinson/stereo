@@ -5,8 +5,11 @@ import { connect } from 'react-redux';
 import { gridActivate } from '../../actions/grid-actions';
 
 class GridOverlayButton extends Component {
-  componentWillMount() {
-    this.setState({ isActive: false });
+  constructor(props) {
+    super(props);
+    this.state = {
+      isActive: false,
+    }
   }
   toggleButton() {
     const shouldActive = !this.props.grid.activate ? true : false;

@@ -9,12 +9,11 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { zdepth } from '../../lib/styled-helpers';
 
 class WorkFinder extends Component {
-  componentWillMount() {
-    this.setState(
-      {
-        activeProject: 'Select a Project',
-      }
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeProject: 'Select a Project',
+    }
   }
   setHover(row) {
     if (!row.na) {

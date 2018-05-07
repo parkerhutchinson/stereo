@@ -14,7 +14,8 @@ const observerConfig = {
 }
 
 class SectionObserver extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.observer = new IntersectionObserver((entries) => this.onChange(entries), observerConfig);
   }
   componentDidMount() {
@@ -49,8 +50,6 @@ class SectionObserver extends Component {
   }
   render() {
     const { align } = this.props;
-    console.log(this);
-    console.log(align);
     return (
       <StyledObserver
         className={`${this.props.classes} grid-24`}

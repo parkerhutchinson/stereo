@@ -4,10 +4,11 @@ import styled from 'styled-components';
 
 
 export default class CopyHeader extends Component {
-  componentWillMount() {
-    this.setState({
-      gridSpan: this.props.grid - 1,
-    })
+  constructor(props) {
+    super(props);
+    this.state = {
+      gridSpan: props.grid - 1,
+    }
   }
   getSubHeader() {
     const markup = this.props.subTitle ?

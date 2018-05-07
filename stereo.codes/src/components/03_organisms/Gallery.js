@@ -6,20 +6,14 @@ import GallerySlide from '../01_atoms/GallerySlide';
 import { connect } from 'react-redux';
 
 class Gallery extends Component {
-  state = {
-    play: false,
-    slide: 0,
+  constructor(props){
+    super(props);
+    this.state = {
+      timer: null,
+      slide: 0,
+      play: false,
+    }
   }
-
-  componentDidMount() {
-    this.setState(
-      {
-        timer: null,
-        slide: 0,
-      }
-    );
-  }
-
   nextSlide() {
     const { images } = this.props;
     const { slide } = this.state;
@@ -114,7 +108,7 @@ const StyledGallery = styled.aside`
   position: relative;
   display: block;
   align-items: stretch;
-  height: 400px;
+  height: 450px;
   padding: 20px;
   width: 100%;
   transform: translate3d(0,0,0);
