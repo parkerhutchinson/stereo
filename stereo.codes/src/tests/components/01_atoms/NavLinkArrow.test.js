@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount, shallow } from 'enzyme';
-import NavLink from '../../../components/01_atoms/NavLink';
+import NavLinkArrow from '../../../components/01_atoms/NavLinkArrow';
 import { MockProvider } from '../../../lib/MockProvider';
 
-describe('<NavLink />', () => {
+describe('<NavLinkArrow />', () => {
   const props = {
     url: '#test',
     title: 'hello world',
@@ -12,19 +12,19 @@ describe('<NavLink />', () => {
 
   const wrapper = mount(
     <MockProvider>
-      <NavLink url={props.url} title={props.title}/>
+      <NavLinkArrow url={props.url} title={props.title}/>
     </MockProvider>
   );
   it('should mount', () => {
-    expect(wrapper.find(NavLink)).toHaveLength(1);
+    expect(wrapper.find(NavLinkArrow)).toHaveLength(1);
   });
 
   it('displays a title', () => {
-    expect(wrapper.find(NavLink).text()).toEqual("hello world");
+    expect(wrapper.find(NavLinkArrow).text()).toEqual("hello world");
   });
 
   it('has a href attribute value', () => {
-    expect(wrapper.find(NavLink).find('a').prop('href')).toEqual("#test");
+    expect(wrapper.find(NavLinkArrow).find('a').prop('href')).toEqual("#test");
   });
 
 });
