@@ -28,5 +28,4 @@ describe('<CopyHeader />', () => {
     const subTitle = mount(<Copy title={props.title} subTitle="hello world"/>);
     expect(subTitle.props().subTitle).toEqual('hello world');
   });
-
 });
