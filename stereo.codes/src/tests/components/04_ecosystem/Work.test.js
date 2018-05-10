@@ -10,6 +10,6 @@ describe('<Work >', () => {
     </MockProvider>
   );
   it('should render', () => {
-    expect(wrapper).toHaveLength(1);
+    expect(wrapper.find(Work)).toHaveLength(1);
   });
 });

@@ -65,7 +65,7 @@ class SectionObserver extends Component {
 SectionObserver.propTypes = {
   classes: PropTypes.string,
   align: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   sectionAdd: PropTypes.func,
   threshold: PropTypes.number,
   nostate: PropTypes.bool,

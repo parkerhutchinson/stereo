@@ -7,10 +7,6 @@ const Velocity = require('velocity-animate');
 
 
 class NavLink extends Component {
-  constructor(props){
-    super(props)
-    // this.handleScrollTo.bind(this);
-  }
   handleScrollTo(evt,url) {
     const scrollToElem = document.querySelector(url);
     this.props.navigationOpen(false);

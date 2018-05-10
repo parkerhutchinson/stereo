@@ -7,25 +7,34 @@ const IntersectionObserver = require('intersection-observer-polyfill/dist/Inters
 
 
 describe('<SectionObserver />', () => {
+  const observerProps = {
+    classes: 'test',
+    align: 'start',
+    label: 'work',
+    threshold: .5,
+    nostate: true,
+  }
+  const wrapper = mount(
+    <MockProvider>
+      <SectionObserver {...observerProps}/>
+    </MockProvider>
+  );
   it('should mount', () => {
-    const wrapper = mount(
-      <MockProvider>
-        <SectionObserver />
-      </MockProvider>
-    );
-    expect(wrapper.exists()).toEqual(true);
+    expect(wrapper.find(SectionObserver).exists()).toEqual(true);
   });
-  // it('sets the class to inview when element scrolls into view', () => {
-  //   let observerState = {
-  //     inView: false,
-  //   }
-  //   const observer = new IntersectionObserver((entries) => {
-  //     entries.forEach((entry) => {
-  //       observerState.inView = true;
-  //     });
-  //   });
-  //   const wrapper = mount(<SectionObserver />);
-  //   observer.observe(wrapper.ref('sectionObserver'));
-  //   expect(observerState.inView).toBe(true);
-  // });
+  it('should have a custom class of test', () => {
+    expect(wrapper.find(SectionObserver).props().classes).toEqual(observerProps.classes);
+  });
+  it('should have grid alignment start', () => {
+    expect(wrapper.find(SectionObserver).props().align).toEqual(observerProps.align);
+  });
+  it('should have a label for state', () => {
+    expect(wrapper.find(SectionObserver).props().label).toEqual(observerProps.label);
+  });
+  it('should have a threshold for the observer', () => {
+    expect(wrapper.find(SectionObserver).props().threshold).toEqual(observerProps.threshold);
+  });
+  it('can have a no state option', () => {
+    expect(wrapper.find(SectionObserver).props().nostate).toEqual(observerProps.nostate);
+  })
 });

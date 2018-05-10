@@ -10,6 +10,6 @@ describe("<GridOverlay/>", () => {
     </MockProvider>
   );
   it("should render", () => {
-    expect(wrapper.length).toBe(1);
+    expect(wrapper.find(GridOverlay).length).toBe(1);
   });
 });

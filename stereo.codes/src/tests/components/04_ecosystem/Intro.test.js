@@ -11,6 +11,6 @@ describe('<Intro >', () => {
     </MockProvider>
   );
   it('should render', () => {
-    expect(wrapper).toHaveLength(1);
+    expect(wrapper.find(Intro)).toHaveLength(1);
   });
 });
