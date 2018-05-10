@@ -1,9 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import Gallery from '../src/components/03_organisms/Gallery';
 import { MockProvider } from '../src/lib/MockProvider';
-import markdownDecorator from '../node_modules/storybook-addon-markdown';
+// import markdownDecorator from '../node_modules/storybook-addon-markdown';
 
 const details = `
 # The button component
@@ -15,9 +14,8 @@ const details = `
 `;
 
 storiesOf('Organisms/Gallery', module)
-    .addDecorator(markdownDecorator(details))
-    .add('Default', () => 
+.add('Default', () => 
     <MockProvider>
         <Gallery play={true} />
     </MockProvider>
-    )
+    );
