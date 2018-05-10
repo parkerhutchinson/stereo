@@ -10,7 +10,7 @@ This project uses [create-react-app](https://github.com/facebook/create-react-ap
 `cd stereo.codes && yarn install`
 
 ### START SERVER ###
-`yarn start`
+`cd stereo.codes && yarn start`
 
 ### RUN TESTS ###
-`yarn test`
+`cd stereo.codes && yarn test`
