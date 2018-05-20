@@ -11,7 +11,7 @@ import { zdepth } from '../../lib/styled-helpers';
 class Modal extends Component {
   closeModal() {
     this.props.modalOpen(false);
-    this.props.setEscapeCode({code: 1})
+    this.props.setEscapeCode({code: 1});
   }
   render() {
     const { modal, children } = this.props;
