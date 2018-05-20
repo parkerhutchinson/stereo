@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 /* istanbul ignore next */
 import styled from 'styled-components';
-import Computer from '../../lib/Computer';
+import Computer from '../02_molecules/Computer';
 import animation from '../../lib/computer-animation';
 
 class Intro extends Component {
@@ -19,9 +19,6 @@ class Intro extends Component {
     if (nextProps.section) {
       animation.show(ReactDOM.findDOMNode(this.refs.svg));
     }
-    if (!nextProps.section) {
-      animation.hide(ReactDOM.findDOMNode(this.refs.svg));
-    }
   }
   render() {
     const active = this.props.section;
@@ -30,7 +27,7 @@ class Intro extends Component {
         <VerticalText inview={active}>
           <p>Developer / Designer / Strategy</p>
         </VerticalText>
-        <StyledSVG className="svg grid-col-8" ref="svg">
+        <StyledSVG className="svg grid-col-8" ref="svg" show={active}>
           <Computer />
         </StyledSVG>
         <Copy
@@ -68,6 +65,10 @@ const mapStateToProps = (state) => {
 
 const StyledSVG = styled.div`
   min-height: 525px;
+  svg{
+    opacity: ${props => props.show ? '1': '0'};
+    transition: opacity .2s;
+  }
 `;
 export default connect(
   mapStateToProps,

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import animation from './computer-animation';
 import ReactDOM from 'react-dom';
 
 class Computer extends Component {
   render() {
     return(
-      <svg id="SvgjsSvg1006" ref="svg" className={this.props.className} width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 530 530">
+      <svg id="SvgjsSvg1006" ref="svg" className={this.props.className} width="560" height="560" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 530 530">
         <defs id="SvgjsDefs1007">
           <mask id="SvgjsMask1009">
             <circle id="SvgjsCircle1014" r="305" cx="265" cy="265" fill="#ffffff"></circle>
@@ -56,7 +55,7 @@ class Computer extends Component {
           <circle id="SvgjsCircle1015" r="215" cx="265" cy="265" fill="url(#SvgjsLinearGradient1010)"></circle>
         </g>
         <g id="SvgjsG1021" mask="url(#SvgjsMask1024)">
-          <g id="SvgjsG1023" transform="matrix(1,0,0,1,0,20)">
+          <g id="SvgjsG1023">
             <rect id="SvgjsRect1049" width="367" height="530" rx="15" ry="15" fill="#eeeeee" x="81.5" y="0"></rect>
             <rect id="SvgjsRect1044" width="367" height="530" rx="15" ry="15" fill="#d8d8d8" x="81.5" y="0"></rect>
             <rect id="SvgjsRect1046" width="276" height="218" rx="15" ry="15" fill="url(#SvgjsLinearGradient1028)" x="127"
@@ -73,7 +72,7 @@ class Computer extends Component {
             <rect id="SvgjsRect1051" width="244" height="193" rx="15" ry="15" fill="url(#SvgjsLinearGradient1031)" x="143" y="52.5"></rect>
           </g>
         </g>
-        <g id="SvgjsG1052" transform="matrix(0.99,0,0,1,297,200)" opacity="1">
+        <g id="SvgjsG1052" opacity="1">
           <path id="SvgjsPath1059" d="M61.24705899999998 6.791208999999981L26.524427000000003 6.791208999999981L23.752387999999996 4.167497000000026L15.964276999999981 4.167497000000026L13.345140000000015 2.175824000000034L0 2.175824000000034L0 192.29949899999997L5.798097999999982 197L188.935947 197L194 192.31910500000004L194 9.79713300000003L185.55326000000002 0L179.483795 0L175.403074 2.175824000000034L163.11097999999998 2.175824000000034L159.46024599999998 5.980682999999999L153.70588199999997 5.980682999999999L153.70588199999997 6.791208999999981L110.04117600000001 6.791208999999981L110.04117600000001 64.08791199999996L61.24705899999998 64.08791199999996L61.24705899999998 6.791208999999981Z "
             fill="#2c2e47" opacity="0.3" filter="url(#SvgjsFilter1060)"></path>
           <circle id="SvgjsCircle1088" r="75" cx="95" cy="95" fill="#2f2f2f"></circle>
